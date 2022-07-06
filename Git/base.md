@@ -11,7 +11,7 @@
 1. **버전이랑 상관없는 파일/폴더 관리**
 
     - 일반적인 개발 프로젝트에서 버전 관리가 별도로 필요없는 파일/폴더가 존재
-      - [개발 언어, 개발 환경](https://github.com/github/gitignore)
+      - [개발 언어, 개발 환경](https://www.toptal.com/developers/gitignore/)
     - 해결책: 폴더에 `.gitignore`파일을 생성 후, 버전관리가 필요없는 파일 등을 작성
       - 특정 파일: 파일명.txt
       - 특정 폴더: /폴더명
