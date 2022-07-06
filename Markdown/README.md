@@ -9,3 +9,13 @@
 ## 목록
 
 - [마크다운 문법(markdown grammer)](https://github.com/hyejinny97/TIL/blob/master/Markdown/markdown_grammar.md)
+
+
+
+## 실습
+- https://github.com/hyejinny97/TIL/blob/master/markdown_practice.md
+
+
+
+## 참고자료
+- [Markdown Guide_Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
