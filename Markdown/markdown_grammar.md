@@ -1,14 +1,6 @@
-# <마크다운>
+# 마크다운 문법
 
-> 텍스트 기반의 가벼운 마크업 언어
-
-- 장점: 다양한 text editor, 웹 환경에서 변환되어 보여짐
-
-
-
-## 1. 마크다운 문법
-
-### Heading
+## Heading
 
 - 문서의 제목이나 소제목으로 사용
 
@@ -18,7 +10,7 @@
 
   
 
-### List
+## List
 
 ##### 1. 순서가 없는 리스트(ul)
 
@@ -33,12 +25,10 @@
 
 
 
-### Fenced Code Block
+## Fenced Code Block
 
 - 코드 불록은 백틱 기호 3개(``` )를 활용하여 작성
-- 코드 블록에 특정 언어를 명시하면 Syntax 
-
-  Highlighting 적용 가능
+- 코드 블록에 특정 언어를 명시하면 Syntax Highlighting 적용 가능
 
 ```python
 print('Hello python')
@@ -52,7 +42,7 @@ print('Hello python')
 
 
 
-### Inline Code Block
+## Inline Code Block
 
 - 코드 블록은 백틱 기호 1개(`)를 활용하여 작성 
 
@@ -60,17 +50,15 @@ print('Hello python')
 
 
 
-### Link
+## Link
 
 - `[문자열](URL)`을 통해 링크를 작성 가능
 
   [마크다운 cheat sheet](https://www.markdownguide.org/cheat-sheet/)
   
-  [markdown_practice](./markdown_practice.md)
 
 
-
-### 이미지
+## 이미지
 
 - `![문자열](URL)`을 통해 이미지 사용 가능
 
@@ -82,15 +70,15 @@ print('Hello python')
 
   
 
-### 인용문
+## 인용문
 
 - `>`을 통해 인용문을 작성
 
-> 인용문
+  > 인용문
 
 
 
-### Table(표)
+## Table(표)
 
 - 마크다운 에디터를 적극 활용하자([본문] - [표] - [표 삽입])
 
@@ -102,14 +90,14 @@ print('Hello python')
 
 
 
-### text 강조
+## text 강조
 
 - 굵게(bold): `**문자열**`을 통해 **굵게** 가능
 - 기울임(italic): `*문자열*`을 통해 *기울임*  가능
 
 
 
-### 수평선
+## 수평선
 
 - 3개 이상의 asterisks `***` 로 수평선 그릴 수 있음
 
