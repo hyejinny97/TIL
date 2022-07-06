@@ -13,7 +13,7 @@
 
 
 ## 🛠 실습
-- https://github.com/hyejinny97/TIL/blob/master/markdown_practice.md
+- [markdown_practice.md](https://github.com/hyejinny97/TIL/blob/master/markdown_practice.md)
 
 
 
