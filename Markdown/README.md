@@ -8,12 +8,12 @@
 
 ## 📃 목록
 
-- [마크다운 문법(markdown grammer)](https://github.com/hyejinny97/TIL/blob/master/Markdown/markdown_grammar.md)
+- [마크다운 문법](https://github.com/hyejinny97/TIL/blob/master/Markdown/markdown_grammar.md)
 
 
 
 ## 🛠 실습
-- [markdown_practice.md](https://github.com/hyejinny97/TIL/blob/master/markdown_practice.md)
+- [markdown 문법에 따라 파일 작성 (2022.07.06)](https://github.com/hyejinny97/TIL/blob/master/Markdown/markdown_practice.md)
 
 
 
