@@ -3,5 +3,5 @@
 
 ## 📃 목록
 - [Markdown](https://github.com/hyejinny97/TIL/tree/master/Markdown)
-- [Git]()
-- [GitHub]()
+- [Git](https://github.com/hyejinny97/TIL/tree/master/Git)
+- [GitHub](https://github.com/hyejinny97/TIL/tree/master/GitHub)
