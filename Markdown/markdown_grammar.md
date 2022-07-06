@@ -19,10 +19,7 @@
 
 ##### 2. 순서가 있는 리스트(ol)
 
-- `숫자. `를 작성
-  1. ol 첫번째 
-  2. ol 두번째
-
+- 숫자를 작성
 
 
 ## Fenced Code Block
@@ -66,7 +63,7 @@ print('Hello python')
 
 - 상대 경로: 마크다운 파일과 이미지가 같은 위치에 있으면 볼 수 있음
 
-  ![dog](markdown.assets/dog.jpg)
+  ![](https://story.holapet.com/wp-content/uploads/2021/02/1-1.jpg)
 
   
 
@@ -86,7 +83,7 @@ print('Hello python')
 | -------- | ---- | ---- |
 | 마크다운 |      |      |
 | 파이썬   |      |      |
-| 알고리즘 |      |      |
+
 
 
 
@@ -99,15 +96,7 @@ print('Hello python')
 
 ## 수평선
 
-- 3개 이상의 asterisks `***` 로 수평선 그릴 수 있음
+- 3개 이상의 asterisks `***`, dashes `---`, underscores `___`로 수평선 그릴 수 있음
 
 *****************
-
-- 3개 이상의 dashes `---` 로 수평선 그릴 수 있음
-
---------
-
-- 3개 이상의 underscores `___` 로 수평선 그릴 수 있음
-
-______
 
