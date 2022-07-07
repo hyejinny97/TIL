@@ -1,8 +1,12 @@
 # 📚 마크다운
 
-> 텍스트 기반의 가벼운 마크업 언어
+▪ 마크다운이란?
 
-- 장점: 다양한 text editor, 웹 환경에서 변환되어 보여짐
+ 텍스트 기반의 가벼운 마크업 언어
+
+▪ 마크다운의 장점
+
+ 다양한 text editor, 웹 환경에서 변환되어 보여짐
 
 
 
@@ -13,7 +17,7 @@
 
 
 ## 🛠 실습
-- [markdown 문법에 따라 파일 작성 (2022.07.06)](https://github.com/hyejinny97/TIL/blob/master/Markdown/markdown_practice.md)
+- [markdown 문법에 따라 파일 작성 (2022.07.06)](https://github.com/hyejinny97/TIL/blob/master/Markdown/practice/markdown_practice.md)
 
 
 

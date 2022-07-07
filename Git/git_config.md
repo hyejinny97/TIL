@@ -1,14 +1,18 @@
 # ✔ Git 설정 파일
 
 
-
-## `$ git config --system`
-
+> git system 영역 설정 명령어
+```bash
+$ git config --system
+```
 - c:/program Files/Git/etc/gitconfig
 - 시스템의 **모든 사용자**와 **모든 저장소**에 적용(관리자 권환)
 
-## `$ git config --global`
-
+*****
+> git global 영역 설정 명령어
+```bash
+$ git config --global
+```
 - c:/Users/사용자계정/gitconfig
 - **현재 사용자**에게 적용되는 설정
 
@@ -22,8 +26,11 @@
 2. 설정 확인
    - `$ git config --global --list`
 
-## `$ git config --local`
-
+*****
+> git local 영역 설정 명령어
+```bash
+$ git config --local
+```
 - 해당 디렉토리/.git/config
 - **특정 저장소**에만 적용되는 설정
 

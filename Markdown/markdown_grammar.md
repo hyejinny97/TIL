@@ -1,6 +1,6 @@
 # 마크다운 문법
 
-## Heading
+> Heading
 
 - 문서의 제목이나 소제목으로 사용
 
@@ -9,20 +9,19 @@
   `주의) # 이후에 반드시 띄어쓰기를 해야함`
 
   
+******
+> List
 
-## List
+1. 순서가 없는 리스트(ul)
 
-##### 1. 순서가 없는 리스트(ul)
+   - `- (hypen)`, `* (asterisk)`
+   - 목록 활용 시, 단계를 tab과 tab + shift로 조절
 
-- `- (hypen)`, `* (asterisk)`
-- 목록 활용 시, 단계를 tab과 tab + shift로 조절
-
-##### 2. 순서가 있는 리스트(ol)
-
-- 숫자를 작성
+2. 순서가 있는 리스트(ol)
 
 
-## Fenced Code Block
+*****
+> Fenced Code Block
 
 - 코드 불록은 백틱 기호 3개(``` )를 활용하여 작성
 - 코드 블록에 특정 언어를 명시하면 Syntax Highlighting 적용 가능
@@ -38,24 +37,24 @@ print('Hello python')
 ```
 
 
-
-## Inline Code Block
+*****
+> Inline Code Block
 
 - 코드 블록은 백틱 기호 1개(`)를 활용하여 작성 
 
   `인라인 코드 블록`
 
 
-
-## Link
+*****
+> Link
 
 - `[문자열](URL)`을 통해 링크를 작성 가능
 
   [마크다운 cheat sheet](https://www.markdownguide.org/cheat-sheet/)
   
 
-
-## 이미지
+*****
+> 이미지
 
 - `![문자열](URL)`을 통해 이미지 사용 가능
 
@@ -66,16 +65,16 @@ print('Hello python')
   ![](https://story.holapet.com/wp-content/uploads/2021/02/1-1.jpg)
 
   
-
-## 인용문
+*****
+> 인용문
 
 - `>`을 통해 인용문을 작성
 
   > 인용문
 
 
-
-## Table(표)
+*****
+> Table(표)
 
 - 마크다운 에디터를 적극 활용하자([본문] - [표] - [표 삽입])
 
@@ -86,15 +85,15 @@ print('Hello python')
 
 
 
-
-## text 강조
+******
+> text 강조
 
 - 굵게(bold): `**문자열**`을 통해 **굵게** 가능
 - 기울임(italic): `*문자열*`을 통해 *기울임*  가능
 
 
-
-## 수평선
+*****
+> 수평선
 
 - 3개 이상의 asterisks `***`, dashes `---`, underscores `___`로 수평선 그릴 수 있음
 
