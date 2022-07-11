@@ -219,8 +219,10 @@ $ git merge {브랜치명}
 # ✔ $ git checkout과 $ git reset의 비교
 1. `$ git checkout {브랜치명}`
    - HEAD를 제어해서 브랜치를 이동
+   
    ![git checkout](./img/git_checkout.png)
 2. `$ git reset {되돌아갈 커밋 해시}`
    - HEAD가 가리키고 있는 브랜치의 최신 커밋을 원하는 커밋으로 지정 가능
    - 어떤 브랜치에 있는 커밋이든 지정 가능하며, 명령을 수행한 뒤 브랜치와 연결이 끊긴 커밋은 삭제됨
+   
    ![git reset](./img/git_reset.png)
