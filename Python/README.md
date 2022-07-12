@@ -25,7 +25,18 @@
   - Container
   - 자료형 변환
   - 연산자
+- [제어문](https://github.com/hyejinny97/TIL/blob/master/Python/control_statement.md)
+  - 제어문
+  - 조건문
+  - 반복문
+  - 반복문 제어
+
+
+## 🛠 실습
+- [파이썬 데이터 타입 실습(2022.07.11)](https://github.com/hyejinny97/TIL/tree/master/Python/practice/practice_01.py)
+- [파이썬 제어문 실습(2022.07.12)](https://github.com/hyejinny97/TIL/tree/master/Python/practice/practice_02.py)
+
+
 
 ## 🔎 참고자료
-
-- 
+- [Python Docs](https://docs.python.org/ko/3/)
