@@ -30,11 +30,18 @@
   - 조건문
   - 반복문
   - 반복문 제어
+- [함수](https://github.com/hyejinny97/TIL/blob/master/Python/function.md)
+  - 함수 기초
+  - 함수의 결과값
+  - 함수의 입력값
+  - 함수의 범위
+  - 함수의 입력
 
 
 ## 🛠 실습
 - [파이썬 데이터 타입 실습(2022.07.11)](https://github.com/hyejinny97/TIL/tree/master/Python/practice/practice_01.py)
 - [파이썬 제어문 실습(2022.07.12)](https://github.com/hyejinny97/TIL/tree/master/Python/practice/practice_02.py)
+- [파이썬 함수 실습(2022.07.13)](https://github.com/hyejinny97/TIL/tree/master/Python/practice/practice_03.py)
 
 
 
