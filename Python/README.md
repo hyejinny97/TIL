@@ -36,12 +36,17 @@
   - 함수의 입력값
   - 함수의 범위
   - 함수의 입력
+- [데이터구조](https://github.com/hyejinny97/TIL/blob/master/Python/data_structure.md)
+  - 데이터구조
+  - 시퀀스 데이터타입의 메서드
+  - 컬렉션 데이터타입의 메서드
 
 
 ## 🛠 실습
 - [파이썬 데이터 타입 실습(2022.07.11)](https://github.com/hyejinny97/TIL/tree/master/Python/practice/practice_01.py)
 - [파이썬 제어문 실습(2022.07.12)](https://github.com/hyejinny97/TIL/tree/master/Python/practice/practice_02.py)
 - [파이썬 함수 실습(2022.07.13)](https://github.com/hyejinny97/TIL/tree/master/Python/practice/practice_03.py)
+- [파이썬 제어문/메서드 실습(2022.07.14)](https://github.com/hyejinny97/TIL/tree/master/Python/practice/practice_04.py)
 
 
 
