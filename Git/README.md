@@ -37,6 +37,8 @@
 - [git flow](https://github.com/hyejinny97/TIL/blob/master/Git/git_flow.md)
   - git flow
   - branch
+    - fast-forword merge
+    - merge commit: auto merge commit, merge conflict
   - $ git checkout과 $ git reset의 비교
 
 
