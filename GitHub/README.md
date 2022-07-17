@@ -2,7 +2,11 @@
 
 ▪ Github이란?
 
-원격 저장소 (Remote Repository) + 버전 관리
+원격 저장소 (Remote Repository) + Git 버전 관리
+
+▪ Github의 역할?
+
+지역 저장소와 연결되어 있어 **백업**과 **협업**에 중요한 역할을 함
 
 
 
@@ -13,8 +17,10 @@
   - 로컬저장소 -> 원격저장소
   - 원격저장소 -> 로컬저장소
 - [Github Flow](https://github.com/hyejinny97/TIL/blob/master/GitHub/github_flow.md)
-  - Shared repository model
-  - Fork & Pull model
+  - Github flow의 기본 원칙
+  - workflow 분류
+    - Shared repository model
+    - Fork & Pull model
 
 
 

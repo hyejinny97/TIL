@@ -1,17 +1,17 @@
 # ✔ 원격저장소 생성 후 경로 설정
 
 - 원격저장소를 생성하면 원격저장소 주소가 생성됨
-- 원격저장소 주소 형식:  github.com/GitHub_username/저장소_이름.git
+- 원격저장소 주소 형식: `https://github.com/사용자명/저장소명.git`
 - if 저장소 이름 변경 시, 원격저장소 URL도 변경되므로 로컬 설정 변경이 반드시 필요
 
 *****
 > 로컬저장소에 원격저장소를 연결해주는 명령어
 ```bash
-$ git remote add {원격저장소URL 별칭} {원격저장소URL}
+$ git remote add {원격저장소명} {원격저장소URL}
 ```
 - 원격 저장소 정보를 로컬 저장소에 추가
-- 로컬 저장소에는 한번만 설정해주면 됨
-- 일반적으로 원격저장소 url의 별칭을 `origin`으로 많이 씀
+- 로컬 저장소에 원격 저장소를 연결하는 것은 한번만 하면 됨
+- 일반적으로 원격저장소명을 `origin`으로 많이 씀
 
 ```
 ex) git remote add origin http://github.com/hyejinny97/TIL.git
@@ -24,13 +24,14 @@ ex) git remote add origin http://github.com/hyejinny97/TIL.git
 
 > 로컬 저장소의 변경사항(커밋)을 원격 저장소로 올리는 명령어
 ```bash
-$ git push {원격저장소URL 별칭} {브랜치명}
+$ git push {원격저장소명} {브랜치명}
 ```  
 - 로컬 저장소의 파일/폴더가 아닌 저장소의 **버전(커밋)**이 올라감
 - 원격저장소로의 push 권한은 collaborator에게만 있음
 ```
 ex) $ git push origin master
 ```
+-  원격 저장소 origin에 로컬 저장소의 master 브랜치를 푸시
 *****
 > push 실패
 1. push 실패 원인
@@ -48,18 +49,42 @@ ex) $ git push origin master
 
 > 원격 저장소를 **복제**하여 모든 버전을 가져오는 명령어
 ```bash
-$ git clone {원격저장소URL}
+$ git clone {원격저장소URL} {디렉터리명}
 ```
-- 원격 저장소의 이름의 폴더로 이동해서 활용함
+- 지정한 디렉토리에 원격 저장소의 모든 버전이 저장됨
+  - 디렉토리명에 해당하는 폴더가 없다면 자동으로 생성된 후 복제됨
+- 디렉토리명에 마침표(.)를 입력하면, 현재 디렉토리에 복제됨
+- 디렉토리명을 지정하지 않으면, 원격 저장소의 이름의 폴더가 만들어짐
+- 원격 저장소를 복제하면 자동으로 지역 저장소와 원격 저장소가 연결됨
 ```
 ex) $ git clone http://github.com/hyejinny97/TIL.git
 ```
 *****
-> 원격저장소에 새롭게 **업데이트된 버전**을 가져오는 명령어
+> 원격 저장소에서 새롭게 **업데이트된 버전**을 가져와 **합치는** 명령어
 ```bash
-$ git pull {원격저장소URL 별칭} {브랜치명}
+$ git pull {원격저장소명} {브랜치명}
 ```
 - 원격 저장소로부터 변경된 내역을 받아와 로컬 저장소의 버전들과 병합
 ```
 ex) $ git pull origin master
 ```
+- 원격 저장소 origin의 버전들을 로컬 저장소의 master 브랜치로 가져오는 명령어
+
+*****
+> 원격 저장소에서 새롭게 **업데이트된 버전**을 **가져오기만** 하는 명령어
+```bash
+$ git fetch {원격저장소명} {브랜치명}
+```
+- 다른 사람이 수정한 소스를 한번 더 훑어보고 로컬 저장소와 합치고 싶을때 사용
+- fetch로 가져온 원격 저장소 정보는 origin/master 브랜치가 아닌 FETCH_HEAD 브랜치로 가져옴
+- FETCH_HEAD 브랜치로 가져온 정보는 로컬 저장소에 바로 반영되지 않음
+```bash
+$ git checkout FETCH_HEAD
+```
+- FETCH_HEAD 브랜치로 이동해 페치해서 가져온 최신 커밋을 확인할 수 있음 
+```bash
+$ git checkout master
+$ git merge FETCH_HEAD
+```
+- 로컬 저장소의 브랜치로 다시 이동한 후, FETCH_HEAD에 있던 최신 커밋을 로컬 저장소의 브랜치에 병합
+- `$ git pull` = `$ git fetch` + `$ git merge`
