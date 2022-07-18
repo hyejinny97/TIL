@@ -46,6 +46,12 @@
     - 파일 읽기
     - 파일 쓰기
   - JSON
+- [에러/예외처리](https://github.com/hyejinny97/TIL/blob/master/Python/error_debug.md)
+  - 에러/예외처리
+    - 문법에러(SyntaxError)
+    - 예외(Exception)
+    - 예외처리(Exception Handling)
+  - 예외 발생 시키기
 
 
 ## 🛠 실습
@@ -54,6 +60,7 @@
 - [파이썬 함수 실습(2022.07.13)](https://github.com/hyejinny97/TIL/tree/master/Python/practice/practice_03.py)
 - [파이썬 제어문/메서드 실습(2022.07.14)](https://github.com/hyejinny97/TIL/tree/master/Python/practice/practice_04.py)
 - [파일 읽고 쓰기, json 활용 실습_PJT_01(2022.07.15)](https://github.com/hyejinny97/01-PJT-01)
+- [에러, 디버깅(2022.07.18)](https://github.com/hyejinny97/TIL/tree/master/Python/practice/practice_05.py)
 
 
 
