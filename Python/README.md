@@ -52,6 +52,10 @@
     - 예외(Exception)
     - 예외처리(Exception Handling)
   - 예외 발생 시키기
+- [객체지향 프로그래밍](https://github.com/hyejinny97/TIL/blob/master/Python/OOP.md)
+  - 객체지향 프로그래밍 개요
+  - 객체지향 프로그래밍 문법
+  - 객체 비교하기 (== 연산자 vs is 키워드)
 
 
 ## 🛠 실습
@@ -61,6 +65,7 @@
 - [파이썬 제어문/메서드 실습(2022.07.14)](https://github.com/hyejinny97/TIL/tree/master/Python/practice/practice_04.py)
 - [파일 읽고 쓰기, json 활용 실습_PJT_01(2022.07.15)](https://github.com/hyejinny97/01-PJT-01)
 - [에러, 디버깅(2022.07.18)](https://github.com/hyejinny97/TIL/tree/master/Python/practice/practice_05.py)
+- [파이썬 실습(2022.07.19)](https://github.com/hyejinny97/TIL/tree/master/Python/practice/practice_06.py)
 
 
 
