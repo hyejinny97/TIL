@@ -69,6 +69,8 @@
 - 복수의 프로젝트를 하는 경우, 도구당 버전이 상이할 수 있음
 - 이러한 경우, 가상환경을 만들어 **프로젝트별로 독립적인 패키지를 관리**할 수 있음
 
+   ![가상환경 보충설명](./image/virtual_environment.png)
+
 > venv 모듈
 - 가상환경을 만들고 관리하는데 사용되는 모듈
 - Python 버전 3.5부터 지원함
@@ -97,11 +99,11 @@
 3. 가상환경에서 패키지 설치 및 목록 출력
    
    ```python
-   (example) C:\project\example>pip install numpy
-   (example) C:\project\example>dir /B Lib\site-packages
+   (example) C:\projectA\example>pip install numpy
+   (example) C:\projectA\example>dir /B Lib\site-packages
     easy_install.py
     numpy
     numpy-1.12.1.dist-info
    ```
    
-   - 가상환경이 활성화된 상태에서, pip로 패키지를 설치하면 `C:\project\example\Lib\site-packages`안에 패키지가 저장됨
+   - 가상환경이 활성화된 상태에서, pip로 패키지를 설치하면 `C:\projectA\example\Lib\site-packages`안에 패키지가 저장됨
