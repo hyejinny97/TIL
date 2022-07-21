@@ -467,3 +467,22 @@ range(n,m,s)
 
 
 
+
+
+# ✔ Comprehension
+> List Comprehension
+
+```python
+[<표현식> for <변수> in <iterable>]
+[<표현식> for <변수> in <iterable> if <조건식>]
+```
+
+- 표현식과 제어문을 통해 특정한 값을 가진 리스트를 간결하게 생성하는 방법
+
+> Dictionary Comprehension
+```python
+{key:value for <변수> in <iterable>}
+{key:value for <변수> in <iterable> if <조건식>}
+```
+
+- 표현식과 제어문을 통해 특정한 값을 가진 딕셔너리를 간결하게 생성하는 방법

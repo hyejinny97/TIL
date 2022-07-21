@@ -122,8 +122,26 @@
 
 
 
+
+
+# ✔ 람다 함수
+```python
+lambda <매개변수> : <표현식>
+```
+- 표현식을 계산한 결과값을 return문 없이 반환하는 함수
+- 이름이 없는 함수(익명함수)
+- 함수를 정의해서 사용하는 것보다 간결하게 사용 가능
+- def를 사용할 수 없는 곳에서도 사용가능
+
+
+
+
+
 # ✔ 함수 응용
 > 내장 함수 
 - `map(function, iterable)`
   - 순회 가능한 데이터구조(iterable)의 모든 요소에 함수를 적용
   - map object로 결과 반환
+- `filter(function, iterable)`
+  - 순회 가능한 데이터구조(iterable)의 모든 요소에 함수를 적용해, 그 결과가 True인 것들만 반환
+  - filter object로 결과 반환

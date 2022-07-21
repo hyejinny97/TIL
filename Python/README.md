@@ -13,6 +13,14 @@
    - 객체: 숫자, 문자, 클래스 등 값을 가지고 있는 모든 것
    - 파이썬은 모든 것이 객체로 구현되어 있음
 
+▪ Python의 장점
+- 문법이 간단해서 배우기 쉽다
+- 많은 사람이 사용하므로 다양한 분야에서 활용할 수 있다
+- 대부분의 운영체제에서 같은 방법으로 사용할 수 있다
+
+▪ Python의 단점
+- 일반적으로 C언어보다 10 ~ 350배 정도 느리다
+
 
 
 ## 📃 목록
@@ -25,6 +33,7 @@
   - Container
   - 자료형 변환
   - 연산자
+  - Comprehension
 - [제어문](https://github.com/hyejinny97/TIL/blob/master/Python/control_statement.md)
   - 제어문
   - 조건문
@@ -35,7 +44,10 @@
   - 함수의 결과값
   - 함수의 입력값
   - 함수의 범위
-  - 함수의 입력
+  - 람다함수
+  - 함수의 응용
+    - map()
+    - filter()
 - [데이터구조](https://github.com/hyejinny97/TIL/blob/master/Python/data_structure.md)
   - 데이터구조
   - 시퀀스 데이터타입의 메서드
@@ -63,6 +75,10 @@
     - 다형성
     - 캡슐화
   - 객체 비교하기 (== 연산자 vs is 키워드)
+- [모듈/패키지/라이브러리](https://github.com/hyejinny97/TIL/blob/master/Python/module.md)
+  - 파이썬 표준 라이브러리
+  - 파이썬 패키지
+  - 가상환경
 
 
 ## 🛠 실습
@@ -80,3 +96,4 @@
 - [Python Docs](https://docs.python.org/ko/3/)
 - [Do it! 점프 투 파이썬](https://wikidocs.net/book/5445)
 - [혼자 공부하는 파이썬]
+- [코딩 도장](https://dojang.io/)
