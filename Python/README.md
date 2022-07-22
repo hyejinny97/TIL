@@ -79,6 +79,9 @@
   - 파이썬 표준 라이브러리
   - 파이썬 패키지
   - 가상환경
+- [API](https://github.com/hyejinny97/TIL/blob/master/Python/API.md)
+  - API
+  - Requests 라이브러리
 
 
 ## 🛠 실습
@@ -89,6 +92,7 @@
 - [파일 읽고 쓰기, json 활용 실습_PJT_01(2022.07.15)](https://github.com/hyejinny97/01-PJT-01)
 - [에러, 디버깅(2022.07.18)](https://github.com/hyejinny97/TIL/tree/master/Python/practice/practice_05.py)
 - [파이썬 실습(2022.07.19)](https://github.com/hyejinny97/TIL/tree/master/Python/practice/practice_06.py)
+- [API 활용(2022.07.22)](https://github.com/hyejinny97/01-PJT-02)
 
 
 
@@ -97,3 +101,5 @@
 - [Do it! 점프 투 파이썬](https://wikidocs.net/book/5445)
 - [혼자 공부하는 파이썬]
 - [코딩 도장](https://dojang.io/)
+- [Python Package Index](https://pypi.org/)
+- [Requests: HTTP for Humans](https://requests.readthedocs.io/en/latest/)
