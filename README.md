@@ -9,3 +9,4 @@
 - [GitHub](https://github.com/hyejinny97/TIL/tree/master/GitHub)
 - [Linux](https://github.com/hyejinny97/TIL/tree/master/Linux)
 - [Python](https://github.com/hyejinny97/TIL/tree/master/Python)
+- [Algorithms](https://github.com/hyejinny97/TIL/tree/master/Algorithm)

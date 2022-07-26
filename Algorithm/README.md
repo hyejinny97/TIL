@@ -64,16 +64,20 @@
 
 
 ## 📃 목록
-
-- []()
-  - 
+- [Big-O](https://github.com/hyejinny97/TIL/blob/master/Algorithm/Big_O.md)
+  - 알고리즘의 시간복잡도
+  - Big-O
+- [Array / Linked List](https://github.com/hyejinny97/TIL/blob/master/Algorithm/array_linkedList.md)
+  - 배열 (Array)
+  - 연결 리스트 (Linked List)
+  - 파이썬 리스트 (List)
 
 
 ## 🛠 실습
 - [조건문/반복문 활용 실습(2022.07.25)](https://github.com/hyejinny97/01-ALGORITHM)
-
+- [조건문/반복문 활용 실습(2022.07.26)](https://github.com/hyejinny97/01-ALGORITHM)
 
 
 
 ## 🔎 참고자료
-- []()
+- [파이썬 공식 문서 시간 복잡도](https://wiki.python.org/moin/TimeComplexity)
