@@ -47,3 +47,15 @@
 
 ![데이터구조 빅오](https://hackr.io/blog/media/4-5.png?ezimgfmt=rs:714x402/rscb1/ng:webp/ngcb1)
 ![정렬 빅오](https://hackr.io/blog/media/3-10.png?ezimgfmt=rs:714x402/rscb1/ng:webp/ngcb1)
+
+
+
+# ✔ 파이썬 문자열
+> 문자열의 메서드 Big-O
+- `.split()`
+- `.strip()`
+- `.find()`
+- `.index()`
+- `.count()`
+- `.replace()`
+- `.join()`

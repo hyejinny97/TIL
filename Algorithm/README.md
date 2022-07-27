@@ -67,6 +67,7 @@
 - [Big-O](https://github.com/hyejinny97/TIL/blob/master/Algorithm/Big_O.md)
   - 알고리즘의 시간복잡도
   - Big-O
+  - 파이썬 문자열
 - [Array / Linked List](https://github.com/hyejinny97/TIL/blob/master/Algorithm/array_linkedList.md)
   - 배열 (Array)
   - 연결 리스트 (Linked List)
