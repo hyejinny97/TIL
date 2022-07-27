@@ -113,9 +113,11 @@
    print(s[2:5])    # 'cde'
    print(s[2:5:2])  # 'ce' 
    print(s[5:2:-1]) # 'fed'
+   print(s[-4:-2])  # 'cd'
+   print(s[2:-3])   # 'c'
    print(s[:3])     # 'abc'
    print(s[5:])     # 'f'
-   print(s[::])     # 'abcdef'
+   print(s[:])     # 'abcdef'
    print(s[::-1])   # 'fedcba'
    ```
    

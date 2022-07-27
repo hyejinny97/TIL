@@ -145,3 +145,4 @@ lambda <매개변수> : <표현식>
 - `filter(function, iterable)`
   - 순회 가능한 데이터구조(iterable)의 모든 요소에 함수를 적용해, 그 결과가 True인 것들만 반환
   - filter object로 결과 반환
+- 

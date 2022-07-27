@@ -22,39 +22,64 @@
    - `문자열.isupper()`: 대문자이면 True 반환
    - `문자열.islower()`: 소문자이면 True 반환
    - `문자열.istitle()`: 타이틀 형식이면 True 반환
+   - `문자열.count(x)`: 문자열에서 특정 문자의 갯수를 반환
+  
+      ```python
+      print('banana'.count('a'))
+      # 3
+      print('banana'.count('na'))
+      # 2
+      ```
 
 2. 문자열 관련 변경 메서드
    - `문자열.replace(old, new, [갯수])`: 바꿀 대상 글자를 새로운 글자로 바꿔서 반환
      -  갯수를 지정하면 해당 갯수만큼만 시행
+      
       ```python
       print('wooooowoo'.replace('o', '!', 2))
       # w!!ooowoo
+      print('happyhacking'.replace('happy', 'angry'))
+      # angryhacking
+      print('happyhacking'.replace('happy', ''))
+      # hacking
       ```
+
    - `문자열.strip([chars])`: 공백이나 특정 문자를 제거
      - 문자열을 지정하지 않으면 공백이나 개행(\n)을 제거
+     - 제거할 문자를 여러 개 넣으면, 해당하는 모든 문자들을 제거
      - `.strip()`: 양쪽을 제거
      - `.lstrip()`: 왼쪽을 제거
      - `.rtrip()`: 오른쪽을 제거
+      
       ```python
       print('     와우!!\n'.strip())
       # '와우!!'
       print('와우!!'.rstrip('!'))
       # '와우'
+      print('Hello World'.strip('Hd'))
+      # 'ello Worl'
       ```
+
    - `문자열.split(sep=None, maxsplit=-1)`: 공백이나 특정 문자를 기준으로 분리
      - 문자열을 특정한 단위로 나눠 **리스트**로 반환
      - sep이 따로 지정되지 않으면 연속된 공백문자를 단일한 공백문자로 간주, 선행/후행 공백은 빈 문자열에 포함시키지 않음
      - maxsplit이 -1인 경우에는 제한이 없음
+      
       ```python
       print('a b c'.split())
       # ['a', 'b', 'c']
       ```
+
    - `'구분자'.join([iterable])`: iterable한 컨테이너 요소들을 구분자로 함쳐 **문자열**로 반환
      - iterable에 문자열이 아닌 값이 있으면 TypeError 발생
+      
       ```python
       print(''.join(['a', 'b']))
       # ab
+      print(','.join('happy'))
+      # h,a,p,p,y
       ```
+
    - `문자열.capitalize()`: 가장 첫 번째 글자를 대문자로 변경
    - `문자열.title()`: `'`나 공백 이후를 대문자로 변경
    - `문자열.upper()`: 모두 대문자로 변경
@@ -64,14 +89,16 @@
 > 리스트 (List)
 1. 리스트 관련 값 추가/삭제 메서드
    - `리스트.append(x)`: 리스트 마지막에 항목 x를 추가
-   -  `리스트.extend(iterable)`: 리스트에 iterable의 항목을 추가
+   - `리스트.extend(iterable)`: 리스트에 iterable의 항목을 추가
       - `[리스트1] = [리스트1] + [리스트2]`와 같은 기능
+      
       ```python
       names = ['john', 'jenny']
       names.extend(['nick', 'tom'])
       print(names)
       # ['john', 'jenny', 'nick', 'tom']
       ```
+
    - `리스트.insert(i, x)`: 리스트 인덱스 i에 항목 x를 삽입
      - 인덱스 i가 리스트 길이보다 큰 경우, 맨 뒤에 삽입
    - `리스트.remove(x)`: 첫번째 항목 x를 제거
@@ -88,7 +115,8 @@
      - **원본** 리스트를 거꾸로 정렬
      - None을 반환
      - `reversed(리스트) 함수`: 원본이 아닌 복제본을 정렬해, 거꾸로 정렬된 리스트를 반환
-   - `리스트.sort()`: 리스트를 정렬
+   - `리스트.sort()`: 리스트를 오름차순으로 정렬
+     - `reverse=True` 옵션을 통해 내림차순으로 정렬 가능
      - **원본** 리스트를 정렬
      - None을 반환
      - `sorted(리스트) 함수`: 원본이 아닌 복제본을 정렬해, 정렬된 리스트를 반환
@@ -123,6 +151,7 @@
    - `딕셔너리.get(k, default=None)`: 키 k의 **값**을 반환
      - default를 지정할 경우, 키 k가 없을 때 default를 반환
      - default를 지정하지 않을 경우, 키 k가 없을 때 None을 반환
+      
       ```python
       # 1) 딕셔너리[키]를 통해 값에 접근하는 경우 
       # 키가 없을때 KeyError가 발생
@@ -144,10 +173,12 @@
      - default를 지정할 경우, 키 k가 없을 때 default를 반환
      - default를 지정하지 않을 경우, 키 k가 없을 때 KeyError 발생
    - `딕셔너리.update(키=값)`: 인자로 넘겨준 키, 값을 딕셔너리에 덮어씀
+      
       ```python
       my_dict = {'apple':'사과', 'banana':'바나나'}
       my_dict.update(apple='문경 사과')
       print(my_dict)
       # {'apple':'문경 사과', 'banana':'바나나'}
       ```
+
    - `딕셔너리.clear()`: 모든 항목 제거
