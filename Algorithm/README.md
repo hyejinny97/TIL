@@ -67,16 +67,19 @@
 - [Big-O](https://github.com/hyejinny97/TIL/blob/master/Algorithm/Big_O.md)
   - 알고리즘의 시간복잡도
   - Big-O
-  - 파이썬 문자열
+  - 파이썬 문자열 (String)
 - [Array / Linked List](https://github.com/hyejinny97/TIL/blob/master/Algorithm/array_linkedList.md)
   - 배열 (Array)
   - 연결 리스트 (Linked List)
   - 파이썬 리스트 (List)
+- [Hash Table](https://github.com/hyejinny97/TIL/blob/master/Algorithm/hash_table.md)
+  - 해시테이블 (Hash table)
+  - 파이썬 딕셔너리 (Dictionary)
 
 
 ## 🛠 실습
-- [조건문/반복문 활용 실습(2022.07.25)](https://github.com/hyejinny97/01-ALGORITHM)
-- [조건문/반복문 활용 실습(2022.07.26)](https://github.com/hyejinny97/01-ALGORITHM)
+- [파이썬 자료구조 활용 실습(2022.07.25 ~ )](https://github.com/hyejinny97/01-ALGORITHM)
+
 
 
 

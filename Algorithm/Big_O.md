@@ -52,10 +52,10 @@
 
 # ✔ 파이썬 문자열
 > 문자열의 메서드 Big-O
-- `.split()`
-- `.strip()`
-- `.find()`
-- `.index()`
-- `.count()`
-- `.replace()`
-- `.join()`
+- `.split()`: O(n)
+- `.strip()`: O(n)
+- `.find()`: O(n)
+- `.index()`: O(n)
+- `.count()`: O(n)
+- `.replace()`: O(n)
+- `.join()`: O(n)
