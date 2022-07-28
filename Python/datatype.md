@@ -7,18 +7,18 @@
 4. String Type (문자열)
 5. Container (컨테이너)
 
-*****
+
 > None
 - **값이 없음**을 표현
 
-*****
+
 > Boolean Type
 - **True/False** 값을 가짐
 - 비교/논리 연산을 수행함에 있어서 활용됨
 - `bool()` 함수: 특정 데이터가 True인지 False인지 검증
 - 결과값이 False인 데이터: 0, '', [], (), {}, None
 
-*****
+
 > Numeric Type
 1. **정수 (int)**
    
@@ -36,7 +36,7 @@
    
    - 실수부와 허수부(j)로 구성된 복소수는 complex 타입 
 
-*****
+
 > String Type
 - 모든 **문자**는 str 타입
 
@@ -122,7 +122,7 @@
    ```
    
 
-*****
+
 
 > cf)  Escape sequence
 
@@ -174,7 +174,7 @@
   | min(s)       | s의 가장 작은 항목                       |
   | max(s)       | s의 가장 큰 항목                         |
 
-*****
+
 
 > List 
 
@@ -186,44 +186,44 @@
 
 - 항상 대괄호 형태로 정의하며, 요소는 콤마로 구분
 
-- 리스트 값 생성
+1. 리스트 값 생성
 
-  ```python
-  # 값 생성
-  list1 = [1, 'apple', True]
-  list2 = list()
-  list3 = []
-  ```
+    ```python
+    # 값 생성
+    list1 = [1, 'apple', True]
+    list2 = list()
+    list3 = []
+    ```
 
-- 리스트 값 접근 및 변경
+2. 리스트 값 접근 및 변경
 
-  ```python
-  # 값 접근
-  a = [1,2,3]
-  print(a[0])   # 1
-  
-  # 값 변경
-  a[0] = '1'
-  print(a)   # ['1', 2, 3]
-  ```
+    ```python
+    # 값 접근
+    a = [1,2,3]
+    print(a[0])   # 1
 
-- 리스트 값 추가 및 삭제
+    # 값 변경
+    a[0] = '1'
+    print(a)   # ['1', 2, 3]
+    ```
 
-  - 리스트명.append(값)
-  - 리스트명.pop(인덱스값)
+3. 리스트 값 추가 및 삭제
 
-  ```python
-  # 값 추가
-  a = [1,2,3]
-  a.append(4)
-  print(a)   # [1,2,3,4]
-  
-  # 값 삭제
-  a.pop(0)
-  print(a)   # [2,3,4]
-  ```
+    - `리스트명.append(값)`
+    - `리스트명.pop(인덱스값)`
 
-*****
+    ```python
+    # 값 추가
+    a = [1,2,3]
+    a.append(4)
+    print(a)   # [1,2,3,4]
+
+    # 값 삭제
+    a.pop(0)
+    print(a)   # [2,3,4]
+    ```
+
+
 
 > Tuple
 
@@ -235,32 +235,32 @@
 
 - 항상 소괄호 형태로 정의하며, 요소는 콤마로 구분
 
-- 튜플 값 생성
+1. 튜플 값 생성
 
-  ```python
-  # 값 생성
-  tuple1 = (1, 'string', True)
-  tuple2 = tuple()
-  tuple3 = ()
-  ```
+    ```python
+    # 값 생성
+    tuple1 = (1, 'string', True)
+    tuple2 = tuple()
+    tuple3 = ()
+    ```
 
-- 튜플 값 접근
+2. 튜플 값 접근
 
-  ```python
-  # 값 접근
-  a = (1,2,3,1)
-  print(a[1])   # 2
-  ```
+    ```python
+    # 값 접근
+    a = (1,2,3,1)
+    print(a[1])   # 2
+    ```
 
-- 튜플 값 변경/추가/삭제 불가
+3. 튜플 값 변경/추가/삭제 불가
 
-*****
+
 
 > Range
 
 ```python
 # 범위 및 스텝 지정
-range(n,m,s)  
+range(n, m, s)  
 ```
 
 -  숫자의 시퀀스를 나타내기 위해 사용
@@ -271,7 +271,7 @@ range(n,m,s)
 
 > Associative Container (비시퀀스형 컨테이너)
 
-*****
+
 
 > Set
 
@@ -283,35 +283,35 @@ range(n,m,s)
 
 - 중괄호 형태로 정의
 
-- 세트 값 생성
+1. 세트 값 생성
 
-  ```python
-  # 값 생성
-  set1 = {1,2,3,1,2}   # {1,2,3}
-  set2 = set()
-  ```
+    ```python
+    # 값 생성
+    set1 = {1,2,3,1,2}   # {1,2,3}
+    set2 = set()
+    ```
 
-- 세트 값 접근 불가
+2. 세트 값 접근 불가
 
-- 세트 값 추가 및 삭제
+3. 세트 값 추가 및 삭제
 
-  - 세트명.add(값)
-  - 세트명.remove(값)
+    - `세트명.add(값)`
+    - `세트명.remove(값)`
 
-  ```python
-  # 값 추가
-  a = {1,2,3}
-  a.add(4)
-  print(a)   # {1,2,3,4}
-  
-  # 값 삭제
-  a.remove(1)
-  print(a)   # {2,3,4}
-  ```
+    ```python
+    # 값 추가
+    a = {1,2,3}
+    a.add(4)
+    print(a)   # {1,2,3,4}
+
+    # 값 삭제
+    a.remove(1)
+    print(a)   # {2,3,4}
+    ```
 
 - 세트를 활용하면 다른 컨테이너에서 중복된 값을 쉽게 제거할 수 있음
 
-*****
+
 
 > Dictionary
 
@@ -324,49 +324,57 @@ range(n,m,s)
 
 - 변경 가능 (mutable), 반복 가능 (iterable)
 
-- 딕셔너리 값 생성
+1. 딕셔너리 값 생성
 
-  ```python
-  # 값 생성
-  dict1 = {'키1': 1, '키2': [1,2,3]}
-  dict2 = dict()
-  dict3 = {}
-  ```
+    ```python
+    # 값 생성
+    dict1 = {'키1': 1, '키2': [1,2,3]}
+    dict2 = dict()
+    dict3 = {}
+    ```
 
-- 딕셔너리 값 접근 및 변경
+2. 딕셔너리 값 접근 및 변경
 
-  ```python
-  # 값 접근
-  movie = {
-      'title':'설국열차',
-      'time':126,
-      'adult':False
-  }
-  print(movie['title'])   # '설국열차'
-  
-  # 값 변경
-  movie['time'] = 200
-  print(movie)   # movie = {'title':'설국열차', 'time':200, 'adult':False}
-  ```
+    ```python
+    # 값 접근
+    movie = {
+        'title':'설국열차',
+        'time':126,
+        'adult':False
+    }
+    print(movie['title'])   # '설국열차'
 
-- 딕셔너리 값 추가 및 삭제
+    # 값 변경
+    movie['time'] = 200
+    print(movie)   # movie = {'title':'설국열차', 'time':200, 'adult':False}
+    ```
 
-  - 딕셔너리명.pop(키)
+3. 딕셔너리 값 추가 및 삭제
+     - 딕셔너리 내부에 해당 key가 없으면 추가, 있으면 변경
+     - `딕셔너리명.pop(키, default)`
+       - key에 대한 값을 삭제 및 반환
+       - default 값을 지정하지 않으면, 존재하지 않는 key에 대해서는 KeyError 발생
+       - default 값을 지정하면, 존재하지 않는 key를 제거할 때 KeyError가 발생하지 않고 default 값을 반환 
 
-  ```python
-  # 값 추가
-  movie = {
-      'title':'설국열차',
-      'time':126,
-      'adult':False
-  }
-  movie['actor'] = '송강호'
-  print(movie) # movie = {'title':'설국열차', 'time':200, 'adult':False, 'actor':'송강호' }  
-  
-  # 값 삭제
-  movie.pop('adult')
-  print(movie)   # movie = {'title':'설국열차', 'time':200, 'actor':'송강호'}
-  ```
+    ```python
+    # 값 추가
+    movie = {
+        'title':'설국열차',
+        'time':126,
+        'adult':False
+    }
+    movie['actor'] = '송강호'
+    print(movie) # movie = {'title':'설국열차', 'time':200, 'adult':False, 'actor':'송강호' }  
+
+    # 값 삭제
+    adult = movie.pop('adult')
+    print(adult)   # False
+    print(movie)   # movie = {'title':'설국열차', 'time':200, 'actor':'송강호'}
+    
+    genre = movie.pop('genre')   # KeyError
+    genre = movie.pop('genre', 'drama')
+    print(genre)   # drama
+    ```
 
 
 
@@ -412,7 +420,7 @@ range(n,m,s)
 2. 비교 연산자 (Comparison Operator)
 
 
-*****
+
 > 논리 연산자
 - 논리식을 판단하여 참(True)/거짓(False)를 반환함
 
@@ -421,7 +429,7 @@ range(n,m,s)
   | A and B |     A 와 B 모두 True일 경우, True를 반환     |
   | A or B  | A 와 B 둘 중 하나가 True일 경우, True를 반환 |
   |   Not   |     True를 False로, False를 True로 반환      |
-*****
+
 > 산술 연산자
 
 - 기본적인 사칙연산 및 수식 계산
@@ -436,7 +444,7 @@ range(n,m,s)
   |   //   |    몫    |
   |   **   | 거듭제곱 |
 
-*****
+
 
 > 복합 연산자
 
@@ -452,7 +460,7 @@ range(n,m,s)
   | a %= b  | a = a % b  |
   | a **= b | a = a ** b |
 
-*****
+
 
 > 비교 연산자
 
