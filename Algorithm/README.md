@@ -75,6 +75,10 @@
 - [Hash Table](https://github.com/hyejinny97/TIL/blob/master/Algorithm/hash_table.md)
   - 해시테이블 (Hash table)
   - 파이썬 딕셔너리 (Dictionary)
+- [Stack, Queue](https://github.com/hyejinny97/TIL/blob/master/Algorithm/stack_queue.md)
+  - 스택 (Stack)
+  - 큐 (Queue)
+  - 덱(Deque, Double-Ended Queue)
 
 
 ## 🛠 실습
