@@ -75,11 +75,14 @@
 - [Hash Table](https://github.com/hyejinny97/TIL/blob/master/Algorithm/hash_table.md)
   - 해시테이블 (Hash table)
   - 파이썬 딕셔너리 (Dictionary)
+  - 파이썬 셋 (Set)
 - [Stack, Queue](https://github.com/hyejinny97/TIL/blob/master/Algorithm/stack_queue.md)
   - 스택 (Stack)
   - 큐 (Queue)
   - 덱(Deque, Double-Ended Queue)
-
+- [Priority Queue, Heap](https://github.com/hyejinny97/TIL/blob/master/Algorithm/priorityQ_heap.md)
+  - 우선순위 큐 (Priority Queue)
+  - 힙 (Heap)
 
 ## 🛠 실습
 - [파이썬 자료구조 활용 실습(2022.07.25 ~ )](https://github.com/hyejinny97/01-ALGORITHM)

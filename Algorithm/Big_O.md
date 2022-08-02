@@ -21,7 +21,7 @@
 
 > 시간 복잡도 종류
 
-![시간 복잡도 종류](https://lh6.googleusercontent.com/_gDIHIz_nkM633wxg6BuyPTqXAG1tq93TYkWGHyZK4lMz3yyCVcS4oBchwSxI0X-4K52yFJe4Lj1NTCL4igznIKW2jhYEHyXOI4swRcBfP-aI8cCHYfR1btVFv5TTOXPwtdLANBkz04=s0)
+   ![시간 복잡도 종류](https://lh6.googleusercontent.com/_gDIHIz_nkM633wxg6BuyPTqXAG1tq93TYkWGHyZK4lMz3yyCVcS4oBchwSxI0X-4K52yFJe4Lj1NTCL4igznIKW2jhYEHyXOI4swRcBfP-aI8cCHYfR1btVFv5TTOXPwtdLANBkz04=s0)
 - `O(1)` < `O(logN)` < `O(N)` < `O(NlogN)` < `O(N^2)` < `O(N^3)` < `O(2^N)` < `O(N!)`
 1. O(1)
    - 단순 산술 계산(덧셈, 뺄셈, 곱셈, 나눗셈)의 경우
