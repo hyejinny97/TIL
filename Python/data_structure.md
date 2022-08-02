@@ -143,6 +143,14 @@
    - `세트s.issubset(세트t)`: 세트s가 세트t의 하위 세트인 경우 True 반환
    - `세트s.issuperset(세트t)`: 세트s가 세트t의 상위 세트인 경우 True 반환
 
+3. 수학에서의 집합과 관련된 기호
+   - 세트1 `+` 세트2: 세트1과 세트2의 합집합
+   - 세트1 `-` 세트2: 세트1과 세트2의 차집합
+   - 세트1 `&` 세트2: 세트1과 세트2의 교집합
+   - 세트1 `^` 세트2: 세트1과 세트2의 대칭 차집합'
+
+      ![집합](https://2506709490-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LKLx6PA5iF3Uq2IzQsf%2F-LKM6rLq40OpYV8Jv5il%2F-LKM7iM3pCfbS4h6Lq-6%2FC7EEA172-39EF-49BA-876D-CD2A72D5E2DC.png?alt=media&token=d054a78a-98bc-4085-bfdb-7405dbe5dd70)
+
 > 딕셔너리 (Dictionary)
 1. 딕셔너리 관련 탐색 메서드
    - `딕셔너리.keys()`: 딕셔너리의 모든 키를 담은 dict_key 객체를 반환
