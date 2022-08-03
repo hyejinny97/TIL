@@ -83,6 +83,9 @@
 - [Priority Queue, Heap](https://github.com/hyejinny97/TIL/blob/master/Algorithm/priorityQ_heap.md)
   - 우선순위 큐 (Priority Queue)
   - 힙 (Heap)
+- [2차원 리스트](https://github.com/hyejinny97/TIL/blob/master/Algorithm/2Dlist.md)
+  - 2차원 리스트
+
 
 ## 🛠 실습
 - [파이썬 자료구조 활용 실습(2022.07.25 ~ )](https://github.com/hyejinny97/01-ALGORITHM)
