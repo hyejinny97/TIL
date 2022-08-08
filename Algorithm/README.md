@@ -85,6 +85,10 @@
   - 힙 (Heap)
 - [2차원 리스트](https://github.com/hyejinny97/TIL/blob/master/Algorithm/2Dlist.md)
   - 2차원 리스트
+- [완전 탐색](https://github.com/hyejinny97/TIL/blob/master/Algorithm/exhaustive_search.md)
+  - 완전 탐색 (Exhaustive Search)
+    - 브루트 포스
+    - 델타 탐색
 
 
 ## 🛠 실습
