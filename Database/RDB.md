@@ -110,9 +110,9 @@
    sqlite> .mode column
    ```
 
-   ex) 결과
-
    ```
+   ex) 적용 결과
+
    BMI  weight  height
    ---  ------  ------
    22   60      165
