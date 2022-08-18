@@ -20,7 +20,7 @@
 
 
 
-# ✔ 테이블 생성 및 삭제
+# ✔ 테이블 생성/삭제/변경
 
 > 테이블 생성 명령문
 - 데이터베이스에서 테이블 생성
@@ -30,13 +30,6 @@
       열이름1 데이터타입,
       열이름2 데이터타입
    );
-  ```
-
-> 테이블 삭제 명령문
-- 데이터베이스에서 테이블 제거
-
-  ```sql
-  DROP TABLE {테이블명}
   ```
 
 > 필드 제약 조건
@@ -58,6 +51,49 @@
     name TEXT NOT NULL,
     age INTEGER DEFAULT 1 CHECK (0 < age)
   );
+  ```
+
+> 테이블 삭제 명령문
+- 데이터베이스에서 테이블 제거
+
+  ```sql
+  DROP TABLE {테이블명}
+  ```
+
+> 테이블 변경 명령문
+- 테이블의 구조를 변경
+  - 테이블 이름 변경, 새로운 컬럼 추가, 컬럼 이름 수정, 컬럼 삭제
+  - DBMS마다 명령이 일부 다름
+
+  ```sql
+  -- 1. 테이블 이름 변경
+  ALTER TABLE {기존 테이블명} RENAME TO {새 테이블명};
+
+  -- 2. 새로운 칼럼 추가
+  ALTER TABLE {테이블명} ADD COLUMN {새 컬럼명};
+
+  -- 3. 컬럼 이름 수정 (SQLite 3.25.0버전 기준)
+  ALTER TABLE {테이블명} RENAME COLUMN {기존 컬럼명} TO {새 컬럼명};
+
+  -- 4. 컬럼 삭제 (SQLite 3.25.0버전 기준)
+  ALTER TABLE {테이블명} DROP COLUMN {컬럼명};
+  ```
+
+- 주의) 기존 테이블에 데이터가 있는 경우, NOT NULL 조건의 새 컬럼을 추가하고자할 때 에러 발생
+  - 해결방법1: NOT NULL 조건 없이 새 컬럼 추가
+  - 해결방법2: 기본값(DEFAULT) 조건 추가
+
+  ```
+  sqlite> ALTER TABLE news ADD COLUMN created_at TEXT NOT NULL;
+  Error: Cannot add a NOT NULL column with default value NULL
+  ```
+
+  ```sql
+  -- 해결방법1) NOT NULL 조건 없이 추가
+  ALTER TABLE news ADD COLUMN created_at TEXT;
+  
+  -- 해결방법2) 기본값(DEFAULT) 조건 추가
+  ALTER TABLE news ADD COLUMN created_at TEXT NOT NULL DEFAULT '알 수 없음';
   ```
 
 

@@ -26,18 +26,20 @@
     - SQLite
 - [SQL 기초](https://github.com/hyejinny97/TIL/blob/master/Database/SQL_base.md)
   - SQL (Structured Query Language)
-  - 테이블 생성 및 삭제
+  - 테이블 생성/삭제/변경
     - CREATE문
     - DROP문
-  - CRUD
+    - ALTER문
+  - 테이블 내 테이터 조작(CRUD)
     - INSERT문
     - SELECT문
     - UPDATE문
     - DELETE문
-- [SELECT문](https://github.com/hyejinny97/TIL/blob/master/Database/INSERT.md)
+- [SELECT문](https://github.com/hyejinny97/TIL/blob/master/Database/SELECT.md)
   - SELECT문의 기본 형식
   - SELECT문의 다양한 절
   - SQLite 집계 함수 (Aggregate Functions)
+  - 기본 함수와 연산
 
 
 

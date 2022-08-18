@@ -1,15 +1,41 @@
 # ✔ SELECT문의 기본 형식
+
 ```sql
 SELECT {열이름} 
     FROM {테이블명}
     WHERE {조건식}
-    GROUP BY {열이름}
-    HAVING {조건식}
-    ORDER BY {열이름}
-    LIMIT {숫자};
+    GROUP BY {열이름|표현식}
+    HAVING {그룹조건식}
+    ORDER BY {열이름|표현식}
+    LIMIT {숫자} OFFSET {숫자};
 ```
 
+> SELECT 문장 실행 순서
+
+- 순서: `FROM` ⇒ `WHERE` ⇒ `GROUP BY` ⇒ `HAVING` ⇒ `SELECT` ⇒ `ORDER BY` ⇒ `LIMIT/OFFSET`
+  - `FROM` 테이블을 대상으로
+  - `WHERE` 제약조건에 맞춰 뽑은 후
+  - `GROUP BY` 그룹화한다
+  - `HAVING` ↳ 그룹 중에 조건과 맞는 것만을
+  - `SELECT` 해당 열을 조회한 후
+  - `ORDER BY` 정렬하고
+  - `LIMIT/OFFSET` 특정 위치의 값을 가져온다
+
+
 # ✔ SELECT문의 다양한 절
+
+> AS
+- 칼럼명이나 테이블명이 너무 길거나 다른 명칭으로 확인하고 싶을 때 ALIAS 활용
+- AS를 생략하여 공백을 두고도 별칭으로 표현할 수 있음
+- 별칭에 공백, 특수문자 등이 있는 경우 **큰 따옴표**로 묶어서 표기
+  - 큰 따옴표 `" "`는 보통 alias(별칭)을 구분할 때 사용 (AS "평균 키")
+  - 작은 따옴표 `' '`는 보통 값을 구분할 때 사용 (INSERT INTO ~ VALUES ('값1','값2'...))
+
+  ```sql
+  SELECT last_name AS 성 FROM users;
+  SELECT last_name 성 FROM users;
+  SELECT balance AS "계좌 잔고" FROM users;
+  ```
 
 > WHERE
 - 쿼리에서 반환된 행에 대한 특정 검색 조건을 지정
@@ -119,6 +145,35 @@ SELECT {열이름}
   SELECT * FROM users ORDER BY balance DESC last_name ASC LIMIT 10;
   ```
 
+> GROUP BY
+- SELECT문의 optional 절
+- 행 집합에서 요약 행 집합을 만듦
+- 선택된 행 그룹을 하나 이상의 열 값으로 요약 행으로 만듦
+- 쿼리문에 WHERE 절이 포함된 경우, **반드시 WHERE 절 뒤에 작성**해야 함
+- 지정된 컬럼의 값이 같은 행들로 묶음
+- **집계함수와 함께 활용**하였을 때 의미가 있음
+- 그룹화된 각각의 그룹이 하나의 집합으로 집계함수의 인수로 넘겨짐
+- GROUP BY 절에 명시하지 않은 컬럼은 별도로 지정할 수 없음
+  - 그룹마다 하나의 행을 출력하게 되므로 집계 함수 등을 활용해야 함
+- GROUP BY 절의 결과는 정렬되지 않음
+  - 기존의 순서와 바뀌는 모습도 있음
+  - 원칙적으로 관계형 데이터베이스에서는 ORDER BY를 통해 정렬
+  
+  ```sql
+  -- ex) 각 성(last_name)씨가 몇 명씩 있는지 조회
+  SELECT last_name, COUNT(*) FROM users GROUP BY last_name;
+  ```
+
+> HAVING
+- 집계함수는 WHERE 절의 조건식에서는 사용할 수 없음 (실행 순서의 의해)
+  - WHERE로 처리하는 것이 GROUP BY 그룹화보다 순서상 앞서 있기 때문
+- 집계 결과에서 조건에 맞는 값을 따로 활용하기 위해서 HAVING을 활용
+
+  ```sql
+  -- ex) 여러 성(last_name)씨 중 100명 이상 등장한 성만 조회
+  SELECT last_name, COUNT(last_name) FROM users GROUP BY last_name HAVING COUNT(last_name) > 100;
+  ```
+
 
 
 # ✔ SQLite 집계 함수 (Aggregate Functions)
@@ -164,4 +219,63 @@ SELECT {열이름}
 5. `SUM`
    - 모든 값의 합을 계산
    - 해당 칼럼이 숫자(INTIGER)일 때만 사용 가능
-  
+
+
+
+# ✔ 기본 함수와 연산
+> 문자열 함수
+
+1. `SUBSTR(문자열, start, length)`
+   - 문자열 자르기
+   - 시작인덱스는 1, 마지막 인덱스는 -1
+
+2. `TRIM(문자열)`, `LTRIM(문자열)`, `RTRIM(문자열)`
+   - 문자열 공백 제거
+
+3. `LENGTH(문자열)`
+   - 문자열 길이
+
+4. `REPLACE(문자열, 패턴, 변경값)`
+   - 패턴에 일치하는 부분을 변경
+
+    ```sql
+    SELECT phone, REPLACE(phone, '-', '') FROM users;
+    ```
+
+5. `UPPER(문자열)`, `LOWER(문자열)`
+   - 대소문자 변경
+
+6. `문자열1 || 문자열2`
+   - 문자열 합치기(concatenation)
+
+    ```sql
+    SELECT last_name || first_name 이름 FROM users;
+    ```
+
+> 숫자 함수
+
+1. `ABS(숫자)`
+   - 절대값
+
+2. `SIGN(숫자)`
+   - 부호 (양수 1, 음수 -1, 0은 0)
+
+3. `MOD(숫자1, 숫자2)`
+   - 숫자1을 숫자2로 나눈 나머지
+
+4. `CEIL(숫자)`, `FLOOR(숫자)`, `ROUND(숫자, 자리)`
+   - 올림, 내림, 반올림
+
+5. `POWER(숫자1, 숫자2)`
+   - 숫자1의 숫자 2 제곱
+
+6. `SQRT(숫자)`
+   - 제곱근
+
+> 산술 연산자
+- +, -, *, /와 같은 산술 연산자와 우선순위를 지정하는 ()기호를 연산에 활용할 수 있음
+
+  ```sql
+  SELECT age + 1 FROM users;
+  SELECT weight / (height * height * 0.0001) AS BMI FROM users;
+  ```
