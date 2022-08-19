@@ -38,6 +38,7 @@
 - [SELECT문](https://github.com/hyejinny97/TIL/blob/master/Database/SELECT.md)
   - SELECT문의 기본 형식
   - SELECT문의 다양한 절
+  - 서브쿼리
   - SQLite 집계 함수 (Aggregate Functions)
   - 기본 함수와 연산
 

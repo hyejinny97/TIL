@@ -48,11 +48,15 @@
 > SQLite Data Type
 
 1. NULL
+
 2. INTEGER
    - 크기에 따라 0, 1, 2, 3, 4, 6 또는 8바이트에 저장된 부호 있는 정수
+
 3. REAL
    - 8바이트 부동 소수점 숫자로 저장된 부동 소수점 값
+
 4. TEXT
+
 5. BLOB
    - 입력된 그대로 정확히 저장된 데이터 (별다른 타입 없이 그대로 저장)
 
@@ -100,8 +104,13 @@
    
    ```
    sqlite> .mode csv
-   sqlite> .import {파일명.csv 테이블명}
+   sqlite> .import {파일명.csv} {테이블명}
    ```
+
+   - `.mode`: 출력 모드 설정
+     - 어떤 형태로 데이터를 표시할지 조작하는 명령어
+     - 출력 모드 종류: ascii, column, csv, html, insert, line, list, quote, tabs, tcl
+     - 참고: [https://itbellstone.tistory.com/90]()
 
 8. 터미널 view 변경하기
    
@@ -122,10 +131,35 @@
    20   50      155  
    ```
 
+   - `.headers`: 컬럼명 표시 여부 설정
+     - on/off로 설정 가능
+
+9. 현재 SQLite 설정 상태 확인
+    
+   ```
+   sqlite> .show
+               echo: off
+               eqp: off
+         explain: auto
+         headers: off
+            mode: list
+         nullvalue: ""
+            output: stdout
+      colseparator: "|"
+      rowseparator: "\n"
+            stats: off
+            width: 
+         filename: mydb.sqlite3
+   ```
+
 > vs code에서의 SQLite 확장 프로그램
+
 1. vs code에서 SQLite 확장 프로그램 설치
+
 2. sqlite 파일 우클릭 후, Open Database 클릭
+
 3. SQLite 확장 창 내 sqlite 파일 우클릭 후, New Query 클릭하면 화면에 sql 명령어를 작성하는 페이지가 출력됨
+
 4. 코드 작성 후 우클릭
    - Run Query: 전체 코드 실행
    - Run Selected Query: 선택 코드만 실행

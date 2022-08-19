@@ -22,6 +22,8 @@ SELECT {열이름}
   - `LIMIT/OFFSET` 특정 위치의 값을 가져온다
 
 
+
+
 # ✔ SELECT문의 다양한 절
 
 > AS
@@ -174,6 +176,129 @@ SELECT {열이름}
   SELECT last_name, COUNT(last_name) FROM users GROUP BY last_name HAVING COUNT(last_name) > 100;
   ```
 
+> CASE
+- CASE문은 특정 상황에서 데이터를 변환하여 활용할 수 있음
+- ELSE를 생략하는 경우, NULL값이 지정됨
+   
+   ```sql
+   CASE
+      WHEN {조건식1} THEN {식1}
+      WHEN {조건식2} THEN {식2}
+      ELSE
+   END
+   ```
+
+   ```sql
+   -- ex) gender가 1인 경우엔 남자를, 2인 경우엔 여자를 출력
+   SELECT 
+      id,
+      CASE
+         WHEN gender = 1 THEN '남자'
+         WHEN gender = 2 THEN '여자'
+      END AS "성별"
+   FROM healthcare
+   LIMIT 3;
+
+   -- ex) 나이에 따라 청소년(~18), 청년(~30), 중장년(~64)로 출력
+   SELECT
+      last_name,
+      CASE
+         WHEN age <= 18 THEN '청소년'
+         WHEN age <= 30 THEN '청년'
+         WHEN age <= 64 THEN '중장년'
+         ELSE '노년'
+      END
+   FROM users
+   LIMIT 10;
+   ```
+
+
+
+# ✔ 서브쿼리
+> 서브쿼리
+- 특정한 값을 메인 쿼리에 반환하여 활용하는 것
+- 실제 테이블에 없는 기준을 이용한 검색이 가능함
+- 서브 쿼리는 소괄호로 감싸서 사용
+- 서브 쿼리는 메인 쿼리의 칼럼을 모두 사용할 수 있음
+- 메인 쿼리는 서브 쿼리의 칼럼을 이용할 수 없음
+   
+   ```sql
+   SELECT * FROM {테이블명} WHERE 컬럼A = (SELECT 컬럼B FROM {테이블명});
+   ```
+
+1. 단일행 서브쿼리
+   - 서브쿼리의 결과가 0 또는 1개인 경우
+   - 메인쿼리에서 단일행 비교 연산자(=, <, <=, >, >=, <>)와 함께 사용 
+      
+   ```sql
+   -- < 1. WHERE에서 활용 >
+   -- ex) 가장 나이가 작은 사람의 수를 조회
+   SELECT age, COUNT(*) FROM users WHERE age = (SELECT MIN(age) FROM users);
+   -- ex) 계좌 잔고가 평균 계좌 잔고보다 높은 사람의 수를 조회
+   SELECT COUNT(*) FROM users WHERE balance >= (SELECT AVG(balance) FROM users);
+   -- ex) 유은정과 같은 지역에 사는 사람의 수를 조회
+   SELECT 
+      country, 
+      COUNT(*) 
+   FROM users 
+   WHERE country = (
+      SELECT country 
+      FROM users 
+      WHERE first_name = '은정' AND last_name = '유'
+   );
+   -- ex) 가수 Queen이 낸 모든 앨범들 조회
+   SELECT title 
+   FROM albums 
+   WHERE ArtistId = (
+      SELECT ArtistId
+      FROM artists
+      WHERE Name = 'Queen'
+   ); 
+
+   -- < 2. SELECT에서 활용 >
+   -- ex) 전체 게시글 수와 전체 댓글 수를 조회
+   SELECT 
+      (SELECT COUNT(*) FROM posts) AS "총 게시글 수",
+      (SELECT COUNT(*) FROM comments) AS "총 댓글 수";
+
+   -- < 3. UPDATE에서 활용 >
+   -- ex) users 테이블의 모든 행의 연봉을 평균 연봉으로 수정
+   UPDATE users
+   SET balance = (SELECT AVG(balance) FROM users);
+   ```
+
+2. 다중행 서브쿼리
+   - 서브쿼리 결과가 2개 이상인 경우
+   - 메인쿼리에서 다중행 비교 연산자(IN, EXIST, ALL, ANY, SOME)와 함께 사용
+
+   ```sql
+   -- ex) 이은정과 같은 지역에 사는 사람의 수 조회 (동명이인 존재)
+   SELECT COUNT(*)
+   FROM users
+   WHERE country IN (
+      SELECT country 
+      FROM users
+      WHERE first_name = '은정' AND last_name = '이' 
+   );
+   ```
+
+3. 다중컬럼 서브쿼리
+   
+   ```sql
+   -- ex) 특정 성씨에서 가장 어린 사람들의 이름과 나이
+   SELECT
+      last_name,
+      first_name,
+      age
+   FROM users
+   WHERE (last_name, age) IN (
+      SELECT last_name, MIN(age)
+      FROM users
+      GROUP BY last_name
+   )
+   ORDER BY last_name;
+   ```
+   
 
 
 # ✔ SQLite 집계 함수 (Aggregate Functions)
