@@ -41,6 +41,11 @@
   - 서브쿼리
   - SQLite 집계 함수 (Aggregate Functions)
   - 기본 함수와 연산
+- [JOIN](https://github.com/hyejinny97/TIL/blob/master/Database/JOIN.md)
+  - JOIN
+    - INNER JOIN
+    - OUTER JOIN
+    - CROSS JOIN
 
 
 
