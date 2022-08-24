@@ -50,13 +50,15 @@
   - 데이터베이스 모델링
   - 개체 관계 모델 (ERD, Entity Relation Diagram)
   - 정규화
-
-
+- [ORM](https://github.com/hyejinny97/TIL/blob/master/Database/ORM.md)
+  - ORM (Object Relational Mapping)
+  - ORM 기본조작 (CRUD)
 
 
 ## 🛠 실습
 - [SQL 실습(2022.08.16~22)](https://github.com/hyejinny97/DB_practice)
 - [DB 모델링 실습(2022.08.23)](https://github.com/hyejinny97/DB_practice)
+- [ORM 실습(2022.08.24)](https://github.com/hyejinny97/DB_practice)
 
 
 
