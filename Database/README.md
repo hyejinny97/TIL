@@ -53,15 +53,20 @@
 - [ORM](https://github.com/hyejinny97/TIL/blob/master/Database/ORM.md)
   - ORM (Object Relational Mapping)
   - ORM 기본조작 (CRUD)
+  - QuerySet API
+- [ORM 확장 (1:N)](https://github.com/hyejinny97/TIL/blob/master/Database/ORM_advanced.md)
+  - ORM 확장 - 1:N 관계
+  - 1:N 관계 ORM 기본 조작 (CRUD)
 
 
 ## 🛠 실습
 - [SQL 실습(2022.08.16~22)](https://github.com/hyejinny97/DB_practice)
 - [DB 모델링 실습(2022.08.23)](https://github.com/hyejinny97/DB_practice)
-- [ORM 실습(2022.08.24)](https://github.com/hyejinny97/DB_practice)
+- [ORM 실습(2022.08.24~25)](https://github.com/hyejinny97/DB_practice)
 
 
 
 ## 🔎 참고자료
 - [SQLite Datatype](https://www.sqlite.org/datatype3.html)
 - [SQL Tutorial](https://www.w3schools.com/sql/default.asp)
+- [django 문서_models](https://docs.djangoproject.com/en/4.1/topics/db/models/)
