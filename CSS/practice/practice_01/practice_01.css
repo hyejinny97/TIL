@@ -1,0 +1,51 @@
+/* 글꼴 관련 스타일 */
+.fnt-fam {
+  font-family: "맑은 고딕", 돋움, 굴림;
+}
+
+.fnt-size {
+  font-size: 30px
+}
+
+.fnt-st {
+  font-style: italic;
+}
+
+.fnt-wgt {
+  font-weight: bolder;
+}
+
+
+
+/* 텍스트 관련 스타일 */
+.txt-col {
+  color: red;
+}
+
+.txt-al {
+  text-align: center;
+}
+
+.txt-hgt {
+  line-height: 3.0;
+}
+
+.txt-deco {
+  text-decoration: underline;
+}
+
+.txt-sha {
+  text-shadow: 5px 10px 3px blue;
+}
+
+.txt-tran {
+  text-transform: uppercase;
+}
+
+.let-spa {
+  letter-spacing: 50px;
+}
+
+.wor-spa {
+  word-spacing: 30px;
+}
