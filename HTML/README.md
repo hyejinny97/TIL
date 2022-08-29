@@ -12,17 +12,25 @@
 
 - [HTML 기초](https://github.com/hyejinny97/TIL/blob/master/HTML/base.md)
   - HTML 기본 구조
-  - html 태그 & head 태그
   - 요소와 속성
   - DOM(Document Object Model) 트리
+- [html / head 태그](https://github.com/hyejinny97/TIL/blob/master/HTML/html_head_tag.md)
+  - html 태그
+  - head 태그
+    - title, meta, link, script, style
 - [body 태그](https://github.com/hyejinny97/TIL/blob/master/HTML/body_tag.md)
   - body 태그
-    - 블록 레벨 요소: h, p, hr, ul, ol, dl, blockquote, pre, div
-    - 인라인 레벨 요소: br, b, strong, i, em, a, img, span
-  - 텍스트 입력 태그
-  - 목록 생성 태그
-  - 이미지 삽입 태그
-  - 하이퍼링크 삽입 태그
+    - 블록 레벨 요소 vs 인라인 레벨 요소
+  - 텍스트 관련 태그
+    - h, p, hr, br, b, strong, i, em, blockquote, pre
+  - 목록 관련 태그
+    - ul, ol, dl
+  - 이미지 관련 태그
+    - img
+  - 하이퍼링크 관련 태그
+    - a
+  - 컨테이너 관련 태그
+    - div, span
 
 
 
