@@ -2,10 +2,12 @@
 
 
 ## 📃 목록
-- [encoding](https://github.com/hyejinny97/TIL/blob/master/CS_base/encoding.md)
+- [Encoding](https://github.com/hyejinny97/TIL/blob/master/CS_base/encoding.md)
   - 인코딩
   - 아스키코드
-
+- [WEB 기초](https://github.com/hyejinny97/TIL/blob/master/CS_base/web.md)
+  - WEB 기초
+  - 웹 프론트엔드 개발 환경 설정
 
 ## 🔎 참고자료
 - 
