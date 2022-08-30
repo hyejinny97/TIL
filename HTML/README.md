@@ -31,13 +31,16 @@
     - a
   - 컨테이너 관련 태그
     - div, span
-
+- [Emmet](https://github.com/hyejinny97/TIL/blob/master/HTML/emmet.md)
+  - Emmet Syntax
 
 
 ## 🛠 실습
 - [HTML 기본 태그 실습(2022.08.29)](https://github.com/hyejinny97/TIL/blob/master/HTML/practice/practice_01.html)
 
 
+
 ## 🔎 참고자료
 - [MDN(Mozilla Developer Network) Web Docs](https://developer.mozilla.org/ko/)
 - [Advanced Web ranking - HTML](https://www.advancedwebranking.com/seo/html-study/#overview)
+- [Emmet Document](https://docs.emmet.io/cheat-sheet/)
