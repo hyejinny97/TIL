@@ -1,93 +1,10 @@
 # ✔ CSS display
 
-> CSS 기본 원칙
-- display에 따라 크기와 배치가 달라짐
-
-> 블록 레벨 요소 vs 인라인 레벨 요소
-1. 블록 레벨 요소
-   - div, ul, ol, li, p, hr, form 등
-   - 수평 정렬 방법: margin 속성 이용
-
-   ```html
-   <!-- HTML -->
-   <body>
-     <div class="box1">box1</div>
-     <div class="box2">box2</div>
-     <div class="box3">box3</div>
-   </body>
-   ```
-
-   ```css
-   /* 왼쪽 정렬 */
-   .box1 {
-       width: 5rem;
-       height: 5rem;
-       background-color: red;
-       margin-right: auto;
-   }
-   /* 오른쪽 정렬 */
-   .box2 {
-     width: 5rem;
-     height: 5rem;
-     background-color: yellow;
-     margin-left: auto;
-   }
-   /* 중앙 정렬 */
-   .box3 {
-     width: 5rem;
-     height: 5rem;
-     background-color: blue;
-     margin: 0px auto;
-   }
-   ```
-
-   ![블록 레벨 요소 정렬 이미지](image/box_display.png)
-
-2. 인라인 레벨 요소
-   - span, a, img, input, label, b, em, i, strong 등
-   - 수평 정렬 방법: text-align 속성 이용
-
-
-   ```html
-   <!-- HTML -->
-   <body>
-     <div class="box1">box1</div>
-     <div class="box2">box2</div>
-     <div class="box3">box3</div>
-   </body>
-   ```
-
-   ```css
-   /* 왼쪽 정렬 */
-   .box1 {
-       width: 5rem;
-       height: 5rem;
-       background-color: red;
-       text-align: left;
-   }
-   /* 오른쪽 정렬 */
-   .box2 {
-     width: 5rem;
-     height: 5rem;
-     background-color: yellow;
-     text-align: right;
-   }
-   /* 중앙 정렬 */
-   .box3 {
-     width: 5rem;
-     height: 5rem;
-     background-color: blue;
-     text-align: center;
-   }
-   ```
-
-   ![인라인 레벨 요소 정렬 이미지](image/box_display_inline.png)
-
 > display 속성
 
 ```css
 선택자 {
-  display: none | block | inline | inline-block;
+  display: none | block | inline | inline-block | flex | inline-flex | grid;
 }
 ```
   

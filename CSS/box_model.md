@@ -1,8 +1,7 @@
 # ✔ Box model
-> CSS 기본 원칙
+> CSS normal flow
 - 모든 요소는 네모(박스모델)임
 - 모든 요소는 위에서부터 아래로, 왼쪽에서 오른쪽으로 쌓임 (좌측 상단에 배치)
-- CSS normal flow
   
   ![CSS normal flow 관련 이미지](https://velog.velcdn.com/images/dongho18/post/b657bcaf-066f-418b-be7a-dbfa79006578/mdn-horizontal.png)
 

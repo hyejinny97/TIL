@@ -1,0 +1,63 @@
+/* 아래에 CSS를 작성해주세요. */
+/* 전 요소 초기화 */
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+/* 타이틀 영역 */
+.title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title span {
+  font-size: 12px;
+}
+
+/* 메인 영역 */
+.main {
+  display: flex;
+  justify-content: flex-left;
+  width: 900px;
+  margin: 0 auto;
+}
+
+.main .card {
+  width: 300px;
+  padding: 0.3rem;
+}
+
+.main .card img {
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.main .card .content {
+  margin: 1rem auto;
+  width: 96%;
+}
+
+.main .card .content .c1 {
+  font-size: 0.7rem;
+  color: rgba(41, 39, 38, 0.808);
+}
+
+.main .card .content .c2 {
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+  letter-spacing: -0.5px;
+  word-spacing: -2px;
+  margin-top: 0.3rem;
+}
+
+.main .card .content .c3 {
+  font-size: 0.7rem;
+  color: rgba(119, 115, 108, 0.6);
+  letter-spacing: -0.5px;
+  word-spacing: -1.5px;
+  line-height: 1.1rem;
+  margin-top: 0.5rem;
+}
