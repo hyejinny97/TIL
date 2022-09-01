@@ -31,6 +31,7 @@
     - a
   - 컨테이너 관련 태그
     - div, span
+- [시맨틱 태그](https://github.com/hyejinny97/TIL/blob/master/HTML/semantic_tag.md)
 - [Emmet](https://github.com/hyejinny97/TIL/blob/master/HTML/emmet.md)
   - Emmet Syntax
 
@@ -44,3 +45,5 @@
 - [MDN(Mozilla Developer Network) Web Docs](https://developer.mozilla.org/ko/)
 - [Advanced Web ranking - HTML](https://www.advancedwebranking.com/seo/html-study/#overview)
 - [Emmet Document](https://docs.emmet.io/cheat-sheet/)
+- [w3schools](https://www.w3schools.com/html/default.asp)
+- [구글 검색엔진 최적화(SEO) 기본 가이드](https://developers.google.com/search/docs/beginner/seo-starter-guide?hl=ko)
