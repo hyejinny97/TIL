@@ -26,6 +26,7 @@
    ```
 
    ![display 속성 중 flex와 inline-flex 비교](image/display_flex.png)
+   
    (참고자료: [https://heropy.blog/2018/11/24/css-flexible-box/]())
 
 2. Flex Item (자식 요소)
@@ -158,7 +159,7 @@
 4. `center`
 
 5. `baseline`
-  - 텍스트 baseline에 기준선을 맞춤
+   - 텍스트 baseline에 기준선을 맞춤
 
    ![align-items 관련 이미지](image/align_items.png)
 

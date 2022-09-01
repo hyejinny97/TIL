@@ -46,6 +46,7 @@
 - [CSS 기본 스타일 실습(2022.08.29)](https://github.com/hyejinny97/TIL/blob/master/CSS/practice/practice_01)
 - [HTML/CSS box model, display, flex 실습(2022.08.30~31)](https://github.com/hyejinny97/TIL/blob/master/CSS/practice/practice_02)
 - [HTML/CSS box model, display 실습(2022.08.30)](https://github.com/hyejinny97/TIL/blob/master/CSS/practice/practice_03)
+- [HTML 시맨틱 태그, CSS 실습(2022.09.01)](https://github.com/hyejinny97/TIL/blob/master/CSS/practice/practice_04)
 
 
 
@@ -53,8 +54,10 @@
 - [MDN(Mozilla Developer Network) Web Docs](https://developer.mozilla.org/ko/)
 - [Emmet Document](https://docs.emmet.io/cheat-sheet/)
 - [web.dev - CSS](https://web.dev/learn/css/)
+- [w3schools](https://www.w3schools.com/css/default.asp)
 - [flexboxfroggy](https://flexboxfroggy.com/#ko)
 - [CSS Diner](https://flukeout.github.io/)
 - [CSS 레이아웃](https://ko.learnlayout.com/)
 - [Google HTML/CSS Style Guide](https://google.github.io/styleguide/htmlcssguide.html)
 - [NHN Coding Convention](https://nuli.navercorp.com/data/convention/NHN_Coding_Conventions_for_Markup_Languages.pdf)
+- [BEM CHEAT SHEET](https://9elements.com/bem-cheat-sheet/)
