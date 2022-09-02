@@ -47,6 +47,7 @@
 - [HTML/CSS box model, display, flex 실습(2022.08.30~31)](https://github.com/hyejinny97/TIL/blob/master/CSS/practice/practice_02)
 - [HTML/CSS box model, display 실습(2022.08.30)](https://github.com/hyejinny97/TIL/blob/master/CSS/practice/practice_03)
 - [HTML 시맨틱 태그, CSS 실습(2022.09.01)](https://github.com/hyejinny97/TIL/blob/master/CSS/practice/practice_04)
+- [영화 웹 사이트 구현 project(2022.09.02)](https://github.com/hyejinny97/TIL/blob/master/CSS/practice/project_01)
 
 
 
