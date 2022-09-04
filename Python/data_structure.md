@@ -19,6 +19,7 @@
    - `문자열.index()`: x의 첫번째 **인덱스**를 반환, 없으면 **오류** 발생
    - `문자열.isalpha()`: 알파벳 문자이면 True 반환
    - `문자열.isdigit()`: 숫자이면 True 반환
+   - `문자열.isalnum()`: 알파벳 또는 숫자로만 구성되면 True 반환
    - `문자열.isupper()`: 대문자이면 True 반환
    - `문자열.islower()`: 소문자이면 True 반환
    - `문자열.istitle()`: 타이틀 형식이면 True 반환

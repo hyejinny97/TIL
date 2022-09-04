@@ -28,6 +28,7 @@
 - [기초 내용](https://github.com/hyejinny97/TIL/blob/master/Python/base.md)
   - 파이썬 개발환경
   - 기초 문법
+  - 문자열 형식화 (String Formatting)
 - [파이썬 자료형](https://github.com/hyejinny97/TIL/blob/master/Python/datatype.md)
   - Python Datatype
   - Container
@@ -82,6 +83,12 @@
 - [API](https://github.com/hyejinny97/TIL/blob/master/Python/API.md)
   - API
   - Requests 라이브러리
+- [정규 표현식](https://github.com/hyejinny97/TIL/blob/master/Python/regular_expression.md)
+  - 정규 표현식 (Regular Expression)
+    - 메타 문자
+  - 파이썬의 re 모듈
+    - re.compile()
+    - method(), search(), findall(), finditer() 메서드
 
 
 ## 🛠 실습
