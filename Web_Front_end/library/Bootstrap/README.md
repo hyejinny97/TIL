@@ -18,7 +18,7 @@
 - [Bootstrap 시작하기](https://github.com/hyejinny97/TIL/blob/master/Web_Front_end/library/Bootstrap/base.md)
 - [Layout](https://github.com/hyejinny97/TIL/blob/master/Web_Front_end/library/Bootstrap/layout.md)
   - Breakpoints
-- [Utilities](https://github.com/hyejinny97/TIL/blob/master/Web_Front_end/library/Bootstrap/Utilities.md)
+- [Utilities](https://github.com/hyejinny97/TIL/blob/master/Web_Front_end/library/Bootstrap/utilities.md)
   - Colors
   - Display
   - Position

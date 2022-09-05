@@ -13,13 +13,11 @@
 
 > Colors
 
-```
-text|bg-{color}
-```
+1. 기본 포맷
 
-1. color
-   
-   - `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light`, `dark`, `body`, `muted`, `white`, `black-50`, `white-50` 
+   ```
+   text|bg-{color}
+   ```
 
    ```html
    <p class="text-primary">text-primary</p>
@@ -27,41 +25,47 @@ text|bg-{color}
    <p class="bg-danger">bg-danger</p>
    ```
 
+2. color
+   
+   - `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light`, `dark`, `body`, `muted`, `white`, `black-50`, `white-50` 
+
 > Opacity
 
-```
-text|bg-opacity-{불투명도}
-```
-
-1. 불투명도
-   - 숫자로 지정
-   - 숫자가 높으면 투명도 감소, 숫자가 낮으면 투명도 증가
+1. 기본 포맷
+   ```
+   text|bg-opacity-{불투명도}
+   ```
 
    ```html
    <div class="text-primary text-opacity-75">This is 75% opacity primary text</div>
    <div class="text-primary text-opacity-50">This is 50% opacity primary text</div>
    ```
 
+2. 불투명도
+   - 숫자로 지정
+   - 숫자가 높으면 투명도 감소, 숫자가 낮으면 투명도 증가
 
+   
 
 # ✔ Display
 > Display
 
-```
-d-{value}
-d-{breakpoint}-{value}
-```
+1. 기본 포맷
 
-- breakpoint를 따로 지정해주지 않으면 xs이 default가 됨 
+   - breakpoint를 따로 지정해주지 않으면 xs이 default가 됨 
 
-1. value
-   
-   - `none`, `inline`, `inline-block`, `block`, `grid`, `table`, `table-cell`, `table-row`, `flex`, `inline-flex`
+   ```
+   d-[{breakpoint}]-{value}
+   ```
 
    ```html
    <div class="d-inline p-2 text-bg-primary">d-inline</div>
    <div class="d-inline p-2 text-bg-dark">d-inline</div>
    ```
+
+2. value
+   
+   - `none`, `inline`, `inline-block`, `block`, `grid`, `table`, `table-cell`, `table-row`, `flex`, `inline-flex`
 
 > Responsive Display
 - screen size에 따라 display를 변화시킬 수 있음
@@ -79,23 +83,12 @@ d-{breakpoint}-{value}
 # ✔ Position
 > Position
 
-```
-position-{position type} {property}-{position}
-```
+1. 기본 포맷
 
-1. position type
-  
-   - `static`, `relative`, `absolute`, `fixed`, `sticky`
+   ```
+   position-{position type} {property}-{position}
+   ```
 
-2. property
-   
-   - `top`, `bottom`, `start`, `end`
-
-3. position
-   
-   - 숫자 (퍼센트%를 뜻함)
-     - 예) 50: 특정 sides로부터 50%
-  
    ```html
    <div class="position-relative">
       <div class="position-absolute top-0 start-0"></div>
@@ -103,20 +96,27 @@ position-{position type} {property}-{position}
    </div>
    ```
 
+2. position type
+  
+   - `static`, `relative`, `absolute`, `fixed`, `sticky`
+
+3. property
+   
+   - `top`, `bottom`, `start`, `end`
+
+4. position
+   
+   - 숫자 (퍼센트%를 뜻함)
+     - 예) 50: 특정 sides로부터 50%
+  
 > Center elements
 
-```
-translate-{이동방향 및 크기}
-```
+1. 기본 포맷
 
-1. 이동방향 및 크기
-   
-   - `middle`: translateX(-50%) and translateY(-50%)
-   
-   - `middle-x`: translateX(-50%)
-  
-   - `middle-y`: translateY(-50%)
-  
+   ```
+   translate-{이동방향 및 크기}
+   ```
+
    ```html
    <div class="position-relative">
       <div class="position-absolute top-50 start-50 translate-middle"></div>
@@ -125,6 +125,15 @@ translate-{이동방향 및 크기}
    </div>
    ```
 
+2. 이동방향 및 크기
+   
+   - `middle`: translateX(-50%) and translateY(-50%)
+   
+   - `middle-x`: translateX(-50%)
+  
+   - `middle-y`: translateY(-50%)
+  
+   
 
 
 # ✔ Spacing
@@ -132,20 +141,27 @@ translate-{이동방향 및 크기}
 
 > Margin, Padding
 
-```
-{property}{sides}-{size}
-{property}{sides}-{breakpoint}-{size}
-```
+1. 기본 포맷
+   - breakpoint를 따로 지정해주지 않으면 xs이 default가 됨  
 
-- breakpoint를 따로 지정해주지 않으면 xs이 default가 됨  
+   ```
+   {property}{sides}-[{breakpoint}]-{size}
+   ```
 
-1. property
+   ```html
+   <!-- 블록요소 수평 중앙 정렬 -->
+   <div class="mx-auto" style="width: 200px;">
+      Centered element
+   </div>
+   ```
+
+2. property
    
    - `m`: margin
    
    - `p`: padding
 
-2. sides
+3. sides
   
    - `t`: margin-top or padding-top
    
@@ -161,7 +177,7 @@ translate-{이동방향 및 크기}
    
    - blank: top, bottom, left, right 네 방향 모두
 
-3. size
+4. size
 
    - 0: 0rem (0px)
    - 1: 0.25rem (4px)
@@ -171,45 +187,38 @@ translate-{이동방향 및 크기}
    - 5: 3rem (48px)
    - auto: 특정 sides의 margin을 자동 설정
   
-   ```html
-   <!-- 블록요소 수평 중앙 정렬 -->
-   <div class="mx-auto" style="width: 200px;">
-      Centered element
-   </div>
-   ```
-
-
+   
 
 # ✔ Text
 - text의 alignment, wrapping, weight 등을 조절하는 utility classes
 
 > Text alignment
 
-```
-text-{alignment}
-text-{breakpoint}-{alignment}
-```
+1. 기본 포맷
 
-1. alignment
-   
-   - `start`, `center`, `end`
-  
+   ```
+   text-[{breakpoint}]-{alignment}
+   ```
+
    ```html
    <p class="text-start">Start aligned text on all viewport sizes.</p>
    <p class="text-center">Center aligned text on all viewport sizes.</p>
    <p class="text-sm-end">Start aligned text on viewports sized SM (small) or wider.</p>
    ```
 
+2. alignment
+   
+   - `start`, `center`, `end`
+  
+   
 > Text wrapping and overflow
 
-```
-text-{wrapping}
-```
-
-1. wrapping
+1. 기본 포맷
    
-   - `wrap`, `nowrap` (=overflow)
-  
+   ```
+   text-{wrapping}
+   ```
+
    ```html
    <div class="badge bg-primary text-wrap" style="width: 6rem;">
     This text should wrap.
@@ -220,90 +229,115 @@ text-{wrapping}
    </div>
    ```
 
+2. wrapping
+   
+   - `wrap`, `nowrap` (=overflow)
+  
+   
 > Text transform
 
-```
-text-{transform}
-```
-
-1. transform
+1. 기본 포맷
    
-   - `lowercase`, `uppercase`, `capitalize`
-  
+   ```
+   text-{transform}
+   ```
+
    ```html
    <p class="text-lowercase">Lowercased text.</p>
    <p class="text-uppercase">Uppercased text.</p>
    <p class="text-capitalize">CapiTaliZed text.</p>
    ```
 
+2. transform
+   
+   - `lowercase`, `uppercase`, `capitalize`
+  
+   
+
 > Font size
 
-```
-fs-{숫자}
-```
+1. 기본 포맷
 
-1. 숫자
-   
-   - 숫자 1~6
-   - `<h1>` ~ `<h6>` 태그의 크기처럼 text 크기가 변경됨
-  
+   ```
+   fs-{숫자}
+   ```
+
    ```html
    <p class="fs-1">.fs-1 text</p>
    <p class="fs-2">.fs-2 text</p>
    ```
 
+2. 숫자
+   
+   - 숫자 1~6
+   - `<h1>` ~ `<h6>` 태그의 크기처럼 text 크기가 변경됨
+  
+   
+
 > Font weight and italics
 
-```
-fw-{font weight}
-fst-{font style}
-```
-
-1. font weight
+1. 기본 포맷
    
-   - `bold`, `bolder`, `semibold`, `normal`, `light`, `lighter`
-  
+   ```
+   fw-{font weight}
+   fst-{font style}
+   ```
+
    ```html
    <p class="fw-bold">Bold text.</p>
    <p class="fw-light">Light weight text.</p>
    ```
-
-2. font style
-
-   - `normal`, `italic`
 
    ```html
    <p class="fst-italic">Italic text.</p>
    <p class="fst-normal">Text with normal font style</p>
    ```
 
+2. font weight
+   
+   - `bold`, `bolder`, `semibold`, `normal`, `light`, `lighter`
+
+3. font style
+
+   - `normal`, `italic`
+
+   
 > Line height
 
-```
-lh-{줄간격 크기}
-```
+1. 기본 포맷
 
-1. 줄간격 크기
-  
-   - 절대크기: 숫자
-   - 키워드: `sm`, `base`, `lg`
-  
+   ```
+   lh-{줄간격 크기}
+   ```
+
    ```html
    <p class="lh-1">This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.</p>
    <p class="lh-sm">This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.</p>
    ```
 
+2. 줄간격 크기
+  
+   - 절대크기: 숫자
+  
+   - 키워드: `sm`, `base`, `lg`
+  
+   
+
 > Text decoration
 
-```
-text-decoration-{decoration}
-```
+1. 기본 포맷
 
-1. decoration
+   ```
+   text-decoration-{decoration}
+   ```
 
-   - `underline`, `line-through`, `none`
-  
    ```html
    <p class="text-decoration-underline">This text has a line underneath it.</p>
    <a href="#" class="text-decoration-none">This link has its text decoration removed</a>
    ```
+
+2. decoration
+
+   - `underline`, `line-through`, `none`
+  
+   
