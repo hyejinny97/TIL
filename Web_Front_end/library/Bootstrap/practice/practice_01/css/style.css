@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  min-width: 1280px;
+  box-sizing: border-box;
+  color: #333333;
+}
+
+/* 헤더 */
+.nav-hover:hover {
+  border-radius: 1rem;
+  color: white !important;
+  background-color: gray;
+}
+
+/* 배너 */
+.banner {
+  height: 700px;
+  background-image: url("../assets/apparel.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* 본문 */
+.about img {
+  width: 500px;
+}
+.more img {
+  width: 64px;
+  height: 64px;
+}
+.more .more-info {
+  text-align: center;
+}
+
+/* top btn */
+.top-btn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  background-image: url("../assets/up-arrow.png");
+  background-size: cover;
+}
+
+/* 상품 목록 */
+.product-list {
+  width: 1280px;
+  margin: 0 auto;
+}
+.product-list article {
+  width: 400px;
+  padding: 0.5rem;
+  margin: 0.8rem;
+  border: 1px solid gray;
+}
+.product-list article img {
+  width: 100%;
+  text-align: center;
+}
+.product-list article h3 {
+  margin-top: 1rem;
+  text-align: center;
+}
