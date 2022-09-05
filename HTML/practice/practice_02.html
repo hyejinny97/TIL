@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습2</title>
+</head>
+<body>
+  <!-- table 태그 -->
+  <h2>table 태그</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Major</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>홍길동</td>
+        <td>Computer Science</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>김철수</td>
+        <td>Business</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>총계</td>
+        <td colspan="2">2명</td>
+      </tr>
+    </tfoot>
+    <caption>1반 학생 명단</caption>
+  </table>
+
+  <!-- form 태그 -->
+  <h2>form 태그</h2>
+  <form action="">
+    <!-- autofocus 및 label 확인 -->
+    <label for="username">아이디</label>
+    <input type="text" name="username" id="username" autofocus>
+
+    <!-- disabled 및 value 확인 -->
+    <label for="name">이름</label>
+    <input type="text" name="name" id="name" value="홍길동" disabled>
+
+    <!-- ckeckbox -->
+    <p>checkbox</p>
+    <input type="checkbox" name="language" id="html" value="html">
+    <label for="html">HTML</label>
+    <input type="checkbox" name="language" id="python" value="python">
+    <label for="python">python</label>
+    <input type="checkbox" name="language" id="java" value="java">
+    <label for="java">java</label>
+
+    <!-- radio button -->
+    <p>radio button</p>
+    <input type="radio" name="feeling" id="happy" value="happy">
+    <label for="happy">행복</label>
+    <input type="radio" name="feeling" id="sad" value="sad">
+    <label for="sad">슬픔</label>
+    <input type="radio" name="feeling" id="soso" value="soso">
+    <label for="soso">중립</label>
+
+    <!-- 제출 버튼 -->
+    <br>
+    <input type="submit" value="제출">
+  </form>
+</body>
+</html>
