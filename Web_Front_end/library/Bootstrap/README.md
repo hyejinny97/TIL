@@ -24,11 +24,19 @@
   - Position
   - Spacing
   - Text
+- [Components](https://github.com/hyejinny97/TIL/blob/master/Web_Front_end/library/Bootstrap/components.md)
+  - Buttons
+  - Carousel
+  - Dropdowns
+  - Modal
+  - Navbar
+- [Forms](https://github.com/hyejinny97/TIL/blob/master/Web_Front_end/library/Bootstrap/forms.md)
 
 
 
 ## 🛠 실습
-- [Bootstrap 적용 실습(2022.09.05)](https://github.com/hyejinny97/TIL/blob/master/Web_Front_end/library/Bootstrap/practice/practice_01)
+- [Bootstrap Utilities 실습(2022.09.05)](https://github.com/hyejinny97/TIL/blob/master/Web_Front_end/library/Bootstrap/practice/practice_01)
+- [Bootstrap Components 실습(2022.09.06)](https://github.com/hyejinny97/TIL/blob/master/Web_Front_end/library/Bootstrap/practice/practice_02)
 
 
 
