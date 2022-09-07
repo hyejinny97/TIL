@@ -1,0 +1,21 @@
+.cart-button{
+  width: 120px;
+}
+
+.banner {
+  height: 280px;
+}
+
+.star-icons {
+  color: orange;
+}
+
+.sale-badge {
+  top: 1rem;
+  right: 1rem;
+}
+
+footer {
+  height: 3rem;
+  line-height: 3rem;
+}
