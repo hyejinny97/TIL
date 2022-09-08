@@ -7,3 +7,8 @@
 .bi-star-fill {
   color: orange;
 }
+
+/* get in touch 영역 */
+.comment {
+  height: 150px !important;
+}
