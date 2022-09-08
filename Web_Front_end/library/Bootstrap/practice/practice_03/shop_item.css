@@ -1,0 +1,36 @@
+/* 헤더 내비게이션 */
+.cart-button1 {
+  width: 120px;
+}
+
+/* 메인 상품 영역 */
+.description {
+  font-size: 1.2rem;
+  font-weight: 100;
+}
+
+.buy-count {
+  width: 3rem;
+  margin-right: 1rem;
+}
+
+.cart-button2 {
+  width: 140px;
+}
+
+/* 연관 상품 리스트 */
+.card-footer {
+  padding: 1rem !important;
+  background-color: white !important;
+  border-top: none !important;
+  text-align: center;
+}
+
+.star-icons {
+  color: orange;
+}
+
+.sale-badge {
+  top: 1rem;
+  right: 1rem;
+}

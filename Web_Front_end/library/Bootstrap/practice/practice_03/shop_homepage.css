@@ -6,6 +6,13 @@
   height: 280px;
 }
 
+.card-footer {
+  padding: 1rem !important;
+  background-color: white !important;
+  border-top: none !important;
+  text-align: center;
+}
+
 .star-icons {
   color: orange;
 }
@@ -15,7 +22,7 @@
   right: 1rem;
 }
 
-footer {
+.main-footer {
   height: 3rem;
   line-height: 3rem;
 }

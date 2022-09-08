@@ -48,7 +48,7 @@
 ## 🛠 실습
 - [Bootstrap Utilities 실습(2022.09.05)](https://github.com/hyejinny97/TIL/blob/master/Web_Front_end/library/Bootstrap/practice/practice_01)
 - [Bootstrap Components 실습(2022.09.06)](https://github.com/hyejinny97/TIL/blob/master/Web_Front_end/library/Bootstrap/practice/practice_02)
-- [Bootstrap Grid System 실습(2022.09.07)](https://github.com/hyejinny97/TIL/blob/master/Web_Front_end/library/Bootstrap/practice/practice_03)
+- [Bootstrap Grid System 실습(2022.09.07~08)](https://github.com/hyejinny97/TIL/blob/master/Web_Front_end/library/Bootstrap/practice/practice_03)
 
 
 
