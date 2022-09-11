@@ -10,6 +10,30 @@
    1. while문
    2. for문
 
+> pass 키워드
+
+- 일단 먼저 전체 골격을 잡아놓고 내부 코드는 나중에 천천히 개발할 의도로 pass 키워드를 사용하기도 함
+- 골격: 조건문, 반복문, 함수, 클래스 등의 기본 구문
+
+   ```python
+   if number > 0:
+      pass
+   else:
+      pass
+   ```
+
+> raise NotImplementedError 문
+
+- raise 키워드를 통해 오류를 강제 발생
+- 미구현 상태를 표현하는 NotImplementedError 문을 통해 아직 구현되지 않은 부분임을 알림
+  
+   ```python
+    if number > 0:
+       raise NotImplementedError
+    else:
+       raise NotImplementedError
+   ```
+
 
 # ✔ 조건문 (Conditional Statement)
 > 조건문 기본

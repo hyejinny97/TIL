@@ -80,6 +80,7 @@
   - 파이썬 표준 라이브러리
   - 파이썬 패키지
   - 가상환경
+- [모듈 활용](https://github.com/hyejinny97/TIL/blob/master/Python/module_type.md)
 - [API](https://github.com/hyejinny97/TIL/blob/master/Python/API.md)
   - API
   - Requests 라이브러리
@@ -89,6 +90,7 @@
   - 파이썬의 re 모듈
     - re.compile()
     - method(), search(), findall(), finditer() 메서드
+
 
 
 ## 🛠 실습
