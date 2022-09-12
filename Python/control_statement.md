@@ -92,6 +92,7 @@
   ```python
   for <변수명> in <iterable>:
     # 반복해서 실행할 코드
+  ```
 - for문에서 순회가능한 객체(iterable) 종류
   - 순회할 수 있는 자료형: str, tuple, list, dict 등
   - 순회형 함수: range, enumerate 등

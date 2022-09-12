@@ -35,6 +35,7 @@
   - 자료형 변환
   - 연산자
   - Comprehension
+  - Iterator 
 - [제어문](https://github.com/hyejinny97/TIL/blob/master/Python/control_statement.md)
   - 제어문
   - 조건문
@@ -81,6 +82,7 @@
   - 파이썬 패키지
   - 가상환경
 - [모듈 활용](https://github.com/hyejinny97/TIL/blob/master/Python/module_type.md)
+  - datetime 모듈
 - [API](https://github.com/hyejinny97/TIL/blob/master/Python/API.md)
   - API
   - Requests 라이브러리
