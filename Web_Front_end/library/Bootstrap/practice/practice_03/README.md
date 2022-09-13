@@ -22,3 +22,22 @@
 
    - Start Bootstap 템플릿 링크: <https://startbootstrap.com/previews/business-frontpage>
    - [내가 작성한 html 문서](https://github.com/hyejinny97/TIL/blob/master/Web_Front_end/library/Bootstrap/practice/practice_03/business_frontpage.html)
+
+
+
+# 실습 결과 완성본
+> `Small Business` 템플릿
+
+![](../../gif/small_business_animation.gif)
+
+> `Shop Homepage` 템플릿
+
+![](../../gif/shop_hompage_animation.gif)
+
+> `Shop Item` 템플릿
+
+![](../../gif/shop_item_animation.gif)
+
+> `Business Frontpage` 템플릿
+
+![](../../gif/business_frontpage_animation.gif)
