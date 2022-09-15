@@ -50,7 +50,8 @@
 - [Bootstrap Components 실습(2022.09.06)](https://github.com/hyejinny97/TIL/blob/master/Web_Front_end/library/Bootstrap/practice/practice_02)
 - [Bootstrap Grid System 실습(2022.09.07~08)](https://github.com/hyejinny97/TIL/blob/master/Web_Front_end/library/Bootstrap/practice/practice_03)
 - [Bootstrap 활용 프로젝트(2022.09.13)](https://github.com/hyejinny97/TIL/blob/master/Web_Front_end/library/Bootstrap/practice/project_01)
-
+- [Bootstrap 활용 프로젝트(2022.09.14)](https://github.com/hyejinny97/project_08)
+  - 깃헙 페이지 링크: <https://hyejinny97.github.io/project_08/>
 
 
 ## 🔎 참고자료
