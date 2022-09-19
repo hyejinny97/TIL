@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트 핸들러 기초 실습</title>
+</head>
+<body>
+  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+  <!-- 1. 버튼을 클릭했을 때 경고창 뜨게 구현 -->
+  <h1>1. 버튼을 클릭했을 때 경고창 뜨게 구현</h1>
+  <button id="btn">버튼</button>
+
+  <!-- 2. 입력란에 적은 text를 아래 문단에 표시 -->
+  <h1>2. 입력란에 적은 text를 아래 문단에 표시</h1>
+  <form>
+    <label for="text-input">내용을 입력하세요.</label>
+    <input type="text" id="text-input">
+  </form>
+  <p id="text-paragraph"></p>
+
+  <!-- 3. 입력란에 적은 색상대로 색상 변경 -->
+  <h1>3. 입력란에 적은 색상대로 색상 변경</h1>
+  <h2>Change My Color</h2>
+  <form>
+    <label for="change-color-input">원하는 색상을 영어로 입력하세요.</label>
+    <input type="text" id="change-color-input">
+  </form>
+
+  <script>
+    // 1. 버튼을 클릭했을 때 경고창 뜨게 구현
+    const btn = document.querySelector('#btn')
+
+    btn.addEventListener('click', function() {
+      alert('버튼이 클릭되었습니다.')
+    })
+
+    // 2. 입력란에 적은 text를 아래 문단에 표시
+    const textInput = document.querySelector('#text-input')
+    
+    textInput.addEventListener('input', function(event) {
+      const pTag = document.querySelector('#text-paragraph')
+      pTag.innerText = event.target.value
+    })
+
+    // 3. 입력란에 적은 색상대로 색상 변경
+    const colorInput = document.querySelector('#change-color-input')
+    
+    const changeColor = function(event) {
+      const h2Tag = document.querySelector('h2')
+      h2Tag.style.color = event.target.value
+    }
+    
+    colorInput.addEventListener('input', changeColor)
+  </script>
+</body>
+</html>

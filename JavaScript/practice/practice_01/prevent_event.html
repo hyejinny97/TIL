@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트 취소 실습</title>
+</head>
+<body>
+  <!-- a태그 클릭이벤트 취소 -->
+  <a href="https://www.google.co.kr/" id="link">Go To Google</a>
+  <a href="https://www.google.co.kr/" id="disabled-link">Can Not Go To Google</a>
+
+  <script>
+    // a태그 클릭이벤트 취소
+    const disabledLink = document.querySelector('#disabled-link')
+
+    disabledLink.addEventListener('click', function(event) {
+      event.preventDefault()
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!-- 결과 보기: https://codepen.io/hyejinny97/pen/xxjdpqE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+    body {
+      height: 1000rem;
+    }
+    .modal {
+      /* 평상시엔 보이지 않게 */
+      display: none;   
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    .card {
+      margin: 1rem auto;
+      width: 50%;
+      height: 10rem;
+      background-color: white;
+      border-radius: 1rem;
+    }
+    .card-head {
+      width: 100%;
+      height: 20%;
+      padding: 0.4rem;
+      border-bottom: 1px solid rgb(238, 232, 232);
+    }
+    .card-body {
+      height: 60%;
+      padding: 0.4rem;
+      border-bottom: 1px solid rgb(238, 232, 232);
+    }
+    .card-foot {
+      padding: 0.4rem;
+      display: flex;
+      justify-content: end;
+    }
+    .card-btn {
+      width: 3rem;
+      margin-right: 0.5rem;
+    }
+    .active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h2>모달 버튼 만들기</h2>
+  <button id="modal-btn">모달 버튼</button>
+  <div class="modal">
+    <div class="card">
+      <div class="card-head">
+        <h3>모달</h3>
+      </div>
+      <div class="card-body">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore, laudantium.</p>
+      </div>
+      <div class="card-foot">
+        <input type="button" value="닫기" class="card-btn close-btn">
+        <input type="submit" class="card-btn submit-btn">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modalBtn = document.querySelector('#modal-btn')
+    const modal = document.querySelector('.modal')
+    const cardBtns = document.querySelectorAll('.card-btn')
+
+    // 모달 버튼 클릭 시
+    modalBtn.addEventListener('click', function(){
+      modal.classList.toggle('active')
+    })
+
+    // 카드 내 버튼들 클릭 시
+    for (let i = 0; i < cardBtns.length; i++) {
+      cardBtns[i].addEventListener('click', function() {
+        modal.classList.toggle('active')
+      })
+    }
+  </script>
+</body>
+</html>

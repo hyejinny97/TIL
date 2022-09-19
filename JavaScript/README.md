@@ -27,9 +27,13 @@ JavaScript는 HTML 문서에 적용될 때, 웹사이트 상에서 동적 상호
   - DOM 변경
   - DOM 삭제
   - DOM 속성
+- [Event](https://github.com/hyejinny97/TIL/blob/master/JavaScript/event.md)
+  - Event
+  - Event 유형
 
 
 ## 🛠 실습
+- [이벤트 활용 실습(2022.09.19)](https://github.com/hyejinny97/TIL/blob/master/JavaScript/practice/practice_01)
 
 
 

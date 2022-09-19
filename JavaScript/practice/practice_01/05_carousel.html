@@ -1,0 +1,119 @@
+<!-- 결과 보기: https://codepen.io/hyejinny97/pen/xxjdpqE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+    .carousel-items {
+      position: relative;
+      width: 90%;
+      height: 20rem;
+      margin: 1rem auto;
+    }
+    .carousel-item {
+      /* 보이지 않는게 기본값 */
+      display: none;
+      height: 100%;
+      background-size: cover;
+    }
+    .active {
+      display: block;
+    }
+
+    .arrow {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 3rem;
+    }
+    .arrow:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+    .arrow-left {
+      top: 0;
+      left: 0;
+    }
+    .arrow-right {
+      top: 0;
+      right: 0;
+    }
+    .arrow-icon {
+      color: white;
+      font-size: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h2>carousel 만들기</h2>
+  <div class="carousel-items">
+    <div class="carousel-item active"></div>
+    <div class="carousel-item"></div>
+    <div class="carousel-item"></div>
+    <a href="" class="arrow arrow-left"><i class="arrow-icon bi bi-caret-left"></i></a></i>
+    <a href="" class="arrow arrow-right"><i class="arrow-icon bi bi-caret-right"></i></a></i>
+  </div>
+  
+  <script>
+    const images = [
+      'https://cdn.pixabay.com/photo/2016/03/27/18/54/technology-1283624_960_720.jpg',
+      'https://cdn.pixabay.com/photo/2015/09/09/19/56/office-932926_960_720.jpg',
+      'https://cdn.pixabay.com/photo/2019/04/29/07/04/software-development-4165307_960_720.jpg'
+    ]
+    const carouselItems = document.querySelectorAll('.carousel-item')
+    const arrowLeft = document.querySelector('.arrow-left')
+    const arrowRight = document.querySelector('.arrow-right')
+
+    // carousel-item 각각에 이미지 넣기
+    for (let i = 0; i < images.length; i++) {
+      carouselItems[i].style.backgroundImage = 'url(' + images[i] + ')';
+    }
+
+    // carousel-items 중 현재 active한 item의 인덱스 찾기
+    const findActiveIdx = function () {
+      for (let i = 0; i < carouselItems.length; i++) {
+        if (carouselItems[i].classList.contains('active')) {
+          return i
+        }
+      }
+    }
+
+    // 왼쪽 화살표 버튼 누르면 이전 이미지가 활성화
+    arrowLeft.addEventListener('click', function(event) {
+      // 기존 a 링크의 하이퍼링크 이벤트 삭제
+      event.preventDefault()
+
+      // 현재 active한 item의 직전 item를 active
+      idx = findActiveIdx()
+      carouselItems[idx].classList.toggle('active')
+      if (idx - 1 < 0) {
+        carouselItems[carouselItems.length - 1].classList.toggle('active')
+      }
+      else {
+        carouselItems[idx - 1].classList.toggle('active')
+      }
+    })
+
+    // 오른쪽 화살표 버튼 누르면 다음 이미지가 활성화
+    arrowRight.addEventListener('click', function(event) {
+      // 기존 a 링크의 하이퍼링크 이벤트 삭제
+      event.preventDefault()
+
+      // 현재 active한 item의 직전 item를 active
+      idx = findActiveIdx()
+      carouselItems[idx].classList.toggle('active')
+      carouselItems[(idx + 1) % carouselItems.length].classList.toggle('active')
+    })
+  </script>
+</body>
+</html>

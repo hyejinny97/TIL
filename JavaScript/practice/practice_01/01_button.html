@@ -1,0 +1,27 @@
+<!-- 결과 보기: https://codepen.io/hyejinny97/pen/xxjdpqE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>버튼을 눌렀을 때 숫자 증가시키기</h2>
+  <label for="btn">오른쪽 버튼을 눌러보세요-> </label>
+  <input type="button" id="btn" value="버튼"></input>
+  <p id="counter">0</p>
+
+  <script>
+    const btn = document.querySelector('#btn')
+    const counter = document.querySelector('#counter')
+    let countNum = 0
+
+    btn.addEventListener('click', function() {
+      countNum += 1
+      counter.innerText = countNum
+    })
+  </script>
+</body>
+</html>

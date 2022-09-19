@@ -1,0 +1,25 @@
+<!-- 결과 보기: https://codepen.io/hyejinny97/pen/xxjdpqE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>input에 작성된 내용을 그대로 출력하기</h2>
+  <label for="input-text">내용을 입력하세요: </label>
+  <input type="text" id="input-text">
+  <p></p>
+
+  <script>
+    const inputText = document.querySelector('#input-text')
+    const pTag = document.querySelector('p')
+
+    inputText.addEventListener('input', function(event) {
+      pTag.innerText = event.target.value
+    })
+  </script>
+</body>
+</html>
