@@ -35,7 +35,7 @@ JavaScript는 HTML 문서에 적용될 때, 웹사이트 상에서 동적 상호
 ## 🛠 실습
 - [이벤트 활용 실습(2022.09.19)](https://github.com/hyejinny97/TIL/blob/master/JavaScript/practice/practice_01)
 - [JS 라이브러리를 활용한 실습(2022.09.20)](https://github.com/hyejinny97/project_09)
-  - 깃헙 페이지 링크: <https://github.com/hyejinny97/project_09>
+  - 깃헙 페이지 링크: <https://hyejinny97.github.io/project_09/>
 
 
 
