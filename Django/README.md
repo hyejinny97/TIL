@@ -15,11 +15,12 @@
   - Django 개발 환경
   - Django 프로젝트 구조
   - Django 애플리케이션(앱) 구조
+- [요청과 응답](https://github.com/hyejinny97/TIL/blob/master/Django/request_response.md)
 
 
 
 ## 🛠 실습
-
+- [Django 요청-응답 실습(2022.09.22)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_01)
 
 
 
