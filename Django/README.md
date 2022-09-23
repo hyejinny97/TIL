@@ -16,11 +16,14 @@
   - Django 프로젝트 구조
   - Django 애플리케이션(앱) 구조
 - [요청과 응답](https://github.com/hyejinny97/TIL/blob/master/Django/request_response.md)
+  - 요청과 응답: URL → VIEW → TEMPLATE
+  - Django Template
 
 
 
 ## 🛠 실습
 - [Django 요청-응답 실습(2022.09.22)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_01)
+- [영화 사이트 개발 프로젝트 - 조사 및 기획(2022.09.23)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/project_01)
 
 
 
