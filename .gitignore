@@ -16,3 +16,9 @@ pyvenv.cfg
 pip-selfcheck.json
 
 # End of https://www.toptal.com/developers/gitignore/api/venv
+
+
+
+### 장고 settings.py 내 secret_key ###
+# 참고: https://medium.com/iovsomnium/django-django-secret-key-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B0-74288462e2ff
+*secrets.json

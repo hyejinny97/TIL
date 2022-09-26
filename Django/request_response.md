@@ -17,6 +17,16 @@
   ]
   ```
 
+- Trailing Slashes
+  - Django는 URL 끝에 `/`가(Trailing slash) 없다면 자동으로 붙여주는 것이 기본 설정
+  - 검색 엔진 로봇이나 웹 트래픽 분석 도구에서는 `/`가 있는 페이지와 없는 페이지를 서로 다른 페이지로 봄
+  - 그래서 Django는 URL을 정규화하여 검색 엔진 로봇이 혼동하지 않게 해야 함
+
+- URL 정규화
+  - 정규 URL(=오리지널로 평가되어야 할 URL)을 명시하는 것
+  - 복수의 페이지에서 같은 콘텐츠가 존재하는 것을 방지하기 위함
+  - Django에서는 trailing slash가 없는 요청에 대해 자동으로 slash를 추가하여 통합된 하나의 콘텐츠로 볼 수 있도록 함
+
 > Views
 - HTTP 요청을 수신하고 HTTP 응답을 반환하는 함수 작성
 - Template에게 HTTP 응답 서식을 맡김
@@ -253,3 +263,130 @@
        주석
      {% endcomment %}
      ```
+
+
+
+# ✔ Template Inheritance
+> 템플릿 상속
+- 템플릿 상속은 기본적으로 코드의 재사용성에 초점을 맞춤
+- 템플릿 상속을 사용하면 사이트의 모든 공통 요소를 포함하고, 하위 템플릿이 재정의(override) 할 수 있는 블록을 정의하는 기본 ‘skeleton’ 템플릿을 만들 수 있음
+
+> 템플릿 상속 관련 Tags
+1. `{% extends '골격 템플릿 경로' %}`'
+
+   - 자식(하위)템플릿이 부모 템플릿을 확장한다는 것을 알림
+   - 반드시 템플릿 최상단에 작성 되어야 함 (2개 이상 사용할 수 없음)
+
+2. `{% block 'content명' %}{% endblock 'content명' %}` 
+   
+   - 하위 템플릿에서 재지정(overridden)할 수 있는 블록을 정의
+   - 즉, 하위 템플릿이 채울 수 있는 공간
+   - 가독성을 높이기 위해 선택적으로 endblock 태그에 이름을 지정할 수 있음
+
+    ```html
+    <!-- articles/templates/base.html -->
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      ...
+    </head>
+    <body>
+      {% block content %}
+      {% endblock content %}
+    </body>
+    </html>
+    ```
+
+    ```html
+    <!-- index.html -->
+
+    {% extends 'base.html' %}
+
+    {% block content %}
+      <h1>만나서 반가워요!</h1>
+      <a href="/greeting/">greeting</a>
+      <a href="/dinner/">dinner</a>
+    {% endblock content %}
+    ```
+
+> 추가 템플릿 경로
+
+- `app_name/templates/` 디렉토리 경로 외 추가 경로 설정 가능
+- 예) base.html의 위치를 앱 안의 template 디렉토리가 아닌 프로젝트 최상단의 templates 디렉토리 안에 위치
+
+  ```python
+  # settings.py
+
+  TEMPLATES = [
+      {
+        'DIRS': [BASE_DIR / 'templates',],
+      },
+    ]
+  ```
+
+- 참고) `BASE_DIR`
+  
+  - settings.py에서 특정 경로를 절대 경로로 편하게 작성할 수 있도록 Django에서 미리 지정해둔 경로 값
+  
+  ```python
+  # settings.py
+
+  BASE_DIR = Path(__file__).resolve().parent.parent
+  ```
+
+
+
+
+
+# ✔ Variable Routing
+> Variable Routing
+- URL 주소를 변수로 사용하는 것을 의미
+- URL의 일부를 변수로 지정하여 view 함수의 인자로 넘길 수 있음
+  - 변수는 `<>`에 정의하며 view 함수의 인자로 할당됨
+  - variable routing으로 할당된 변수를 인자로 받고 템플릿 변수로 사용할 수 있음
+- 즉, 변수 값에 따라 하나의 path()에 여러 페이지를 연결 시킬 수 있음
+
+> Variable Routing의 type (5가지)
+  
+  - `str`(기본값): `/` 를 제외하고 비어 있지 않은 모든 문자열
+  - `int`: 0 또는 양의 정수와 매치
+  - `slug`
+  - `uuid`
+  - `path`
+
+  ```python
+  # urls.py
+
+  from django.contrib import admin
+  from django.urls import path
+  from articles import views
+
+  urlpatterns = [
+    path('hello/<name>/', views.hello),
+    path('number/<int:number>/', views.number),
+  ]
+  ```
+
+  ```python
+  # articles/views.py
+
+  def hello(request, name):
+    context = {
+      'name': name,
+    }
+    return render(request, 'hello.html', context)
+  ```
+
+  ```html
+  <!-- articles/templates/hello.html -->
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    ...
+  </head>
+  <body>
+    <h1>만나서 반가워요 {{ name }}님!</h1>
+  </body>
+  </html>
+  ```

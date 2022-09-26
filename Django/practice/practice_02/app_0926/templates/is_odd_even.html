@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4 class="container text-center">실습1. 홀수/짝수 확인</h4>
+
+<div class="card my-5 text-center">
+  <div class="card-body">
+    <p>
+      입력받은 숫자: {{ number }}
+    </p>
+    <p class="fs-2 fw-bolder text-primary">
+      분석 결과: {{ number }}은(는) {{ rst }}입니다.
+    </p>
+  </div>
+</div>
+
+<div class="d-flex justify-content-end my-3">
+  <a class="btn btn-outline-secondary" href="http://127.0.0.1:8000/" role="button">홈으로</a>
+</div>
+{% endblock %}

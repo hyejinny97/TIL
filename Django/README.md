@@ -18,12 +18,18 @@
 - [요청과 응답](https://github.com/hyejinny97/TIL/blob/master/Django/request_response.md)
   - 요청과 응답: URL → VIEW → TEMPLATE
   - Django Template
+  - Template Inheritance
+  - Variable Routing
+- [form 데이터 주고 받기](https://github.com/hyejinny97/TIL/blob/master/Django/form_data.md)
+  - Sending form data (Client)
+  - Retrieving form data (Server)
 
 
 
 ## 🛠 실습
 - [Django 요청-응답 실습(2022.09.22)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_01)
 - [영화 사이트 개발 프로젝트 - 조사 및 기획(2022.09.23)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/project_01)
+- [Django form 데이터 주고 받기 실습(2022.09.26)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_02)
 
 
 

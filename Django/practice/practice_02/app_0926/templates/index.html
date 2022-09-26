@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+  <article class="col">
+    <div class="card p-0 h-100">
+      <div class="card-header">
+        <h5 class="card-title fw-bolder">실습1. 홀수/짝수 확인</h5>
+      </div>
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted"><small>Path parameter 활용</small></h6>
+        <p class="card-text">
+          주소 창 끝에
+          <span class="text-danger fw-bolder">/is-odd-even/{숫자}</span>
+          를 넣어보세요.<br>
+          입력한 숫자가 홀수인지 짝수인지 확인해줍니다.
+        </p>
+      </div>
+    </div>
+  </article>
+  <article class="col">
+    <div class="card p-0 h-100">
+      <div class="card-header">
+        <h5 class="card-title fw-bolder">실습2. 사칙연산</h5>
+      </div>
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted"><small>Path parameter 활용</small></h6>
+        <p class="card-text">
+          주소 창 끝에
+          <span class="text-danger fw-bolder">/calculate/{숫자1}/{숫자2}</span>
+          를 넣어보세요.<br>
+          입력한 두 숫자를 사칙연산한 결과를 보여줍니다.
+        </p>
+      </div>
+    </div>
+  </article>
+  <article class="col">
+    <div class="card p-0 h-100">
+      <div class="card-header">
+        <h5 class="card-title fw-bolder">실습3. 랜덤 전생</h5>
+      </div>
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted"><small>form 태그 활용</small></h6>
+        <p class="card-text">
+          이름을 입력해보세요.<br>
+          당신의 전생을 알 수 있습니다.
+        </p>
+      </div>
+      <div class="card-footer bg-transparent d-flex justify-content-end">
+        <a href="/past-life/" class="btn btn-primary">이동</a>
+      </div>
+    </div>
+  </article>
+  <article class="col">
+    <div class="card p-0 h-100">
+      <div class="card-header">
+        <h5 class="card-title fw-bolder">실습4. 로렘 입숨</h5>
+      </div>
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted"><small>form 태그 활용</small></h6>
+        <p class="card-text">
+          lorem의 한글 버전을 만들어보세요.<br>
+          문단 수와 문단 별 단어 수를 입력하면 랜덤 한글 텍스트를 생성할 수 있습니다.
+        </p>
+      </div>
+      <div class="card-footer bg-transparent d-flex justify-content-end">
+        <a href="/lorem-form/" class="btn btn-primary">이동</a>
+      </div>
+    </div>
+  </article>
+</section>
+{% endblock %}
