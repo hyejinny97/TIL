@@ -1,3 +1,57 @@
+# ✔ Variable Routing
+> Variable Routing
+- URL 주소를 변수로 사용하는 것을 의미
+- URL의 일부를 변수로 지정하여 view 함수의 인자로 넘길 수 있음
+  - 변수는 `<>`에 정의하며 view 함수의 인자로 할당됨
+  - variable routing으로 할당된 변수를 인자로 받고 템플릿 변수로 사용할 수 있음
+- 즉, 변수 값에 따라 하나의 path()에 여러 페이지를 연결 시킬 수 있음
+
+> Variable Routing의 type (5가지)
+  
+  - `str`(기본값): `/` 를 제외하고 비어 있지 않은 모든 문자열
+  - `int`: 0 또는 양의 정수와 매치
+  - `slug`
+  - `uuid`
+  - `path`
+
+  ```python
+  # urls.py
+
+  from django.contrib import admin
+  from django.urls import path
+  from articles import views
+
+  urlpatterns = [
+    path('hello/<name>/', views.hello),
+    path('number/<int:number>/', views.number),
+  ]
+  ```
+
+  ```python
+  # articles/views.py
+
+  def hello(request, name):
+    context = {
+      'name': name,
+    }
+    return render(request, 'hello.html', context)
+  ```
+
+  ```html
+  <!-- articles/templates/hello.html -->
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    ...
+  </head>
+  <body>
+    <h1>만나서 반가워요 {{ name }}님!</h1>
+  </body>
+  </html>
+  ```
+
+
+
 # ✔ Sending form data (Client)
 > Sending and Retrieving form data
 - HTML form element를 통해 데이터를 보내고 가져오기

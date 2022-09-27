@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+  <section class="row row-cols-1 row-cols-lg-2 g-3">
+    <article class="col">
+      <div class="card">
+        <div class="card-header fw-bolder">
+          app1로 이동
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">작성글 게시판</h5>
+          <p class="card-text text-muted">단, 서버를 끄면 작성글은 휘발되어 날라감</p>
+          <a href="/app1/" class="btn btn-primary">이동</a>
+        </div>
+      </div>
+    </article>
+    <article class="col">
+      <div class="card">
+        <div class="card-header fw-bolder">
+          app2로 이동
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">작성글 게시판</h5>
+          <p class="card-text text-muted">서버를 꺼도 작성글이 휘발되지 않고 유지됨</p>
+          <a href="/app2/" class="btn btn-primary">이동</a>
+        </div>
+      </div>
+    </article>
+  </section>
+</main>
+{% endblock %}

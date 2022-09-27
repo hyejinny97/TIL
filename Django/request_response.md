@@ -70,42 +70,86 @@
   </html>
   ```
 
-> 참고) 추가 설정
 
-- `LANGUAGE_CODE`
-  - 모든 사용자에게 제공되는 번역을 결정
-  - 이 설정이 적용 되려면 USE_I18N이 활성화(True)되어 있어야 함
-  - <http://www.i18nguy.com/unicode/language-identifiers.html>
 
-- `TIME_ZONE`
-  - 데이터베이스 연결의 시간대를 나타내는 문자열 지정
-  - USE_TZ가 True이고 이 옵션이 설정된 경우 데이터베이스에서 날짜 시간을 읽으면, UTC 대신 새로 설정한 시간대의 인식 날짜&시간이 반환 됨
-  - USE_TZ이 False인 상태로 이 값을 설정하는 것은 error가 발생하므로 주의
-  - <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones>
+
+
+# ✔ App URL Mapping
+- 앱이 많아졌을 때 urls.py를 각 app에 매핑하여 효율적으로 관리 가능
+
+> App URL Mapping 하는 이유
+- app의 view 함수가 많아지면서 사용하는 path() 또한 많아지고, app 또한 더 많이 작성되기 때문에 프로젝트의 urls.py에서 모두 관리하는 것은 프로젝트 유지보수에 좋지 않음
   
   ```python
-  # settings.py
+  # firstpjt/urls.py
 
-  LANGUAGE_CODE = 'ko-kr'
-  TIME_ZONE = 'Asia/Seoul'
+  from articles import views as articles_views
+  from pages import views as pages_views
+  
+  urlpatterns = [
+    ...,
+    path('pages-index', pages_views.index),
+  ]
   ```
 
-- `USE_I18N`
-  - Django의 번역 시스템을 활성화해야 하는지 여부를 지정
+> App URL Mapping
+- 하나의 프로젝트에 여러 앱이 존재한다면, 각각의 앱 안에 urls.py을 만들고 프로젝트 urls.py에서 각 앱의 urls.py 파일로 URL 매핑을 위탁
+  - 복수 개의 앱의 URL을 project의 urls.py에서 관리
+  - 각각의 앱에서 URL을 관리
 
-- `USE_L10N`
-  - 데이터의 지역화된 형식(localized formatting)을 기본적으로 활성화할지 여부를 지정
-  - True일 경우, Django는 현재 locale의 형식을 사용하여 숫자와 날짜를 표시
-
-- `USE_TZ`
-  - datetimes가 기본적으로 시간대를 인식하는지 여부를 지정
-  - True일 경우 Django는 내부적으로 시간대 인식 날짜 / 시간을 사용
+  ![](img/url_mapping.png)
 
 
+- urlpattern은 언제든지 다른 URLconf 모듈을 포함(include)할 수 있음
+- include되는 앱의 url.py에 urlpatterns가 작성되어 있지 않다면 에러가 발생
+  - 예를 들어, pages 앱의 urlpatterns가 빈 리스트라도 작성되어 있어야 함
+
+- `include()`
+  - 다른 URLconf(app1/urls.py)들을 참조할 수 있도록 돕는 함수
+  - 함수 include()를 만나게 되면 URL의 그 시점까지 일치하는 부분을 잘라내고, 남은 문자열 부분을 후속 처리를 위해 include된 URLconf로 전달
+
+  ```python
+  # firstpjt/urls.py
+
+  from django.contrib import admin
+  from django.urls import path, include
+
+  urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('articles/', include('articles.urls')),
+    path('pages/', include('pages.urls')),
+  ]
+  ```
+
+  ```python
+  # articles/urls.py
+
+  from django.urls import path
+  from . import views
+
+  urlpatterns = [
+    path('index/', views.index),
+    path('greeting/', views.greeting),
+    path('throw/', views.throw),
+    path('catch/', views.catch),
+  ]
+  ```
+
+  ```python
+  # pages/urls.py
+
+  from django.urls import path
+  from . import views
+  
+  urlpatterns = [
+      path('hello/<str:name>/', views.hello),
+      path('dinner/', views.dinner),
+  ]
+  ```
 
 
 
-# ✔ Django Template
+# ✔ Django Template Language (DTL)
 > Django Template
 - 데이터 표현을 제어하는 도구이자 표현에 관련된 로직
 - Django Template을 이용한 HTML 정적 부분과 동적 컨텐츠 삽입
@@ -272,7 +316,7 @@
 - 템플릿 상속을 사용하면 사이트의 모든 공통 요소를 포함하고, 하위 템플릿이 재정의(override) 할 수 있는 블록을 정의하는 기본 ‘skeleton’ 템플릿을 만들 수 있음
 
 > 템플릿 상속 관련 Tags
-1. `{% extends '골격 템플릿 경로' %}`'
+1. `{% extends '골격 템플릿 경로' %}`
 
    - 자식(하위)템플릿이 부모 템플릿을 확장한다는 것을 알림
    - 반드시 템플릿 최상단에 작성 되어야 함 (2개 이상 사용할 수 없음)
@@ -310,10 +354,70 @@
     {% endblock content %}
     ```
 
-> 추가 템플릿 경로
+
+
+
+# ✔ Template Namespace
+> Template Namespace
+- Django는 기본적으로 `app_name/templates/` 경로에 있는 templates 파일들만 찾을 수 있으며, settings.py의 **INSTALLED_APPS에 작성한 app 순서**로 template을 검색 후 렌더링 함
+- 아래 속성 값이 해당 경로를 활성화하고 있음
+  
+  ```python
+  # settings.py
+
+  TEMPLATES = [
+    {
+      ...,
+      'APP_DIRS': True,
+      ...
+    },
+  ]
+  ```
+
+> Template Namespace를 고려해야하는 이유
+- 만약 단일 앱으로만 이루어진 프로젝트라면 상관없음
+- 여러 앱이 되었을 때에도 템플릿 파일 이름이 겹치지 않게 하면 되지만, 앱이 많아지면 대부분은 같은 이름의 템플릿 파일이 존재하기 마련
+  - 따라서, pages app의 index url로 이동했지만 articles app의 index 페이지가 출력될 수 있음
+  - 해결책: 디렉토리 생성을 통해 물리적으로 이름공간을 구분해줘야 함
+
+> Template Namespace 구분
+- Django templates의 기본 경로에 app과 같은 이름의 폴더를 생성해 폴더 구조를 `app_name/templates/app_name/` 형태로 변경
+- Django templates의 기본 경로 자체를 변경할 수는 없기 때문에 물리적으로 이름 공간을 만들어야 함
+  
+  ```
+  articles/
+    templates/
+      articles/
+        index.html
+  ```
+  
+  ```
+  pages/
+    templates/
+      pages/
+        index.html
+  ```
+
+- 폴더 구조 변경 후 변경된 경로로 해당하는 모든 부분 수정 필수
+  
+  ```python
+  # articles/views.py
+  
+  def index(request):
+    return render(request, 'articles/index.html')
+  ```
+
+  ```python
+  # pages/views.py
+
+  def index(request):
+    return render(request, 'pages/index.html')
+  ```
+
+> 추가 템플릿 경로 설정
 
 - `app_name/templates/` 디렉토리 경로 외 추가 경로 설정 가능
-- 예) base.html의 위치를 앱 안의 template 디렉토리가 아닌 프로젝트 최상단의 templates 디렉토리 안에 위치
+- 예) base.html의 위치를 앱 안의 template 디렉토리가 아닌 **프로젝트 최상단**의 templates 디렉토리 안에 위치
 
   ```python
   # settings.py
@@ -325,7 +429,7 @@
     ]
   ```
 
-- 참고) `BASE_DIR`
+> 참고) `BASE_DIR`
   
   - settings.py에서 특정 경로를 절대 경로로 편하게 작성할 수 있도록 Django에서 미리 지정해둔 경로 값
   
@@ -335,58 +439,33 @@
   BASE_DIR = Path(__file__).resolve().parent.parent
   ```
 
+> 참고) 추가 설정
 
+- `LANGUAGE_CODE`
+  - 모든 사용자에게 제공되는 번역을 결정
+  - 이 설정이 적용 되려면 USE_I18N이 활성화(True)되어 있어야 함
+  - <http://www.i18nguy.com/unicode/language-identifiers.html>
 
-
-
-# ✔ Variable Routing
-> Variable Routing
-- URL 주소를 변수로 사용하는 것을 의미
-- URL의 일부를 변수로 지정하여 view 함수의 인자로 넘길 수 있음
-  - 변수는 `<>`에 정의하며 view 함수의 인자로 할당됨
-  - variable routing으로 할당된 변수를 인자로 받고 템플릿 변수로 사용할 수 있음
-- 즉, 변수 값에 따라 하나의 path()에 여러 페이지를 연결 시킬 수 있음
-
-> Variable Routing의 type (5가지)
+- `TIME_ZONE`
+  - 데이터베이스 연결의 시간대를 나타내는 문자열 지정
+  - USE_TZ가 True이고 이 옵션이 설정된 경우 데이터베이스에서 날짜 시간을 읽으면, UTC 대신 새로 설정한 시간대의 인식 날짜&시간이 반환 됨
+  - USE_TZ이 False인 상태로 이 값을 설정하는 것은 error가 발생하므로 주의
+  - <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones>
   
-  - `str`(기본값): `/` 를 제외하고 비어 있지 않은 모든 문자열
-  - `int`: 0 또는 양의 정수와 매치
-  - `slug`
-  - `uuid`
-  - `path`
-
   ```python
-  # urls.py
+  # settings.py
 
-  from django.contrib import admin
-  from django.urls import path
-  from articles import views
-
-  urlpatterns = [
-    path('hello/<name>/', views.hello),
-    path('number/<int:number>/', views.number),
-  ]
+  LANGUAGE_CODE = 'ko-kr'
+  TIME_ZONE = 'Asia/Seoul'
   ```
 
-  ```python
-  # articles/views.py
+- `USE_I18N`
+  - Django의 번역 시스템을 활성화해야 하는지 여부를 지정
 
-  def hello(request, name):
-    context = {
-      'name': name,
-    }
-    return render(request, 'hello.html', context)
-  ```
+- `USE_L10N`
+  - 데이터의 지역화된 형식(localized formatting)을 기본적으로 활성화할지 여부를 지정
+  - True일 경우, Django는 현재 locale의 형식을 사용하여 숫자와 날짜를 표시
 
-  ```html
-  <!-- articles/templates/hello.html -->
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    ...
-  </head>
-  <body>
-    <h1>만나서 반가워요 {{ name }}님!</h1>
-  </body>
-  </html>
-  ```
+- `USE_TZ`
+  - datetimes가 기본적으로 시간대를 인식하는지 여부를 지정
+  - True일 경우 Django는 내부적으로 시간대 인식 날짜 / 시간을 사용

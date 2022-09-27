@@ -40,6 +40,10 @@
 
 4. 파이썬 코드 수정 후 저장하기
 
+> settings.py 내 SECRET_KEY 분리
+
+- 참고 사이트: [Django secret key 분리하기](https://medium.com/iovsomnium/django-django-secret-key-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B0-74288462e2ff)
+
 
 
 ## 요구 사항

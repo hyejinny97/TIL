@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+  <section class="mb-5">
+    <form action="/app1/created/" method="GET">
+      <div class="mb-3">
+        <label for="article" class="form-label">글을 작성하세요.</label>
+        <textarea type="" class="form-control" id="article" name="article" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">저장</button>
+    </form>
+  </section>
+  <section class="mb-5">
+    <h5>게시글 리스트</h5>
+    <p class="text-muted">아래 작성글은 서버를 끄면 날라갈 예정</p>
+    {% for article in articles %}
+    <article class="card my-3">
+      <div class="card-body">
+        {{ article }}
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+  <a class="btn btn-outline-dark w-100 mb-5" href="/" role="button">홈으로</a>
+</main>
+{% endblock %}

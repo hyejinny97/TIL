@@ -17,12 +17,15 @@
   - Django 애플리케이션(앱) 구조
 - [요청과 응답](https://github.com/hyejinny97/TIL/blob/master/Django/request_response.md)
   - 요청과 응답: URL → VIEW → TEMPLATE
-  - Django Template
+  - App URL Mapping
+  - Django Template Language (DTL)
   - Template Inheritance
-  - Variable Routing
+  - Template Namespace
 - [form 데이터 주고 받기](https://github.com/hyejinny97/TIL/blob/master/Django/form_data.md)
+  - Variable Routing
   - Sending form data (Client)
   - Retrieving form data (Server)
+
 
 
 
@@ -30,6 +33,8 @@
 - [Django 요청-응답 실습(2022.09.22)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_01)
 - [영화 사이트 개발 프로젝트 - 조사 및 기획(2022.09.23)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/project_01)
 - [Django form 데이터 주고 받기 실습(2022.09.26)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_02)
+- [Django ORM 실습(2022.09.27)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_03)
+- [Django urls/templates 분리, models 적용 실습(2022.09.27)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_04)
 
 
 
