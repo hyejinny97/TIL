@@ -149,6 +149,102 @@
 
 
 
+
+# ✔ URL Namespace
+> Naming URL Patterns
+- url 기입 시, `/articles/index/`와 같이 경로를 직접 입력해주는 것이 아니라  **URL 태그**를 이용해서 참조해줄 수 있음 
+- URL 태그
+  
+  - `{% url 'path명' %}`
+  - 주어진 URL 패턴 이름 및 선택적 매개 변수와 일치하는 절대 경로 주소를 반환
+  - 템플릿에 URL을 하드 코딩하지 않고도 DRY 원칙을 위반하지 않으면서 링크를 출력하는 방법
+  
+- urls.py에서 path() 함수 작성 시 `name` 속성을 이용해 path명을 설정해줘야 함 
+- 이점: Django는 URL에 이름을 지정하는 방법을 제공함으로써 view 함수와 템플릿에서 특정 주소를 쉽게 참조할 수 있도록 도움
+
+  ```python
+  # pages/urls.py
+
+  from django.urls import path
+  from . import views
+
+  urlpatterns = [
+    path('index/', views.index, name='index'),
+  ]
+  ```
+
+  ```html
+  <!-- pages/templates/index.html -->
+
+  {% extends 'base.html' %}
+
+  {% block content %}
+  <a href="{% url 'index' %}">pages의 index 페이지 이동</a>
+  {% endblock content %}
+  ```
+
+- 다만, 앱이 여러개 존재할 경우 위 코드를 통해 문제가 발생할 수 있음
+
+  ```html
+  <!-- articles/templates/index.html -->
+
+  {% extends 'base.html' %}
+
+  {% block content %}
+  <a href="{% url 'index' %}">articles의 index 페이지 이동</a>
+  {% endblock content %}
+  ```
+  - `articles/templates/index.html`에서 a태그의 하이퍼링크를 `{% url 'index' %}`으로 사용할 경우, articles앱의 index url로 이동하는 것이 아니라 pages앱의 index url로 이동할 수 있음
+  - 해결책: **app_name** attribute를 작성해 URL namespace를 설정
+
+> URL Namespace
+- Namespace(이름 공간): 개체를 구분할 수 있는 범위
+- URL namespace를 사용하면 서로 다른 앱에서 동일한 URL 이름을 사용하는 경우에도 이름이 지정된 URL을 고유하게 사용 할 수 있음
+- **app_name** attribute를 작성해 URL namespace를 설정
+- app_name을 지정한 이후에는 url 태그에서 반드시 `app_name:url_name` 형태로만 사용해야 함
+  - 그러지 않을 경우, NoReverceMatch 에러가 발생
+
+  ```python
+  # articles/urls.py
+
+  app_name = 'articles'
+
+  urlpatterns = [
+    ...,
+  ]
+  ```
+
+  ```python
+  # pages/urls.py
+
+  app_name = 'pages'
+
+  urlpatterns = [
+    ...,
+  ]
+  ```
+
+  ```html
+  <!-- articles/templates/index.html -->
+
+  {% extends 'base.html' %}
+
+  {% block content %}
+  <a href="{% url 'articles:index' %}">articles의 index 페이지 이동</a>
+  <a href="{% url 'pages:index' %}">pages의 index 페이지 이동</a>
+  {% endblock %}
+  ```
+
+> 참고) DRY 원칙
+- Don’t Repeat Yourself
+- 더 품질 좋은 코드를 작성하기 위해서 알고, 따르면 좋은 소프트웨어 원칙들 중 하나로 “소스 코드에서 동일한 코드를 반복하지 말자” 라는 의미
+- 동일한 코드가 반복된다는 것은 잠재적인 버그의 위협을 증가 시키고 반복되는 코드를 변경해야 하는 경우, 반복되는 모든 코드를 찾아서 수정해야 함
+- 이는 프로젝트 규모가 커질수록 애플리케이션의 유지 보수 비용이 커짐
+
+
+
+
+
 # ✔ Django Template Language (DTL)
 > Django Template
 - 데이터 표현을 제어하는 도구이자 표현에 관련된 로직
