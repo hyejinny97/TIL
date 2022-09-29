@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="container my-5">
+  <section class="card shadow p-3 mb-5 bg-body rounded">
+    <div class="card-body text-center">
+      <h3 class="">Todo List (메모장)</h3>
+      <p class="text-muted">CRUD 기능을 가진 Todo 서비스</p>
+      <div class="d-lg-flex justify-content-around align-items-center">
+        <img class="todo_image" src="{% static 'img/todo_image2.png' %}" alt="">
+        <div>
+          <div class="todo_paragraph mb-5">
+            <p>계획된 하루를 보내고 싶은가요?</p>
+            <p>하루를 알차게 보내고 싶다면 해야할 일을 기록해보세요.</p>
+            <p>아래 버튼을 눌러 메모를 해보세요.</p>
+          </div>
+          <div>
+            <a class="btn btn-primary" href="{% url 'todo:index' %}" role="button">메모장으로 이동</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

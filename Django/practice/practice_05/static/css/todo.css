@@ -1,0 +1,31 @@
+/* home/index.html */
+.todo_paragraph {
+  display: none;
+  font-size: 0.9rem;
+  color: gray;
+}
+
+/* todo/index.html */
+.main_conatainter {
+  min-width: 830px;
+}
+
+@media (992px <= width) {
+  /* todo/index.html */
+  .todo_list th, .todo_list td {
+    line-height: 38px;
+  }
+  /* home/index.html */
+  .todo_paragraph {
+    display: block;
+  }
+}
+
+@media (width <= 992px) {
+  /* home/index.html */
+  .todo_image {
+    width: 100%;
+  }
+}
+
+
