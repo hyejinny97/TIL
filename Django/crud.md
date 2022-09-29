@@ -90,7 +90,7 @@
 
 - app 'articles'의 index.html
 
-  ```html
+  ```django
   <!-- templates/articles/index.html -->
 
   {% extends 'base.html' %}
@@ -116,7 +116,7 @@
     return render(request, 'articles/index.html', context)
   ```
 
-  ```html
+  ```django
   <!--templates/articles/index.html-->
 
   {% extends 'base.html' %}
@@ -137,7 +137,7 @@
 - 개별 게시글 상세 페이지 제작
 - Variable Routing 활용
 
-  ```html
+  ```django
   <!--templates/articles/index.html-->
 
   {% extends 'base.html' %}
@@ -175,7 +175,7 @@
     return render(request, 'articles/detail.html', context)
   ```
 
-  ```html
+  ```django
   <!-- templates/articles/detail.html -->
 
   {% extends 'base.html' %}
@@ -201,7 +201,7 @@
 - 사용자의 입력을 받을 페이지를 렌더링 하는 함수
 - articles/index 페이지에서 articles/new 페이지로 이동할 수 있는 하이퍼 링크 작성
   
-  ```html
+  ```django
   <!-- templates/articles/index.html -->
 
   {% extends 'base.html' %}
@@ -230,7 +230,7 @@
     return render(request, 'articles/new.html')
   ```
 
-  ```html
+  ```django
   <!-- templates/articles/new.html -->
 
   {% extends 'base.html' %}
@@ -308,7 +308,7 @@
 - 하지만 현재 요청은 데이터를 조회하는 것이 아닌 작성을 원하는 요청
 - 따라서, 이때는 GET method가 아닌 **POST method**를 적용하는 것이 옳음
 
-  ```html
+  ```django
   <!-- templates/articles/new.html -->
 
   {% extends 'base.html' %}
@@ -370,7 +370,7 @@
   - 템플릿에서 **내부 URL로 향하는 Post form**을 사용하는 경우에 사용
   - 외부 URL로 향하는 POST form에 대해서는 CSRF 토큰이 유출되어 취약성을 유발할 수 있기 때문에 사용해서는 안됨
 
-    ```html
+    ```django
     <!-- templates/articles/new.html -->
 
     {% extends 'base.html' %}
@@ -398,7 +398,7 @@
 > DELETE (articles의 'delete' view 함수)
 - DB에 영향을 미치기 때문에 **POST method**를 사용
 
-  ```html
+  ```django
   <!-- articles/detail.html -->
 
   {% extends 'base.html' %}
@@ -432,4 +432,105 @@
     article.delete()
     
     return redirect('articles:index')
+  ```
+
+
+
+
+# ✔ UPDATE
+> UPDATE (articles의 'edit' view 함수)
+- 사용자의 입력을 받을 페이지를 렌더링 하는 함수
+- detail 페이지에서 Edit 페이지로 이동하기 위한 하이퍼 링크 작성
+
+  ```django
+  <!-- articles/detail.html -->
+
+  {% extends 'base.html' %}
+
+  {% block content %}
+    <h2>DETAIL</h2>
+    <h3>{{ article.pk }} 번째 글</h3>
+    <hr>
+    <p>제목: {{ article.title }}</p>
+    <p>내용: {{ article.content }}</p>
+    <p>작성 시각: {{ article.created_at }}</p>
+    <p>수정 시각: {{ article.updated_at }}</p>
+    <hr>
+    <a href="{% url 'articles:edit' article.pk %}">EDIT</a><br>
+    <form action="{% url 'articles:delete' article.pk %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="DELETE">
+    </form>
+    <a href="{% url 'articles:index' %}">[back]</a>
+  {% endblock %}
+  ```
+
+  ```python
+  # articles/urls.py
+
+  urlpatterns = [
+    ...
+    path('<int:pk>/edit/', views.edit, name='edit'),
+  ]
+  ```
+
+  ```python
+  # articles/views.py
+
+  def edit(request, pk):
+    article = Article.objects.get(pk=pk)
+    
+    context = {
+      'article': article,
+    }
+    
+    return render(request, 'articles/edit.html', context)
+  ```
+
+- input 태그의 value 속성을 사용해 기존에 입력 되어 있던 데이터를 출력
+  - 주의) textarea 태그는 value 속성이 없으므로 태그 내부 값으로 작성해야 함
+  
+  ```django
+  <!-- articles/edit.html -->
+
+  {% extends 'base.html' %}
+
+  {% block content %}
+    <h1>EDIT</h1>
+    <form action="{% url 'articles:update' article.pk %}" method="POST">
+      {% csrf_token %}
+      <label for="title">Title: </label>
+      <input type="text" name="title" value="{{ article.title }}"><br>
+      <label for="content">Content: </label>
+      <textarea name="content" cols="30" rows="5">{{ article.content }}</textarea><br>
+      <input type="submit">
+    </form>
+    <hr>
+    <a href="{% url 'articles:index' %}">[back]</a>
+  {% endblock content %}
+  ```
+
+> UPDATE (articles의 'update' view 함수)
+- 사용자가 입력한 데이터를 전송 받아 DB에 저장하는 함수
+  
+  ```python
+  # articles/urls.py
+
+  urlpatterns = [
+    ...
+    path('<int:pk>/update/', views.update, name='update'),
+  ]
+  ```
+
+  ```python
+  # articles/views.py
+
+  def update(request, pk):
+    article = Article.objects.get(pk=pk)
+
+    article.title = request.POST.get('title')
+    article.content = request.POST.get('content')
+    article.save()
+    
+    return redirect('articles:detail', article.pk)
   ```

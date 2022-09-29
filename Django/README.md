@@ -56,6 +56,7 @@
   - READ
   - CREATE
   - DELETE
+  - UPDATE
 
 
 
