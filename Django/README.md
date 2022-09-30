@@ -68,7 +68,7 @@
 - [Django ORM 실습(2022.09.27)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_03)
 - [Django urls/templates 분리, models 적용 실습(2022.09.27)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_04)
 - [Django CRUD를 통해 메모 사이트 구현 실습(2022.09.28~29)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_05)
-- [영화 리뷰 사이트 개발 프로젝트 - CRUD(2022.09.23)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/project_02)
+- [영화 리뷰 사이트 개발 프로젝트 - CRUD(2022.09.30)](https://github.com/hyejinny97/movie_review_1)
 
 
 
