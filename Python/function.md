@@ -41,6 +41,8 @@
   
 > Argument
 - 함수를 호출할 때, parameter를 통해 전달되는 값
+- 파이썬에서 함수를 호출할 때, 함수를 선언할 때와 같은 개수의 매개변수를 입력해야 함
+  - 매개변수를 더 많이 넣거나 적게 넣을 경우, TypeError 발생
 1. positional arguments
    - 기본적으로 함수 호출 시, argument는 **위치**에 따라 함수 내에 전달됨
 2. keyword arguments
@@ -82,7 +84,7 @@
   def add(*args):
     return args
   
-  add(2, 3, 4, 5)   # 결과: (2, 3, 4,, 5)
+  add(2, 3, 4, 5)   # 결과: (2, 3, 4, 5)
 
   # 5. 정해지지 않은 개수의 keyword arguments
   def family(**kwargs):
@@ -139,10 +141,15 @@ lambda <매개변수> : <표현식>
 
 # ✔ 함수 응용
 > 내장 함수 
+
 - `map(function, iterable)`
   - 순회 가능한 데이터구조(iterable)의 모든 요소에 함수를 적용
   - map object로 결과 반환
+
 - `filter(function, iterable)`
   - 순회 가능한 데이터구조(iterable)의 모든 요소에 함수를 적용해, 그 결과가 True인 것들만 반환
   - filter object로 결과 반환
-- 
+
+- `divmod(숫자1, 숫자2)`
+  - 숫자1을 숫자2로 나눈 몫과 나머지를 반환
+  - 튜플 형태로 결과 반환 

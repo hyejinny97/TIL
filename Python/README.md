@@ -1,10 +1,10 @@
 # 📚 Python
 
-▪ Python이란?
+✅ Python이란?
 
 컴퓨터 프로그래밍 언어 중 하나로 다른 프로그래밍 언어보다 문법이 간단하여 배우기 쉽다.
 
-▪ Python의 특징
+✅ Python의 특징
 
 1. 인터프리터 언어 (Interpreter)
    - 소스코드를 기계어로 변환하는 컴파일 과정 없이 바로 실행 가능
@@ -13,12 +13,12 @@
    - 객체: 숫자, 문자, 클래스 등 값을 가지고 있는 모든 것
    - 파이썬은 모든 것이 객체로 구현되어 있음
 
-▪ Python의 장점
+✅ Python의 장점
 - 문법이 간단해서 배우기 쉽다
 - 많은 사람이 사용하므로 다양한 분야에서 활용할 수 있다
 - 대부분의 운영체제에서 같은 방법으로 사용할 수 있다
 
-▪ Python의 단점
+✅ Python의 단점
 - 일반적으로 C언어보다 10 ~ 350배 정도 느리다
 
 
@@ -50,6 +50,8 @@
   - 함수의 응용
     - map()
     - filter()
+    - divmod()
+- [제너레이터](https://github.com/hyejinny97/TIL/blob/master/Python/generator.md)
 - [데이터구조](https://github.com/hyejinny97/TIL/blob/master/Python/data_structure.md)
   - 데이터구조
   - 시퀀스 데이터타입의 메서드

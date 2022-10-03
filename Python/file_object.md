@@ -68,6 +68,24 @@ with open('파일명', mode='r', encoding='utf-8') as f:
 
 
 # ✔ JSON (JavaScript Object Notation)
+- 텍스트를 사용해 데이터를 구조적으로 표현할 수 있는 방법: `CSV`, `XML`, `JSON`
+  - `CSV`: Comma Separated Values, 쉼표로 구분된 값들
+
+    ```csv
+    이름, 키, 몸무게
+    윤인성, 176, 62
+    연하진, 169, 50
+    ```
+
+  - `XML`: eXtensible Markup Language, 태그라고 하는 마크업 기호를 사용하여 데이터를 정의 ([참고 자료](https://aws.amazon.com/ko/what-is/xml/))
+  
+    ```xml
+    <book>
+      <title> Learning Amazon Web Services </title>
+      <author> Mark Wilkins </author>
+    </book>
+    ```
+
 - JSON은 프로그래밍 언어의 데이터 타입으로 데이터 교환이 가능한 텍스트 포맷임
 - `파일명.json`
 - 사람이 데이터를 읽고 쓰기 쉽게 해줌
