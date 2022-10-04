@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">{{ article.title }}</h3>
+      <p class="card-subtitle mb-2 text-muted">
+        작성일: {{ article.created_at }} | 수정일: {{ article.updated_at }}
+      </p>
+      <hr>
+      <p class="card-text">{{ article.content }}</p>
+    </div>
+  </div>
+  <div class="my-3 d-flex justify-content-end">
+    <a href="{% url 'articles:update' article.pk %}" class="btn btn-success mx-3" role="button">수정</a>
+    <a href="{% url 'articles:delete' article.pk %}" class="btn btn-danger" role="button">삭제</a>
+  </div>
+</main>
+{% endblock %}

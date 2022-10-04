@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+  <h3 class="text-center my-3">글 작성</h3>
+  <form action="{% url 'articles:create' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-primary w-100" type="submit" value="작성">
+  </form>
+</main>
+{% endblock %}

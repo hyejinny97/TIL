@@ -57,6 +57,9 @@
   - CREATE
   - DELETE
   - UPDATE
+- [Django ModelForm](https://github.com/hyejinny97/TIL/blob/master/Django/model_form.md)
+  - ModelForm
+  - ModelForm과 Create & Update
 
 
 
@@ -69,8 +72,10 @@
 - [Django urls/templates 분리, models 적용 실습(2022.09.27)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_04)
 - [Django CRUD를 통해 메모 사이트 구현 실습(2022.09.28~29)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_05)
 - [영화 리뷰 사이트 개발 프로젝트 - CRUD(2022.09.30)](https://github.com/hyejinny97/movie_review_1)
+- [Django ModelForm 활용 실습(2022.10.04)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_06)
 
 
 
 ## 🔎 참고자료
-- [django](https://www.djangoproject.com/)
+- [django 공식 문서](https://www.djangoproject.com/)
+- [MDN 문서](https://developer.mozilla.org/en-US/docs/Learn/Server-side)

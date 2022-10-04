@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+  <h3 class="text-center my-3">글 수정</h3>
+  <form action="{% url 'articles:update' article.pk %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-primary w-100" type="submit" value="수정">
+  </form>
+</main>
+{% endblock %}

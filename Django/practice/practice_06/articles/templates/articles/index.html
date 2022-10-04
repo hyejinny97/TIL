@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+  <a href="{% url 'articles:create' %}" class="btn btn-primary w-100" role="button">글 작성</a>
+  <section class="my-3">
+    <h3 class="text-center">작성글 목록</h3>
+    {% for article in articles %}
+    <div class="card my-3">
+      <div class="card-body">
+        <p class="card-title">
+          <a href="{% url 'articles:detail' article.pk %}">
+            {{ article.title }}
+          </a>
+        </p>
+        <p class="card-subtitle mb-2 text-muted">작성일: {{ article.created_at }} | 수정일: {{ article.updated_at }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+</main>
+{% endblock %}
