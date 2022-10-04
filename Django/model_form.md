@@ -202,7 +202,7 @@
   - 유효성 검사를 통과하지 못하면, 에러 정보가 담긴 form 인스턴스를 context에 넣어 작성 페이지로 다시 렌더링
   
   ```django
-  <!– articles/index.html -->
+  <!-- articles/index.html -->
 
   {% extends 'base.html' %}
 
@@ -245,7 +245,7 @@
   ```
 
   ```django
-  <!– articles/create.html -->
+  <!-- articles/create.html -->
 
   {% extends 'base.html' %}
 
@@ -314,7 +314,7 @@
   ```
 
   ```django
-  <!– articles/update.html -->
+  <!-- articles/update.html -->
 
   {% extends 'base.html' %}
 
