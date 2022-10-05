@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+<main class="container my-5">
+  <h2 class="text-center mb-3">글 수정</h2>
+  <form action="{% url 'articles:update' article.pk %}" method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input class="btn btn-primary w-100" type="submit" value="수정하기">
+  </form>
+  <div class="my-3">
+    <a class="btn btn-outline-secondary w-100" href="{% url 'articles:index' %}" role="button">목록으로</a>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- static/css -->
+  <link rel="stylesheet" href="{% static 'css/articles.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <title>실습7</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container">
+        <a class="navbar-brand fw-bolder" href="{% url 'articles:index' %}">우아한 게시판</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page"
+                href="https://docs.djangoproject.com/en/4.1/ref/contrib/admin/">django-admin</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://docs.djangoproject.com/en/4.1/howto/static-files/">static files</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"
+                href="https://django-bootstrap5.readthedocs.io/en/latest/index.html">django-bootstrap5</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  {% block content %}
+  {% endblock %}
+</body>
+
+</html>

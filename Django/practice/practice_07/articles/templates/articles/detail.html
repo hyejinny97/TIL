@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container my-5">
+  <div class="border-bottom text-center p-3">
+    <p class="text-muted">
+      <span class="text-primary">{{ article.get_category_display }}</span>
+      | {{ article.created_at}}
+    </p>
+    <h3>{{ article.title }}</h3>
+  </div>
+  <div class="border-bottom p-3">
+    <p>{{ article.content|linebreaksbr }}</p>
+  </div>
+  <div class="row row-cols-2 my-3 g-2">
+    <div class="col">
+      <a class="btn btn-success w-100" href="{% url 'articles:update' article.pk %}" role="button">수정</a>
+    </div>
+    <div class="col">
+      <form action="{% url 'articles:delete' article.pk %}" method="POST">
+        {% csrf_token %}
+        <input type='submit' class="btn btn-danger w-100" role="button" value="삭제">
+      </form>
+    </div>
+  </div>
+  <div class="my-3">
+    <a class="btn btn-outline-secondary w-100" href="{% url 'articles:index' %}" role="button">목록으로</a>
+  </div>
+</main>
+{% endblock %}
