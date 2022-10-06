@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+  <main class='container my-5'>
+    <h2 class='text-center'>영화 정보 등록</h2>
+    <form action="{% url 'movies:create' %}" class='my-3' method='POST' enctype="multipart/form-data">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <input class="btn btn-primary rounded-5 w-100 mt-3" type="submit" value="등록">
+    </form>
+  </main>
+{% endblock content %}

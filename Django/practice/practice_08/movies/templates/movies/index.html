@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+  <main class='container my-5'>
+    <h2 class='text-center'>최근 등록 영화</h2>
+    <section class='my-3'>
+      {% for movie in movies %}
+        <a href="{% url 'movies:detail' movie.pk %}" class='text-dark text-decoration-none'>
+          <article class='border-bottom index-movie p-3 row'>
+            <div class='col-9'>
+              <h3>{{ movie.title }}</h3>
+              <p class='text-muted'>{{ movie.running_time }}분</p>
+              <p class='index-summary'>{{ movie.summary }}</p>
+            </div>
+            {% if movie.imgfile %}
+              <div class='col-3 text-center'>
+                <img src="{{ movie.imgfile.url }}" alt="" class='index-img'>
+              </div>
+            {% endif %}
+          </article>
+        </a>
+      {% endfor %}
+    </section>
+    <a class="btn btn-primary rounded-circle p-3 top-btn" href="{% url 'movies:create' %}" role="button">
+      <i class="bi bi-pencil fs-3"></i>
+    </a>
+  </main>
+{% endblock content %}

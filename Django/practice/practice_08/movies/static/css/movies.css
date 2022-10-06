@@ -1,0 +1,32 @@
+/* index.html */
+.top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+}
+.index-movie:hover {
+  background-color: rgb(248, 249, 250);
+}
+/* 참고: https://mong-blog.tistory.com/entry/css-%ED%95%9C-%EC%A4%84-%EC%97%AC%EB%9F%AC-%EC%A4%84-%EB%A7%90%EC%A4%84%EC%9E%84 */
+.index-summary {
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  /* display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; */
+}
+.index-img {
+  max-width: 100%;
+  max-height: 200px;
+}
+
+/* detail.html */
+.movie-detail {
+  min-height: 400px;
+}
+.detail-img {
+  max-width: 100%;
+  max-height: 300px;
+}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <main class='container my-5'>
+    <section class='movie-detail'>
+      <div class='border-bottom p-3 text-center'>
+        <h2>{{ movie.title }}</h2>
+        <p>상영시간:
+          {{ movie.running_time }}분</p>
+      </div>
+      <div class='text-center p-3'>
+        <p class='mb-3'>{{ movie.summary|linebreaks }}</p>
+        {% if movie.imgfile %}
+          <img src="{{ movie.imgfile.url }}" alt="" class='detail-img'>
+        {% endif %}
+      </div>
+    </section>
+    <section class='row row-cols-2'>
+      <div class='col'>
+        <a class="btn btn-outline-success w-100" href="{% url 'movies:update' movie.pk %}" role="button">수정</a>
+      </div>
+      <form class='col' action='{% url 'movies:delete' movie.pk %}' method='POST'>
+        {% csrf_token %}
+        <input type='submit' class="btn btn-outline-danger w-100" role="button" value='삭제'>
+      </form>
+    </section>
+  </main>
+{% endblock content %}

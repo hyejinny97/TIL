@@ -75,6 +75,7 @@
 - [영화 리뷰 사이트 개발 프로젝트 - CRUD(2022.09.30)](https://github.com/hyejinny97/movie_review_1)
 - [Django ModelForm 활용 실습(2022.10.04)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_06)
 - [Django admin, static files, django-bootstrap5 활용 실습(2022.10.05)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_07)
+- [Django 영화 정보 제공 사이트 개발 실습(2022.10.06)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_08)
 
 
 
