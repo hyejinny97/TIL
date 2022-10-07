@@ -67,7 +67,7 @@
 
 ## 🛠 실습
 - [Django 요청-응답 실습(2022.09.22)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_01)
-- [영화 리뷰 사이트 개발 프로젝트 - 조사 및 기획(2022.09.23)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/project_01)
+- [영화 리뷰 사이트 개발 프로젝트 - 조사 및 기획(2022.09.23)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/pr_01)
 - [Django form 데이터 주고 받기 실습(2022.09.26)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_02)
 - [Django ORM 실습(2022.09.27)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_03)
 - [Django urls/templates 분리, models 적용 실습(2022.09.27)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_04)
@@ -76,7 +76,7 @@
 - [Django ModelForm 활용 실습(2022.10.04)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_06)
 - [Django admin, static files, django-bootstrap5 활용 실습(2022.10.05)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_07)
 - [Django 영화 정보 제공 사이트 개발 실습(2022.10.06)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_08)
-
+- [영화 리뷰 사이트 개발 프로젝트 - modelform(2022.10.07)](https://github.com/hyejinny97/movie_review_2)
 
 
 ## 🔎 참고자료
