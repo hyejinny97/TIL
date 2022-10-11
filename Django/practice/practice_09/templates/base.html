@@ -1,0 +1,25 @@
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습9</title>
+  </head>
+
+  <body>
+    <header class='container my-5 text-center'>
+      <h1>회원가입 서비스</h1>
+    </header>
+
+    <main class='container my-5'>
+      {% block content %}{% endblock content %}
+    </main>
+  </body>
+
+</html>

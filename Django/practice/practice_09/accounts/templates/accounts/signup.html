@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+  <form action="{% url 'accounts:signup' %}" method='POST'>
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit" class='btn btn-primary' value="회원 가입">
+  </form>
+{% endblock content %}

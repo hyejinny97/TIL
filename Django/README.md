@@ -62,6 +62,12 @@
   - ModelForm과 Create & Update
 - [Django Admin site](https://github.com/hyejinny97/TIL/blob/master/Django/admin.md)
 - [Django Static Files](https://github.com/hyejinny97/TIL/blob/master/Django/static_files.md)
+- [Django Auth](https://github.com/hyejinny97/TIL/blob/master/Django/auth.md)
+  - Django Auth
+  - Django User Model
+  - User 객체
+  - Django User Form
+  - 회원 가입
 
 
 
@@ -77,9 +83,11 @@
 - [Django admin, static files, django-bootstrap5 활용 실습(2022.10.05)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_07)
 - [Django 영화 정보 제공 사이트 개발 실습(2022.10.06)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_08)
 - [영화 리뷰 사이트 개발 프로젝트 - modelform(2022.10.07)](https://github.com/hyejinny97/movie_review_2)
+- [Django Auth를 활용한 회원가입 서비스 개발(2022.10.11)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_09)
 
 
 ## 🔎 참고자료
 - [django 공식 문서](https://www.djangoproject.com/)
 - [MDN 문서](https://developer.mozilla.org/en-US/docs/Learn/Server-side)
 - [django-bootstrap5 22.1](https://pypi.org/project/django-bootstrap5/)
+- [Django GitHub](https://github.com/django/django)

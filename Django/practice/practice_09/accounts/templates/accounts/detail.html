@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title fw-bold">사용자 이름</h5>
+      <p class="card-text">{{ user.username }}</p>
+      <h5 class="card-title fw-bold">이메일</h5>
+      <p class="card-text">{{ user.email }}</p>
+      <h5 class="card-title fw-bold">성</h5>
+      <p class="card-text">{{ user.last_name }}</p>
+      <h5 class="card-title fw-bold">이름</h5>
+      <p class="card-text">{{ user.first_name }}</p>
+      <h5 class="card-title fw-bold">지난 로그 기록</h5>
+      <p class="card-text">{{ user.last_login }}</p>
+      <h5 class="card-title fw-bold">가입일</h5>
+      <p class="card-text">{{ user.date_joined }}</p>
+    </div>
+  </div>
+{% endblock content %}
