@@ -1,0 +1,48 @@
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습10</title>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home:index' %}">MOVIE</a>
+          {% if request.user.is_authenticated %}
+            <ul class="navbar-nav d-flex flex-row">
+              <li class="nav-item me-3">
+                <a class="nav-link active" aria-current="page" href="{% url 'accounts:detail' request.user.pk %}">{{ request.user }}님</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'accounts:logout' %}">로그아웃</a>
+              </li>
+            </ul>
+          {% else %}
+            <ul class="navbar-nav d-flex flex-row">
+              <li class="nav-item me-3">
+                <a class="nav-link active" aria-current="page" href="{% url 'accounts:login' %}">로그인</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'accounts:signup' %}">회원가입</a>
+              </li>
+            </ul>
+          {% endif %}
+        </div>
+      </nav>
+    </header>
+
+    <main class='container my-3'>
+      {% block content %}{% endblock content %}
+    </main>
+  </body>
+
+</html>

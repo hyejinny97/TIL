@@ -54,6 +54,46 @@
   ![](img/accounts_user.png)
 
 > 프로필 상세보기 - `READ`
+- 회원 정보 상세 페이지(프로필 페이지) 작성
+
+  ```python
+  # accounts/urls.py
+
+  from django.urls import path
+  from . import views
+
+  app_name = 'accounts'
+  urlpatterns = [
+      ...
+      path('<int:pk>/', views.detail, name='detail'),
+  ]
+  ```
+
+  ```python
+  # accounts/views.py
+
+  from django.contrib.auth import get_user_model
+
+  def detail(request, pk):
+      user = get_user_model().objects.get(pk=pk)
+
+      context = {
+          'user': user,
+      }
+
+      return render(request, 'accounts/detail.html', context)
+  ```
+
+  ```django
+  <!-- templates/accounts/detail.html -->
+
+  {% block content %}
+    <p>사용자 이름: {{ user.username }}</p>
+    <p>이메일: {{ user.email }}</p>
+    <p>지난 로그인: {{ user.last_login }}</p>
+    <p>가입일: {{ user.date_joined }}</p>
+  {% endblock content %}
+  ```
 
 > 프로필 수정하기 - `UPDATE`
 

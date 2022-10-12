@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class='text-center my-5'>회원 정보</h1>
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title fw-bold">사용자 이름</h4>
+      <p class="card-text">{{ user.username }}</p>
+      <h4 class="card-title fw-bold">성</h4>
+      <p class="card-text">{{ user.last_name }}</p>
+      <h4 class="card-title fw-bold">이름</h4>
+      <p class="card-text">{{ user.first_name }}</p>
+      <h4 class="card-title fw-bold">이메일</h4>
+      <p class="card-text">{{ user.email }}</p>
+      <h4 class="card-title fw-bold">가입일</h4>
+      <p class="card-text">{{ user.date_joined }}</p>
+      <h4 class="card-title fw-bold">마지막 로그인</h4>
+      <p class="card-text">{{ user.last_login }}</p>
+    </div>
+  </div>
+  <a class="btn btn-outline-secondary w-100 my-3" href="{% url 'accounts:index' %}" role="button">회원 목록 페이지로</a>
+{% endblock content %}
