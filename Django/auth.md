@@ -331,100 +331,46 @@
 
 
 
-# ✔ User 객체
-- User 객체는 인증 시스템의 가장 기본
-- [django.contrib.auth > User model](https://docs.djangoproject.com/en/4.1/ref/contrib/auth/)
-
-> User 객체의 Fields
-- username 
-- password
-- email
-- first_name
-- last_name
-- is_staff
-- is_active
-- is_superuser
-- last_login
-- date_joined
-
-> User 객체의 Attributes
-
-- `is_authenticated`
-  - 로그인 여부
-  - 만약 로그인 되어 있다면, True를 반환
-  - User 객체는 항상 True를 반환
-
-  ```python
-  from django.contrib.auth import get_user_model
-
-  user = get_user_model().objects.get(pk=2)
-  
-  if request.user.is_authenticated:
-      pass
-      # do something if user is logged in
-  else:
-      pass
-      # do something if user is logged_out
-  ```
-
-- `is_anonymous`
-  - 로그아웃 여부
-  - 유저가 로그아웃된 상태라면 True를 반환
-  - User 객체는 항상 False를 반환
-
-  ```python
-  from django.contrib.auth import get_user_model
-
-  user = get_user_model().objects.get(pk=2)
-  
-  if request.user.is_anonymous:
-      pass
-      # do something if user is logged out
-  else:
-      pass
-      # do something if user is logged in
-  ```
-
-> User 객체의 Methods
-
-- `set_password(raw_password)`
-  - User 비밀번호 변경
-
-  ```python
-  from django.contrib.auth import get_user_model
-
-  user = get_user_model().objects.get(pk=2)
-  user.set_password('new password')
-  user.save()
-  ```
-
-> User 객체의 Manager methods
-
-- `create_user(username, email=None, password=None, **extra_fields)`
-  - User 생성
+# ✔ Django AnonymousUser Model
+> AnonymousUser Model
+- [GitHub > Django/contrib/auth/models.py > AnonymousUser 클래스](https://github.com/django/django/blob/main/django/contrib/auth/models.py#L417)
   
   ```python
-  from django.contrib.auth import get_user_model
+  class AnonymousUser:
+      id = None
+      pk = None
+      username = ""
+      is_staff = False
+      is_active = False
+      is_superuser = False
+      _groups = EmptyManager(Group)
+      _user_permissions = EmptyManager(Permission)
 
-  user = get_user_model().objects.create_user('john', 'john@google.com', '1q2w3e4r!')
+      def __str__(self):
+          return "AnonymousUser"
+
+      ...
+
+      @property
+      def is_anonymous(self):
+          return True
+
+      @property
+      def is_authenticated(self):
+          return False
+
+      def get_username(self):
+          return self.username
   ```
 
-- `create_superuser(username, email=None, password=None, **extra_fields)`
-
-  ```python
-  from django.contrib.auth import get_user_model
-
-  superuser = get_user_model().objects.create_superuser('hong', 'hong@google.com', '1q2w3e4r!')
-  ```
 
 
 
 
 
-
-# ✔ Django User Form
+# ✔ Django UserCreationForm
 > UserCreationForm
-- 주어진 username과 password로 권한이 없는 새 user를 생성하는 ModelForm
+- 주어진 username과 password로 권한이 없는 새 user를 생성하는 **ModelForm**
 - [GitHub > Django/contrib/auth/forms.py > UserCreationForm 클래스](https://github.com/django/django/blob/stable/3.2.x/django/contrib/auth/forms.py#L75)
 - 3개의 필드를 가짐
   - username (from the **User model**)
@@ -490,58 +436,163 @@
 
 
 
+# ✔ Django UserChangeForm
+> UserChangeForm
 
-# ✔ 회원 가입
+- [GitHub > Django/contrib/auth/forms.py > UserChangeForm 클래스](https://github.com/django/django/blob/main/django/contrib/auth/forms.py#L147)
+  
+  ```python
+  # Django/contrib/auth/forms.py
 
-> CREATE
-- 회원 가입 페이지 작성
+  from django import forms
+
+  class UserChangeForm(forms.ModelForm):
+      password = ReadOnlyPasswordHashField(
+          label=_("Password"),
+          help_text=_(
+              "Raw passwords are not stored, so there is no way to see this "
+              "user’s password, but you can change the password using "
+              '<a href="{}">this form</a>.'
+          ),
+      )
+
+      class Meta:
+          model = User
+          fields = "__all__"
+          field_classes = {"username": UsernameField}
+
+      def __init__(self, *args, **kwargs):
+          super().__init__(*args, **kwargs)
+          password = self.fields.get("password")
+          if password:
+              password.help_text = password.help_text.format("../password/")
+          user_permissions = self.fields.get("user_permissions")
+          if user_permissions:
+              user_permissions.queryset = user_permissions.queryset.select_related(
+                  "content_type"
+              )
+  ```
+
+
+
+
+# ✔ Django SetPasswordForm
+> SetPasswordForm
+
+- [GitHub > Django/contrib/auth/forms.py > SetPasswordForm 클래스](https://github.com/django/django/blob/main/django/contrib/auth/forms.py#L353)
 
   ```python
-  # accounts/urls.py
+  # Django/contrib/auth/forms.py
 
-  app_name = 'accounts'
-  urlpatterns = [
-    ...,
-    path('signup/', views.signup, name='signup'),
-  ]
+  from django import forms
+  
+  class SetPasswordForm(forms.Form):
+      """
+      A form that lets a user change set their password without entering the old
+      password
+      """
+
+      error_messages = {
+          "password_mismatch": _("The two password fields didn’t match."),
+      }
+      new_password1 = forms.CharField(
+          label=_("New password"),
+          widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
+          strip=False,
+          help_text=password_validation.password_validators_help_text_html(),
+      )
+      new_password2 = forms.CharField(
+          label=_("New password confirmation"),
+          strip=False,
+          widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
+      )
+
+      def __init__(self, user, *args, **kwargs):
+          self.user = user
+          super().__init__(*args, **kwargs)
+
+      def clean_new_password2(self):
+          password1 = self.cleaned_data.get("new_password1")
+          password2 = self.cleaned_data.get("new_password2")
+          if password1 and password2:
+              if password1 != password2:
+                  raise ValidationError(
+                      self.error_messages["password_mismatch"],
+                      code="password_mismatch",
+                  )
+          password_validation.validate_password(password2, self.user)
+          return password2
+
+      def save(self, commit=True):
+          password = self.cleaned_data["new_password1"]
+          self.user.set_password(password)
+          if commit:
+              self.user.save()
+          return self.user
   ```
+
+
+
+
+# ✔ Django AuthenticationForm
+> AuthenticationForm
+- 로그인을 위한 built-in form
+  - 로그인 하고자 하는 사용자 정보를 입력 받음(username, password)
+  - ModelForm이 아닌 일반 **Form**을 상속 받고 있으며, request를 첫번째 인자로 취함
+- [GitHub > Django/contrib/auth/forms.py > AuthenticationForm 클래스](https://github.com/django/django/blob/main/django/contrib/auth/forms.py#L174)
 
   ```python
-  # accounts/views.py
+  # Django/contrib/auth/forms.py
 
-  from .forms import CustomUserCreationForm
-  
-  def signup(request):
-    if request.method == 'POST':
-      form = CustomUserCreationForm(request.POST)
-      if form.is_valid():
-        form.save()
-        return redirect('articles:index')
-    else:
-      form = CustomUserCreationForm()
-    
-    context = {
-      'form': form,
-    }
-   
-    return render(request, 'accounts/signup.html', context)
+  from django import forms
+
+  class AuthenticationForm(forms.Form):
+      """
+      Base class for authenticating users. Extend this to get a form that accepts
+      username/password logins.
+      """
+
+      username = UsernameField(widget=forms.TextInput(attrs={"autofocus": True}))
+      password = forms.CharField(
+          label=_("Password"),
+          strip=False,
+          widget=forms.PasswordInput(attrs={"autocomplete": "current-password"}),
+      )
+
+      ...
+
+      def __init__(self, request=None, *args, **kwargs):
+          """
+          The 'request' parameter is set for custom auth use by subclasses.
+          The form data comes in via the standard 'data' kwarg.
+          """
+          self.request = request
+          self.user_cache = None
+          super().__init__(*args, **kwargs)
+
+          ...
+
+      def clean(self):
+          username = self.cleaned_data.get("username")
+          password = self.cleaned_data.get("password")
+
+          if username is not None and password:
+              self.user_cache = authenticate(
+                  self.request, username=username, password=password
+              )
+              if self.user_cache is None:
+                  raise self.get_invalid_login_error()
+              else:
+                  self.confirm_login_allowed(self.user_cache)
+
+          return self.cleaned_data
+
+      ...
+
+      def get_user(self):
+          return self.user_cache
   ```
 
-  ```django
-  <!-- accounts/signup.html -->
-
-  {% extends 'base.html' %}
-
-  {% block content %}
-    <h1>회원가입</h1>
-    <form action="{% url 'accounts:signup' %}" method="POST">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit">
-    </form>
-  {% endblock content %}
-  ```
-
-- 회원가입 진행 후 테이블 확인
-  
-  ![](img/accounts_user.png)
+- `get_user()`
+  - AuthenticationForm의 인스턴스 메서드
+  - 유효성 검사를 통과했을 경우, 로그인한 사용자 객체를 반환

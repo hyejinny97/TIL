@@ -65,11 +65,27 @@
 - [Django Auth](https://github.com/hyejinny97/TIL/blob/master/Django/auth.md)
   - Django Auth
   - Django User Model
+  - Django AnonymousUser Model
+  - Django UserCreationForm
+  - Django UserChangeForm
+  - Django SetPasswordForm
+  - Django AuthenticationForm
+- [User 객체 / AnonymousUser 객체](https://github.com/hyejinny97/TIL/blob/master/Django/user_objects.md)
   - User 객체
-  - Django User Form
-  - 회원 가입
-
-
+  - AnonymousUser 객체
+- [회원 가입 / 로그인](https://github.com/hyejinny97/TIL/blob/master/Django/signup_signin.md)
+  - 회원가입
+    - 회원가입 - CREATE
+    - 프로필 상세보기 - READ
+    - 프로필 수정하기 - UPDATE
+    - 회원탈퇴 - DELETE
+  - 로그인
+    - 쿠키(Cookie)
+    - 세션 (Session)
+    - Login
+    - Authentication with User
+    - Logout
+    - Limiting access to logged-in users
 
 ## 🛠 실습
 - [Django 요청-응답 실습(2022.09.22)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_01)
@@ -84,6 +100,8 @@
 - [Django 영화 정보 제공 사이트 개발 실습(2022.10.06)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_08)
 - [영화 리뷰 사이트 개발 프로젝트 - modelform(2022.10.07)](https://github.com/hyejinny97/movie_review_2)
 - [Django Auth를 활용한 회원가입 서비스 개발(2022.10.11)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_09)
+- [Django Auth를 활용한 로그인 서비스 개발(2022.10.12)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_10)
+
 
 
 ## 🔎 참고자료
