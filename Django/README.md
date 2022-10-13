@@ -69,6 +69,8 @@
   - Django UserCreationForm
   - Django UserChangeForm
   - Django SetPasswordForm
+  - Django PasswordChangeForm
+  - Django AdminPasswordChangeForm
   - Django AuthenticationForm
 - [User 객체 / AnonymousUser 객체](https://github.com/hyejinny97/TIL/blob/master/Django/user_objects.md)
   - User 객체
@@ -99,8 +101,9 @@
 - [Django admin, static files, django-bootstrap5 활용 실습(2022.10.05)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_07)
 - [Django 영화 정보 제공 사이트 개발 실습(2022.10.06)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_08)
 - [영화 리뷰 사이트 개발 프로젝트 - modelform(2022.10.07)](https://github.com/hyejinny97/movie_review_2)
-- [Django Auth를 활용한 회원가입 서비스 개발(2022.10.11)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_09)
+- [Django Auth를 활용한 회원가입 및 프로필 서비스 개발(2022.10.11)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_09)
 - [Django Auth를 활용한 로그인 서비스 개발(2022.10.12)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_10)
+- [Django Auth를 활용한 회원 정보 수정 및 탈퇴 서비스 개발(2022.10.13)](https://github.com/hyejinny97/practice_11)
 
 
 

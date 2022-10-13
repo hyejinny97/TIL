@@ -80,6 +80,53 @@
   ]
   ```
 
+> `django.contib.auth.__init__.py`
+
+- `authenticate()`
+
+- `login()`
+
+- `logout()`
+
+- `get_user_model()`
+
+- `get_user()`
+
+> `django.contib.auth.models.py`
+
+- `models.Model`을 상속받는 model
+  
+  - [User model](#-django-user-model)
+  
+  - [AbstractUser model](#-django-user-model)
+
+- 아무 상속도 받지 않는 model
+  
+  - [AnonymousUser model](#-django-anonymoususer-model)
+
+> `django.contib.auth.base_user.py`
+
+- `models.Model`을 상속받는 model
+  
+  - [AbstractBaseUser model](#-django-user-model)
+
+> `django.contib.auth.forms.py`
+
+- `forms.ModelForm`을 상속받는 form
+  
+  - [UserCreationForm](#-django-usercreationform)
+  
+  - [UserChangeForm](#-django-userchangeform)
+
+- `forms.Form`을 상속받는 form
+  
+  - [AuthenticationForm](#-django-authenticationform)
+  
+  - [SetPasswordForm](#-django-setpasswordform)
+  
+  - [PasswordChangeForm](#-django-passwordchangeform)
+  
+  - [AdminPasswordChangeForm](#-django-adminpasswordchangeform)
 
 
 
@@ -437,6 +484,9 @@
 
 
 # ✔ Django UserChangeForm
+- 사용자의 정보 및 권한을 변경하기 위해 admin 인터페이스에서 사용되는 **ModelForm**
+- UserChangeForm 또한 ModelForm이기 때문에 instance 인자로 기존 user 데이터 정보를 받는 구조 또한 동일함
+
 > UserChangeForm
 
 - [GitHub > Django/contrib/auth/forms.py > UserChangeForm 클래스](https://github.com/django/django/blob/main/django/contrib/auth/forms.py#L147)
@@ -473,10 +523,26 @@
               )
   ```
 
+> Custom UserChangeForm 생성하기
+- UserChangeForm 역시 ModelForm으로 구성되어 있어, User 모델 정보를 변경하여 활용해야 함
+
+    ```python
+    # accounts/forms.py
+
+    from django.contrib.auth import get_user_model
+    from django.contrib.auth.forms import UserChangeForm
+
+    class CustomUserChangeForm(UserChangeForm):
+        class Meta(UserChangeForm.Meta):
+            model = get_user_model()
+            fileds = ('first_name', 'last_name', 'email', )
+    ```
 
 
 
 # ✔ Django SetPasswordForm
+- 이전 비밀번호를 입력하지 않고 비밀번호를 설정할 수 있는 **form**
+
 > SetPasswordForm
 
 - [GitHub > Django/contrib/auth/forms.py > SetPasswordForm 클래스](https://github.com/django/django/blob/main/django/contrib/auth/forms.py#L353)
@@ -530,6 +596,129 @@
               self.user.save()
           return self.user
   ```
+
+
+
+
+
+# ✔ Django PasswordChangeForm
+- 사용자가 비밀번호를 변경할 수 있도록 하는 **Form**
+- 이전 비밀번호를 입력하여 비밀번호를 변경할 수 있도록 함
+- 이전 비밀번호를 입력하지 않고 비밀번호를 설정할 수 있는 **SetPasswordForm을 상속받는 서브 클래스**
+
+> PasswordChangeForm
+- [GitHub > Django/contrib/auth/forms.py > PasswordChangeForm 클래스](https://github.com/django/django/blob/main/django/contrib/auth/forms.py#L398)
+
+    ```python
+    # Django/contrib/auth/forms.py 
+
+    from django import forms
+
+    class PasswordChangeForm(SetPasswordForm):
+        """
+        A form that lets a user change their password by entering their old
+        password.
+        """
+
+        error_messages = {
+            **SetPasswordForm.error_messages,
+            "password_incorrect": _(
+                "Your old password was entered incorrectly. Please enter it again."
+            ),
+        }
+        old_password = forms.CharField(
+            label=_("Old password"),
+            strip=False,
+            widget=forms.PasswordInput(
+                attrs={"autocomplete": "current-password", "autofocus": True}
+            ),
+        )
+
+        field_order = ["old_password", "new_password1", "new_password2"]
+
+        def clean_old_password(self):
+            """
+            Validate that the old_password field is correct.
+            """
+            old_password = self.cleaned_data["old_password"]
+            if not self.user.check_password(old_password):
+                raise ValidationError(
+                    self.error_messages["password_incorrect"],
+                    code="password_incorrect",
+                )
+            return old_password
+    ```
+
+
+
+
+# ✔ Django AdminPasswordChangeForm
+- admin interface에서 user의 비밀번호를 변경할 수 있도록 하는 **form**
+
+> AdminPasswordChangeForm
+- [GitHub > Django/contrib/auth/forms.py > AdminPasswordChangeForm 클래스](https://github.com/django/django/blob/main/django/contrib/auth/forms.py#L433)
+
+    ```python
+    # Django/contrib/auth/forms.py
+
+    from django import forms
+
+    class AdminPasswordChangeForm(forms.Form):
+        """
+        A form used to change the password of a user in the admin interface.
+        """
+
+        error_messages = {
+            "password_mismatch": _("The two password fields didn’t match."),
+        }
+        required_css_class = "required"
+        password1 = forms.CharField(
+            label=_("Password"),
+            widget=forms.PasswordInput(
+                attrs={"autocomplete": "new-password", "autofocus": True}
+            ),
+            strip=False,
+            help_text=password_validation.password_validators_help_text_html(),
+        )
+        password2 = forms.CharField(
+            label=_("Password (again)"),
+            widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
+            strip=False,
+            help_text=_("Enter the same password as before, for verification."),
+        )
+
+        def __init__(self, user, *args, **kwargs):
+            self.user = user
+            super().__init__(*args, **kwargs)
+
+        def clean_password2(self):
+            password1 = self.cleaned_data.get("password1")
+            password2 = self.cleaned_data.get("password2")
+            if password1 and password2 and password1 != password2:
+                raise ValidationError(
+                    self.error_messages["password_mismatch"],
+                    code="password_mismatch",
+                )
+            password_validation.validate_password(password2, self.user)
+            return password2
+
+        def save(self, commit=True):
+            """Save the new password."""
+            password = self.cleaned_data["password1"]
+            self.user.set_password(password)
+            if commit:
+                self.user.save()
+            return self.user
+
+        @property
+        def changed_data(self):
+            data = super().changed_data
+            for name in self.fields:
+                if name not in data:
+                    return []
+            return ["password"]
+    ```
+
 
 
 

@@ -53,6 +53,28 @@
   
   ![](img/accounts_user.png)
 
+- 회원가입 후 곧바로 로그인이 진행되도록 수정
+
+  ```python
+  # accounts/views.py
+
+  def signup(request):
+    if request.method == 'POST':
+      form = CustomUserCreationForm(request.POST)
+      if form.is_valid():
+        user = form.save()
+        auth_login(request, user)
+        return redirect('articles:index')
+    else:
+      form = CustomUserCreationForm()
+    
+    context = {
+      'form': form,
+    }
+    
+    return render(request, 'accounts/signup.html', context)
+  ```
+
 > 프로필 상세보기 - `READ`
 - 회원 정보 상세 페이지(프로필 페이지) 작성
 
@@ -96,8 +118,185 @@
   ```
 
 > 프로필 수정하기 - `UPDATE`
+- 회원 정보 수정 페이지 작성
+  
+  ```python
+  # accounts/urls.py
+
+  app_name = 'accounts'
+
+  urlpatterns = [
+    ...,
+    path('update/', views.update, name='update'),
+  ]
+  ```
+
+  ```python
+  # accounts/views.py
+
+  from .forms import CustomUserChangeForm
+
+  def update(request):
+    if request.method == 'POST':
+      form = CustomUserChangeForm(request.POST, instance=request.user)
+      # form = CustomUserChangeForm(data=request.POST, instance=request.user)
+      if form.is_valid():
+        form.save()
+        return redirect('articles:detail', request.user.pk)
+    else:
+      form = CustomUserChangeForm(instance=request.user)
+    
+    context = {
+      'form': form,
+    }
+
+    return render(request, 'accounts/update.html', context)
+  ```
+
+  ```django
+  <!-- accounts/update.html -->
+
+  {% extends 'base.html' %}
+
+  {% block content %}
+    <h1>회원정보수정</h1>
+    <form action="{% url 'accounts:update' %}" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit">
+    </form>
+  {% endblock content %}
+  ```
+
+- 회원정보 수정 페이지 링크 작성
+
+  ```django
+  <!-- base.html -->
+  
+  <div class="container">
+    <a href="{% url 'accounts:signup' %}">Signup</a>
+    <a href="{% url 'accounts:update' %}">회원정보 수정</a>
+    <hr>
+    {% block content %}
+    {% endblock content %}
+  </div>
+  ```
+
+- CustomUserChangeForm fields 재정의
+  - UserChangeForm은 실제 관리자 화면에서 활용 중인 form으로 세부 필드들이 모두 노출되는 것을 확인할 수 있음
+  
+    ![](img/signup_updates.png)
+
+  - 직접 fields를 정의하여 원하는 형식으로 활용 가능함
+
+    ```python
+    # accounts/forms.py
+
+    class CustomUserChangeForm(UserChangeForm):
+      class Meta(UserChangeForm.Meta):
+        model = get_user_model()
+        fields = ('email', 'first_name', 'last_name',)
+    ```
+
+    ![](img/signup_update_fields.png)
+
+- 비밀번호 변경 페이지 작성
+  - 회원정보 수정 페이지에서 비밀번호 변경 form 주소: `/accounts/password/`
+  - 비밀번호 변경 후 로그인 상태가 지속되지 못하는 문제 발생
+
+  ```python
+  # accounts/urls.py
+
+  app_name = 'accounts'
+
+  urlpatterns = [
+    ...,
+    path('password/', views.change_password, name='change_password'),
+  ]
+  ```
+
+  ```python
+  # accounts/views.py
+
+  from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+
+  def change_password(request):
+    if request.method == 'POST':
+      form = PasswordChangeForm(request.user, request.POST)
+      # form = PasswordChangeForm(user=request.user, data=request.POST)
+      if form.is_valid():
+        form.save()
+        return redirect('articles:index')
+    else:
+      form = PasswordChangeForm(request.user)
+    
+    context = {
+      'form': form,
+    }
+
+    return render(request, 'accounts/change_password.html', context)
+  ```
+
+  ```django
+  <!-- accounts/change_password.html -->
+
+  {% extends 'base.html' %}
+
+  {% block content %}
+    <h1>비밀번호 변경</h1>
+    <form action="{% url 'accounts:change_password' %}" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit">
+    </form>
+  {% endblock content %}
+  ```
+
+- 비밀번호 변경 시 세션 무효화 방지하기
+  - 비밀번호가 변경되면 기존 세션과의 회원 인증 정보가 일치하지 않게 되어 버려 로그인 상태가 유지되지 못함
+  - 비밀번호는 잘 변경되었으나 비밀번호가 변경 되면서 기존 세션과의 회원 인증 정보가 일치하지 않기 때문
+  
+  - `update_session_auth_hash(request, user)`
+    - 현재 요청(current request)과 새 session data가 파생될 업데이트된 사용자 객체를 가져오고, session data를 적절하게 업데이트해줌
+    - 암호가 변경되어도 로그아웃 되지 않도록 새로운 password의 session data로 session을 업데이트
+
+  ```python
+  # accounts/views.py
+
+  from django.contrib.auth import update_session_auth_hash
+
+  def change_password(request):
+    if request.method == 'POST':
+      form = PasswordChangeForm(request.user, request.POST)
+      # form = PasswordChangeForm(user=request.user, data=request.POST)
+      if form.is_valid():
+        form.save()
+        update_session_auth_hash(request, form.user)
+        return redirect('articles:index')
+    else:
+      form = PasswordChangeForm(request.user)
+    
+    context = {
+      'form': form,
+    }
+
+    return render(request, 'accounts/change_password.html', context)
+  ```
 
 > 회원탈퇴 - `DELETE`
+
+- 탈퇴 하면서 해당 유저의 세션 정보도 함께 지우고 싶을 경우
+  - **탈퇴(1) 후 로그아웃(2)**의 순서가 바뀌면 안됨
+  - 먼저 로그아웃 해버리면 해당 요청 객체 정보가 없어지기 때문에 탈퇴에 필요한 정보 또한 없어지기 때문
+
+  ```python
+  # accounts/views.py
+  
+  def delete(request):
+    request.user.delete()
+    auth_logout(request)
+  ```
+
 
 
 
