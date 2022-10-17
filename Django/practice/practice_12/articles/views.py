@@ -1,0 +1,68 @@
+from django.shortcuts import render, redirect
+from .forms import ArticleForm
+from .models import Article
+from django.contrib import messages
+
+# Create your views here.
+# 글 목록 페이지
+def index(request):
+    articles = Article.objects.all()
+    
+    context = {
+        'articles': articles,
+    }
+
+    return render(request, 'articles/index.html', context)
+
+# 글 생성 페이지 및 데이터 생성
+def create(request):
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES)
+        if form.is_valid():
+            article = form.save()
+            messages.info(request, '해당 글을 생성했습니다.')
+            return redirect('articles:detail', article.pk)
+        messages.error(request, '입력이 올바르지 않습니다.')
+    else:
+        form = ArticleForm()
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'articles/create.html', context)
+
+# 글 상세 페이지
+def detail(request, pk):
+    article = Article.objects.get(pk=pk)
+    
+    context = {
+        'article': article,
+    }
+
+    return render(request, 'articles/detail.html', context)
+
+# 글 수정 페이지 및 데이터 수정
+def update(request, pk):
+    article = Article.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES, instance=article)
+        if form.is_valid():
+            form.save()
+            messages.success(request, '해당 글을 수정했습니다.')
+            return redirect('articles:detail', article.pk)
+    else:
+        form = ArticleForm(instance=article)
+
+    context = {
+        'form': form,
+        'article': article,
+    }
+
+    return render(request, 'articles/update.html', context)
+
+# 글 데이터 삭제 
+def delete(request, pk):
+    article = Article.objects.get(pk=pk)
+    article.delete()
+    return redirect('articles:index')

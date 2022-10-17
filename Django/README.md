@@ -62,6 +62,12 @@
   - ModelForm과 Create & Update
 - [Django Admin site](https://github.com/hyejinny97/TIL/blob/master/Django/admin.md)
 - [Django Static Files](https://github.com/hyejinny97/TIL/blob/master/Django/static_files.md)
+- [Django Media Files](https://github.com/hyejinny97/TIL/blob/master/Django/media_files.md)
+  - 이미지 업로드 - 기본 설정
+  - 이미지 업로드 - CREATE
+  - 이미지 업로드 - READ
+  - 이미지 업로드 - UPDATE
+  - Django-imagekit 라이브러리
 - [Django Auth](https://github.com/hyejinny97/TIL/blob/master/Django/auth.md)
   - Django Auth
   - Django User Model
@@ -104,6 +110,8 @@
 - [Django Auth를 활용한 회원가입 및 프로필 서비스 개발(2022.10.11)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_09)
 - [Django Auth를 활용한 로그인 서비스 개발(2022.10.12)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_10)
 - [Django Auth를 활용한 회원 정보 수정 및 탈퇴 서비스 개발(2022.10.13)](https://github.com/hyejinny97/practice_11)
+- [영화 리뷰 + 회원 관리 커뮤니티 개발 프로젝트 - Auth(2022.10.14)](https://github.com/hyejinny97/movie-account)
+- [Django Media를 활용한 게시판 서비스 개발(2022.10.17)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_12)
 
 
 
@@ -112,3 +120,5 @@
 - [MDN 문서](https://developer.mozilla.org/en-US/docs/Learn/Server-side)
 - [django-bootstrap5 22.1](https://pypi.org/project/django-bootstrap5/)
 - [Django GitHub](https://github.com/django/django)
+- [django-imagekit 2.0.4](https://pypi.org/project/django-imagekit/2.0.4/)
+- [django-widget-tweaks 1.4.12](https://pypi.org/project/django-widget-tweaks/)

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <h1 class='text-center my-5'>글 생성</h1>
+  
+  {% comment %} 메시지 {% endcomment %}
+  {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <li class="alert alert-danger">{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+
+  <form action="{% url 'articles:create' %}" method='POST' enctype='multipart/form-data'>
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input class="btn btn-primary" type="submit" value="작성">
+  </form>
+{% endblock content %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class='text-center my-5'>글 상세</h1>
+
+  {% comment %} 메시지 {% endcomment %}
+  {% if messages %}
+    <ul class="messages p-0" style='list-style-type: none;'>
+      {% for message in messages %}
+        {% if message.tags == 'info' %}
+          <li{% if message.tags %} class="alert alert-primary" {% endif %}>{{ message }}</li>
+        {% elif message.tags == 'success' %}
+          <li{% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <div class="card shadow p-3 mb-5 bg-body rounded">
+    <div class="card-body">
+      <h3 class="card-title text-center">{{ article.title }}</h3>
+      <hr>
+      <p class="card-text">{{ article.content }}</p>
+      {% if article.image %}
+        <img src="{{ article.image.url }}" alt="{{ article.image }}" style='width:100%; max-height: 300px; object-fit:contain;'>
+      {% endif %}
+    </div>
+  </div>
+  <div class='row row-cols-2 my-3'>
+    <div class='col'>
+      <a class="btn btn-outline-success w-100" href="{% url 'articles:update' article.pk %}" role="button">수정</a>
+    </div>
+    <form action="{% url 'articles:delete' article.pk %}" method='POST' class='col'>
+      {% csrf_token %}
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        삭제
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">게시물 삭제</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              해당 게시물을 정말 삭제하시겠습니까?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+              <input type="submit" class="btn btn-danger" value='삭제'>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock content %}
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>

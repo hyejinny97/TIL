@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <h1 class='text-center my-5'>글 수정</h1>
+  <form action="{% url 'articles:update' article.pk %}" method='POST' enctype='multipart/form-data'>
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    
+    {% comment %} <div class='mb-3'>
+      <label class='form-label' for="id_title">{{ form.title.label }}</label>
+      {{ form.title|append_attr:"class:form-control"|append_attr:"placeholder:제목" }}
+    </div>
+    <div class='mb-3'>
+      <label class='form-label' for="id_content">{{ form.content.label }}</label>
+      {{ form.content|append_attr:"class:form-control"|append_attr:"placeholder:내용" }}
+    </div>
+    <div class='mb-3'>
+      <label class='form-label' for="id_image">{{ form.image.label }}</label>
+      {{ form.image|append_attr:"class:form-control"}}
+    </div>
+    <div class='mb-3'>
+      <label class='form-label' for="id_thumbnail">{{ form.thumbnail.label }}</label>
+      {{ form.thumbnail|append_attr:"class:form-control"}}
+    </div> {% endcomment %}
+    <input class="btn btn-primary" type="submit" value="수정">
+  </form>
+{% endblock content %}

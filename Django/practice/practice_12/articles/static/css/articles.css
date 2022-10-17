@@ -1,0 +1,38 @@
+/* articles/index.html */
+.index-card:hover {
+  box-shadow: 10px 5px 5px rgba(128, 128, 128, 0.2);
+  transform: scale(1.02);
+}
+#image-file {
+  background-color: red;
+}
+
+/* articles/update.html */
+/* https://velog.io/@sklove96/inputtypefile-%EC%BB%A4%EC%8A%A4%ED%85%80%ED%95%98%EA%B8%B0 */
+/* .filebox #id_image {
+  display: inline-block;
+  height: 40px;
+  padding: 0 10px;
+  vertical-align: middle;
+  border: 1px solid #dddddd;
+  width: 78%;
+  color: #999999;
+}
+.filebox label {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  vertical-align: middle;
+  background-color: #999999;
+  cursor: pointer;
+  height: 40px;
+  margin-left: 10px;
+}
+.filebox input[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+} */

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class='text-center my-5'>게시글</h1>
+  <a class="btn btn-primary w-100 my-3" href="{% url 'articles:create' %}" role="button">글 작성</a>
+
+  <section class='row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3 my-5'>
+    {% for article in articles %}
+      <a href="{% url 'articles:detail' article.pk %}" class=' text-decoration-none text-dark'>
+        <article class='col'>
+          <div class="card index-card w-100" style="width: 18rem;">
+            {% if article.thumbnail %}
+              <img src="{{ article.thumbnail.url }}" class="card-img-top" alt="{{ article.thumbnail }}">
+            {% endif %}
+            <div class="card-body">
+              <h4 class="card-title fw-bold">{{ article.title }}</h4>
+              <p class="card-text text-muted">{{ article.content }}</p>
+            </div>
+          </div>
+        </article>
+      </a>
+    {% endfor %}
+  </section>
+{% endblock content %}>
