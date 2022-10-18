@@ -1,0 +1,47 @@
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/articles.css' %}">
+    <link rel="stylesheet" href="{% static 'BMJUA.woff' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <title>실습13</title>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar bg-light">
+        <div class="container-fluid container-lg">
+          <div class='d-flex justify-content-between'>
+            <a class="navbar-brand" href="{% url 'articles:index' %}">Wanted</a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'articles:index' %}">커뮤니티</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">로그인</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class='container-fluid container-lg my-3'>
+      {% block content %}{% endblock content %}
+    </main>
+  </body>
+
+</html>

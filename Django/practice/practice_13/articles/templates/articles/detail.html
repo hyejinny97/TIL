@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <section class='py-3 px-5'>
+    {% comment %} 메시지 {% endcomment %}
+    {% if messages %}
+    <ul class="messages p-0" style='list-style-type:none;'>
+        {% for message in messages %}
+          {% if message.tags == 'info' %}
+            <li class="alert alert-primary">{{ message }}</li>
+          {% elif message.tags == 'success' %}
+            <li class="alert alert-success">{{ message }}</li>
+          {% elif message.tags == 'error' %}
+            <li class="alert alert-danger">{{ message }}</li>
+          {% endif %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% comment %} 게시글 {% endcomment %}
+    <section class="border-bottom p-3 d-flex justify-content-between">
+      <div>
+        <h3 class='text-break'>{{ article.title }}</h3>
+        <p class='text-muted m-0'>{{ article.updated_at|date:'Y.m.d G:i' }}</p>
+      </div>
+      <div class='row row-cols-2 align-items-end g-1' style='min-width:130px;'>
+        <div class='col'>
+          <a href="{% url 'articles:article_update' article.pk %}" class="btn btn-outline-success">수정</a>
+        </div>
+        <form action="{% url 'articles:article_delete' article.pk %}" method='POST' class='col m-0'>
+          {% csrf_token %}
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            삭제
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">게시물 삭제</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>게시물을 삭제하면 관련 댓글도 모두 지워집니다.</p>
+                  <p>해당 게시물을 정말로 삭제하시겠습니까?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                  <input class="btn btn-danger" type="submit" value="삭제">
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <section class='border-bottom p-3'>
+      <p class='text-break' style="white-space:pre-wrap;">{{ article.content }}</p>
+      {% if article.image %}
+        <img src="{{ article.image.url }}" alt="{{ article.image }}" style='max-height:300px;'>
+      {% endif %}
+      <div class='mt-4'>
+        <span><i class="bi bi-chat"></i> {{ article.comment_set.all.count }}</span>
+      </div>
+    </section>
+    {% comment %} 댓글 {% endcomment %}
+    <section class='p-3'>
+      <form action="{% url 'articles:comment_create' article.pk %}" method='POST' class='row g-2'>
+        {% csrf_token %}
+        <div class='col-10'>
+          {{ comment_form.content|add_class:'form-control'|append_attr:'placeholder:댓글 남기기' }}
+        </div>
+        <div class='col-2'>
+          <input class="btn btn-primary w-100 rounded-pill" type="submit" value="등록">
+        </div>
+      </form>
+      {% for comment in article.comment_set.all %}
+      <article class="row border-bottom py-3">
+        <div class='col-10'>
+          <p class='text-muted'>{{ comment.updated_at|date:'Y.m.d G:i' }}</p>
+          <p class='m-0'>{{ comment.content }}</p>
+        </div>
+        <div class='col-2'>
+          <form action="{% url 'articles:comment_delete' article.pk comment.pk %}" method='POST' class='col m-0'>
+            {% csrf_token %}
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#commentModal">
+              삭제
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">댓글 삭제</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    해당 댓글을 정말로 삭제하시겠습니까?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                    <input class="btn btn-danger" type="submit" value="삭제">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </article>
+      {% empty %}
+      <article class='border d-flex flex-column justify-content-center align-items-center' style='height:200px;'>
+        <p><i class="bi bi-chat-square-text-fill"></i></p>
+        <p class='text-muted'>첫 댓글을 남겨주세요.</p>
+      </article>
+      {% endfor %}
+    </section>
+  </section>
+
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class='text-center my-3'>커뮤니티</h1>
+  <section class='py-3 px-5'>
+    <a class="btn btn-primary index-create-btn" href="{% url 'articles:article_create' %}" role="button">
+      <i class="bi bi-pen"></i>
+    </a>
+    {% for article in articles %}
+      <a href="{% url 'articles:detail' article.pk %}" class='text-decoration-none text-dark'>
+        <article class="index-article d-flex justify-content-between border-bottom p-2">
+          <div class='me-2'>
+            <p class='text-muted m-1'>{{ article.updated_at|date:'Y.m.d G:i' }}</p>
+            <h4 class='text-break fw-border'>{{ article.title|truncatechars:30 }}</h4>
+            <p class='text-break text-muted'>{{ article.content|truncatechars:60 }}</p>
+          </div>
+          {% if article.thumbnail %}
+            <div>
+              <img class='rounded-4' src="{{ article.thumbnail.url }}" alt="{{ article.thumbnail }}">
+            </div>
+          {% endif %}
+        </article>
+      </a>
+    {% endfor %}
+  </section>
+{% endblock content %}
