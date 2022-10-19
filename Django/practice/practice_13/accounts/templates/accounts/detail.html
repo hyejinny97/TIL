@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class='text-center my-3'>프로필</h1>
+  {% comment %} 메시지 {% endcomment %}
+  {% if messages %}
+  <ul class="messages py-3 px-5" style='list-style-type:none;'>
+      {% for message in messages %}
+        {% if message.tags == 'info' %}
+          <li class="alert alert-primary">{{ message }}</li>
+        {% elif message.tags == 'success' %}
+          <li class="alert alert-success">{{ message }}</li>
+        {% elif message.tags == 'error' %}
+          <li class="alert alert-danger">{{ message }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <section class='py-3 px-5 detail-container'>
+    <article class='detail-user-profile1 d-flex mb-5'>
+      <div class='me-3'>
+        <i class="bi bi-person-circle detail-person-circle"></i>
+      </div>
+      <div class='p-2' style='width:50vw;'>
+        <table class="table table-borderless text-center">
+          <tr>
+            <th>아이디</th>
+            <td>{{ user.username }}</td>
+          </tr>
+          <tr>
+            <th>이름</th>
+            <td>{{ user.full_name }}</td>
+          </tr>
+          <tr>
+            <th>이메일</th>
+            <td>{{ user.email }}</td>
+          </tr>
+        </table>
+        <a class="btn btn-outline-secondary float-end" href="{% url 'accounts:update' %}" role="button">회원 정보 수정</a>
+      </div>
+    </article>
+    <article class='detail-user-profile2 d-flex flex-column align-items-center'>
+      <div class='mb-3'>
+        <i class="bi bi-person-circle detail-person-circle"></i>
+      </div>
+      <div class='p-2 w-100'>
+        <table class="table table-borderless text-center">
+          <tr>
+            <th>아이디</th>
+            <td>{{ user.username }}</td>
+          </tr>
+          <tr>
+            <th>이름</th>
+            <td>{{ user.full_name }}</td>
+          </tr>
+          <tr>
+            <th>이메일</th>
+            <td>{{ user.email }}</td>
+          </tr>
+        </table>
+        <a class="btn btn-outline-secondary w-100" href="{% url 'accounts:update' %}" role="button">회원 정보 수정</a>
+      </div>
+    </article>
+    <article>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="true">작성글</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">작성댓글</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+          <p class='text-center mt-3'>총 <span class='text-primary fs-3'>{{ user.article_set.all.count }}</span>개의 글을 생성습니다.</p>
+          {% for article in user.article_set.all %}
+            <a href="{% url 'articles:detail' article.pk %}" class='text-decoration-none text-dark'>
+              <article class="index-article d-flex justify-content-between border-bottom p-2">
+                <div class='me-2 d-flex'>
+                  <div class='p-2'>
+                    <i class="bi bi-person-circle index-person-circle"></i>
+                  </div>
+                  <div>
+                    <h5 class='m-0 fw-lighter'>{{ article.writer.username }}</h5>
+                    <p class='index-updated-time'>{{ article.updated_at|date:'Y.m.d G:i' }}</p>
+                    <h4 class='text-break fw-border'>{{ article.title|truncatechars:30 }}</h4>
+                    <p class='text-break text-muted'>{{ article.content|truncatechars:60 }}</p>
+                    <div class='mt-4'>
+                      <span><i class="bi bi-chat"></i> {{ article.comment_set.all.count }}</span>
+                    </div>
+                  </div>
+                </div>
+                {% if article.thumbnail %}
+                  <div>
+                    <img class='rounded-4' src="{{ article.thumbnail.url }}" alt="{{ article.thumbnail }}">
+                  </div>
+                {% endif %}
+              </article>
+            </a>
+          {% endfor %}
+        </div>
+        <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+          <p class='text-center mt-3'>총 <span class='text-primary fs-3'>{{ user.comment_set.all.count }}</span>개의 댓글을 달았습니다.</p>
+          {% for comment in user.comment_set.all %}
+            <a href="{% url 'articles:detail' comment.article.pk %}" class='text-decoration-none text-dark'>
+              <article class="index-article d-flex justify-content-between border-bottom p-2">
+                <div class='me-2 d-flex'>
+                  <div class='p-2'>
+                    <i class="bi bi-person-circle index-person-circle"></i>
+                  </div>
+                  <div>
+                    <h5 class='m-0 fw-lighter'>{{ comment.article.writer.username }}</h5>
+                    <p class='index-updated-time'>{{ comment.article.updated_at|date:'Y.m.d G:i' }}</p>
+                    <h4 class='text-break fw-border'>{{ comment.article.title|truncatechars:30 }}</h4>
+                    <p class='text-break text-muted'>{{ comment.article.content|truncatechars:60 }}</p>
+                    <div class='mt-4'>
+                      <span><i class="bi bi-chat"></i> {{ comment.article.comment_set.all.count }}</span>
+                    </div>
+                  </div>
+                </div>
+                {% if comment.article.thumbnail %}
+                  <div>
+                    <img class='rounded-4' src="{{ comment.article.thumbnail.url }}" alt="{{ comment.article.thumbnail }}">
+                  </div>
+                {% endif %}
+              </article>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </article>
+  </section>
+{% endblock content %}

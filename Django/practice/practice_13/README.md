@@ -10,7 +10,11 @@
 
 ## 목표
 
-- 게시글과 댓글이 1:N 관계로 매핑된 게시글에 댓글을 작성할 수 있는 서비스를 개발합니다.
+- ModelForm을 활용한 CRUD 기능 구현
+- Django Model 1 : N 관계에 대해 이해하고, 코드 상에서 두 모델 매핑하기
+- Django Auth를 활용한 회원 관리 기능 개발에 대한 흐름 파악 및 개발
+- 로그인 상태에 따라 컴포넌트 출력 및 기능 제한
+-  [django-markdown-editor](https://github.com/agusmakmun/django-markdown-editor) 활용
 
 ## 준비 사항
 
@@ -321,7 +325,13 @@ $ python manage.py startapp articles
   
    - `POST` `http://127.0.0.1:8000/accounts/logout/`
 
+**articles 앱**
+
+- 로그인한 사용자만 데이터를 생성할 수 있습니다.
+
 > 화면 Template - `T`
+
+**accounts 앱**
 
 1. 네비게이션바, Bootstrap `<nav>`
   
@@ -356,6 +366,16 @@ $ python manage.py startapp articles
   
    - `GET` `http://127.0.0.1:8000/accounts/update/`
 
+**articles 앱**
+
+1. 게시글 정보 페이지
+
+   - 게시글 작성자(username) 클릭 시 해당 회원 조회 페이지로 이동
+
+2. 게시글 작성 페이지
+
+   - 로그인 한 사용자만 글 작성 페이지로 진입할 수 있습니다.  
+
 > 참고 사이트
 - [원티드 커뮤니티](https://www.wanted.co.kr/community)
 
@@ -367,6 +387,10 @@ $ python manage.py startapp articles
 
 ![](gif/django_practice_13_comment_animation.gif)
 
-> 추가) 사용자(user)의 프로필 페이지에 사용자가 쓴 글/댓글 목록
+> 추가) 사용자(user) 모델/프로필 페이지 생성, 게시판과 댓글과 각각 1:N 관계로 매핑
+
+![](gif/django_practice_13_user_comment_animation.gif)
+
+> 추가) django-markdown-editor 플러그인을 활용해, 게시글 작성폼에 textarea 태그 대신 Django Markdown Editor 넣기
 
 ![]()

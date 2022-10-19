@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+  <h1 class='text-center my-3'>회원 가입</h1>
+  <section class='py-3 px-5'>
+    <div class="card shadow p-3 mb-5 bg-body rounded">
+      <div class="card-body">
+        <form action="{% url 'accounts:signup' %}" method='POST'>
+          {% csrf_token %}
+          {% bootstrap_form signup_form %}
+          <input class="btn btn-primary float-end" type="submit" value="가입">
+        </form>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

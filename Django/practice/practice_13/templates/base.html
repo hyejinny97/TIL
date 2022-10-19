@@ -11,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/articles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/accounts.css' %}">
     <link rel="stylesheet" href="{% static 'BMJUA.woff' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <title>실습13</title>
@@ -29,11 +30,34 @@
             </ul>
           </div>
           <div>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">로그인</a>
-              </li>
-            </ul>
+            {% if request.user.is_authenticated %}
+              <ul class="navbar-nav flex-row me-auto mb-2 mb-lg-0">
+                <li class="nav-item me-3 d-flex align-items-center">
+                  <span class='me-1'>안녕하세요,
+                    {{ request.user.username }}님</span>
+                  <a class="nav-link active" aria-current="page" href="{% url 'accounts:detail' request.user.pk %}">
+                    <i class="bi bi-person-circle navbar-person-circle" title='프로필'></i>
+                  </a>
+                </li>
+                <li class="nav-item me-2">
+                  <a class="nav-link active" aria-current="page" href="{% url 'accounts:logout' %}">로그아웃</a>
+                </li>
+                {% if request.user.is_superuser %}
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'accounts:index' %}">회원목록</a>
+                  </li>
+                {% endif %}
+              </ul>
+            {% else %}
+              <ul class="navbar-nav flex-row me-auto mb-2 mb-lg-0">
+                <li class="nav-item me-2">
+                  <a class="nav-link active" aria-current="page" href="{% url 'accounts:login' %}">로그인</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'accounts:signup' %}">회원가입</a>
+                </li>
+              </ul>
+            {% endif %}
           </div>
         </div>
       </nav>
@@ -42,6 +66,7 @@
     <main class='container-fluid container-lg my-3'>
       {% block content %}{% endblock content %}
     </main>
+    <script src="{% static 'js/articles.js' %}"></script>
   </body>
 
 </html>

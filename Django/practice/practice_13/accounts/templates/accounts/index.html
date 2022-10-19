@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class='text-center my-3'>회원 목록</h1>
+  <section class='py-3 px-5'>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">pk</th>
+          <th scope="col">아이디</th>
+          <th scope="col">이름</th>
+          <th scope="col">이메일</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+          <tr>
+            <th scope="row">{{ user.pk }}</th>
+            <td>
+              <a href="{% url 'accounts:detail' user.pk %}">{{ user.username }}</a>
+            </td>
+            <td>{{ user.full_name }}</td>
+            <td>{{ user.email }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+{% endblock content %}

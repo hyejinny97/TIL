@@ -3,6 +3,8 @@
 - [math 모듈](#-math-모듈)
 - [random 모듈](#-random-모듈)
 - [datetime 모듈](#-datetime-모듈)
+- [sys 모듈](#-sys-모듈)
+- [os 모듈]()
 
 
 
@@ -162,4 +164,130 @@
 
    print(f'{now.year}년 {now.month}월 {now.day}일 {now.hour}시 {now.minute}분 {now.second}초')
    # 2022년 9월 11일 14시 22분 33초
+   ```
+
+
+
+
+# ✔ sys 모듈
+- 시스템과 관련된 정보를 가지고 있는 모듈
+
+1. `argv`
+   
+   - 명령 매개변수를 출력
+
+   ```bash
+   $ python module_sys.py 10 20 30
+   ```
+
+   ```python
+   import sys
+
+   print(sys.argv)
+   # ['module_sys.py', '10', '20', '30']
+   ```
+
+2. `getwindowsversion()`
+   
+   - 윈도우의 버전을 반환
+
+   ```python 
+   import sys
+
+   print(sys.getwindowsversion)
+   # <built-in function getwindowsversion>
+   ```
+
+3. `copyright`
+
+   - 파이썬의 저작권 반환
+
+   ```python
+   import sys
+
+   print(sys.copyright)
+   # Copyright (c) 2001-2020 Python Software Foundation.
+   # All Rights Reserved. ...
+   ```
+
+
+
+# ✔ os 모듈
+- 운영체제와 관련된 기능을 가진 모듈
+
+1. `getcwd()`
+   
+   - 현재 폴더 경로를 반환
+   
+   ```python
+   import os
+
+   print(os.getcwd())
+   # C:\Users\SAMSUNG\Desktop\GitHub\TIL
+   ```
+
+2. `listdir()`
+   
+   - 현재 폴더 내부의 요소를 반환
+
+   ```python
+   import os
+
+   print(os.listdir())
+   # ['.git', '.gitignore', 'Algorithm', 'CSS', 'CS_base', 'Database', 'Django', 'Git', 'GitHub', 'HTML', 'JavaScript', 'Linux', 'Markdown', 'Python', 'React', 'README.md', 'Web_Front_end']
+   ```
+
+3. `mkdir(새로 만들 폴더명)`
+
+   - 새 폴더를 만듦
+
+   ```python
+   import os
+
+   print(os.mkdir('ex_01'))
+   ```
+
+4. `rmdir(제거할 폴더명)`
+
+   - 폴더를 삭제
+   - 폴더가 비어있을 때만 제거 가능
+
+   ```python
+   import os
+
+   print(os.rmdir('ex_01'))
+   ```
+
+5. `rename(기존 파일명, 새로운 파일명)`
+   
+   - 파일 이름을 변경
+
+   ```python
+   import os
+
+   print(os.rename('original.txt', 'new.txt'))
+   ```
+
+6. `remove(파일명)` or `unlink(파일명)`
+
+   - 두 함수 모두 파일을 제거해줌
+
+   ```python
+   import os
+
+   print(os.remove('new.txt'))
+   ```
+
+7. `system(명령어)`
+
+   - 파이썬에서 시스템 명령어를 실행해줌
+   - 명령 프롬프트에서 명령어를 그냥 입력했을 때와 동일한 결과
+
+   ```python
+   import os
+
+   print(os.system('dir'))
+   #  C 드라이브의 볼륨에는 이름이 없습니다.
+   # 볼륨 일련 번호: 6480-8207
+   # C:\Users\SAMSUNG\Desktop\GitHub\TIL 디렉터리 ...
    ```

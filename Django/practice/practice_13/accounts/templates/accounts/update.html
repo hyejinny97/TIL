@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+  <h1 class='text-center my-3'>회원 정보 수정</h1>
+  <section class='py-3 px-5'>
+    <div class="card shadow p-3 mb-5 bg-body rounded">
+      <div class="card-body">
+        <form action="{% url 'accounts:update' %}" method='POST'>
+          {% csrf_token %}
+          {% bootstrap_form user_form %}
+          <div class='row row-cols-2 g-2'>
+            <div class='col'>
+              <input class="btn btn-outline-success w-100" type="submit" value="수정">
+            </div>
+            <div class='col'>
+              <a class="col btn btn-outline-primary w-100" href="{% url 'accounts:change_password' %}" role="button">비밀번호 변경</a>
+            </div>
+          </div>
+        </form>
+        <form action="{% url 'accounts:delete' %}" method='POST'>
+          {% csrf_token %}
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            회원 탈퇴
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">계정 삭제</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>계정을 삭제하면 게시글, 댓글 모두 사라집니다.</p>
+                  <p>정말 회원 계정을 삭제하시겠습니까?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <input type="submit" class="btn btn-danger" value='탈퇴'>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

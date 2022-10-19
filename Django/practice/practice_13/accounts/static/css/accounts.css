@@ -1,0 +1,21 @@
+/* accounts/detail.html */
+@media screen and (width < 768px) {
+  .detail-user-profile2 {
+    display: none !important;
+  }
+}
+@media screen and (width >= 768px) {
+  .detail-user-profile1 {
+    display: none !important;
+  }
+  .detail-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr 2fr);
+    column-gap: 1.5rem;
+  }
+  .detail-user-profile2 {
+    border: 1px solid rgb(222, 226, 230);
+    padding-top: 1rem;
+    height: 370px;
+  }
+}

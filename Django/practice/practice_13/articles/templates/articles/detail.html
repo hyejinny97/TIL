@@ -14,6 +14,8 @@
             <li class="alert alert-success">{{ message }}</li>
           {% elif message.tags == 'error' %}
             <li class="alert alert-danger">{{ message }}</li>
+          {% elif message.tags == 'warning' %}
+            <li class="alert alert-warning">{{ message }}</li>
           {% endif %}
         {% endfor %}
     </ul>
@@ -22,9 +24,16 @@
     <section class="border-bottom p-3 d-flex justify-content-between">
       <div>
         <h3 class='text-break'>{{ article.title }}</h3>
-        <p class='text-muted m-0'>{{ article.updated_at|date:'Y.m.d G:i' }}</p>
+        <div class='d-flex'>
+          <i class="bi bi-person-circle articles-detail-person-circle"></i>
+          <div class='ms-2'>
+            <h5 class='m-0 fw-lighter'>{{ article.writer.username }}</h5>
+            <p class='articles-detail-updated-time m-0'>{{ article.updated_at|date:'Y.m.d G:i' }}</p>
+          </div>
+        </div>
       </div>
       <div class='row row-cols-2 align-items-end g-1' style='min-width:130px;'>
+        {% if request.user == article.writer %}
         <div class='col'>
           <a href="{% url 'articles:article_update' article.pk %}" class="btn btn-outline-success">수정</a>
         </div>
@@ -54,6 +63,7 @@
             </div>
           </div>
         </form>
+        {% endif %}
       </div>
     </section>
     <section class='border-bottom p-3'>
@@ -69,6 +79,9 @@
     <section class='p-3'>
       <form action="{% url 'articles:comment_create' article.pk %}" method='POST' class='row g-2'>
         {% csrf_token %}
+        {% if request.user.is_anonymous %}
+        <input type="hidden" value={{ request.user.is_anonymous }} id='is_anonymous'>
+        {% endif %}
         <div class='col-10'>
           {{ comment_form.content|add_class:'form-control'|append_attr:'placeholder:댓글 남기기' }}
         </div>
@@ -78,16 +91,21 @@
       </form>
       {% for comment in article.comment_set.all %}
       <article class="row border-bottom py-3">
-        <div class='col-10'>
-          <p class='text-muted'>{{ comment.updated_at|date:'Y.m.d G:i' }}</p>
-          <p class='m-0'>{{ comment.content }}</p>
+        <div class='col-10 d-flex'>
+          <i class="bi bi-person-circle articles-detail-person-circle"></i>
+          <div class='ms-2'>
+            <h5 class='m-0 fw-lighter'>{{ comment.writer.username }}</h5>
+            <p class='articles-detail-updated-time m-0'>{{ comment.updated_at|date:'Y.m.d G:i' }}</p>
+            <p class='m-0'>{{ comment.content }}</p>
+          </div>
         </div>
         <div class='col-2'>
+          {% if request.user == comment.writer %}
           <form action="{% url 'articles:comment_delete' article.pk comment.pk %}" method='POST' class='col m-0'>
             {% csrf_token %}
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#commentModal">
-              삭제
+              <i class="bi bi-trash3-fill"></i>
             </button>
             <!-- Modal -->
             <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
@@ -108,6 +126,7 @@
               </div>
             </div>
           </form>
+          {% endif %}
         </div>
       </article>
       {% empty %}

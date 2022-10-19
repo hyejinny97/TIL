@@ -2,17 +2,44 @@
 
 {% block content %}
   <h1 class='text-center my-3'>커뮤니티</h1>
+  {% comment %} 메시지 {% endcomment %}
+  {% if messages %}
+  <ul class="messages py-3 px-5" style='list-style-type:none;'>
+      {% for message in messages %}
+        {% if message.tags == 'info' %}
+          <li class="alert alert-primary">{{ message }}</li>
+        {% elif message.tags == 'success' %}
+          <li class="alert alert-success">{{ message }}</li>
+        {% elif message.tags == 'error' %}
+          <li class="alert alert-danger">{{ message }}</li>
+        {% elif message.tags == 'warning' %}
+          <li class="alert alert-warning">{{ message }}</li>
+        {% endif %}
+      {% endfor %}
+  </ul>
+  {% endif %}
   <section class='py-3 px-5'>
+    {% if request.user.is_authenticated %}
     <a class="btn btn-primary index-create-btn" href="{% url 'articles:article_create' %}" role="button">
       <i class="bi bi-pen"></i>
     </a>
+    {% endif %}
     {% for article in articles %}
       <a href="{% url 'articles:detail' article.pk %}" class='text-decoration-none text-dark'>
         <article class="index-article d-flex justify-content-between border-bottom p-2">
-          <div class='me-2'>
-            <p class='text-muted m-1'>{{ article.updated_at|date:'Y.m.d G:i' }}</p>
-            <h4 class='text-break fw-border'>{{ article.title|truncatechars:30 }}</h4>
-            <p class='text-break text-muted'>{{ article.content|truncatechars:60 }}</p>
+          <div class='me-2 d-flex'>
+            <div class='p-2'>
+              <i class="bi bi-person-circle index-person-circle"></i>
+            </div>
+            <div>
+              <h5 class='m-0 fw-lighter'>{{ article.writer.username }}</h5>
+              <p class='index-updated-time'>{{ article.updated_at|date:'Y.m.d G:i' }}</p>
+              <h4 class='text-break fw-border'>{{ article.title|truncatechars:30 }}</h4>
+              <p class='text-break text-muted'>{{ article.content|truncatechars:60 }}</p>
+              <div class='mt-4'>
+                <span><i class="bi bi-chat"></i> {{ article.comment_set.all.count }}</span>
+              </div>
+            </div>
           </div>
           {% if article.thumbnail %}
             <div>

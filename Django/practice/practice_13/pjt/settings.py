@@ -46,6 +46,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
     'articles',
     'django_bootstrap5',
     'imagekit',
@@ -138,6 +139,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Media Files
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media_/'
 
@@ -145,3 +147,6 @@ MEDIA_URL = '/media_/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Auth User Model
+AUTH_USER_MODEL = 'accounts.User'

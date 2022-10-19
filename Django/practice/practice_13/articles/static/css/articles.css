@@ -20,6 +20,14 @@
   font-size: 1.5rem;
   border-radius: 50%;
 }
+.index-person-circle {
+  color:gray;
+  font-size: 2rem;
+}
+.index-updated-time {
+  font-size: 0.7rem;
+  color: rgb(186, 187, 187);
+}
 
 /* articles/detail.html */
 .bi-chat {
@@ -28,4 +36,25 @@
 .bi-chat-square-text-fill {
   font-size: 2.5rem;
   color: rgb(39, 106, 251);
+}
+.articles-detail-person-circle {
+  color:gray;
+  font-size: 2rem;
+}
+.articles-detail-updated-time {
+  font-size: 0.7rem;
+  color: rgb(186, 187, 187);
+}
+
+/* base.html */
+.navbar-person-circle {
+  color:gray;
+  font-size: 1.5rem;
+}
+.navbar-person-circle:hover {
+  color:rgb(94, 93, 93);
+}
+.detail-person-circle {
+  font-size: 10rem;
+  color: rgb(197, 198, 198);
 }
