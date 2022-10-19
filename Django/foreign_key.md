@@ -516,3 +516,120 @@
     <p>댓글이 없어요..</p>
   {% endfor %}
   ```
+
+
+
+
+
+# ✔ 1:N 관계 (User - Comment)
+
+> 모델 관계 설정
+- User(1) - Comment(N)
+- 0개 이상의 댓글은 1개의 회원에 의해 작성 될 수 있음
+
+> Comment 모델 재정의
+- Comment 모델에 User 모델을 참조하는 외래 키 작성
+
+  ```python
+  # articles/models.py
+
+  class Comment(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    ...
+  ```
+
+- Migration 진행 
+  - 기본적으로 모든 컬럼은 NOT NULL 제약조건이 있기 때문에 데이터가 없이는 새로 추가되는 외래 키 필드 user_id가 생성되지 않음
+  - 따라서 기본값을 어떻게 작성할 것인지 선택해야 함
+
+> 댓글 생성 - `CREATE`
+
+- 인증된 회원의 댓글 작성 구현
+  - 따라서 작성하기 전 로그인을 먼저 진행한 상태로 진행해야함
+
+  ```python
+  # articles/views.py
+
+  @login_required
+  def comments_create(request, pk):
+    ...
+  ```
+
+- 댓글 작성 시 작성자 정보가 함께 저장될 수 있도록 save의 `commit` 옵션을 활용
+
+  ```python
+  # articles/views.py
+
+  def comments_create(request, pk):
+    article = Article.objects.get(pk=pk)
+    comment_form = CommentForm(request.POST)
+    if comment_form.is_valid():
+      comment = comment_form.save(commit=False)
+      comment.article = article
+      comment.user = request.user
+      comment.save()
+    
+    return redirect('articles:detail', article.pk)
+  ```
+
+> 댓글 목록 - `READ`
+
+- detail 템플릿에서 각 게시글의 작성자 출력
+
+  ```django
+  <!-- articles/detail.html -->
+
+  {% extends 'base.html' %}
+
+  {% block content %}
+    ...
+    <h4>댓글 목록</h4>
+    ...
+    <ul>
+      {% for comment in comments %}
+      <li>
+        {{ comment.user }} - {{ comment.content }}
+        <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST">
+          {% csrf_token %}
+          <input type="submit" value="DELETE">
+        </form>
+    ...
+  ```
+
+> 댓글 삭제 - `DELETE`
+
+- 이제 댓글에는 작성자 정보가 함께 들어있기 때문에 현재 삭제를 요청하려는 사람과 댓글을 작성한 사람을 비교하여 본인의 댓글만 삭제 할 수 있도록 함
+
+  ```python
+  # articles/views.py
+
+  def comments_delete(request, article_pk, comment_pk):
+    comment = Comment.objects.get(pk=comment_pk)
+    if request.user == comment.user:
+      comment.delete()
+    
+    return redirect('articles:detail', article_pk)
+  ```
+
+- 추가로 해당 댓글의 작성자가 아니라면, 삭제 버튼을 출력하지 않도록 함
+
+  ```django
+  <!-- articles/detail.html -->
+
+  {% extends 'base.html' %}
+
+  {% block content %}
+    ...
+    <ul>
+      {% for comment in comments %}
+      <li>
+        {{ comment.user }} - {{ comment.content }}
+        {% if request.user == comment.user %}
+          <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="DELETE">
+          </form>
+        {% endif %}
+        ...
+  ```

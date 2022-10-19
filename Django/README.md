@@ -103,6 +103,7 @@
     - 댓글 삭제 - DELETE
     - 댓글 개수 출력
     - 댓글이 없는 경우 대체 컨텐츠 출력
+  - 1:N 관계 (User - Comment)
 
 ## 🛠 실습
 - [Django 요청-응답 실습(2022.09.22)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_01)
@@ -121,7 +122,7 @@
 - [Django Auth를 활용한 회원 정보 수정 및 탈퇴 서비스 개발(2022.10.13)](https://github.com/hyejinny97/practice_11)
 - [영화 리뷰 + 회원 관리 커뮤니티 개발 프로젝트 - Auth(2022.10.14)](https://github.com/hyejinny97/movie-account)
 - [Django Media를 활용한 게시판 서비스 개발(2022.10.17)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_12)
-- [1:N 관계로 매핑된 게시글-댓글 게시판 서비스 개발(2022.10.18)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_13)
+- [1:N 관계로 매핑된 게시글-댓글 게시판 서비스 개발(2022.10.18~19)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_13)
 
 
 
