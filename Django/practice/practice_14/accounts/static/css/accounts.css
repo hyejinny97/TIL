@@ -1,0 +1,12 @@
+/* accounts/detail.html */
+.accounts-detail-rounded-circle {
+  width: 8rem;
+  height: 8rem;
+  background-color: #FF8787;
+  border-radius: 50%;
+}
+.accounts-detail-name {
+  line-height: 8rem;
+  color: white;
+  font-size: 3rem;
+}

@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/accounts.css' %}">
+<link rel="stylesheet" href="{% static 'css/articles.css' %}">
+{% endblock css %}
+
+{% block content %}
+  <h1 class='text-center mt-5 mb-3'>회원 정보</h1>
+  <section class='p-3'>
+    {% comment %} 회원 기본 정보 {% endcomment %}
+    <section class='row gx-3'>
+      <div class='col-3 accounts-detail-rounded-circle'>
+        <p class='text-center accounts-detail-name'>{{ user.first_name }}</p>
+      </div>
+      <div class='col-9 p-3'>
+        <h3 class='m-0 fw-bold'>{{ user.full_name }}</h3>
+        <p class='text-muted'>{{ user.username }}</p>
+      </div>
+    </section>
+    {% comment %} 작성글/작성댓글 목록 {% endcomment %}
+    <section class='mt-3 mb-5'>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">작성글</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">작성댓글</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        {% comment %} 작성글 목록 {% endcomment %}
+        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+          <p class='my-3 text-center'>
+            총 
+          <span class='text-primary fs-3 fw-bold'>
+            {{ user.article_set.all.count }}
+          </span>
+          개의 글을 작성했습니다.</p>
+          {% for article in user.article_set.all %}
+          <article>
+            {% comment %} 작성자 정보 {% endcomment %}
+            <div class='d-flex p-2'>
+              <a class='d-inline-block articles-index-user-rounded-circle text-center' href="{% url 'accounts:detail' article.writer.pk %}">
+                <span class='articles-index-user-name'>{{ article.writer.first_name }}</span>
+              </a>
+              <div class='ms-2'>
+                <p class='m-0'><span class='fw-bold'>{{ article.writer.full_name }}</span>님이 <span class='articles-index-makerlog fw-bold'>메이커로그</span>를 공유했습니다.</p>
+                <p class='m-0 text-muted'>{{ article.updated_at|timesince }}전</p>
+              </div>
+            </div>
+            {% comment %} 게시글 일부분 {% endcomment %}
+            <a href="{% url 'articles:detail' article.pk %}" class='text-dark text-decoration-none'>
+              <div class="articles-index-card p-3 mb-3 bg-body rounded-4">
+                <div class="card-body">
+                  <h3 class='fw-bold text-break'>{{ article.title }}</h3>
+                  <div class='position-relative'>
+                    <p class='articles-index-content text-break'>{{ article.content }}</p>
+                    <div class='content-hidden'></div>
+                    <p class='articles-index-more fw-bold m-0'>더보기</p>
+                  </div>
+                  <div>
+                    <span class="badge rounded-pill articles-index-rounded-pill px-3 py-1"><i class="bi bi-chat-fill articles-index-chat-fill"></i></span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </article>
+          {% endfor %}
+        </div>
+        {% comment %} 작성 댓글 목록 {% endcomment %}
+        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+          <p class='my-3 text-center'>
+            총 
+          <span class='text-primary fs-3 fw-bold'>
+            {{ user.comment_set.all.count }}
+          </span>
+          개의 댓글을 작성했습니다.</p>
+          {% for comment in user.comment_set.all %}
+          <article>
+            {% comment %} 작성자 정보 {% endcomment %}
+            <div class='d-flex p-2'>
+              <a class='d-inline-block articles-index-user-rounded-circle text-center' href="{% url 'accounts:detail' comment.article.writer.pk %}">
+                <span class='articles-index-user-name'>{{ comment.article.writer.first_name }}</span>
+              </a>
+              <div class='ms-2'>
+                <p class='m-0'><span class='fw-bold'>{{ comment.article.writer.full_name }}</span>님이 <span class='articles-index-makerlog fw-bold'>메이커로그</span>를 공유했습니다.</p>
+                <p class='m-0 text-muted'>{{ comment.article.updated_at|timesince }}전</p>
+              </div>
+            </div>
+            {% comment %} 게시글 일부분 {% endcomment %}
+            <a href="{% url 'articles:detail' comment.article.pk %}" class='text-dark text-decoration-none'>
+              <div class="articles-index-card p-3 mb-3 bg-body rounded-4">
+                <div class="card-body">
+                  <h3 class='fw-bold text-break'>{{ comment.article.title }}</h3>
+                  <div class='position-relative'>
+                    <p class='articles-index-content text-break'>{{ comment.article.content }}</p>
+                    <div class='content-hidden'></div>
+                    <p class='articles-index-more fw-bold m-0'>더보기</p>
+                  </div>
+                  <div>
+                    <span class="badge rounded-pill articles-index-rounded-pill px-3 py-1"><i class="bi bi-chat-fill articles-index-chat-fill"></i></span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </section>
+{% endblock content %}

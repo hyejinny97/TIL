@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/articles.css' %}">
+{% endblock css %}
+
+{% block content %}
+  <h1 class='text-center mt-5 mb-3'>개발툴</h1>
+  {% comment %} 글 목록 {% endcomment %}
+  <section class='p-3'>
+    {% comment %} 글 작성 버튼 {% endcomment %}
+    <a class="btn btn-primary float-end mb-2" href="{% url 'articles:article_create' %}" role="button">글 작성</a>
+    {% for article in articles %}
+    <article>
+      {% comment %} 작성자 정보 {% endcomment %}
+      <div class='d-flex p-2'>
+        <a class='d-inline-block articles-index-user-rounded-circle text-center' href="{% url 'accounts:detail' article.writer.pk %}">
+          <span class='articles-index-user-name'>{{ article.writer.first_name }}</span>
+        </a>
+        <div class='ms-2'>
+          <p class='m-0'><span class='fw-bold'>{{ article.writer.full_name }}</span>님이 <span class='articles-index-makerlog fw-bold'>메이커로그</span>를 공유했습니다.</p>
+          <p class='m-0 text-muted'>{{ article.updated_at|timesince }}전</p>
+        </div>
+      </div>
+      {% comment %} 게시글 일부분 {% endcomment %}
+      <a href="{% url 'articles:detail' article.pk %}" class='text-dark text-decoration-none'>
+        <div class="articles-index-card p-3 mb-3 bg-body rounded-4">
+          <div class="card-body">
+            <h3 class='fw-bold text-break'>{{ article.title }}</h3>
+            <div class='position-relative'>
+              <p class='articles-index-content text-break'>{{ article.content }}</p>
+              <div class='content-hidden'></div>
+              <p class='articles-index-more fw-bold m-0'>더보기</p>
+            </div>
+            <div>
+              <span class="badge rounded-pill articles-index-rounded-pill px-3 py-1"><i class="bi bi-chat-fill articles-index-chat-fill"></i><span class='text-dark ms-1'>{{ article.comment_set.all.count }}</span></span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </article>
+    {% endfor %}
+  </section>
+{% endblock content %}

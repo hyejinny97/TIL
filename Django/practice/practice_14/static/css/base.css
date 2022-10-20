@@ -1,0 +1,28 @@
+body {
+  background-color: #f5f5f7;
+}
+
+/* base.html */
+.base-header {
+  position: sticky;
+  top: 0px;
+  opacity: 0.9;
+  z-index: 10;
+}
+.base-navbar {
+  background-color: white;
+  border-bottom: 1px solid #f5f5f7;
+}
+.base-user-rounded-circle {
+  width: 36px;
+  height: 36px;
+  background-color: #FF8787;
+  border-radius: 50%;
+  text-decoration: none;
+}
+.base-user-name {
+  line-height: 36px;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+}

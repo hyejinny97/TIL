@@ -1,0 +1,61 @@
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block css %}{% endblock css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <title>실습14</title>
+  </head>
+
+  <body>
+    <header class='base-header'>
+      <nav class="navbar navbar-expand-lg base-navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'articles:index' %}">DISQUIET</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            {% if request.user.is_authenticated %}
+              <ul class="navbar-nav">
+                <li class="nav-item my-2 my-lg-0 me-2">
+                  <a class='d-inline-block base-user-rounded-circle text-center' href="{% url 'accounts:detail' request.user.pk %}">
+                    <span class=' base-user-name'>{{ user.first_name }}</span>
+                  </a>
+                </li>
+                <li class="nav-item my-2 my-lg-0 me-2">
+                  <a class="btn btn-primary rounded-pill" href="{% url 'accounts:logout' %}">로그아웃</a>
+                </li>
+              </ul>
+            {% else %}
+              <ul class="navbar-nav">
+                <li class="nav-item my-2 my-lg-0 me-2">
+                  <a class="btn btn-light rounded-pill" href="{% url 'accounts:login' %}">로그인</a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-primary rounded-pill" href="{% url 'accounts:signup' %}">회원가입</a>
+                </li>
+              </ul>
+            {% endif %}
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class='container-lg'>
+      {% block content %}{% endblock content %}
+    </main>
+
+    {% block js %}{% endblock js %}
+  </body>
+
+</html>

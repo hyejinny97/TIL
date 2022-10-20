@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+  <h1 class='text-center mt-5 mb-3'>글 작성</h1>
+  <section>
+    <div class="card shadow p-3 mb-3 bg-body rounded">
+      <div class="card-body">
+        <form action="{% url 'articles:article_create' %}" method='POST' enctype='multipart/form-data'>
+          {% csrf_token %}
+          {% bootstrap_form article_form %}
+          <input type="submit" class="btn btn-primary" value='저장'>
+        </form>
+      </div>
+    </div>
+  </section>
+</section>
+{% endblock content %}

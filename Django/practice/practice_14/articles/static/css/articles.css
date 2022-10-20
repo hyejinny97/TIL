@@ -1,0 +1,54 @@
+/* articles/index.html */
+.articles-index-card {
+  height: 450px;
+}
+.articles-index-card:hover {
+  box-shadow: 10px 10px 10px rgba(128, 128, 128, 0.315);
+  transition: 0.5s;
+  transform: translateY(-2px);
+}
+.articles-index-user-rounded-circle {
+  width: 36px;
+  height: 36px;
+  background-color: #FF8787;
+  border-radius: 50%;
+  text-decoration: none;
+}
+.articles-index-user-name {
+  line-height: 36px;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.articles-index-makerlog {
+  color: #3bd480;
+}
+.articles-index-content {
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+.content-hidden {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 350px;
+  background: linear-gradient(transparent 0 200px, white 300px 350px);
+}
+.articles-index-more {
+  position: absolute;
+  bottom: 0px;
+  color: rgb(129, 108, 255);
+}
+.articles-index-rounded-pill {
+  background-color: rgb(246, 246, 248);
+}
+.articles-index-chat-fill {
+  color: rgb(112, 112, 112);
+}
+.articles-detail-comment-content {
+  background-color: rgb(240, 238, 255);
+  border-radius: 2rem;
+}

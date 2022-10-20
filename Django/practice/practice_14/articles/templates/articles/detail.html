@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/articles.css' %}">
+{% endblock css %}
+
+{% block content %}
+  {% comment %} 작성자 정보 {% endcomment %}
+  <div class='d-flex p-2 mt-3'>
+    <a class='d-inline-block articles-index-user-rounded-circle text-center' href="{% url 'accounts:detail' article.writer.pk %}">
+      <span class='articles-index-user-name'>{{ article.writer.first_name }}</span>
+    </a>
+    <div class='ms-2'>
+      <p class='m-0'>
+        <span class='fw-bold'>{{ article.writer.full_name }}</span>님이
+        <span class='articles-index-makerlog fw-bold'>메이커로그</span>를 공유했습니다.</p>
+      <p class='m-0 text-muted'>{{ article.updated_at|timesince }}전</p>
+    </div>
+  </div>
+  {% comment %} 작성글 {% endcomment %}
+  <section class='p-3 mb-5 bg-white rounded-4'>
+    <div class='d-flex justify-content-between align-items-center'>
+      <p class='text-muted m-0'>{{ article.updated_at|date:'o년 n월 j일' }}</p>
+      {% if request.user == article.writer %}
+      <div class='d-flex align-items-start'>
+        <a class="btn btn-outline-success me-1" href="{% url 'articles:article_update' article.pk %}" role="button">수정</a>
+        <form action="{% url 'articles:article_delete' article.pk %}">
+          <input class="btn btn-outline-danger" type="submit" value="삭제">
+        </form>
+      </div>
+      {% endif %}
+    </div>
+    <h3 class='fw-bold text-break'>{{ article.title }}</h3>
+    <hr>
+    <p style='white-space: pre-wrap;' class='text-break'>{{ article.content }}</p>
+    {% if article.image %}
+    <img src="{{ article.image.url }}" alt="" style='max-height:300px; width:100%'>
+    {% endif %}
+    {% comment %} 댓글 폼 {% endcomment %}
+    <p class='mt-5 fw-bolder'>메이커와 소통해요~ 🙋</p>
+    {% if request.user.is_authenticated %}
+    <div class='d-flex'>
+      {% if request.user.is_authenticated %}
+      <a class='d-inline-block articles-index-user-rounded-circle text-center' href="{% url 'accounts:detail' request.user.pk %}">
+        <span class='articles-index-user-name'>{{ request.user.first_name }}</span>
+      </a>
+      {% else %}
+      <div class='articles-index-user-rounded-circle text-center'>
+        <span class='articles-index-user-name'>None</span>
+      </div>
+      {% endif %}
+      <div class='ms-3 w-100'>
+        <form action="{% url 'articles:comment_create' article.pk %}" method='POST' class='row g-2'>
+          {% csrf_token %}
+          <div class='col-10 col-lg-11'>
+            {{ comment_form.content|add_class:'form-control w-100'|append_attr:'placeholder:이 메이커로그가 어떠셨나요?' }}
+          </div>
+          <div class='col-2 col-lg-1'>
+            <input class="btn btn-primary rounded-pill w-100" type="submit" value="작성">
+          </div>
+        </form>
+      </div>
+    </div>
+    {% endif %}
+    <hr>
+    {% comment %} 댓글 {% endcomment %}
+    {% for comment in article.comment_set.all %}
+    <section class='d-flex p-2 mt-3'>
+      <div>
+        <a class='d-inline-block articles-index-user-rounded-circle text-center' href="{% url 'accounts:detail' comment.writer.pk %}">
+          <span class='articles-index-user-name'>{{ comment.writer.first_name }}</span>
+        </a>
+      </div>
+      <div class='ms-2 w-100'>
+        <dir class='d-flex justify-content-between p-0 m-0'>
+          <div>
+            <p class='m-0'>
+              <span class='fw-bold'>{{ comment.writer.full_name }}</span>
+            </p>
+            <p class='m-0 text-muted'>{{ comment.updated_at|timesince }}전</p>
+          </div>
+          {% if request.user == comment.writer %}
+          <form action="{% url 'articles:comment_delete' article.pk comment.pk %}" method='POST'>
+            {% csrf_token %}
+            <input class="btn btn-outline-danger" type="submit" value="삭제">
+          </form>
+          {% endif %}
+        </dir>
+        <p class='articles-detail-comment-content p-2 mt-1'>{{ comment.content }}</p>
+      </div>
+    </section>
+    {% endfor %}
+  </section>
+{% endblock content %}

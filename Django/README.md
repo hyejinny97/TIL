@@ -123,6 +123,7 @@
 - [영화 리뷰 + 회원 관리 커뮤니티 개발 프로젝트 - Auth(2022.10.14)](https://github.com/hyejinny97/movie-account)
 - [Django Media를 활용한 게시판 서비스 개발(2022.10.17)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_12)
 - [1:N 관계로 매핑된 게시글-댓글 게시판 서비스 개발(2022.10.18~19)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_13)
+- [Django Model 1:N 관계를 매핑하여 게시판 서비스 개발(2022.10.20)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_14)
 
 
 
