@@ -35,7 +35,21 @@
               <p class='articles-index-more fw-bold m-0'>더보기</p>
             </div>
             <div>
-              <span class="badge rounded-pill articles-index-rounded-pill px-3 py-1"><i class="bi bi-chat-fill articles-index-chat-fill"></i><span class='text-dark ms-1'>{{ article.comment_set.all.count }}</span></span>
+              {% comment %} 댓글 아이콘 {% endcomment %}
+              <span class="badge rounded-pill articles-index-rounded-pill px-3 py-1">
+                <i class="bi bi-chat-fill articles-index-chat-fill"></i>
+                <span class='text-muted ms-1'>{{ article.comment_set.all.count }}</span>
+              </span>
+              {% comment %} 좋아요 아이콘 {% endcomment %}
+              <span class="badge rounded-pill articles-index-rounded-pill px-3 py-1">
+                {% if request.user in article.like_users.all %}
+                  <i class="fa-solid fa-thumbs-up index-solid-thumbs-up text-primary"></i>
+                  <span class='text-primary'>{{ article.like_users.count }}</span>
+                {% else %}
+                  <i class="fa-regular fa-thumbs-up index-regular-thumbs-up text-muted"></i>
+                  <span class='text-muted'>{{ article.like_users.count }}</span>
+                {% endif %}
+              </span>
             </div>
           </div>
         </div>
@@ -44,3 +58,7 @@
     {% endfor %}
   </section>
 {% endblock content %}
+
+{% block js %}
+<script src="https://kit.fontawesome.com/a261e34fb9.js" crossorigin="anonymous"></script>
+{% endblock js %}

@@ -79,6 +79,18 @@ def article_delete(request, article_pk):
     else:
         return redirect('articles:detail', article.pk)
 
+# 게시글 좋아요
+@login_required
+def article_like(request, article_pk):
+    article = Article.objects.get(pk=article_pk)
+    # 로그인한 사용자가 이미 해당 글에 좋아요를 누른 경우
+    if article.like_users.filter(pk=request.user.pk).exists():
+        article.like_users.remove(request.user)
+    else:
+        article.like_users.add(request.user)
+    
+    return redirect('articles:detail', article_pk)
+
 # 댓글 데이터 생성
 @login_required
 def comment_create(request, article_pk):
@@ -101,3 +113,16 @@ def comment_delete(request, article_pk, comment_pk):
         comment.delete()
     
     return redirect('articles:detail', article.pk)
+
+# 댓글 좋아요
+@login_required
+def comment_like(request, article_pk, comment_pk):
+    article = Article.objects.get(pk=article_pk)
+    comment = Comment.objects.get(pk=comment_pk)
+    # if request.user in comment.like_users.all():
+    if comment.like_users.filter(pk=request.user.pk).exists():
+        comment.like_users.remove(request.user)
+    else:
+        comment.like_users.add(request.user)
+    
+    return redirect('articles:detail', article_pk)

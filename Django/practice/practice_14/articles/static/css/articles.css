@@ -52,3 +52,11 @@
   background-color: rgb(240, 238, 255);
   border-radius: 2rem;
 }
+.index-solid-thumbs-up, .index-regular-thumbs-up {
+  font-size: 1rem;
+}
+
+/* articles/detail.html */
+.detail-solid-thumbs-up, .detail-regular-thumbs-up {
+  font-size: 1.5rem;
+}

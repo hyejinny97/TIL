@@ -1,4 +1,4 @@
-# 장고 실습 14 - Django Model 1:N 관계를 매핑하여 게시판 서비스 개발
+# 장고 실습 14 - Django Model 1:N과 M:N 관계를 매핑하여 게시판 서비스 개발
 
 ## 과정
 
@@ -10,6 +10,8 @@
 
 ## 목표
 
+### 1️⃣ 2022.10.21 실습
+
 - ModelForm을 활용한 CRUD 구현
 - Django Model 1 : N 관계를 매핑하고, View에서 서로 참조해서 사용하기
   - 유저 : 게시글 = 1 : N
@@ -19,6 +21,10 @@
 - 로그인 상태에 따라 컴포넌트 출력 및 기능 제한
 - Django Media 활용 동적파일 다루기
 - GIT COMMIT MESSAGE TEMPLATE 깃 커밋 메세지 템플릿 적용
+
+### 2️⃣ 2022.10.24 실습
+
+- 이전에 진행한 실습에 유저(User)와 게시글(Article)이 N : M 관계로 매핑된 좋아요 기능을 추가로 개발
 
 ## 준비 사항
 
@@ -159,27 +165,26 @@ $ python manage.py startapp accounts
    # 여러 줄의 메시지를 작성할 땐 "-"로 구분 (한 줄은 72자 이내)
    
    ################
-
+   
    # feat : 새로운 기능 추가
-
+   
    # fix : 버그 수정
-
+   
    # docs : 문서 수정
-
+   
    # test : 테스트 코드 추가
-
+   
    # refact : 코드 리팩토링
-
+   
    # style : 코드 의미에 영향을 주지 않는 변경사항
-
+   
    # chore : 빌드 부분 혹은 패키지 매니저 수정사항
-
+   
    ################
    ```
 
-
 3. 명령어 입력
-
+   
    ```bash
    # 커밋 메세지 템플릿 적용 명령어
    $ git config --local commit.template .gitmessage.txt
@@ -203,6 +208,8 @@ $ python manage.py startapp accounts
 
 ## 요구 사항
 
+### 1️⃣ 2022.10.21 실습
+
 > 모델 Model - `M`
 
 1. 모델 이름 : User
@@ -211,14 +218,14 @@ $ python manage.py startapp accounts
 
 2. 모델 이름 : Article
    
-   | 필드 이름      | 역할    | 필드         | 속성                                       |
-   | ---------- | ----- | ---------- | ---------------------------------------- |
-   | title      | 글 제목  | Char       | max_length=80                            |
-   | content    | 글 내용  | Text       |                                          |
+   | 필드 이름      | 역할    | 필드         | 속성                                |
+   | ---------- | ----- | ---------- | --------------------------------- |
+   | title      | 글 제목  | Char       | max_length=80                     |
+   | content    | 글 내용  | Text       |                                   |
    | image      | 글 이미지 | Image      | blank=True, upload_to='articles/' |
-   | created_at | 작성일   | DateTime   | auto_now_add                             |
-   | updated_at | 수정일   | DateTime   | auto_now                                 |
-   | writer     | 작성자   | ForeignKey | on_delete=models.CASCADE                 |
+   | created_at | 작성일   | DateTime   | auto_now_add                      |
+   | updated_at | 수정일   | DateTime   | auto_now                          |
+   | writer     | 작성자   | ForeignKey | on_delete=models.CASCADE          |
 
 3. 모델 이름 : Comment
    
@@ -344,8 +351,57 @@ $ python manage.py startapp accounts
 
 - [디스콰이엇 홈페이지](https://disquiet.io/)
 
+### 2️⃣ 2022.10.24 실습
+
+> 모델 Model - `M`
+
+1. 모델 이름: Article
+   
+   - 아래 필드 추가
+
+   | 필드 이름      | 역할  | 필드         | 속성                           |
+   | ---------- | --- | ---------- | ---------------------------- |
+   | like_users | 좋아요 | ManyToMany | related_name='like_articles' |
+
+2. 모델 이름: Comment
+   
+   - 아래 필드 추가
+   
+   | 필드 이름      | 역할  | 필드         | 속성                           |
+   | ---------- | --- | ---------- | ---------------------------- |
+   | like_users | 좋아요 | ManyToMany | related_name='like_comments' |
+
+> 기능 View - `V`
+
+**게시판 articles**
+
+- 게시글 좋아요 & 좋아요 취소
+  
+  - `POST` `http://127.0.0.1:8000/articles/<int:article_pk>/likes/`
+  - 로그인한 유저만 좋아요를 할 수 있습니다.
+
+> 화면 Template - `T`
+
+- 게시글 정보 페이지
+  
+  - `GET` `http://127.0.0.1:8000/articles/<int:article_pk>/`
+  - 좋아요 버튼
+  - 해당 글이 받은 좋아요 수를 표시합니다.
+  - 로그인 상태와 좋아요 상태에 따라 다르게 표현하고, 기능을 제한합니다.
+  - 각 버튼 예시
+   
+      ![](img/like_btn.png)
+
+> 참고 사이트
+
+- [Wanted 사이트의 커뮤니티 페이지](https://www.wanted.co.kr/community/post/6956)
+
 ## 실습 결과 완성본
 
-> 게시판
+> 1️⃣ 2022.10.21 실습
 
 ![](gif/django_practice_14_animation.gif)
+
+> 2️⃣ 2022.10.24 실습 결과물
+
+![](gif/django_practice_1024_animation.gif)

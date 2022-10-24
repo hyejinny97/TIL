@@ -28,6 +28,12 @@
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">작성댓글</button>
         </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="article-like-tab" data-bs-toggle="tab" data-bs-target="#article-like-tab-pane" type="button" role="tab" aria-controls="article-like-tab-pane" aria-selected="false">좋아요한 글</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="comment-like-tab" data-bs-toggle="tab" data-bs-target="#comment-like-tab-pane" type="button" role="tab" aria-controls="comment-like-tab-pane" aria-selected="false">좋아요한 댓글</button>
+        </li>
       </ul>
       <div class="tab-content" id="myTabContent">
         {% comment %} 작성글 목록 {% endcomment %}
@@ -78,6 +84,84 @@
           </span>
           개의 댓글을 작성했습니다.</p>
           {% for comment in user.comment_set.all %}
+          <article>
+            {% comment %} 작성자 정보 {% endcomment %}
+            <div class='d-flex p-2'>
+              <a class='d-inline-block articles-index-user-rounded-circle text-center' href="{% url 'accounts:detail' comment.article.writer.pk %}">
+                <span class='articles-index-user-name'>{{ comment.article.writer.first_name }}</span>
+              </a>
+              <div class='ms-2'>
+                <p class='m-0'><span class='fw-bold'>{{ comment.article.writer.full_name }}</span>님이 <span class='articles-index-makerlog fw-bold'>메이커로그</span>를 공유했습니다.</p>
+                <p class='m-0 text-muted'>{{ comment.article.updated_at|timesince }}전</p>
+              </div>
+            </div>
+            {% comment %} 게시글 일부분 {% endcomment %}
+            <a href="{% url 'articles:detail' comment.article.pk %}" class='text-dark text-decoration-none'>
+              <div class="articles-index-card p-3 mb-3 bg-body rounded-4">
+                <div class="card-body">
+                  <h3 class='fw-bold text-break'>{{ comment.article.title }}</h3>
+                  <div class='position-relative'>
+                    <p class='articles-index-content text-break'>{{ comment.article.content }}</p>
+                    <div class='content-hidden'></div>
+                    <p class='articles-index-more fw-bold m-0'>더보기</p>
+                  </div>
+                  <div>
+                    <span class="badge rounded-pill articles-index-rounded-pill px-3 py-1"><i class="bi bi-chat-fill articles-index-chat-fill"></i></span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </article>
+          {% endfor %}
+        </div>
+        {% comment %} 좋아요한 글 목록 {% endcomment %}
+        <div class="tab-pane fade" id="article-like-tab-pane" role="tabpanel" aria-labelledby="article-like-tab" tabindex="0">
+          <p class='my-3 text-center'>
+            총 
+          <span class='text-primary fs-3 fw-bold'>
+            {{ user.like_articles.all.count }}
+          </span>
+          개의 글에 좋아요를 눌렀습니다.</p>
+          {% for article in user.like_articles.all %}
+          <article>
+            {% comment %} 작성자 정보 {% endcomment %}
+            <div class='d-flex p-2'>
+              <a class='d-inline-block articles-index-user-rounded-circle text-center' href="{% url 'accounts:detail' article.writer.pk %}">
+                <span class='articles-index-user-name'>{{ article.writer.first_name }}</span>
+              </a>
+              <div class='ms-2'>
+                <p class='m-0'><span class='fw-bold'>{{ article.writer.full_name }}</span>님이 <span class='articles-index-makerlog fw-bold'>메이커로그</span>를 공유했습니다.</p>
+                <p class='m-0 text-muted'>{{ article.updated_at|timesince }}전</p>
+              </div>
+            </div>
+            {% comment %} 게시글 일부분 {% endcomment %}
+            <a href="{% url 'articles:detail' article.pk %}" class='text-dark text-decoration-none'>
+              <div class="articles-index-card p-3 mb-3 bg-body rounded-4">
+                <div class="card-body">
+                  <h3 class='fw-bold text-break'>{{ article.title }}</h3>
+                  <div class='position-relative'>
+                    <p class='articles-index-content text-break'>{{ article.content }}</p>
+                    <div class='content-hidden'></div>
+                    <p class='articles-index-more fw-bold m-0'>더보기</p>
+                  </div>
+                  <div>
+                    <span class="badge rounded-pill articles-index-rounded-pill px-3 py-1"><i class="bi bi-chat-fill articles-index-chat-fill"></i></span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </article>
+          {% endfor %}
+        </div>
+        {% comment %} 좋아요한 댓글 목록 {% endcomment %}
+        <div class="tab-pane fade" id="comment-like-tab-pane" role="tabpanel" aria-labelledby="comment-like-tab" tabindex="0">
+          <p class='my-3 text-center'>
+            총 
+          <span class='text-primary fs-3 fw-bold'>
+            {{ user.like_comments.all.count }}
+          </span>
+          개의 댓글에 좋아요를 눌렀습니다.</p>
+          {% for comment in user.like_comments.all %}
           <article>
             {% comment %} 작성자 정보 {% endcomment %}
             <div class='d-flex p-2'>
