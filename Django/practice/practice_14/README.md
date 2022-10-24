@@ -157,36 +157,36 @@ $ python manage.py startapp accounts
    ################
    # 본문(구체적인 내용)을 아랫줄에 작성
    # 여러 줄의 메시지를 작성할 땐 "-"로 구분 (한 줄은 72자 이내)
-   ```
    
    ################
 
-# feat : 새로운 기능 추가
+   # feat : 새로운 기능 추가
 
-# fix : 버그 수정
+   # fix : 버그 수정
 
-# docs : 문서 수정
+   # docs : 문서 수정
 
-# test : 테스트 코드 추가
+   # test : 테스트 코드 추가
 
-# refact : 코드 리팩토링
+   # refact : 코드 리팩토링
 
-# style : 코드 의미에 영향을 주지 않는 변경사항
+   # style : 코드 의미에 영향을 주지 않는 변경사항
 
-# chore : 빌드 부분 혹은 패키지 매니저 수정사항
+   # chore : 빌드 부분 혹은 패키지 매니저 수정사항
 
    ################
+   ```
 
-```
+
 3. 명령어 입력
 
-```bash
-# 커밋 메세지 템플릿 적용 명령어
-$ git config --local commit.template .gitmessage.txt
-
-# 깃 커밋 메세지를 vscode에서 작성하기 위한 설정
-$ git config --local core.editor "code --wait"
-```
+   ```bash
+   # 커밋 메세지 템플릿 적용 명령어
+   $ git config --local commit.template .gitmessage.txt
+   
+   # 깃 커밋 메세지를 vscode에서 작성하기 위한 설정
+   $ git config --local core.editor "code --wait"
+   ```
 
 4. git add / git commit
    

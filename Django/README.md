@@ -104,6 +104,11 @@
     - 댓글 개수 출력
     - 댓글이 없는 경우 대체 컨텐츠 출력
   - 1:N 관계 (User - Comment)
+- [M:N 관계](https://github.com/hyejinny97/TIL/blob/master/Django/MN_relationship.md)
+  - Many to many relationship
+  - Django ManyToManyField
+  - M:N 관계 (Article - User 간의 LIKE)
+
 
 ## 🛠 실습
 - [Django 요청-응답 실습(2022.09.22)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_01)
@@ -124,6 +129,8 @@
 - [Django Media를 활용한 게시판 서비스 개발(2022.10.17)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_12)
 - [1:N 관계로 매핑된 게시글-댓글 게시판 서비스 개발(2022.10.18~19)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_13)
 - [Django Model 1:N 관계를 매핑하여 게시판 서비스 개발(2022.10.20)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_14)
+- [영화 리뷰 + 댓글 + 회원 관리 커뮤니티 개발 프로젝트(2022.10.21)](https://github.com/hyejinny97/movie-community)
+- [Django Model M:N 관계를 매핑하여 게시판 서비스 개발(2022.10.24)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_14)
 
 
 
