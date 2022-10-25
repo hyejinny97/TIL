@@ -108,6 +108,14 @@
   - Many to many relationship
   - Django ManyToManyField
   - M:N 관계 (Article - User 간의 LIKE)
+    - Like 구현
+    - Profile 구현 
+  - M:N 관계 (User - User 간의 FOLLOW)
+    - follow 구현
+- [View decorators & functions](https://github.com/hyejinny97/TIL/blob/master/Django/decorators.md)
+  - View decorators
+  - Django Shortcut functions
+
 
 
 ## 🛠 실습
@@ -127,11 +135,11 @@
 - [Django Auth를 활용한 회원 정보 수정 및 탈퇴 서비스 개발(2022.10.13)](https://github.com/hyejinny97/practice_11)
 - [영화 리뷰 + 회원 관리 커뮤니티 개발 프로젝트 - Auth(2022.10.14)](https://github.com/hyejinny97/movie-account)
 - [Django Media를 활용한 게시판 서비스 개발(2022.10.17)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_12)
-- [1:N 관계로 매핑된 게시글-댓글 게시판 서비스 개발(2022.10.18~19)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_13)
-- [Django Model 1:N 관계를 매핑하여 게시판 서비스 개발(2022.10.20)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_14)
+- [1:N 관계(article - comment)로 매핑된 게시글-댓글 게시판 서비스 개발(2022.10.18~19)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_13)
+- [Django Model 1:N 관계(user - article/comment)를 매핑하여 게시판 서비스 개발(2022.10.20)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_14)
 - [영화 리뷰 + 댓글 + 회원 관리 커뮤니티 개발 프로젝트(2022.10.21)](https://github.com/hyejinny97/movie-community)
-- [Django Model M:N 관계를 매핑하여 게시판 서비스 개발(2022.10.24)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_14)
-
+- [Django Model M:N 관계(user - article/comment 간의 LIKE)를 매핑하여 게시판 서비스 개발(2022.10.24)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_14)
+- [Django Model M:N 관계(user - user 간의 FOLLOW)로 매핑된 팔로우 기능 개발(2022.10.25)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_14)
 
 
 ## 🔎 참고자료
