@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/accounts.css' %}">
+{% endblock css %}
+
+{% block content %}
+  <h1 class='text-center mt-5 mb-3'>{{ user.full_name }}의 팔로워 목록</h1>
+  <section class='p-3'>
+    {% for follower_user in user.followers.all %}
+    {% comment %} 회원 기본 정보 {% endcomment %}
+    <section class='row accounts-following-card p-3 my-3'>
+      <div class='col-2'>
+        <div class='accounts-following-rounded-circle'>
+          <p class='text-center accounts-following-name'>{{ follower_user.first_name }}</p>
+        </div>
+      </div>
+      <div class='col-10 p-3'>
+        <div class='d-flex justify-content-between align-items-center'>
+          <div>
+            <h5 class='my-0 me-3 fw-bold'>{{ follower_user.full_name }}</h5>
+            <p class='my-0'>{{ follower_user.username }}</p>
+          </div>
+          {% comment %} 팔로우 버튼 {% endcomment %}
+          {% if request.user != follower_user %}
+            {% if follower_user not in request.user.followings.all %}
+            <form action="{% url 'accounts:follow' follower_user.pk %}" method='POST' class='m-0'>
+              {% csrf_token %}
+                <input class="btn btn-primary" type="submit" value="팔로우">
+            </form>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </section>
+    {% empty %}
+      <p class='text-center fw-bold text-primary'>팔로잉하는 사람이 없습니다.</p>
+    {% endfor %}
+  </section>
+{% endblock content %}

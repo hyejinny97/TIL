@@ -10,3 +10,20 @@
   color: white;
   font-size: 3rem;
 }
+
+/* accounts/following.html */
+.accounts-following-rounded-circle {
+  width: 4rem;
+  height: 4rem;
+  background-color: #FF8787;
+  border-radius: 50%;
+}
+.accounts-following-name {
+  line-height: 4rem;
+  color: white;
+  font-size: 1rem;
+}
+.accounts-following-card {
+  background-color: white;
+  border-radius: 1rem;
+}

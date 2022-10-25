@@ -1,4 +1,7 @@
-from django.shortcuts import render, redirect
+from email import message
+from webbrowser import get
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.http import require_POST
 from .forms import CustomUserCreationForm
 from django.contrib import messages
 from django.contrib.auth import get_user_model
@@ -26,7 +29,6 @@ def signup(request):
     return render(request, 'accounts/signup.html', context)
 
 # 회원 조회 페이지(프로필 페이지)
-@login_required
 def detail(request, user_pk):
     user = get_user_model().objects.get(pk=user_pk)
 
@@ -63,3 +65,44 @@ def logout(request):
     auth_logout(request)
     
     return redirect('articles:index')
+
+# 팔로우 / 언팔로우 처리
+@ require_POST
+def follow(request, user_pk):
+    user = get_object_or_404(get_user_model(), pk=user_pk)
+    if request.user.is_authenticated:
+        # 자기 자신이 아닌 사람을 팔로우한 경우
+        if request.user != user:
+            # 이미 user를 팔로우한 경우, 팔로우 취소
+            if request.user.followings.filter(pk=user_pk).exists():
+                request.user.followings.remove(user)
+            # user를 팔로우 안한 경우, 팔로우
+            else:
+                request.user.followings.add(user)
+        # 자기 자신을 팔로우한 경우
+        else:
+            messages.warning(request, '자기 자신은 팔로우할 수 없습니다.')
+        
+        return redirect('accounts:detail', user_pk)
+    else:
+        return redirect('accounts:login')
+
+# 팔로잉 목록 페이지
+def following(request, user_pk):
+    user = get_object_or_404(get_user_model(), pk=user_pk)
+
+    context = {
+        'user': user,
+    }
+
+    return render(request, 'accounts/following.html', context)
+
+# 팔로워 목록 페이지
+def follower(request, user_pk):
+    user = get_object_or_404(get_user_model(), pk=user_pk)
+
+    context = {
+        'user': user,
+    }
+
+    return render(request, 'accounts/follower.html', context)

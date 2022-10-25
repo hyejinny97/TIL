@@ -26,6 +26,10 @@
 
 - 이전에 진행한 실습에 유저(User)와 게시글(Article)이 N : M 관계로 매핑된 좋아요 기능을 추가로 개발
 
+### 3️⃣ 2022.10.25 실습
+
+- 유저(User)와 유저(User)가 N : M 관계로 매핑된 팔로우 기능을 추가로 개발
+
 ## 준비 사항
 
 ### ▶ 환경 설정
@@ -208,7 +212,7 @@ $ python manage.py startapp accounts
 
 ## 요구 사항
 
-### 1️⃣ 2022.10.21 실습
+### 1️⃣ 2022.10.20 실습
 
 > 모델 Model - `M`
 
@@ -358,7 +362,7 @@ $ python manage.py startapp accounts
 1. 모델 이름: Article
    
    - 아래 필드 추가
-
+   
    | 필드 이름      | 역할  | 필드         | 속성                           |
    | ---------- | --- | ---------- | ---------------------------- |
    | like_users | 좋아요 | ManyToMany | related_name='like_articles' |
@@ -385,23 +389,74 @@ $ python manage.py startapp accounts
 - 게시글 정보 페이지
   
   - `GET` `http://127.0.0.1:8000/articles/<int:article_pk>/`
+  
   - 좋아요 버튼
+  
   - 해당 글이 받은 좋아요 수를 표시합니다.
+  
   - 로그인 상태와 좋아요 상태에 따라 다르게 표현하고, 기능을 제한합니다.
+  
   - 각 버튼 예시
-   
+    
       ![](img/like_btn.png)
 
 > 참고 사이트
 
 - [Wanted 사이트의 커뮤니티 페이지](https://www.wanted.co.kr/community/post/6956)
 
+### 3️⃣ 2022.10.25 실습
+
+> 모델 Model - `M`
+
+1. 모델 이름 : User
+   
+   - 아래 필드 추가
+   
+      | 필드 이름      | 역할  | 필드         | 속성                                          |
+      | ---------- | --- | ---------- | ------------------------------------------- |
+      | followings | 팔로우 | ManyToMany | symmetrical=False, related_name='followers' |
+
+> 기능 View - `V`
+
+**회원관리 accounts**
+
+- 회원 팔로우 & 팔로우 취소
+  
+  - `POST` `http://127.0.0.1:8000/accounts/<int:user_pk>/follow/`
+  - 로그인한 유저만 팔로우 기능을 사용할 수 있습니다.
+
+> 화면 Template - `T`
+
+1. 회원 정보 페이지(프로필 페이지)
+
+   - `GET` `http://127.0.0.1:8000/accounts/<int:user_pk>/`
+   - 팔로우 목록: 해당 회원의 팔로우 목록
+   - 팔로잉 목록: 해당 회원의 팔로잉 목록
+   - 스스로를 팔로우 할 수 없습니다.
+   - 다른 회원의 프로필 페이지
+     - 팔로우 버튼
+     - 로그인한 유저만 팔로우 기능을 사용할 수 있습니다.
+     - 로그인 상태 / 팔로우 상태에 따라 다르게 표현 합니다.
+     - 예시 이미지
+  
+         ![](img/follow_btn.png)
+
+> 참고 사이트
+
+- [Instagram](https://www.instagram.com/dlwlrma/)
+
+
+
 ## 실습 결과 완성본
 
-> 1️⃣ 2022.10.21 실습
+> 1️⃣ 2022.10.20 실습 결과물
 
 ![](gif/django_practice_14_animation.gif)
 
 > 2️⃣ 2022.10.24 실습 결과물
 
 ![](gif/django_practice_1024_animation.gif)
+
+> 3️⃣ 2022.10.25 실습 결과물
+
+![](gif/django_practice_1025_animation.gif)

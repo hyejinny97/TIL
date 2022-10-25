@@ -29,7 +29,7 @@
               <ul class="navbar-nav">
                 <li class="nav-item my-2 my-lg-0 me-2">
                   <a class='d-inline-block base-user-rounded-circle text-center' href="{% url 'accounts:detail' request.user.pk %}">
-                    <span class=' base-user-name'>{{ user.first_name }}</span>
+                    <span class=' base-user-name'>{{ request.user.first_name }}</span>
                   </a>
                 </li>
                 <li class="nav-item my-2 my-lg-0 me-2">
