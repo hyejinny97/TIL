@@ -3,14 +3,21 @@
 ## 과정
 
 - [목표](#목표)
+  - [2022.10.20 실습 목표](#--20221020-실습-목표)
+  - [2022.10.24 실습 목표](#--20221024-실습-목표)
+  - [2022.10.25 실습 목표](#--20221025-실습-목표)
+  - [2022.10.26 실습 목표](#--20221026-실습-목표)
 - [준비 사항](#준비-사항)
 - [요구 사항](#요구-사항)
-- [추가 사항](#추가-사항)
+   - [2022.10.20 실습 요구사항](#--20221020-실습-요구사항)
+   - [2022.10.24 실습 요구사항](#--20221024-실습-요구사항)
+   - [2022.10.25 실습 요구사항](#--20221025-실습-요구사항)
+   - [2022.10.26 실습 요구사항](#--20221026-실습-요구사항)
 - [실습 결과 완성본](#실습-결과-완성본)
 
 ## 목표
 
-### 1️⃣ 2022.10.21 실습
+### 1️⃣ 2022.10.20 실습 목표
 
 - ModelForm을 활용한 CRUD 구현
 - Django Model 1 : N 관계를 매핑하고, View에서 서로 참조해서 사용하기
@@ -22,14 +29,26 @@
 - Django Media 활용 동적파일 다루기
 - GIT COMMIT MESSAGE TEMPLATE 깃 커밋 메세지 템플릿 적용
 
-### 2️⃣ 2022.10.24 실습
+### 2️⃣ 2022.10.24 실습 목표
 
 - 이전에 진행한 실습에 유저(User)와 게시글(Article)이 N : M 관계로 매핑된 좋아요 기능을 추가로 개발
 
-### 3️⃣ 2022.10.25 실습
+### 3️⃣ 2022.10.25 실습 목표
 
 - 유저(User)와 유저(User)가 N : M 관계로 매핑된 팔로우 기능을 추가로 개발
 
+### 4️⃣ 2022.10.26 실습 목표
+
+- JavaScript  비동기 처리에 대해 학습합니다. 
+  - 비동기 처리 필요성
+  - 비동기 처리 원리와 과정
+  - 참고) [자바스크립트 비동기 처리와 콜백 함수](https://joshua1988.github.io/web-development/javascript/javascript-asynchronous-operation/)
+  - 참고) [[자바스크립트] 비동기 처리 1부 - Callback](https://www.daleseo.com/js-async-callback/)
+
+- 댓글 기능을 비동기로 처리합니다.
+  - 생성
+  - 삭제
+  
 ## 준비 사항
 
 ### ▶ 환경 설정
@@ -212,7 +231,7 @@ $ python manage.py startapp accounts
 
 ## 요구 사항
 
-### 1️⃣ 2022.10.20 실습
+### 1️⃣ 2022.10.20 실습 요구사항
 
 > 모델 Model - `M`
 
@@ -355,7 +374,7 @@ $ python manage.py startapp accounts
 
 - [디스콰이엇 홈페이지](https://disquiet.io/)
 
-### 2️⃣ 2022.10.24 실습
+### 2️⃣ 2022.10.24 실습 요구사항
 
 > 모델 Model - `M`
 
@@ -404,7 +423,7 @@ $ python manage.py startapp accounts
 
 - [Wanted 사이트의 커뮤니티 페이지](https://www.wanted.co.kr/community/post/6956)
 
-### 3️⃣ 2022.10.25 실습
+### 3️⃣ 2022.10.25 실습 요구사항
 
 > 모델 Model - `M`
 
@@ -445,7 +464,21 @@ $ python manage.py startapp accounts
 
 - [Instagram](https://www.instagram.com/dlwlrma/)
 
+### 4️⃣ 2022.10.26 실습 요구사항
 
+> 기능 View - `V`
+
+**댓글 comments**
+
+1. 댓글 생성
+
+   - `POST` `http://127.0.0.1:8000/articles/<int:article_pk>/comments/`
+   - 비동기 처리
+
+2. 댓글 삭제
+
+   - `POST` `http://127.0.0.1:8000/articles/<int:article_pk>/comments/<int:comment_pk>/delete/`
+   - 비동기 처리
 
 ## 실습 결과 완성본
 
@@ -460,3 +493,7 @@ $ python manage.py startapp accounts
 > 3️⃣ 2022.10.25 실습 결과물
 
 ![](gif/django_practice_1025_animation.gif)
+
+> 4️⃣ 2022.10.26 실습 결과물
+
+![]()

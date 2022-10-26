@@ -147,6 +147,7 @@
 - [영화 리뷰 + 댓글 + 회원 관리 커뮤니티 개발 프로젝트(2022.10.21)](https://github.com/hyejinny97/movie-community)
 - [Django Model M:N 관계(user - article/comment 간의 LIKE)를 매핑하여 게시판 서비스 개발(2022.10.24)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_14)
 - [Django Model M:N 관계(user - user 간의 FOLLOW)로 매핑된 팔로우 기능 개발(2022.10.25)](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_14)
+- [JavaScript를 이용해 댓글 기능을 비동기 처리](https://github.com/hyejinny97/TIL/blob/master/Django/practice/practice_14)
 
 
 ## 🔎 참고자료

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from .forms import ArticleForm, CommentForm
 from .models import Article, Comment
 from django.contrib.auth.decorators import login_required
@@ -86,10 +87,17 @@ def article_like(request, article_pk):
     # 로그인한 사용자가 이미 해당 글에 좋아요를 누른 경우
     if article.like_users.filter(pk=request.user.pk).exists():
         article.like_users.remove(request.user)
+        is_liked = False
     else:
         article.like_users.add(request.user)
-    
-    return redirect('articles:detail', article_pk)
+        is_liked = True
+
+    data = {
+        'is_liked': is_liked,
+        'article_like_cnt': article.like_users.count(),
+    }
+
+    return JsonResponse(data)
 
 # 댓글 데이터 생성
 @login_required
@@ -125,4 +133,8 @@ def comment_like(request, article_pk, comment_pk):
     else:
         comment.like_users.add(request.user)
     
-    return redirect('articles:detail', article_pk)
+    data = {
+        'comment_likes_cnt': comment.like_users.count(),
+    }
+
+    return JsonResponse(data)

@@ -36,8 +36,8 @@
     <div class='d-flex justify-content-between align-items-center'>
       <h3 class='fw-bold text-break'>{{ article.title }}</h3>
       <div>
-        {% comment %} 좋아요 아이콘 {% endcomment %}
-        {% if request.user in article.like_users.all %}
+        {% comment %} 좋아요 아이콘(비동기 처리) {% endcomment %}
+        {% comment %} {% if request.user in article.like_users.all %}
         <a href="{% url 'articles:article_like' article.pk %}" class='text-decoration-none'>
           <i class="fa-solid fa-thumbs-up detail-solid-thumbs-up"></i>
           <span>{{ article.like_users.count }}</span>
@@ -47,7 +47,20 @@
           <i class="fa-regular fa-thumbs-up detail-regular-thumbs-up"></i>
           <span>{{ article.like_users.count }}</span>
         </a> 
-        {% endif %}
+        {% endif %} {% endcomment %}
+
+        <form id='article-like-form' data-article-pk='{{ article.pk }}'>
+          {% csrf_token %}
+          <button class='article-detail-like-btn' type='submit'>
+            {% if request.user in article.like_users.all %}
+              <i id='detail-thumbs-up' class="fa-solid fa-thumbs-up text-primary"></i>
+              <span id='article-like-users-cnt' class='text-primary'>{{ article.like_users.count }}</span>
+            {% else %}
+              <i id='detail-thumbs-up' class="fa-regular fa-thumbs-up"></i>
+              <span id='article-like-users-cnt'>{{ article.like_users.count }}</span>
+            {% endif %}
+          </button>
+        </form>
       </div>
     </div>
     <hr>
@@ -100,8 +113,8 @@
             <p class='m-0 text-muted'>{{ comment.updated_at|timesince }}전</p>
           </div>
           <div class='d-flex align-items-start'>
-            {% comment %} 댓글 좋아요 {% endcomment %}
-            {% if request.user in comment.like_users.all %}
+            {% comment %} 댓글 좋아요(비동기 처리) {% endcomment %}
+            {% comment %} {% if request.user in comment.like_users.all %}
             <a href="{% url 'articles:comment_like' article.pk comment.pk %}" class='text-decoration-none me-2'>
               <i class="fa-solid fa-thumbs-up detail-solid-thumbs-up"></i>
               <span>{{ comment.like_users.count }}</span>
@@ -111,7 +124,21 @@
               <i class="fa-regular fa-thumbs-up detail-regular-thumbs-up"></i>
               <span>{{ comment.like_users.count }}</span>
             </a> 
-            {% endif %}
+            {% endif %} {% endcomment %}
+
+            <form class='comment-like-form' data-article-pk='{{ article.pk }}' data-comment-pk='{{ comment.pk }}'>
+              {% csrf_token %}
+              <button class='article-detail-like-btn' type='submit'>
+                {% if request.user in comment.like_users.all %}
+                  <i id='detail-thumbs-up' class="fa-solid fa-thumbs-up text-primary"></i>
+                  <span id='article-like-users-cnt' class='text-primary'>{{ comment.like_users.count }}</span>
+                {% else %}
+                  <i id='detail-thumbs-up' class="fa-regular fa-thumbs-up"></i>
+                  <span id='article-like-users-cnt'>{{ comment.like_users.count }}</span>
+                {% endif %}
+              </button>
+            </form>
+
             {% if request.user == comment.writer %}
             <form action="{% url 'articles:comment_delete' article.pk comment.pk %}" method='POST'>
               {% csrf_token %}
@@ -129,4 +156,6 @@
 
 {% block js %}
 <script src="https://kit.fontawesome.com/a261e34fb9.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{% static 'js/articles.js' %}"></script>
 {% endblock js %}

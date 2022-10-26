@@ -57,6 +57,10 @@
 }
 
 /* articles/detail.html */
-.detail-solid-thumbs-up, .detail-regular-thumbs-up {
+#detail-thumbs-up {
   font-size: 1.5rem;
+}
+.article-detail-like-btn {
+  border: none;
+  background-color: transparent;
 }
