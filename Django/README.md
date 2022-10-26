@@ -115,6 +115,13 @@
 - [View decorators & functions](https://github.com/hyejinny97/TIL/blob/master/Django/decorators.md)
   - View decorators
   - Django Shortcut functions
+- [비동기 처리(Ajax)](https://github.com/hyejinny97/TIL/blob/master/Django/ajax.md)
+  - AJAX
+    - Axios
+    - Promise
+  - 비동기 적용 - 팔로우 (follow)
+  - 비동기 적용 - 좋아요 (like)
+
 
 
 
@@ -148,4 +155,5 @@
 - [django-bootstrap5 22.1](https://pypi.org/project/django-bootstrap5/)
 - [Django GitHub](https://github.com/django/django)
 - [django-imagekit 2.0.4](https://pypi.org/project/django-imagekit/2.0.4/)
-- [django-widget-tweaks 1.4.12](https://pypi.org/project/django-widget-tweaks/)
+- [django-widget-tweaks 1.4.12](https://pypi.org/project/django-widget-tweaks/)- [martor 1.6.14(django markdown editor)](https://pypi.org/project/martor/)
+- [AXIOS](https://axios-http.com/)
