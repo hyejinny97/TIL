@@ -25,10 +25,10 @@
       <div class='col-9 p-3'>
         <div class='d-flex align-items-center'>
           <h3 class='my-0 me-3 fw-bold'>{{ user.full_name }}</h3>
-          {% comment %} 팔로우/팔로워 버튼 {% endcomment %}
+          {% comment %} 팔로우 버튼 {% endcomment %}
           {% if request.user.is_authenticated %}
             {% if request.user != user %}
-            <form action="{% url 'accounts:follow' user.pk %}" method='POST' class='m-0'>
+            <form class='m-0 detail-follow-form' data-user-pk='{{ user.pk }}'>
               {% csrf_token %}
               {% if user in request.user.followings.all %}
                 <input class="btn btn-primary" type="submit" value="팔로우 취소">
@@ -43,11 +43,11 @@
         {% comment %} 팔로우/팔로워 사람 수 {% endcomment %}
         <a href="{% url 'accounts:following' user.pk %}" class='me-2 fw-bold text-dark text-decoration-none'>
           팔로우 
-          <span class='text-muted fw-normal'>{{ user.followings.count }}</span>
+          <span class='text-muted fw-normal following-cnt'>{{ user.followings.count }}</span>
         </a>
         <a href="{% url 'accounts:follower' user.pk %}" class='fw-bold text-dark text-decoration-none'>
           팔로워 
-          <span class='text-muted fw-normal'>{{ user.followers.count }}</span>
+          <span class='text-muted fw-normal follower-cnt'>{{ user.followers.count }}</span>
         </a>
       </div>
     </section>
@@ -228,3 +228,8 @@
     </section>
   </section>
 {% endblock content %}
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{% static 'js/accounts.js' %}"></script>
+{% endblock js %}

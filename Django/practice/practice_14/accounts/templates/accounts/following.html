@@ -25,7 +25,7 @@
           {% comment %} 팔로우 버튼 {% endcomment %}
           {% if request.user != following_user %}
             {% if following_user not in request.user.followings.all %}
-            <form action="{% url 'accounts:follow' following_user.pk %}" method='POST' class='m-0'>
+            <form class='m-0 following-follow-form' data-user-pk='{{ following_user.pk }}'>
               {% csrf_token %}
                 <input class="btn btn-primary" type="submit" value="팔로우">
             </form>
@@ -39,3 +39,8 @@
     {% endfor %}
   </section>
 {% endblock content %}
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{% static 'js/following.js' %}"></script>
+{% endblock js %}

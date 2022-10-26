@@ -1,6 +1,5 @@
-from email import message
-from webbrowser import get
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from .forms import CustomUserCreationForm
 from django.contrib import messages
@@ -76,14 +75,23 @@ def follow(request, user_pk):
             # 이미 user를 팔로우한 경우, 팔로우 취소
             if request.user.followings.filter(pk=user_pk).exists():
                 request.user.followings.remove(user)
+                is_followed = False
             # user를 팔로우 안한 경우, 팔로우
             else:
                 request.user.followings.add(user)
+                is_followed = True
+            
+            data = {
+                'is_followed': is_followed,
+                'following_cnt': user.followings.count(),
+                'follower_cnt': user.followers.count(),
+            }
+
+            return JsonResponse(data)
         # 자기 자신을 팔로우한 경우
         else:
             messages.warning(request, '자기 자신은 팔로우할 수 없습니다.')
-        
-        return redirect('accounts:detail', user_pk)
+            return redirect('accounts:detail', user.pk)
     else:
         return redirect('accounts:login')
 
