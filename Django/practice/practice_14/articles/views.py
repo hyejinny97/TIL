@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from .forms import ArticleForm, CommentForm
 from .models import Article, Comment
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
 # Create your views here.
 # 게시글 목록 조회 페이지
@@ -110,7 +111,19 @@ def comment_create(request, article_pk):
         comment.article = article
         comment.save()
     
-    return redirect('articles:detail', article.pk)
+    comments = []
+    for comment in article.comment_set.all():
+        comments.append({
+            'content': comment.content,
+            'writer_username': comment.writer.username,
+            'comment_like_users_cnt': comment.like_users.count(),
+            })
+
+    data = {
+        'comments': comments,
+    }
+
+    return JsonResponse(data)
     
 # 댓글 데이터 삭제
 @login_required
@@ -119,8 +132,12 @@ def comment_delete(request, article_pk, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)
     if request.user == comment.writer:
         comment.delete()
-    
-    return redirect('articles:detail', article.pk)
+
+    data = {
+        'comment_pk': comment_pk,
+    }
+
+    return JsonResponse(data)
 
 # 댓글 좋아요
 @login_required

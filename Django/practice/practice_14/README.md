@@ -496,4 +496,6 @@ $ python manage.py startapp accounts
 
 > 4️⃣ 2022.10.26 실습 결과물
 
-![]()
+![](gif/django_practice_1026_animation.gif)
+
+- 댓글 생성을 비동기 처리할 때, 기존 댓글을 모두 지우고 전체 댓글을 다시 DOM 조작으로 만들어 주었다. 기존 댓글 형태처럼 만들기엔 DOM을 조작하기 번거러워 간단하게 댓글 내용과 댓글 작성자만 나타내 주었다.

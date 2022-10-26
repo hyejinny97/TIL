@@ -37,18 +37,6 @@
       <h3 class='fw-bold text-break'>{{ article.title }}</h3>
       <div>
         {% comment %} 좋아요 아이콘(비동기 처리) {% endcomment %}
-        {% comment %} {% if request.user in article.like_users.all %}
-        <a href="{% url 'articles:article_like' article.pk %}" class='text-decoration-none'>
-          <i class="fa-solid fa-thumbs-up detail-solid-thumbs-up"></i>
-          <span>{{ article.like_users.count }}</span>
-        </a>
-        {% else %}
-        <a href="{% url 'articles:article_like' article.pk %}" class='text-dark text-decoration-none'>
-          <i class="fa-regular fa-thumbs-up detail-regular-thumbs-up"></i>
-          <span>{{ article.like_users.count }}</span>
-        </a> 
-        {% endif %} {% endcomment %}
-
         <form id='article-like-form' data-article-pk='{{ article.pk }}'>
           {% csrf_token %}
           <button class='article-detail-like-btn' type='submit'>
@@ -83,7 +71,7 @@
       </div>
       {% endif %}
       <div class='ms-3 w-100'>
-        <form action="{% url 'articles:comment_create' article.pk %}" method='POST' class='row g-2'>
+        <form class='row g-2 detail-comment-create-form' data-article-pk='{{ article.pk }}'>
           {% csrf_token %}
           <div class='col-10 col-lg-11'>
             {{ comment_form.content|add_class:'form-control w-100'|append_attr:'placeholder:이 메이커로그가 어떠셨나요?' }}
@@ -97,60 +85,50 @@
     {% endif %}
     <hr>
     {% comment %} 댓글 {% endcomment %}
-    {% for comment in article.comment_set.all %}
-    <section class='d-flex p-2 mt-3'>
-      <div>
-        <a class='d-inline-block articles-index-user-rounded-circle text-center' href="{% url 'accounts:detail' comment.writer.pk %}">
-          <span class='articles-index-user-name'>{{ comment.writer.first_name }}</span>
-        </a>
-      </div>
-      <div class='ms-2 w-100'>
-        <dir class='d-flex justify-content-between p-0 m-0'>
-          <div>
-            <p class='m-0'>
-              <span class='fw-bold'>{{ comment.writer.full_name }}</span>
-            </p>
-            <p class='m-0 text-muted'>{{ comment.updated_at|timesince }}전</p>
-          </div>
-          <div class='d-flex align-items-start'>
-            {% comment %} 댓글 좋아요(비동기 처리) {% endcomment %}
-            {% comment %} {% if request.user in comment.like_users.all %}
-            <a href="{% url 'articles:comment_like' article.pk comment.pk %}" class='text-decoration-none me-2'>
-              <i class="fa-solid fa-thumbs-up detail-solid-thumbs-up"></i>
-              <span>{{ comment.like_users.count }}</span>
-            </a>
-            {% else %}
-            <a href="{% url 'articles:comment_like' article.pk comment.pk %}" class='text-dark text-decoration-none me-2'>
-              <i class="fa-regular fa-thumbs-up detail-regular-thumbs-up"></i>
-              <span>{{ comment.like_users.count }}</span>
-            </a> 
-            {% endif %} {% endcomment %}
+    <div id='comments'>
+      {% for comment in article.comment_set.all %}
+      <section class='d-flex p-2 mt-3' id='comment-{{ comment.pk }}-block'>
+        <div>
+          <a class='d-inline-block articles-index-user-rounded-circle text-center' href="{% url 'accounts:detail' comment.writer.pk %}">
+            <span class='articles-index-user-name'>{{ comment.writer.first_name }}</span>
+          </a>
+        </div>
+        <div class='ms-2 w-100'>
+          <dir class='d-flex justify-content-between p-0 m-0'>
+            <div>
+              <p class='m-0'>
+                <span class='fw-bold'>{{ comment.writer.full_name }}</span>
+              </p>
+              <p class='m-0 text-muted'>{{ comment.updated_at|timesince }}전</p>
+            </div>
+            <div class='d-flex align-items-start'>
+              {% comment %} 댓글 좋아요(비동기 처리) {% endcomment %}
+              <form class='comment-like-form' data-article-pk='{{ article.pk }}' data-comment-pk='{{ comment.pk }}' id='comment-{{ comment.pk }}-like'>
+                {% csrf_token %}
+                <button class='article-detail-like-btn' type='submit'>
+                  {% if request.user in comment.like_users.all %}
+                    <i id='detail-thumbs-up' class="fa-solid fa-thumbs-up text-primary"></i>
+                    <span id='article-like-users-cnt' class='text-primary'>{{ comment.like_users.count }}</span>
+                  {% else %}
+                    <i id='detail-thumbs-up' class="fa-regular fa-thumbs-up"></i>
+                    <span id='article-like-users-cnt'>{{ comment.like_users.count }}</span>
+                  {% endif %}
+                </button>
+              </form>
 
-            <form class='comment-like-form' data-article-pk='{{ article.pk }}' data-comment-pk='{{ comment.pk }}'>
-              {% csrf_token %}
-              <button class='article-detail-like-btn' type='submit'>
-                {% if request.user in comment.like_users.all %}
-                  <i id='detail-thumbs-up' class="fa-solid fa-thumbs-up text-primary"></i>
-                  <span id='article-like-users-cnt' class='text-primary'>{{ comment.like_users.count }}</span>
-                {% else %}
-                  <i id='detail-thumbs-up' class="fa-regular fa-thumbs-up"></i>
-                  <span id='article-like-users-cnt'>{{ comment.like_users.count }}</span>
-                {% endif %}
-              </button>
-            </form>
-
-            {% if request.user == comment.writer %}
-            <form action="{% url 'articles:comment_delete' article.pk comment.pk %}" method='POST'>
-              {% csrf_token %}
-              <input class="btn btn-outline-danger" type="submit" value="삭제">
-            </form>
-            {% endif %}
-          </div>
-        </dir>
-        <p class='articles-detail-comment-content p-2 mt-1'>{{ comment.content }}</p>
-      </div>
-    </section>
-    {% endfor %}
+              {% if request.user == comment.writer %}
+              <form class='detail-comment-delete-form' data-article-pk='{{ article.pk }}' data-comment-pk='{{ comment.pk }}'>
+                {% csrf_token %}
+                <input class="btn btn-outline-danger" type="submit" value="삭제">
+              </form>
+              {% endif %}
+            </div>
+          </dir>
+          <p class='articles-detail-comment-content p-2 mt-1'>{{ comment.content }}</p>
+        </div>
+      </section>
+      {% endfor %}
+    </div>
   </section>
 {% endblock content %}
 
