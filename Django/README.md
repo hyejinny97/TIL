@@ -154,6 +154,7 @@
 - [영화 리뷰 커뮤니티 개발 프로젝트 + 배포(2022.10.27~28)](https://github.com/hyejinny97/movie-review-deploy)
 - [KDT 1st project - 빵집 리뷰 커뮤니티(2022.10.31~11.8)](https://github.com/hyejinny97/Bread-Road)
 - [KDT 2nd project - 온라인 문구류 사이트(2022.11.9~11.22)](https://github.com/hyejinny97/TBT)
+- [KDT 3rd project - 반려동물 정보 공유 커뮤니티(2022.11.24~12.14)](https://github.com/hyejinny97/danggeunJibsa)
 
 
 ## 🔎 참고자료
