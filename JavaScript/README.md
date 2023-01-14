@@ -10,16 +10,21 @@ JavaScript는 HTML 문서에 적용될 때, 웹사이트 상에서 동적 상호
 ## 📃 목록
 
 - [자바스크립트의 역사](https://github.com/hyejinny97/TIL/blob/master/JavaScript/history.md)
-- [자바스크립트 기초](https://github.com/hyejinny97/TIL/blob/master/JavaScript/base.md)
+- [자바스크립트 Intro](https://github.com/hyejinny97/TIL/blob/master/JavaScript/base.md)
   - ECMAScript, DOM, BOM
-- [JavaScript Core (ECMAScript)](https://github.com/hyejinny97/TIL/blob/master/JavaScript/ecma_script.md)
-  - ECMA Script
+- [JavaScript Core - 기초](https://github.com/hyejinny97/TIL/blob/master/JavaScript/core_base.md)
+  - Hello World
   - 변수와 식별자
+- [JavaScript Core - 자료형](https://github.com/hyejinny97/TIL/blob/master/JavaScript/core_datatype.md)
   - 데이터 타입
   - 데이터 타입별 메서드
+- [JavaScript Core - 연산자](https://github.com/hyejinny97/TIL/blob/master/JavaScript/core_operator.md)
   - 연산자
+- [JavaScript Core - 조건문](https://github.com/hyejinny97/TIL/blob/master/JavaScript/core_if.md)
   - 조건문
+- [JavaScript Core - 반복문](https://github.com/hyejinny97/TIL/blob/master/JavaScript/core_loop.md)
   - 반복문
+- [JavaScript Core - 함수](https://github.com/hyejinny97/TIL/blob/master/JavaScript/core_function.md)
   - 함수
 - [DOM 조작](https://github.com/hyejinny97/TIL/blob/master/JavaScript/dom.md)
   - DOM 조작
