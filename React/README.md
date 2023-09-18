@@ -7,10 +7,10 @@
 ## 📃 목록
 
 - [React Project 시작하기](https://github.com/hyejinny97/TIL/blob/master/React/start.md)
-  - 리액트란
-  - React 개발 환경 직접 구축하기
-  - create-react-app으로 시작하기
-  - CSS 작성 방법 결정하기
+  - [리액트란](./react란.md)
+  - [React 개발 환경 직접 구축하기](./react개발환경구축.md)
+  - [create-react-app으로 시작하기](./create-react-app.md)
+  - [CSS 작성 방법 결정하기](./css-methods.md)
   - Single Page Application 만들기
 - [React 기초](https://github.com/hyejinny97/TIL/blob/master/React/base.md)
 - [React Component - 1) 함수형 컴포넌트](https://github.com/hyejinny97/TIL/blob/master/React/function_component.md)
