@@ -11,7 +11,7 @@
   - [React 개발 환경 직접 구축하기](./react개발환경구축.md)
   - [create-react-app으로 시작하기](./create-react-app.md)
   - [CSS 작성 방법 결정하기](./css-methods.md)
-  - Single Page Application 만들기
+  - [Single Page Application 만들기](./spa.md)
 - [React 기초](https://github.com/hyejinny97/TIL/blob/master/React/base.md)
 - [React Component - 1) 함수형 컴포넌트](https://github.com/hyejinny97/TIL/blob/master/React/function_component.md)
 - [React Component - 2) 클래스형 컴포넌트](https://github.com/hyejinny97/TIL/blob/master/React/class_component.md)
