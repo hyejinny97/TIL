@@ -224,9 +224,10 @@
 ## ▶ 화살표 함수 (Arrow Function)
 
 - 함수를 비교적 간결하게 정의할 수 있는 문법
-- function 키워드 생략 가능
-- 함수의 매개변수가 단 하나 뿐이라면, ‘( )’ 도 생략 가능
-- 함수 몸통이 표현식 하나라면 ‘{ }’과 ‘return’도 생략 가능
+
+  - function 키워드 생략 가능
+  - 함수의 매개변수가 단 하나 뿐이라면, ‘( )’ 도 생략 가능
+  - 함수 몸통이 표현식 하나라면 ‘{ }’과 ‘return’도 생략 가능
 
   ```javascript
   const arrow1 = function (name) {
@@ -242,4 +243,112 @@
   // 3. 함수 바디가 return을 포함한 표현식 1개일 경우에 { } & return 삭제
   가능
   const arrow4 = name => `hello, ${name}
+  ```
+
+- 화살표 함수에선 `this`, `arguments`가 바인딩되지 않음
+
+  - 화살표 함수에서 `this`와 `arguments`를 사용하면, **가장 가까운 parent regular function** (또는 parent scope)에서의 `this`와 `arguments`를 상속받게 됨
+  - 화살표 함수에서 `arguments`가 필요하다면 Rest Parameter를 이용하면 됨
+
+  ```js
+  const printLog = (...rest) => console.log(rest);
+  ```
+
+- method에서의 `this` = **호출한 객체**
+
+  - 객체 없이 호출되는 경우, `this`에는 전역 객체(브라우저 환경인 경우, window 객체)가 바인딩됨
+  - 아래 increase 함수를 화살표 함수로 사용했다면, `this`는 window 객체를 바인딩할 것임
+
+  ```js
+  const obj = {
+    value: 1,
+    increase: function () {
+      this.value++;
+    },
+  };
+
+  obj.increase();
+  console.log(obj.value); // 2 (∵ this = obj 객체)
+
+  const increase = obj.increase;
+  increase();
+  console.log(obj.value); // 2 (∵ this = window 객체)
+  ```
+
+- 생성자 함수 내부에서 정의된 화살표 함수의 `this` = **호출한 객체**
+
+  - 이유1) 화살표 함수의 `this`는 가장 가까운 parent regular function인 생성자 함수에서의 `this`를 참조하게 됨
+  - 이유2) new 키워드에 의해 생성자 함수를 호출하면, 생성자 함수의 `this`는 호출한 객체를 참조함
+  - 결론) 즉, 화살표 함수의 `this`는 호출한 객체를 참조하게 됨
+
+  ```
+  화살표 함수의 this → 생성자 함수의 this → 호출한 객체
+  ```
+
+  ```js
+  function Something() {
+    this.value = 1;
+    this.increase = () => this.value++;
+  }
+
+  const obj = new Something();
+
+  obj.increase();
+  console.log(obj.value); // 2 (∵ this = obj 객체)
+
+  const increase = obj.increase;
+  increase();
+  console.log(obj.value); // 3 (∵ this = obj 객체)
+  ```
+
+- 생성자 함수에서 setInterval 함수 사용 시, `this` 바인딩 문제
+
+  - setInterval 함수의 콜백 함수에서 `this`를 사용할 경우, window 객체를 참조하는 문제 발생
+  - 해결책1) ES5에서는 클로저를 이용해 미리 저장해둔 self/that 변수를 통해 `this` 객체에 접근 (편법)
+  - 해결책2) ES6에서는 화살표 함수를 사용해 `this`가 가장 가까운 parent regular function인 생성자 함수에서의 `this`를 참조하게 함
+
+  ```js
+  // 문제 발생
+  function Something() {
+    this.value = 1;
+    setInterval(function increase() {
+      this.value++;
+    }, 1000);
+  }
+  ```
+
+  ```js
+  // 해결책 1
+  function Something() {
+    this.value = 1;
+    const that = this;
+    setInterval(function increase() {
+      that.value++;
+    }, 1000);
+  }
+  ```
+
+  ```js
+  // 해결책 2
+  function Something() {
+    this.value = 1;
+    setInterval(() => {
+      this.value++;
+    }, 1000);
+  }
+  ```
+
+#### ➕ 참고) 클로저
+
+- 함수가 **생성되는 시점**에 접근 가능했던 변수들을 생성 이후에도 계속해서 접근할 수 있게 해주는 기능
+
+  ```js
+  function makeAddFunc(x) {
+    return function add(y) {
+      return x + y;
+    };
+  }
+
+  const add5 = makeAddFunc(5);
+  console.log(add5(1)); // 6
   ```
