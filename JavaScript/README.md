@@ -23,7 +23,14 @@ JavaScript는 HTML 문서에 적용될 때, 웹사이트 상에서 동적 상호
 - [JavaScript Core - 반복문](./core_loop.md)
   - 반복문
 - [JavaScript Core - 함수](./core_function.md)
-  - 함수
+  - 함수 선언식
+  - 함수 표현식
+  - 함수의 매개변수와 인자
+  - 화살표 함수
+- [JavaScript Core - 비동기 프로그래밍](./asynchronous.md)
+  - 프로미스
+  - async/await
+- [JavaScript Core - 제너레이터](./generator.md)
 - [DOM 조작](./dom.md)
   - DOM 조작
   - DOM 선택
