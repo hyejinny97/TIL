@@ -16,6 +16,7 @@
   - [상태값과 속성값으로 관리하는 UI 데이터](./ui_data.md)
   - [리액트 요소와 가상 돔](./react_element.md)
 - [React Component - 1) 함수형 컴포넌트](https://github.com/hyejinny97/TIL/blob/master/React/function_component.md)
+  - [React Hook 기초](./hook_base.md)
 - [React Component - 2) 클래스형 컴포넌트](https://github.com/hyejinny97/TIL/blob/master/React/class_component.md)
 - [Context API로 데이터 관리](https://github.com/hyejinny97/TIL/blob/master/React/context.md)
 - [Redux로 데이터 관리](https://github.com/hyejinny97/TIL/blob/master/React/redux.md)
