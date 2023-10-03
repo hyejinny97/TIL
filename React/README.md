@@ -18,8 +18,9 @@
 - [React Component - 1) 함수형 컴포넌트](https://github.com/hyejinny97/TIL/blob/master/React/function_component.md)
   - [React Hook 기초](./hook_base.md)
 - [React Component - 2) 클래스형 컴포넌트](https://github.com/hyejinny97/TIL/blob/master/React/class_component.md)
-- [Context API로 데이터 관리](https://github.com/hyejinny97/TIL/blob/master/React/context.md)
-- [Redux로 데이터 관리](https://github.com/hyejinny97/TIL/blob/master/React/redux.md)
+- [React 데이터 관리](./state_management.md)
+  - [Context API](./context.md)
+  - [Redux](./redux.md)
 
 ## 🛠 실습
 
