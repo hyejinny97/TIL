@@ -16,3 +16,8 @@
   - `useReducer`
   - `useImperativeHandle`
   - `useLayoutEffect`, `useDebugValue`
+- [가독성과 생산성을 고려한 컴포넌트 코드 작성법](./efficient-component.md)
+  - 추천하는 컴포넌트 파일 작성법
+  - 속성값 타입 정의하기: `prop-types`
+  - 가독성을 높이는 조건부 렌더링 방법
+  - 관심사 분리를 위한 프레젠테이션/컨테이너 컴포넌트 구분하기

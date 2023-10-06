@@ -19,6 +19,7 @@
   - [React Hook 기초](./hook_base.md)
   - [ref 속성값으로 자식 요소에 접근하기](./useRef.md)
   - [React 내장 Hook 살펴보기](./hooks.md)
+  - [가독성과 생산성을 고려한 컴포넌트 코드 작성법](./efficient-component.md)
 - [React Component - 2) 클래스형 컴포넌트](https://github.com/hyejinny97/TIL/blob/master/React/class_component.md)
 - [React 데이터 관리](./state_management.md)
   - [Context API](./context.md)
