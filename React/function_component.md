@@ -24,3 +24,7 @@
 - [useEffect 훅 활용법](./useEffect.md)
   - 의존성 배열 관리하는 법
   - 의존성 배열 없애는 법
+- [렌더링 속도를 올리기 위한 성능 최적화 방법](./performance_optimization.md)
+  - `React.memo`로 렌더링 결과 재사용하기
+  - 속성값과 상탯값을 불변 변수로 관리하는 법
+  - 가상 돔에서의 성능 최적화

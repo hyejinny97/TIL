@@ -21,6 +21,7 @@
   - [React 내장 Hook 살펴보기](./hooks.md)
   - [가독성과 생산성을 고려한 컴포넌트 코드 작성법](./efficient-component.md)
   - [useEffect 훅 활용법](./useEffect.md)
+  - [렌더링 속도를 올리기 위한 성능 최적화 방법](./performance_optimization.md)
 - [React Component - 2) 클래스형 컴포넌트](https://github.com/hyejinny97/TIL/blob/master/React/class_component.md)
 - [React 데이터 관리](./state_management.md)
   - [Context API](./context.md)
