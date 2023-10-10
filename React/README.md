@@ -23,6 +23,7 @@
   - [useEffect 훅 활용법](./useEffect.md)
   - [렌더링 속도를 올리기 위한 성능 최적화 방법](./performance_optimization.md)
 - [React Component - 2) 클래스형 컴포넌트](https://github.com/hyejinny97/TIL/blob/master/React/class_component.md)
+  - [클래스형 컴포넌트의 생명 주기 메서드](./lifecycle_methods.md)
 - [React 데이터 관리](./state_management.md)
   - [Context API](./context.md)
   - [Redux](./redux.md)
