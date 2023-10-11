@@ -342,9 +342,51 @@
 
 ### 🔹 `shouldComponentUpdate` 메서드
 
+- `shouldComponentUpdate(nextProps, nextState)`
+
+  - true를 반환하면 `render` 메서드가 호출되고, false를 반환하면 업데이트 단계는 여기서 멈추게 됨
+
+- 실제 돔이 변경되지 않는 상황에서 렌더링되는 것을 막아주는 역할을 하므로, 성능 최적화를 위해 존재하는 메서드라고 할 수 있음
+
+  ```js
+  class MyComponent extends React.Component {
+    shouldComponentUpdate(nextProps, nextState) {
+      const { price } = this.state;
+      return price !== nextState.price;
+    }
+  }
+  ```
+
 ### 🔹 `getSnapshotBeforeUpdate` 메서드
 
+- `getSnapshotBeforeUpdate(prevProps, prevState)` => snapshot
+
+  - `render` 메서드가 호출된 후, 렌더링 결과가 실제 돔에 반영되기 직전에 호출됨
+  - 따라서, 이전 돔 요소의 상탯값을 가져올 수 있음
+  - 렌더링 결과가 실제 돔에 반영된 후 `componentDidUpdate` 메서드가 실행됨
+
+- `getSnapshotBeforeUpdate` 메서드가 반환한 값은 `componentDidUpdate` 메서드의 세 번째 인자로 들어가게 됨
+
+  - 따라서, `getSnapshotBeforeUpdate` 메서드가 이전 돔의 상탯값을 반환하면, `componentDidUpdate` 메서드에서는 돔의 이전/이후 상탯값을 모두 알기 때문에 돔의 상탯값 변화를 알 수 있음
+
 ### 🔹 `componentDidUpdate` 메서드
+
+- `componentDidUpdate(prevProps. prevState, snapshot)`
+
+  - 가상 돔이 실제 돔에 반영된 후 호출되므로, 새로 반영됨 돔의 상탯값을 가장 빠르게 가져올 수 있음
+
+- 속성값/상탯값이 변경된 경우 API를 호출하기 위해 사용됨
+
+  ```js
+  class UserInfo extends React.Component{
+    componentDidUpdate(prevProps) {
+      const {user} = this.props
+      if (prevProps.user.id !=== user.id) {
+        requestFriends(user).then(friends => this.setState({ friends }));
+      }
+    }
+  }
+  ```
 
 ### 🔹 `componentWillUnmount` 메서드
 
