@@ -390,4 +390,106 @@
 
 ### 🔹 `componentWillUnmount` 메서드
 
+- 소멸 단게에서 호출되는 유일한 생명 주기 메서드
+- 끝나지 않은 네트워크 요청을 취소, 타이머 해체, 구독(subscription) 해제 등의 작업을 처리하기 좋음
+
+  ```js
+  class MyComponent extends React.Component {
+    componentDidMount() {
+      const domNode = document.getElementById("someNode");
+      domNode.addEventListener("change", this.onChange);
+    }
+
+    componentWillUnmount() {
+      const domNode = document.getElementById("someNode");
+      domNode.removeEventListener("change", this.onChange);
+    }
+  }
+  ```
+
 ### 🔹 `getDerivedStateFromError`, `componentDidCatch` 메서드
+
+- **생명 주기 메서드**에서 발생한 예외를 처리
+
+  - 생명 주기 메서드에서 예외가 발생하면, `getDerivedStateFromError` 또는 `componentDidCatch` 메서드를 구현한 **가장 가까운 부모 컴포넌트**를 찾음
+
+- static `getDerivedStateFromError(error)`
+
+  - error: 에러 객체
+  - 에러 정보를 상탯값에 저장해서 화면에 나타내는 용도로 사용됨
+
+- `componentDidCatch(error, info)`
+
+  - info: 어떤 컴포넌트에서 에러가 발생했는지 알려줌
+  - 에러 정보를 서버로 전송하는 용도로 사용됨
+  - 렌더링 결과를 돔에 반영한 후에 호출되므로, 서버사이드 렌더링 시 에러가 발생해도 `componentDidCatch` 메서드가 호출되지 않는 문제가 있음
+
+- `ErrorBoundary` 컴포넌트
+
+  - 자식 컴포넌트에서 예외가 발생하면, `getDerivedStateFromError` 메서드에 의해 상탯값에 에러 정보가 저장되고 `componentDidCatch` 메서드에 의해 서버로 에러 정보가 전송됨
+  - `render` 메서드에서는 에러가 없다면 자식 컴포넌트를 렌더링하고, 에러가 존재하면 에러 정보를 렌더링하게 됨
+  - 리액트는 에러 발생 시 `ErrorBoundary` 컴포넌트로 처리되지 않으면 모든 컴포넌트를 unmount 함
+  - 주의) 이벤트 처리 메서드는 생명 주기 메서드가 아니므로, 이벤트 처리 메서드에서 발생하는 예외는 `ErrorBoundary` 컴포넌트로 처리되지 않음
+
+  ```js
+  class ErrorBoundary extends React.Component {
+    state = { error: null };
+
+    static getDerivedStateFromError(error) {
+      return { error };
+    }
+
+    componentDidCatch(error, info) {
+      sendErrorToServer(error, info);
+    }
+
+    render() {
+      const { error } = this.state;
+      if (error) {
+        return <div>{error.toString()}</div>;
+      }
+      return this.props.children;
+    }
+  }
+  ```
+
+  ```js
+  class Counter extends React.Component {
+    state = { count: 0 };
+
+    onClick = () => {
+      const { count } = this.state;
+      this.setState({ count: count + 1 });
+    };
+
+    render() {
+      const { count } = this.state;
+      if (count >= 3) {
+        throw new Error("에러 발생!");
+      }
+      return <div onClick={this.onClick}>{`클릭하세요(${count})`}</div>;
+    }
+  }
+  ```
+
+  ```js
+  function App() {
+    return (
+      <ErrorBoundary>
+        <Counter />
+      </ErrorBoundary>>
+    )
+  }
+  ```
+
+#### ➕ 참고) `componentDidCatch` 메서드에서 에러 정보를 서버로 전송하는 이유
+
+- `getDerivedStateFromError` 메서드가 아닌 `componentDidCatch` 메서드에서 에러 정보를 서버로 전송하는 이유는 `concurrent` 모드 때문임
+
+  - 리액트에서 데이터 변경에 의한 화면 업데이트는 렌더 단계(render phase)와 커밋 단계(commit phase)를 거침
+  - `concurrent` 모드에서는 **렌더 단계**에서 실행을 멈췄다가 나중에 다시 실행하는 과정에서 같은 생명 주기 메서드를 여러 번 호출할 수 있음
+
+- `getDerivedStateFromError` 메서드는 렌더 단계에서 호출되고, `componentDidCatch` 메서드는 커밋 단계에서 호출됨
+
+  - 만약, `getDerivedStateFromError` 메서드에서 에러 정보를 서버로 전송한다면 같은 에러 정보가 여러 번 전송될 수도 있음
+  - 따라서, 에러 정보는 `componentDidCatch` 메서드에서 전송하는게 좋음
