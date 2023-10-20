@@ -36,12 +36,17 @@ TypeScript는 JavaScript의 모든 기능을 포함하면서 정적 타입을 �
   - 제네릭
   - 맵드 타입
   - 조건부 타입
-  -
 
 - [생산성을 높이는 타입스크립트의 기능](./ts_productive_features.md)
 
   - 타입 추론
   - 타입 가드
+
+- [타입스크립트 환경 구축하기](./ts_environment.md)
+
+  - `create-react-app`과 `next`에서 타입스크립트 사용하기
+  - 프레임워크를 사용하지 않고 타입스크립트 환경 구축하기
+  - 기타 환경 설정하기
 
 ## 🛠 실습
 
