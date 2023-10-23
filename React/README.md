@@ -25,6 +25,7 @@
 - [React Component - 2) 클래스형 컴포넌트](https://github.com/hyejinny97/TIL/blob/master/React/class_component.md)
   - [클래스형 컴포넌트의 생명 주기 메서드](./lifecycle_methods.md)
   - [클래스형 컴포넌트의 기본 사용법](./class_component_basic.md)
+  - [컴포넌트의 공통 기능 관리하기](./common_feature.md)
 - [React 데이터 관리](./state_management.md)
   - [Context API](./context.md)
   - [Redux](./redux.md)
