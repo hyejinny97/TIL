@@ -26,6 +26,8 @@
   - [클래스형 컴포넌트의 생명 주기 메서드](./lifecycle_methods.md)
   - [클래스형 컴포넌트의 기본 사용법](./class_component_basic.md)
   - [컴포넌트의 공통 기능 관리하기](./common_feature.md)
+  - [클래스형 컴포넌트와 훅의 관계](./class_component_hook_relation.md)
+  - [클래스형 컴포넌트를 훅으로 변환하기](./from_class_component_to_hook.md)
 - [React 데이터 관리](./state_management.md)
   - [Context API](./context.md)
   - [Redux](./redux.md)

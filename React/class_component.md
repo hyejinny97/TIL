@@ -22,3 +22,16 @@
 
   - 고차 컴포넌트를 이용한 공통 기능 관리
   - 렌더 속성값을 이용한 공통 기능 관리
+
+- [클래스형 컴포넌트와 훅의 관계](./class_component_hook_relation.md)
+
+  - 로직을 재사용하는 기존 방식의 한계
+  - 클래스형 컴포넌트의 한계
+  - 훅의 장점
+
+- [클래스형 컴포넌트를 훅으로 변환하기](./from_class_component_to_hook.md)
+
+  - `constructor` 메서드
+  - `componentDidUpdate` 메서드
+  - `getDerivedStateFromProps` 메서드
+  - `forceUpdate` 메서드
