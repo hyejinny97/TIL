@@ -35,3 +35,8 @@
   - `componentDidUpdate` 메서드
   - `getDerivedStateFromProps` 메서드
   - `forceUpdate` 메서드
+
+- [기존 클래스형 컴포넌트를 고려한 커스텀 훅 작성법](./custom_hook_in_class_component.md)
+
+  - 커스텀 훅의 반환값이 없는 경우
+  - 커스텀 훅의 반환값이 있는 경우

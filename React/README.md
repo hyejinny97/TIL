@@ -28,6 +28,7 @@
   - [컴포넌트의 공통 기능 관리하기](./common_feature.md)
   - [클래스형 컴포넌트와 훅의 관계](./class_component_hook_relation.md)
   - [클래스형 컴포넌트를 훅으로 변환하기](./from_class_component_to_hook.md)
+  - [기존 클래스형 컴포넌트를 고려한 커스텀 훅 작성법](./custom_hook_in_class_component.md)
 - [React 데이터 관리](./state_management.md)
   - [Context API](./context.md)
   - [Redux](./redux.md)
