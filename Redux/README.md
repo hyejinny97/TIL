@@ -35,6 +35,13 @@ Redux는 자바스크립트를 위한 상태 관리 프레임워크이다.<br />
   - react-redux 패키지 없이 직접 구현하기
   - react-redux 패키지 사용하기
 
+- [reselect 패키지로 선택자 함수 만들기](./reselect.md)
+
+  - reselect 패키지 없이 구현해보기
+  - reselect 패키지 사용하기
+  - reselect에서 컴포넌트의 속성값 이용하기
+  - 컴포넌트 인스턴스별로 독립된 메모이제이션 적용하기
+
 ## 🛠 실습
 
 - []()
