@@ -313,4 +313,141 @@
 
 ## ▶ 리덕스 사가로 디바운스 구현하기
 
+- 디바운스 (debounce): 짧은 기간에 같은 이벤트가 반복해서 발생되어 같은 함수가 연속해서 호출될 때 첫 번째 또는 마지막 호출만 실행하는 기능
+- 연속해서 문자열을 입력하다가 일정 시간 동안 입력이 없을 때 리덕스의 상탯값을 변경하는 기능을 구현해 보자
+
+### 🔹 리덕스 코드 수정하기
+
+- 기존 타임라인 리덕스 코드를 수정해보자
+
+  ```js
+  // timeline/index.js
+  // ...
+
+  // 액션 타입
+  export const types = {
+    // ...
+    SET_TEXT: "timeline/SET_TEXT",
+    TRY_SET_TEXT: "timeline/TRY_SET_TEXT",
+  };
+
+  // 액션 생성자 함수
+  export const actions = {
+    // ...
+    setText: (text) => ({ type: types.SET_TEXT, text }),
+    trySetText: (text) => ({ type: types.TRY_SET_TEXT, text }),
+  };
+
+  // 초기 상탯값
+  const INITIAL_STATE = { isLoading: false, error: "", text: "" };
+
+  // 리듀서 함수
+  const reducer = createReducer(INITIAL_STATE, {
+    [types.SET_TEXT]: (state, action) => (state.text = action.text),
+  });
+
+  // ...
+  ```
+
+### 🔹 리액트 컴포넌트 수정하기
+
+- 문자열 입력창 기능을 추가하자
+
+  ```js
+  function TimelineMain() {
+    // ...
+    const text = useSelector((state) => state.timeline.text);
+    const [currentText, setCurrentText] = useState("");
+
+    function onChangeText(e) {
+      const text = e.target.value;
+      dispatch(actions.trySetText(text));
+      setCurrentText(text);
+    }
+    // ...
+
+    return (
+      <div>
+        // ...
+        <input type="text" value={currentText} onChange={onChangeText} />
+        {!!text && <p>{text}</p>}
+      </div>
+    );
+  }
+  ```
+
+### 🔹 사가 함수 작성 및 수정하기
+
+- debounce 부수 효과 함수를 사용하는 코드를 추가해보자
+
+  - 아래에서는, TRY_SET_TEXT 액션이 발생하고 0.5초동안 재발생하지 않으면 trySetText 사가 함수가 실행되게 됨
+
+  ```js
+  import { debounce } from "redux-saga/effects";
+
+  // ...
+  export function* trySetText(action) {
+    const { text } = action;
+    yield put(actions.setText(text));
+  }
+
+  export default function* watcher() {
+    yield all([fork(fetchData), debounce(500, types.TRY_SET_TEXT, trySetText)]);
+  }
+  ```
+
 ## ▶ 사가 함수 테스트하기
+
+- 일반적으로 API 통신과 같은 비동기 코드를 테스트하려면 mock 객체를 생성해야 함
+- 하지만, `redux-saga`에서는 mock 객체가 필요 없음
+
+  - ∵ 부수 효과 함수를 호출한 결과가 JS 객체이기 때문
+
+- `redux-saga`는 테스트 코드 작성을 지원하기 위해 아래의 패키지를 제공함
+
+  ```bash
+  $ npm install @redux-saga/testing-utils
+  ```
+
+- `saga.test.js` 파일을 만들고, 예외가 발생하는 경우와 발생하지 않는 경우를 각각 테스트해 보자
+
+  - `cloneableGenerator` 함수를 이용하면 '복사가 가능한 제너레이터 객체'를 만들 수 있음
+
+  ```js
+  import { call, put, take } from "redux-saga/effects";
+  import { cloneableGenerator } from "@redux-saga/testing-utils";
+
+  describe("fetchData", () => {
+    // 테스트에 사용될 데이터
+    const timeline = { id: 1 };
+    const action = actions.requestLike(timeline);
+
+    // 복사가 가능한 제너레이터 객체
+    const gen = cloneableGenerator(fetchData)();
+
+    // 순차적으로 테스트
+    expect(gen.next().value).toEqual(take(types.REQUEST_LIKE));
+    expect(get.next(action).value).toEqual(put(actions.setLoading(true)));
+    expect(gen.next().value).toEqual(put(actions.addLike(timeline.id, 1)));
+    expect(gen.next(action).value).toEqual(put(actions.setError("")));
+    expect(gen.next().value).toEqual(call(callApiLike));
+
+    // API 통신 성공/실패 테스트
+    it("on fail callApiLike", () => {
+      const gen2 = gen.clone();
+      const errorMsg = "error";
+      expect(gen2.throw(errorMsg).value).toEqual(
+        put(actions.setError(errorMsg))
+      );
+      expect(gen2.next().value).toEqual(put(actions.addLike(timeline.id, -1)));
+    });
+
+    it("on success callApiLike", () => {
+      const gen2 = gen.clone();
+      expect(gen2.next(Promise.resolve()).value).toEqual(
+        put(actions.setLoading(false))
+      );
+      expect(gen2.next().value).toEqual(take(types.REQUEST_LIKE));
+    });
+  });
+  ```
