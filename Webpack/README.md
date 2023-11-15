@@ -18,6 +18,9 @@ webpack은 모던 JavaScript 애플리케이션을 위한 **정적 모듈 번들
 
 - [웹팩 고급편](./webpack_advanced.md)
 
+  - [나무 흔들기](./webpack_tree_shaking.md)
+  - [코드 분할](./webpack_code_splitting.md)
+
 ## 🛠 실습
 
 - []()
