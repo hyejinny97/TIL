@@ -20,6 +20,8 @@ webpack은 모던 JavaScript 애플리케이션을 위한 **정적 모듈 번들
 
   - [나무 흔들기](./webpack_tree_shaking.md)
   - [코드 분할](./webpack_code_splitting.md)
+  - [로더 제작하기](./making_webpack_loader.md)
+  - [플러그인 제작하기](./making_webpack_plugin.md)
 
 ## 🛠 실습
 
