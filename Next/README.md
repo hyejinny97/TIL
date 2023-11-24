@@ -18,6 +18,11 @@
   - [서버사이드 렌더링 캐싱하기](./ssr_caching.md)
   - [서버사이드 렌더링 함수 사용해보기 - `renderToNodeStream`](./renderToNodeStream.md)
 
+- [Next.js 초급편](./next_beginner.md)
+
+  - [넥스트 시작하기](./start_next.md)
+  - [웹팩 설정 변경하기](./next_webpack.md)
+
 ## 🛠 실습
 
 - []()
