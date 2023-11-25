@@ -22,6 +22,9 @@
 
   - [넥스트 시작하기](./start_next.md)
   - [웹팩 설정 변경하기](./next_webpack.md)
+  - [서버에서 생성된 데이터를 전달하기](./next_getInitialProps.md)
+  - [페이지 이동하기](./next_move_page.md)
+  - [에러 페이지 구현하기](./next_error.md)
 
 ## 🛠 실습
 
