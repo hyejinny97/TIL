@@ -33,6 +33,9 @@ Next.js는 서버 사이드 렌더링, 정적 웹 페이지 생성 등 리액트
   - [페이지에서 공통 기능 구현하기](./next_app.md)
   - [넥스트에서의 코드 분할](./next_splitting.md)
   - [웹 서버 직접 띄우기](./next_server.md)
+  - [서버사이드 렌더링 캐싱하기](./next_caching.md)
+  - [페이지 미리 렌더링하기](./next_prerender.md)
+  - [styled-components 사용하기](./next_styled_components.md)
 
 ## 🛠 실습
 
