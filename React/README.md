@@ -42,6 +42,11 @@
   - [Context API](./context.md)
   - [Redux](https://github.com/hyejinny97/TIL/tree/master/Redux)
 
+- [Concurrent 모드](./react_concurrent.md)
+
+  - 블로킹 vs 논블로킹 렌더링
+  - 작업의 우선순위를 통한 효율적인 CPU 사용
+
 ## 🛠 실습
 
 - []()
