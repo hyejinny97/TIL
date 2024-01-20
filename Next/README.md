@@ -44,3 +44,7 @@ Next.js는 서버 사이드 렌더링, 정적 웹 페이지 생성 등 리액트
 ## 🔎 참고자료
 
 - '실전 리액트 프로그래밍' 교재
+- [생활코딩 - Next.js v13](https://opentutorials.org/course/5098)
+- [Next.js Docs](https://nextjs.org/docs)
+- [요즘IT - Next.js v14 업데이트 알아보기](https://yozm.wishket.com/magazine/detail/2324/)
+- [Next.js 소개와 14 버전 변경사항](https://modulabs.co.kr/blog/react-next-js-14/)
