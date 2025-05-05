@@ -16,10 +16,19 @@
 - [SELECT 기본](./select_base.md)
   - 기본 조회하기: SELECT ~ FROM
   - 특정한 조건만 조회하기: SELECT ~ FROM ~ WHERE
-  - 좀 더 알아보기: 서브 쿼리
+  - 서브 쿼리
 - [SELECT 심화](./select_deep.md)
   - ORDER BY 절
   - GROUP BY 절
+- [데이터 변경을 위한 SQL문](./change_data.md)
+  - 데이터 입력: INSERT
+  - 데이터 수정: UPDATE
+  - 데이터 삭제: DELETE
+  - 대용량 테이블의 삭제
+- [MySQL의 데이터 형식](./data_type.md)
+  - 데이터 형식
+  - 변수의 사용
+  - 데이터 형 변환
 
 ## 🔎 참고자료
 
