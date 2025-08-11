@@ -34,6 +34,11 @@
   - 중복된 결과 1개만 출력하기
   - 외부 조인
   - 기타 조인
+- [SQL 프로그래밍](./sql_programming.md)
+  - IF 문
+  - CASE 문
+  - WHILE 문
+  - 동적 SQL
 
 ## 🔎 참고자료
 
