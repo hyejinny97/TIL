@@ -49,6 +49,12 @@
   - cf) 핵심 패키지와 함수
     - scikit-learn
     - numpy
+- [선형 회귀](./linear_regression.md)
+  - k-최근접 이웃의 한계
+  - 선형 회귀
+  - 다항 회귀
+  - cf) 핵심 패키지와 함수
+    - scikit-learn
 
 ## 🔎 참고자료
 
