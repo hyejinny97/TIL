@@ -67,6 +67,14 @@
     - pandas
     - scikit-learn
 
+### 4. 다양한 분류 알고리즘
+
+- [로지스틱 회귀](./logistic_regression.md)
+  - 럭키백의 확률
+  - 로지스틱 회귀
+  - cf) 핵심 패키지와 함수
+    - scikit-learn
+
 ## 🔎 참고자료
 
 - 혼자 공부하는 머신러닝+딥러닝
