@@ -74,6 +74,12 @@
   - 로지스틱 회귀
   - cf) 핵심 패키지와 함수
     - scikit-learn
+- [확률적 경사 하강법](./gradient_descent.md)
+  - 점진적인 학습
+  - SGDClassifier
+  - 에포크와 과대/과소적합
+  - cf) 핵심 패키지와 함수
+    - scikit-learn
 
 ## 🔎 참고자료
 
