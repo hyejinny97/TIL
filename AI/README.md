@@ -89,6 +89,12 @@
   - cf) 핵심 패키지와 함수
     - pandas
     - scikit-learn
+- [교차 검증과 그리드 서치](./cross_validation.md)
+  - 검증 세트
+  - 교차 검증
+  - 하이퍼파라미터 튜닝
+  - cf) 핵심 패키지와 함수
+    - scikit-learn
 
 ## 🔎 참고자료
 
