@@ -156,6 +156,7 @@
   - cf) 핵심 패키지와 함수
     - Keras
     - NumPy
+- [➕ 파이토치로 신경망 모델 훈련하기](./ann_fit_by_pytorch.md)
 
 ## 🔎 참고자료
 
