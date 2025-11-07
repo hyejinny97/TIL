@@ -64,6 +64,7 @@ early_stopping_counter = 0
 epochs = 20
 batches = int(len(train_scaled)/32)
 for epoch in range(epochs):
+    # 훈련
     model.train()
     train_loss = 0
     for i in range(batches):
@@ -76,6 +77,7 @@ for epoch in range(epochs):
         optimizer.step()
         train_loss += loss.item()
 
+    # 검증
     model.eval()
     val_loss = 0
     with torch.no_grad():

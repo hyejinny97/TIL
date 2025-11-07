@@ -171,6 +171,7 @@
   - cf) 핵심 패키지와 함수
     - Keras
     - matplotlib
+- [➕ 파이토치로 합성곱 신경망 모델 훈련하기](./cnn_by_pytorch.md)
 
 ## 🔎 참고자료
 
