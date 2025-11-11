@@ -84,7 +84,7 @@ for i in range(2):
 plt.show()
 ```
 
-<img src='./8-3_weights_subplot.png' alt='가중치 히스토그램' width='700px' />
+<img src='./8-3_weights_subplot.png' alt='필터 이미지' width='700px' />
 
 - 결과 그래프를 보면 가중치 값이 무작위로 나열된 것이 아닌 어떤 패턴을 볼 수 있음
 - 가중치 값이 낮을수록 검은색에 가깝고, 높을수록 노란색에 가까움
