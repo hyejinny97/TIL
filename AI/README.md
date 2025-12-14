@@ -225,6 +225,18 @@
   - 텍스트 토큰화
   - cf) 핵심 패키지와 함수
     - transformers
+- [대규모 언어 모델로 텍스트 생성하기](./transformer_generation.md)
+  - 디코더 기반의 대규모 언어 모델
+  - LLM 리더보드
+  - EXAONE의 특징
+  - EXAONE-3.5로 상품 질문에 대한 대답 생성하기
+  - 토큰 디코딩 전략
+  - 오픈 AI 모델의 간략한 역사
+  - 오픈 AI API 키 만들기
+  - 오픈 AI API로 상품 질문에 대한 대답 생성하기
+  - cf) 핵심 패키지와 함수
+    - transformers
+    - openai
 
 ## 🔎 참고자료
 
