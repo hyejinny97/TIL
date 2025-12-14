@@ -13,7 +13,7 @@ wine = pd.read_csv('https://bit.ly/wine_csv_data')
 wine.head()
 ```
 
-<img src='./와인_데이터셋.png' alt='와인 데이터셋' width='250px' />
+<img src='./image/와인_데이터셋.png' alt='와인 데이터셋' width='250px' />
 
 - 특성: alcohol, sugar, pH
 - 타깃: 레드 와인(0), 화이트 와인(1)
@@ -45,7 +45,7 @@ memory usage: 203.2 KB
 wine.describe()
 ```
 
-<img src='./describe_메서드.png' alt='describe 메서드' width='400px' />
+<img src='./image/describe_메서드.png' alt='describe 메서드' width='400px' />
 
 - `describe()`: 열에 대한 간락한 통계를 출력해 줌
   - 최소, 최대, 평균값, 표준편차, 1사분위수, 중간값(2사분위수), 3사분위수 등
@@ -138,7 +138,7 @@ plot_tree(dt)
 plt.show()
 ```
 
-<img src='./plot_tree.png' alt='결정 트리' width='350px' />
+<img src='./image/plot_tree.png' alt='결정 트리' width='350px' />
 
 - `plot_tree()`: 결정 트리를 이해하기 쉬운 트리 그림으로 출력해줌
 - 노드(node): 훈련 데이터의 특성에 대한 테스트를 표현함
@@ -155,7 +155,7 @@ plot_tree(dt, max_depth=1, filled=True, feature_names=['alcohol', 'sugar', 'pH']
 plt.show()
 ```
 
-<img src='./plot_tree_max_depth.png' alt='깊이를 1로 제한한 결정 트리' width='350px' />
+<img src='./image/plot_tree_max_depth.png' alt='깊이를 1로 제한한 결정 트리' width='350px' />
 
 - `max_depth`: 트리 깊이를 제한
   - 1로 주면 루트 노드를 제외하고 하나의 노드를 더 확장하여 그림
@@ -231,7 +231,7 @@ plot_tree(dt, filled=True, feature_names=['alcohol', 'sugar', 'pH'])
 plt.show()
 ```
 
-<img src='./tree_max_depth_3.png' alt='트리의 max_depth가 3인 결정 트리' width='700px' />
+<img src='./image/tree_max_depth_3.png' alt='트리의 max_depth가 3인 결정 트리' width='700px' />
 
 - 사실, **결정 트리는 표준화 전처리 과정이 필요 없음**
   - 결정 트리는 불순도를 기준으로 샘플을 나누는데, 불순도는 클래스별 비율을 가지고 계산함
@@ -255,7 +255,7 @@ plot_tree(dt, filled=True, feature_names=['alcohol', 'sugar', 'pH'])
 plt.show()
 ```
 
-<img src='./no_scaled_tree.png' alt='전처리하지 않은 결정 트리' width='700px' />
+<img src='./image/no_scaled_tree.png' alt='전처리하지 않은 결정 트리' width='700px' />
 
 - 결과를 보면, 같은 트리지만 특성값을 표준점수로 바꾸지 않아 이해하기가 훨씬 쉬움
 

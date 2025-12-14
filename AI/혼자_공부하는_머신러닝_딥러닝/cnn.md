@@ -20,7 +20,7 @@
 
 ### 합성곱 신경망 (Convolutional Neural Network, CNN)
 
-<img src='./cnn_합성곱층.png' alt='합성곱층' width='450px' />
+<img src='./image/cnn_합성곱층.png' alt='합성곱층' width='450px' />
 
 - 완전 연결 신경망(밀집 신경망): 완전 연결 층(밀집층)만 사용하여 만든 신경망
   - 뉴런이 길게 늘어서 있고 서로 조밀하게 연결되어 있음
@@ -129,7 +129,7 @@ keras.layers.MaxPooling2D(2)
 
 ## 3️⃣ 합성곱 신경망의 전체 구조
 
-<img src='./8-1_cnn.png' alt='합성곱 신경망의 전체 구조' width='800px' />
+<img src='./image/8-1_cnn.png' alt='합성곱 신경망의 전체 구조' width='800px' />
 
 - 합성곱 신경망은 위처럼 합성곱 층에서 특성 맵을 생성하고 풀링에서 크기를 줄이는 구조가 쌍을 이룸
 

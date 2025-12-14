@@ -95,7 +95,7 @@ from torchinfo import summary
 summary(model, input_size=(32, 28, 28))
 ```
 
-<img src='./pytorch_dnn_summary.png' alt='파이토치로 만든 심층 신경망 모델에 대한 정보' width='550px' />
+<img src='./image/pytorch_dnn_summary.png' alt='파이토치로 만든 심층 신경망 모델에 대한 정보' width='550px' />
 
 - 파이토치는 케라스의 summary() 메서드와 같이 전체 구조를 확인하는 도구를 제공하지 않음
 - 대신, `torchinfo` 패키지의 summary() 함수를 사용하면 비슷한 결과를 얻을 수 있음

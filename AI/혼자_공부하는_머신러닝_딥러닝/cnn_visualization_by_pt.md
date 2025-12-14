@@ -109,7 +109,7 @@ plt.ylabel('count')
 plt.show()
 ```
 
-<img src='./8-3_weights_histogram_pt.png' alt='가중치 히스토그램' width='350px' />
+<img src='./image/8-3_weights_histogram_pt.png' alt='가중치 히스토그램' width='350px' />
 
 - 케라스 모델과 비슷하게 약간 한쪽으로 치우쳐져 있지만 종모양 형태를 띄고 있음
 
@@ -124,7 +124,7 @@ for i in range(2):
 plt.show()
 ```
 
-<img src='./8-3_weights_subplot_pt.png' alt='필터 이미지' width='700px' />
+<img src='./image/8-3_weights_subplot_pt.png' alt='필터 이미지' width='700px' />
 
 ## 2️⃣ 특성 맵 시각화
 
@@ -142,7 +142,7 @@ plt.imshow(train_input[0], cmap='gray_r')
 plt.show()
 ```
 
-<img src='./8-3_sample_img.png' alt='첫 번째 샘플' width='250px' />
+<img src='./image/8-3_sample_img.png' alt='첫 번째 샘플' width='250px' />
 
 #### 2. 샘플을 첫 번째 합성곱 층과 렐루 층에 전달한 후 특성 맵을 만들어보자
 
@@ -171,7 +171,7 @@ for i in range(4):
 plt.show()
 ```
 
-<img src='./8-3_feature_maps_pt.png' alt='특성 맵' width='500px' />
+<img src='./image/8-3_feature_maps_pt.png' alt='특성 맵' width='500px' />
 
 - 케라스 모델과 비슷하게 이 합성곱 층은 이미지의 경계와 모서리, 전경, 배경 등을 감지하는 것 같음
 
@@ -213,6 +213,6 @@ for i in range(8):
 plt.show()
 ```
 
-<img src='./8-3_feature_maps_second_pt.png' alt='특성 맵' width='500px' />
+<img src='./image/8-3_feature_maps_second_pt.png' alt='특성 맵' width='500px' />
 
 - 두 번째 합성곱 층이 출력한 특성 맵도 케라스 모델이 만든 것과 비슷한 것 같음

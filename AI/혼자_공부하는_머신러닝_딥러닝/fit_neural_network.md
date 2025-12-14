@@ -36,7 +36,7 @@ model = model_fn()
 model.summary()
 ```
 
-<img src='./7-3_ann_summary.png' alt='신경망 모델 정보' width='550px' />
+<img src='./image/7-3_ann_summary.png' alt='신경망 모델 정보' width='550px' />
 
 #### 3. 신경망 모델을 컴파일하고 훈련하자
 
@@ -68,7 +68,7 @@ plt.ylabel('loss')
 plt.show()
 ```
 
-<img src='./7-3_loss_graph.png' alt='손실 곡선' width='400px' />
+<img src='./image/7-3_loss_graph.png' alt='손실 곡선' width='400px' />
 
 ```py
 plt.plot(history.history['accuracy'])
@@ -77,7 +77,7 @@ plt.ylabel('accuracy')
 plt.show()
 ```
 
-<img src='./7-3_accuracy_graph.png' alt='정확도 곡선' width='400px' />
+<img src='./image/7-3_accuracy_graph.png' alt='정확도 곡선' width='400px' />
 
 - 에포크마다 손실이 감소하고 정확도가 향상하는 것을 확인할 수 있음
 
@@ -96,7 +96,7 @@ plt.ylabel('loss')
 plt.show()
 ```
 
-<img src='./7-3_loss_graph_epoch_20.png' alt='에포크를 20으로 늘린 후 훈련한 손실 곡선' width='400px' />
+<img src='./image/7-3_loss_graph_epoch_20.png' alt='에포크를 20으로 늘린 후 훈련한 손실 곡선' width='400px' />
 
 - 마찬가지로, 손실이 잘 감소하는 것을 확인할 수 있음
 - 문제점) 지금까지 훈련 세트의 손실만 그렸음
@@ -108,7 +108,7 @@ plt.show()
   - 이유: 인공 신경망 모델이 최적화하는 대상은 정확도가 아닌 손실 함수일 뿐더러, 이따금 손실 감소에 비례하여 정확도가 높아지지 않는 경우가 있음
 - 에포크에 따른 손실과 과소적합/과대적합
 
-   <img src='./7-3_loss_epoch_graph.jpg' alt='손실-에포크 그래프' width='350px' />
+   <img src='./image/7-3_loss_epoch_graph.jpg' alt='손실-에포크 그래프' width='350px' />
 
 #### 1. 에포크마다 검증 손실을 확인해보자
 
@@ -135,7 +135,7 @@ plt.legend()
 plt.show()
 ```
 
-<img src='./7-3_val_loss_graph.png' alt='검증 손실 곡선' width='400px' />
+<img src='./image/7-3_val_loss_graph.png' alt='검증 손실 곡선' width='400px' />
 
 - 초기에 검증 손실이 감소하다가 3번째 에포크 만에 다시 상승해 과대적합 모델이 만들어짐
 - 검증 손실이 상승하는 시점을 가능한 뒤로 늦추면 검증 세트에 대한 손실이 늦춰질 뿐만 아니라 검증 세트에 대한 정확도도 증가할 것임
@@ -157,7 +157,7 @@ plt.legend()
 plt.show()
 ```
 
-<img src='./7-3_adam_val_loss_graph.png' alt='Adam 옵티마이저를 사용해 훈련한 검증 손실 곡선' width='400px' />
+<img src='./image/7-3_adam_val_loss_graph.png' alt='Adam 옵티마이저를 사용해 훈련한 검증 손실 곡선' width='400px' />
 
 - 일곱 번째 에포크까지 전반적인 감소 추세가 이어진 것을 보니, 과대적합이 훨씬 줄어들었음을 알 수 있음
 - Adam 옵티마이저가 이 데이터셋에 잘 맞았음
@@ -177,7 +177,7 @@ model = model_fn(keras.layers.Dropout(0.3))
 model.summary()
 ```
 
-<img src='./7-3_dnn_dropout.png' alt='드롭아웃 층을 추가한 신경망 모델' width='550px' />
+<img src='./image/7-3_dnn_dropout.png' alt='드롭아웃 층을 추가한 신경망 모델' width='550px' />
 
 - `Dropout` 클래스: 어떤 층의 뒤에 드롭아웃을 두어 이 층의 출력을 랜덤하게 0으로 만듦
   - 훈련되는 모델 파라미터는 없음
@@ -199,7 +199,7 @@ plt.legend()
 plt.show()
 ```
 
-<img src='./7-3_dnn_dropout_loss_result.png' alt='드롭아웃 층을 추가한 후 훈련한 신경망 모델의 손실 곡선' width='400px' />
+<img src='./image/7-3_dnn_dropout_loss_result.png' alt='드롭아웃 층을 추가한 후 훈련한 신경망 모델의 손실 곡선' width='400px' />
 
 - 훈련이 끝난 뒤에 평가나 예측을 수행할 때는 드롭아웃을 적용하지 말아야 함
 - 케라스는 모델을 평가와 예측을 사용할 때는 자동으로 드롭아웃을 적용하지 않음
@@ -252,7 +252,7 @@ val_labels = np.argmax(model.predict(val_scaled), axis=-1)
 print(np.mean(val_labels == val_target))
 ```
 
-<img src='./7-3_dnn_predict_result.png' alt='모델의 검증 정확도 결과' width='400px' />
+<img src='./image/7-3_dnn_predict_result.png' alt='모델의 검증 정확도 결과' width='400px' />
 
 - `predict()` 메서드: 예측을 수행
   - 패션 MNIST 데이터셋이 다중 분류 문제이기 때문에 샘플마다 10개의 클래스에 대한 확률을 반환함
@@ -270,7 +270,7 @@ model = keras.models.load_model('model-whole.keras')
 model.evaluate(val_scaled, val_target)
 ```
 
-<img src='./7-3_dnn_model_whole_evaluate.png' alt='모델의 검증 정확도 결과' width='550px' />
+<img src='./image/7-3_dnn_model_whole_evaluate.png' alt='모델의 검증 정확도 결과' width='550px' />
 
 - `load_model()` 함수: 모델 파라미터뿐만 아니라 모델 구조와 옵티마이저 상태까지 모두 복원함
 
@@ -303,7 +303,7 @@ model = keras.models.load_model('best-model.keras')
 model.evaluate(val_scaled, val_target)
 ```
 
-<img src='./7-3_best_model_evaluate_result.png' alt='모델의 검증 정확도 결과' width='550px' />
+<img src='./image/7-3_best_model_evaluate_result.png' alt='모델의 검증 정확도 결과' width='550px' />
 
 - ModelCheckpoint 콜백이 가장 낮은 검증 손실 모델을 자동으로 저장한 것을 알 수 있음
 
@@ -349,7 +349,7 @@ plt.legend()
 plt.show()
 ```
 
-<img src='./7-3_earlystopping_cb_loss_graph.png' alt='조기 종료한 모델의 훈련 손실과 검증 손실 그래프' width='400px' />
+<img src='./image/7-3_earlystopping_cb_loss_graph.png' alt='조기 종료한 모델의 훈련 손실과 검증 손실 그래프' width='400px' />
 
 - 열다섯 번째 에포크(epoch=14)에서 가장 낮은 손실을 기록했고, 열일곱 번째 에포크(epoch=16)에서 훈련이 중지된 것을 알 수 있음
 
@@ -359,7 +359,7 @@ plt.show()
 model.evaluate(val_scaled, val_target)
 ```
 
-<img src='./7-3_earlystopping_evalute.png' alt='모델의 검증 정확도 결과' width='550px' />
+<img src='./image/7-3_earlystopping_evalute.png' alt='모델의 검증 정확도 결과' width='550px' />
 
 ## cf) 핵심 패키지와 함수
 

@@ -57,7 +57,7 @@ model.add(keras.layers.Dense(10, activation='softmax'))
 model.summary()
 ```
 
-<img src='./8-2_cnn_summary.png' alt='신경망 모델 정보' width='550px' />
+<img src='./image/8-2_cnn_summary.png' alt='신경망 모델 정보' width='550px' />
 
 - 첫 번째 합성곱층의 파라미터 개수: 3 x 3 x 1 x 32 + 32 = 320개
 - 두 번째 합성곱층의 파라미터 개수: 3 x 3 x 32 x 64 + 64 = 18,496개
@@ -69,8 +69,8 @@ keras.utils.plot_model(model)
 keras.utils.plot_model(model, show_shapes=True)
 ```
 
-<img src='./8-2_cnn_plot.png' alt='층의 구성 그림' width='100px' />
-<img src='./8-2_cnn_plot_shapes.png' alt='층의 구성과 입력 및 출력' width='300px' />
+<img src='./image/8-2_cnn_plot.png' alt='층의 구성 그림' width='100px' />
+<img src='./image/8-2_cnn_plot_shapes.png' alt='층의 구성과 입력 및 출력' width='300px' />
 
 - `plot_model()` 함수: 층의 구성을 그림으로 표현해줌
   - 기본적으로 'model.png' 파일에 출력된 이미지를 저장해줌
@@ -92,7 +92,7 @@ early_stopping_cb = keras.callbacks.EarlyStopping(patience=2, restore_best_weigh
 history = model.fit(train_scaled, train_target, epochs=20, validation_data=(val_scaled, val_target), callbacks=[checkpoint_cb, early_stopping_cb])
 ```
 
-<img src='./8-2_cnn_fit_result.png' alt='모델 훈련 결과' width='750px' />
+<img src='./image/8-2_cnn_fit_result.png' alt='모델 훈련 결과' width='750px' />
 
 - 훈련 세트의 정확도가 이전에는 80%대였는데 90%대로 올랐음
 
@@ -109,7 +109,7 @@ plt.legend()
 plt.show()
 ```
 
-<img src='./8-2_cnn_loss_graph.png' alt='훈련 손실과 검증 손실의 그래프' width='400px' />
+<img src='./image/8-2_cnn_loss_graph.png' alt='훈련 손실과 검증 손실의 그래프' width='400px' />
 
 - 여섯 번째 에포크가 최적임
 
@@ -119,7 +119,7 @@ plt.show()
 model.evaluate(val_scaled, val_target)
 ```
 
-<img src='./8-2_cnn_val_accuracy.png' alt='검증 세트에 대한 성능' width='550px' />
+<img src='./image/8-2_cnn_val_accuracy.png' alt='검증 세트에 대한 성능' width='550px' />
 
 #### 4. 검증 세트의 첫 번째 샘플 이미지를 확인해보자
 
@@ -128,7 +128,7 @@ plt.imshow(val_scaled[0].reshape(28, 28), cmap='gray_r')
 plt.show()
 ```
 
-<img src='./8-2_sample_img.png' alt='첫 번째 샘플 이미지' width='300px' />
+<img src='./image/8-2_sample_img.png' alt='첫 번째 샘플 이미지' width='300px' />
 
 - 맷플롯립에서는 흑백 이미지에 깊이 차원은 없기 때문에, (28, 28, 1) 크기를 (28, 28)로 바꾸어 출력해야 함
 
@@ -139,7 +139,7 @@ preds = model.predict(val_scaled[0:1])
 print(preds)
 ```
 
-<img src='./8-2_predict_sample.png' alt='첫 번째 샘플 이미지에 대한 예측 확률' width='500px' />
+<img src='./image/8-2_predict_sample.png' alt='첫 번째 샘플 이미지에 대한 예측 확률' width='500px' />
 
 - 케라스의 fit(), predict(), evaluate() 메서드는 모두 입력의 첫 번째 차원이 배치 차원이라고 기대함
   - 따라서, 인덱싱이 아닌 배열 슬라이싱을 사용했음
@@ -155,7 +155,7 @@ plt.ylabel('prob.')
 plt.show()
 ```
 
-<img src='./8-2_sample_bar.png' alt='첫 번째 샘플 이미지의 예측 확률에 대한 막대 그래프' width='350px' />
+<img src='./image/8-2_sample_bar.png' alt='첫 번째 샘플 이미지의 예측 확률에 대한 막대 그래프' width='350px' />
 
 ```py
 import numpy as np
@@ -173,7 +173,7 @@ test_scaled = test_input.reshape(-1, 28, 28, 1) / 255.0
 model.evaluate(test_scaled, test_target)
 ```
 
-<img src='./8-2_cnn_test_accuracy.png' alt='테스트 세트에 대한 성능' width='550px' />
+<img src='./image/8-2_cnn_test_accuracy.png' alt='테스트 세트에 대한 성능' width='550px' />
 
 - 테스트 세트에서의 점수는 검증 세트보다 조금 더 작지만, 약 91%의 성능을 보임
 

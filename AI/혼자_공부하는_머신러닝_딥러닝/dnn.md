@@ -6,7 +6,7 @@
 
 ### 심층 신경망에 의한 패션 아이템 분류
 
-<img src='./dnn.png' alt='심층 신경망' width='500px' />
+<img src='./image/dnn.png' alt='심층 신경망' width='500px' />
 
 - 은닉층(hidden layer): 입력층과 출력층 사이에 있는 모든 층
   - 모든 신경망의 은닉층에는 항상 활성화 함수가 있음
@@ -67,7 +67,7 @@ model = keras.Sequential([inputs, dense1, dense2])
 model.summary()
 ```
 
-<img src='./dnn_summary.png' alt='심층 신경망 정보' width='550px' />
+<img src='./image/dnn_summary.png' alt='심층 신경망 정보' width='550px' />
 
 - `summary()` 메서드: 층에 대한 유용한 정보를 출력해줌
 - 맨 첫 줄에 모델의 이름이 나옴
@@ -93,7 +93,7 @@ model.compile(loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 model.fit(train_scaled, train_target, epochs=5)
 ```
 
-<img src='./dnn_fit_result.png' alt='심층 신경망 모델 훈련 결과' width='550px' />
+<img src='./image/dnn_fit_result.png' alt='심층 신경망 모델 훈련 결과' width='550px' />
 
 ## 3️⃣ 층을 추가하는 다른 방법
 
@@ -118,7 +118,7 @@ model = keras.Sequential([
 model.summary()
 ```
 
-<img src='./sequential_method2.png' alt='sequential summary 2' width='550px' />
+<img src='./image/sequential_method2.png' alt='sequential summary 2' width='550px' />
 
 ### Sequential 클래스의 객체를 만들고 이 객체의 add() 메서드를 호출하여 층을 추가하는 방법
 
@@ -137,13 +137,13 @@ model.add(keras.layers.Dense(10, activation='softmax'))
 model.summary()
 ```
 
-<img src='./sequential_method3.png' alt='sequential summary 3' width='550px' />
+<img src='./image/sequential_method3.png' alt='sequential summary 3' width='550px' />
 
 ## 4️⃣ 렐루 함수
 
 - 초창기 인공 신경망의 은닉층에 많이 사용된 활성화 함수는 시그모이드 함수였음
 
-  <img src='./시그모이드_함수_그래프.png' alt='시그모이드 함수 그래프' width='300px' />
+  <img src='./image/시그모이드_함수_그래프.png' alt='시그모이드 함수 그래프' width='300px' />
 
 - 하지만, 이 함수의 양쪽 끝에서 변화가 작기 때문에 학습이 어려워짐
 - 특히, 층이 많은 심층 신경망일수록 그 효과가 누적되어 학습을 더 어렵게 만듦
@@ -151,7 +151,7 @@ model.summary()
 
 ### 렐루(ReLU) 함수
 
-<img src='./relu.png' alt='렐루 함수 그래프' width='300px' />
+<img src='./image/relu.png' alt='렐루 함수 그래프' width='300px' />
 
 - 입력이 양수일 경우 마치 활성화 함수가 없는 것처럼 그냥 입력을 통과시키고 음수일 경우에는 0으로 만듦
 - 렐루 함수는 max(0, z)와 같이 쓸 수 있음
@@ -177,7 +177,7 @@ model.add(keras.layers.Dense(10, activation='softmax'))
 model.summary()
 ```
 
-<img src='./dnn_with_flatten_relu.png' alt='렐루 함수를 적용한 심층 신경망에 대한 정보' width='550px' />
+<img src='./image/dnn_with_flatten_relu.png' alt='렐루 함수를 적용한 심층 신경망에 대한 정보' width='550px' />
 
 - Flatten 클래스에 포함된 모델 파라미터는 0개임을 알 수 있음
 - Flatten 층을 신경망 모델에 추가하면 입력값의 차원을 짐작할 수 있는 장점이 있음
@@ -197,7 +197,7 @@ model.compile(loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 model.fit(train_scaled, train_target, epochs=5)
 ```
 
-<img src='./dnn_relu_fit_result.png' alt='렐루 함수를 적용한 심층 신경망 모델 훈련 결과' width='550px' />
+<img src='./image/dnn_relu_fit_result.png' alt='렐루 함수를 적용한 심층 신경망 모델 훈련 결과' width='550px' />
 
 - 시그모이드 함수를 사용했을 때와 비교하면 성능이 조금 향상되었음
 
@@ -207,7 +207,7 @@ model.fit(train_scaled, train_target, epochs=5)
 model.evaluate(val_scaled, val_target)
 ```
 
-<img src='./dnn_relu_val_result.png' alt='렐루 함수를 적용한 심층 신경망 모델 검증 결과' width='550px' />
+<img src='./image/dnn_relu_val_result.png' alt='렐루 함수를 적용한 심층 신경망 모델 검증 결과' width='550px' />
 
 - 7장 1절에서 은닉층을 추가하지 않은 경우보다 정확도가 향상되었음
 
@@ -229,7 +229,7 @@ model.evaluate(val_scaled, val_target)
 - 신경망의 가중치와 절편을 학습하기 위한 알고리즘
 - 케라스는 다양한 종류의 경사 하강법 알고리즘를 제공함
 
-  <img src='./optimizer.png' alt='옵티마이저' width='450px' />
+  <img src='./image/optimizer.png' alt='옵티마이저' width='450px' />
 
 #### 기본 경사 하강법 옵티마이저
 
@@ -325,7 +325,7 @@ model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=
 model.fit(train_scaled, train_target, epochs=5)
 ```
 
-<img src='./dnn_adam_fit_result.png' alt='Adam 옵티마이저를 사용해 심층 신경망을 훈련한 결과' width='550px' />
+<img src='./image/dnn_adam_fit_result.png' alt='Adam 옵티마이저를 사용해 심층 신경망을 훈련한 결과' width='550px' />
 
 - 기본 RMSprop을 사용했을 때와 거의 같은 성능을 보여줌
 
@@ -335,7 +335,7 @@ model.fit(train_scaled, train_target, epochs=5)
 model.evaluate(val_scaled, val_target)
 ```
 
-<img src='./dnn_adam_val_result.png' alt='Adam 옵티마이저를 사용해 훈련한 심층 신경망을 평가한 결과' width='550px' />
+<img src='./image/dnn_adam_val_result.png' alt='Adam 옵티마이저를 사용해 훈련한 심층 신경망을 평가한 결과' width='550px' />
 
 - 기본 RMSprop보다 조금 더 나은 성능을 보여줌
 

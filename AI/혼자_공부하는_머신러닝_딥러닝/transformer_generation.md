@@ -30,7 +30,7 @@
 
 > [오픈 LLM 리더보드 사이트](https://huggingface.co/open-llm-leaderboard)
 
-<img src='./10-3_open_llm_leaderboard.png' alt='오픈 LLM 리더보드' width='800px' />
+<img src='./image/10-3_open_llm_leaderboard.png' alt='오픈 LLM 리더보드' width='800px' />
 
 - 허깅페이스에서 제공하는 서비스로, 허깅페이스에 등록된 오픈 소스 LLM의 성능을 비교함
 - 이를 활용해 특정 작업에 적합한 최신 모델을 쉽게 찾을 수 있음
@@ -116,7 +116,7 @@
 
 #### 디코더 블록
 
-<img src="10-3_exaone_decorder_block.jpg" alt="EXAONE 디코더 블록" width='700px'>
+<img src="./image/10-3_exaone_decorder_block.jpg" alt="EXAONE 디코더 블록" width='700px'>
 
 - 24억 파라미터 버전 EXAONE의 디코더 블록
 - 24억 파라미터 버전의 은닉 벡터 크기는 2,560임
@@ -126,7 +126,7 @@
 
 #### EXAONE 전체 구조
 
-<img src="10-3_exaone_structure.jpg" alt="EXAONE 전체 구조" width='700px'>
+<img src="./image/10-3_exaone_structure.jpg" alt="EXAONE 전체 구조" width='700px'>
 
 - 24억 파라미터 버전 EXAONE의 전체 구조
 - 디코더 블록을 30개 쌓음
@@ -135,7 +135,7 @@
 
 ### 그룹 쿼리 어텐션
 
-<img src='./10-3_group_query_attention.jpg' alt='그룹 쿼리 어텐션' width='500px' />
+<img src='./image/10-3_group_query_attention.jpg' alt='그룹 쿼리 어텐션' width='500px' />
 
 - Grouped Query Attention
 - 멀티 헤드 어텐션의 변형
@@ -151,12 +151,12 @@
 
 ### 실루(SiLU) 활성화 함수
 
-<img src='./10-3_silu.jpg' alt='실루 함수' width='250px' />
+<img src='./image/10-3_silu.jpg' alt='실루 함수' width='250px' />
 
 - 밀집층의 출력에 시그모이드 함수를 적용한 다음, 이 결과에 원래 출력을 다시 곱함
 - 실루 함수는 렐루 함수와 비슷한 형태를 가지며, 젤루와 마찬가지로 원점에서도 미분이 가능함
 
-<img src='./10-3_silu_feedforward_network.jpg' alt='실루 함수를 사용한 피트포워드 네트워크' width='300px' />
+<img src='./image/10-3_silu_feedforward_network.jpg' alt='실루 함수를 사용한 피트포워드 네트워크' width='300px' />
 
 - 일반적으로 실루 함수를 적용할 때 피드포워드 네트워크의 첫 번째 밀집층을 두 개로 나누어 하나는 실루 함수를 적용하고, 다른 하나는 활성화 함수를 적용하지 않음
 - 그 후, 이 두 출력을 곱함
@@ -172,14 +172,14 @@
 
 #### 일반 정규화
 
-<img src='./10-3_normalization.jpg' alt='층 정규화' width='600px' />
+<img src='./image/10-3_normalization.jpg' alt='층 정규화' width='600px' />
 
 - 입력에서 평균을 빼고 표준편차로 나누어 표준 점수를 계산함
 - 층 정규화도 기본적으로 이와 같은 방식으로 사용함
 
 #### RMS 정규화
 
-<img src='./10-3_rms_normalization.jpg' alt='RMS 정규화' width='600px' />
+<img src='./image/10-3_rms_normalization.jpg' alt='RMS 정규화' width='600px' />
 
 - 입력에서 평균을 빼지 않고, 표준편차를 구할 때도 평균을 사용하지 않음
 
@@ -433,7 +433,7 @@ print(output[0]['generated_text'])
 
 #### 단점
 
-<img src='./10-3_top_p.jpg' alt='top-p 샘플링' width='600px' />
+<img src='./image/10-3_top_p.jpg' alt='top-p 샘플링' width='600px' />
 
 - top-p 샘플링을 하려면 소프트맥스 함수를 사용해 로짓을 확률로 바꾸어야 함
 - 그 다음 확률을 기준으로 토큰을 선택하고, 이 토큰들의 로짓을 다시 소프트맥스 함수에 통과시켜서 최종 토큰 확률을 계산해야 함
@@ -441,7 +441,7 @@ print(output[0]['generated_text'])
 
 #### 해결 방법
 
-<img src='./10-3_top_p_with_top_k.jpg' alt='top-p + top-k 샘플링' width='700px' />
+<img src='./image/10-3_top_p_with_top_k.jpg' alt='top-p + top-k 샘플링' width='700px' />
 
 - top-p를 top-k와 함께 사용하면 계산량을 줄일 수 있음
 - transformers 패키지는 top-k와 top-p 방식을 동시에 사용할 수 있으며, top-k로 먼저 최상위 로짓을 일부 선택한 다음 top-p 방식을 적용함

@@ -57,7 +57,7 @@ plt.imshow(fruits[0], cmap='gray')
 plt.show()
 ```
 
-<img src='./gray_fruit.png' alt='반전된 회색 과일' width='250px' />
+<img src='./image/gray_fruit.png' alt='반전된 회색 과일' width='250px' />
 
 - 0에 가까울수록 검게 나타나고 높은 값은 밝게 표시됨
 - 보통 흑백 샘플 이미지는 바탕이 밝고 물체가 짙은 색이지만, 이 흑백 이미지는 반전된 것을 알 수 있음
@@ -69,7 +69,7 @@ plt.imshow(fruits[0], cmap='gray_r')
 plt.show()
 ```
 
-<img src='./gray_r_fruit.png' alt='회색 과일' width='250px' />
+<img src='./image/gray_r_fruit.png' alt='회색 과일' width='250px' />
 
 - cmap 매개변수를 'gray_r'로 지정하면 다시 반전하여 우리 눈에 보기 출력함
 
@@ -82,7 +82,7 @@ axs[1].imshow(fruits[200], cmap='gray_r')
 plt.show()
 ```
 
-<img src='./banana_pineapple.png' alt='바나나와 파인애플' width='400px' />
+<img src='./image/banana_pineapple.png' alt='바나나와 파인애플' width='400px' />
 
 - `subplots()`: 여러 개의 그래프를 배열처럼 쌓을 수 있음
   - 매개변수에 차례대로 그래프를 쌓을 행과 열을 지정
@@ -135,7 +135,7 @@ plt.legend(['apple', 'pineapple', 'banana'])
 plt.show()
 ```
 
-<img src='./mean_axis_1_histogram.png' alt='각 샘플의 픽셀 평균값을 나타낸 히스토그램' width='400px' />
+<img src='./image/mean_axis_1_histogram.png' alt='각 샘플의 픽셀 평균값을 나타낸 히스토그램' width='400px' />
 
 - 히스토그램: 구간별로 값이 발생한 빈도를 그래프로 표시한 것
   - 보통 x축이 값의 구간(계급)이고, y축은 발생 빈도(도수)임
@@ -154,7 +154,7 @@ axs[2].bar(range(10000), np.mean(banana, axis=0))
 plt.show()
 ```
 
-<img src='./mean_axis_0_histogram.png' alt='전체 샘플에 대해 각 픽셀별 평균값을 나타낸 히스토그램' width='1000px' />
+<img src='./image/mean_axis_0_histogram.png' alt='전체 샘플에 대해 각 픽셀별 평균값을 나타낸 히스토그램' width='1000px' />
 
 - `bar()`: 막대 그래프를 그려주는 함수
 - 사과는 사진 중앙에 상대적으로 값이 작은 영역이 보이고, 파인애플은 비교적 고르면서 높고, 바나나는 확실히 중앙의 픽셀값이 높음
@@ -173,7 +173,7 @@ axs[2].imshow(banana_mean, cmap='gray_r')
 plt.show()
 ```
 
-<img src='./mean_axis_0_2d_img.png' alt='전체 샘플에 대해 각 픽셀별 평균값을 나타낸 히스토그램' width='1000px' />
+<img src='./image/mean_axis_0_2d_img.png' alt='전체 샘플에 대해 각 픽셀별 평균값을 나타낸 히스토그램' width='1000px' />
 
 - 위 3개의 이미지를 과일별로 모든 사진을 합쳐 높은 대표적인 이미지로 생각할 수 있음
 - 위처럼 세 과일은 픽셀 위치에 따라 값의 크기가 차이 나기 때문에, 이 대표 이미지와 가까운 사진을 골라낸다면 사과, 파인애플, 바나나를 구분할 수 있을 것임
@@ -205,7 +205,7 @@ for i in range(10):
 plt.show()
 ```
 
-<img src='./apple_100.png' alt='사과 이미지 100개' width='250px' />
+<img src='./image/apple_100.png' alt='사과 이미지 100개' width='250px' />
 
 - `argsort()`: 작은 것에서 큰 순서대로 값을 나열하는 함수
 - axis('off'): 좌표축을 그리지 않음

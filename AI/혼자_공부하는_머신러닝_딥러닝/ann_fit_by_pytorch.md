@@ -105,7 +105,7 @@ for epoch in range(epochs):
             break
 ```
 
-<img src='./7-3)_pytorch_loss_by_epoch.png' alt='파이토치로 훈련한 모델의 각 에포크마다 손실 값' width='350px' />
+<img src='./image/7-3)_pytorch_loss_by_epoch.png' alt='파이토치로 훈련한 모델의 각 에포크마다 손실 값' width='350px' />
 
 - `torch.save()` 함수: 모델을 저장
   - 모델 객체와 파일 이름을 지정하면 모델 구조와 모델 파라미터가 모두 저장됨
@@ -124,7 +124,7 @@ plt.legend()
 plt.show()
 ```
 
-<img src='./7-3_pytorch_loss_graph.png' alt='훈련 손실과 검증 손실 그래프' width='400px' />
+<img src='./image/7-3_pytorch_loss_graph.png' alt='훈련 손실과 검증 손실 그래프' width='400px' />
 
 - 8번째 에포크에서 검증 점수가 가장 좋고 그 이후에 과대적합되어 10번째 에포크에서 멈춘 것을 확인할 수 있음
 

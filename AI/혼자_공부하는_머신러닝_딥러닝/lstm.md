@@ -12,7 +12,7 @@
 
 ### 구조
 
-<img src='./9-3_lstm.jpg' alt='LSTM 구조' width='400px' />
+<img src='./image/9-3_lstm.jpg' alt='LSTM 구조' width='400px' />
 
 - 빨간색 원: 시그모이드 함수
 - 파란색 원: tanh 함수
@@ -83,7 +83,7 @@ model_lstm.add(keras.layers.Dense(1, activation='sigmoid'))
 model_lstm.summary()
 ```
 
-<img src='./9-3_lstm_summary.png' alt='lstm 구조' width='650px' />
+<img src='./image/9-3_lstm_summary.png' alt='lstm 구조' width='650px' />
 
 - LSTM 셀에 사용된 모델 파라미터 개수(800) = 16 x 8 x 4 + 8 x 8 x 4 + 8 x 4
 - SimpleRNN 클래스의 모델 파라미터 개수는 200개였는데, LSTM 셀에는 작은 셀이 4개 있으므로 정확히 4배가 늘어 800개가 되었음
@@ -99,7 +99,7 @@ early_stopping_cb = keras.callbacks.EarlyStopping(patience=3, restore_best_weigh
 history = model_lstm.fit(train_seq, train_target, epochs=100, batch_size=64, validation_data=(val_seq, val_target), callbacks=[checkpoint_cb, early_stopping_cb])
 ```
 
-<img src='./9-3_lstm_fit.png' alt='lstm 훈련 결과' width='800px' />
+<img src='./image/9-3_lstm_fit.png' alt='lstm 훈련 결과' width='800px' />
 
 - 검증 세트에 대한 정확도가 약 80% 정도로 SimpleRNN 클래스를 사용했을 때보다 향상된 것을 알 수 있음
 
@@ -116,7 +116,7 @@ plt.legend()
 plt.show()
 ```
 
-<img src='./9-3_lstm_loss_graph.png' alt='훈련 손실과 검증 손실 그래프' width='400px' />
+<img src='./image/9-3_lstm_loss_graph.png' alt='훈련 손실과 검증 손실 그래프' width='400px' />
 
 - 그래프를 보면 훈련 손실이 잘 줄어들고 있지만 과대적합을 잘 억제하지 못한 것 같음
 
@@ -150,7 +150,7 @@ early_stopping_cb = keras.callbacks.EarlyStopping(patience=3, restore_best_weigh
 history = model_dropout.fit(train_seq, train_target, epochs=100, batch_size=64, validation_data=(val_seq, val_target), callbacks=[checkpoint_cb, early_stopping_cb])
 ```
 
-<img src='./9-3_lstm_dropout_fit.png' alt='lstm 훈련 결과' width='800px' />
+<img src='./image/9-3_lstm_dropout_fit.png' alt='lstm 훈련 결과' width='800px' />
 
 - 드롭아웃을 추가했더니 모델의 성능이 약간 줄어든 것 같음
 
@@ -165,7 +165,7 @@ plt.legend()
 plt.show()
 ```
 
-<img src='./9-3_lstm_dropout_loss_graph.png' alt='훈련 손실과 검증 손실 그래프' width='400px' />
+<img src='./image/9-3_lstm_dropout_loss_graph.png' alt='훈련 손실과 검증 손실 그래프' width='400px' />
 
 - LSTM 층에 적용한 드롭아웃 덕분에 훈련 손실이 줄어드는 것을 조금 억제했지만 검증 손실이 더 나아지지는 않음
 
@@ -194,7 +194,7 @@ model_2lstm.add(keras.layers.Dense(1, activation='sigmoid'))
 model_2lstm.summary()
 ```
 
-<img src='./9-3_2lstm_summary.png' alt='lstm 구조' width='650px' />
+<img src='./image/9-3_2lstm_summary.png' alt='lstm 구조' width='650px' />
 
 #### 3. 모델을 컴파일하고 훈련하자
 
@@ -207,7 +207,7 @@ early_stopping_cb = keras.callbacks.EarlyStopping(patience=3, restore_best_weigh
 history = model_2lstm.fit(train_seq, train_target, epochs=100, batch_size=64, validation_data=(val_seq, val_target), callbacks=[checkpoint_cb, early_stopping_cb])
 ```
 
-<img src='./9-3_2lstm_fit.png' alt='lstm 훈련 결과' width='800px' />
+<img src='./image/9-3_2lstm_fit.png' alt='lstm 훈련 결과' width='800px' />
 
 - 모델은 잘 훈련되었지만 여기에서는 순환층을 쌓아 그리 큰 효과를 얻진 못했음
 - 하지만, 일반적으로 순환층을 쌓으면 성능이 높아짐
@@ -223,7 +223,7 @@ plt.legend()
 plt.show()
 ```
 
-<img src='./9-3_2lstm_loss_graph.png' alt='훈련 손실과 검증 손실 그래프' width='400px' />
+<img src='./image/9-3_2lstm_loss_graph.png' alt='훈련 손실과 검증 손실 그래프' width='400px' />
 
 ## 5️⃣ GRU 구조
 
@@ -234,7 +234,7 @@ plt.show()
 
 ### 구조
 
-<img src='./9-3_gru.png' alt='GRU 구조' width='400px' />
+<img src='./image/9-3_gru.png' alt='GRU 구조' width='400px' />
 
 - 빨간색 원: 시그모이드 함수
 - 파란색 원: tanh 함수
@@ -274,7 +274,7 @@ model_gru.add(keras.layers.Dense(1, activation='sigmoid'))
 model_gru.summary()
 ```
 
-<img src='./9-3_gru_summary.png' alt='gru 구조' width='650px' />
+<img src='./image/9-3_gru_summary.png' alt='gru 구조' width='650px' />
 
 - GRU 셀에 사용된 모델 파라미터 개수(624) = 16 x 8 x 3 + 8 x 8 x 3 + 8 x 3 = 600개❓
 - 사실 케라스에 구현된 GRU 셀의 계산은 아래처럼 계산됨
@@ -284,7 +284,7 @@ model_gru.summary()
   - 아래에서는 은닉 상태가 먼저 가중치와 곱해진 다음 가운데 셀의 출력과 곱해짐
   - 따라서, 위에서는 가중치를 $w_g$로 표기했는데, 아래에서는 $w_x$와 $w_h$로 나눔
 
-  <img src='./9-3_real_gru.png' alt='GRU 구조' width='400px' />
+  <img src='./image/9-3_real_gru.png' alt='GRU 구조' width='400px' />
 
 - 이처럼 나누어 계산하면 은닉 상태에 곱해지는 가중치 외에 절편이 별도로 필요함
   - 따라서, 작은 셀마다 하나씩 절편이 추가되고 8개의 뉴런이 있으므로 총 24개의 모델 파라미터가 더해져 GRU 층의 총 모델 파라미터 개수는 624개가 됨
@@ -301,7 +301,7 @@ early_stopping_cb = keras.callbacks.EarlyStopping(patience=3, restore_best_weigh
 history = model_gru.fit(train_seq, train_target, epochs=100, batch_size=64, validation_data=(val_seq, val_target), callbacks=[checkpoint_cb, early_stopping_cb])
 ```
 
-<img src='./9-3_gru_fit.png' alt='lstm 훈련 결과' width='800px' />
+<img src='./image/9-3_gru_fit.png' alt='lstm 훈련 결과' width='800px' />
 
 - LSTM과 거의 비슷한 성능을 냄
 
@@ -316,7 +316,7 @@ plt.legend()
 plt.show()
 ```
 
-<img src='./9-3_gru_loss_graph.png' alt='훈련 손실과 검증 손실 그래프' width='400px' />
+<img src='./image/9-3_gru_loss_graph.png' alt='훈련 손실과 검증 손실 그래프' width='400px' />
 
 ## cf) 핵심 패키지와 함수
 

@@ -23,14 +23,14 @@
 
 ## 2️⃣ 순환 신경망
 
-<img src='./9-1_rnn.png' alt='순환 신경망' width='250px' />
+<img src='./image/9-1_rnn.png' alt='순환 신경망' width='250px' />
 
 - 어떤 샘플을 처리할 때 바로 이전에 사용했던 데이터를 재사용함
 - 뉴런의 출력이 다시 자기 자신으로 전달됨
 
 ### 순환층
 
-<img src='./9-1_순환층.png' alt='순환층' width='350px' />
+<img src='./image/9-1_순환층.png' alt='순환층' width='350px' />
 
 - 타임스텝(timestep): 샘플을 처리하는 한 단계
   - 순환 신경망은 이전 타임스텝의 샘플을 기억하지만 타임스텝이 오래될수록 순환되는 정보는 희미해짐
@@ -42,7 +42,7 @@
 
 ### tanh 함수
 
-<img src='./9-1_tanh.png' alt='tanh' width='250px' />
+<img src='./image/9-1_tanh.png' alt='tanh' width='250px' />
 
 - Hyperbolic Tangent 함수
 - 순환 신경망에서는 활성화 함수로 tanh 함수를 많이 사용함
@@ -50,7 +50,7 @@
 
 ### 셀의 가중치
 
-<img src='./9-1_rnn_by_timestep.png' alt='타임스텝 별로 펼친 셀' width='600px' />
+<img src='./image/9-1_rnn_by_timestep.png' alt='타임스텝 별로 펼친 셀' width='600px' />
 
 - 셀의 출력(은닉 상태)이 다음 타임스텝에 재사용되기 때문에 타임스텝으로 셀을 나누어 그릴 수 있음
 - 셀은 입력과 이전 타임스텝의 은닉 상태를 사용하여 현재 타임스텝의 은닉 상태를 만듦
@@ -69,14 +69,14 @@
 
 #### 가중치 $w_x$의 크기
 
-<img src='./9-1_rnn_weights_wx.png' alt='가중치 wx' width='200px' />
+<img src='./image/9-1_rnn_weights_wx.png' alt='가중치 wx' width='200px' />
 
 - 입력층과 순환층의 뉴런이 모두 완전 연결됨
 - $w_x$의 크기 = 4 x 3 = 12개
 
 #### 가중치 $w_h$의 크기
 
-<img src='./9-1_rnn_weights_wh.png' alt='가중치 wh' width='150px' />
+<img src='./image/9-1_rnn_weights_wh.png' alt='가중치 wh' width='150px' />
 
 - 이전 타임스텝의 은닉 상태는 다음 타임스템의 모든 뉴런에 완전히 전달됨
 - 위처럼 은닉 상태가 모든 뉴런에 순환되기 때문에, 순환층을 셀 하나로 표시할 수 밖에 없었음
@@ -89,7 +89,7 @@
 
 ### 순환층의 입력
 
-<img src='./9-1_i_am_a_boy.png' alt='i am a boy 시퀀스' width='500px' />
+<img src='./image/9-1_i_am_a_boy.png' alt='i am a boy 시퀀스' width='500px' />
 
 - 보통 하나의 샘플을 하나의 시퀀스(sequence)라고 말함
   - 시퀀스 안에는 여러 개의 아이템이 들어 있음
@@ -98,18 +98,18 @@
 
   - 시퀀스 길이(타임스텝) + 단어 표현
 
-<img src='./9-1_i_am_a_boy_result.png' alt='순환층을 통과한 i am a boy 시퀀스' width='500px' />
+<img src='./image/9-1_i_am_a_boy_result.png' alt='순환층을 통과한 i am a boy 시퀀스' width='500px' />
 
 - 입력이 순환층을 통과하면 두 번째, 세 번째 차원이 사라지고 순환층의 뉴런 개수만큼 출력됨
 - 즉, 한 샘플의 2차원 배열(시퀀스 길이 + 단어 표현)은 순환층을 통과하면 1차원 배열로 바뀜
   - 1차원 배열의 크기는 순환층의 뉴런 개수에 의해 결정됨
 
-<img src='./9-1_rnn_hf.png' alt='마지막 타임스텝의 은닉 상태' width='350px' />
+<img src='./image/9-1_rnn_hf.png' alt='마지막 타임스텝의 은닉 상태' width='350px' />
 
 - 위에서는 셀이 모든 타임스텝에서 출력을 만드는 것처럼 표현했지만, 사실 케라스의 순환층은 기본적으로 마지막 타임스텝의 은닉 상태만 출력으로 내보냄
 - 마치 입력된 시퀀스에서 읽은 모든 정보를 마지막 은닉 상태에 압축하여 전달하는 것처럼 볼 수 있음
 
-<img src='./9-1_rnn_two_layer.png' alt='순환층 2개' width='450px' />
+<img src='./image/9-1_rnn_two_layer.png' alt='순환층 2개' width='450px' />
 
 - 순환 신경망도 다른 신경망처럼 여러 개의 층을 쌓을 수 있음
 - 이때, 마지막 셀을 제외한 다른 모든 셀은 모든 타임스텝의 은닉 상태를 출력하게 됨

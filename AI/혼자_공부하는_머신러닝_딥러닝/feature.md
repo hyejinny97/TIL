@@ -236,7 +236,7 @@ plt.show()
 - alpha 값에 대한 R² 값의 그래프를 그린 후, 훈련 세트와 테스트 세트의 점수가 가장 가까운 지점이 최적의 alpha 값이 됨
 - alpha_list에 있는 6개의 값을 동일한 간격으로 나타내기 위해 로그 스케일로 나타냄
 
-<img src='./ridge_alpha.PNG' alt='릿지 회귀 알파-R² 그래프' width='500px' />
+<img src='./image/ridge_alpha.PNG' alt='릿지 회귀 알파-R² 그래프' width='500px' />
 
 - 그래프의 왼쪽: 과대적합
 - 그래프의 오른쪽: 과소적합
@@ -292,7 +292,7 @@ plt.show()
   - 사이킷런의 라쏘 모델은 최적의 계수를 찾기 위해 반복적인 계산을 수행하는데, 지정한 반복 횟수가 부족할 때 이런 경고가 발생함
   - `max_iter` 매개변수 값을 10000으로 지정해 반복 횟수를 충분히 늘려줌
 
-<img src='./lasso_alpha.PNG' alt='릿지 회귀 알파-R² 그래프' width='500px' />
+<img src='./image/lasso_alpha.PNG' alt='릿지 회귀 알파-R² 그래프' width='500px' />
 
 - 그래프의 왼쪽: 과대적합
 - 그래프의 오른쪽: 과소적합

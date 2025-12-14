@@ -144,7 +144,7 @@ print(train_target.iloc[indexes[0]])  # [['Roach' 'Perch' 'Perch']]
 
 ### 시그모이드 함수 (로지스틱 함수)
 
-<img src='./시그모이드_함수_그래프.png' alt='시그모이드 함수 그래프' width='400px' />
+<img src='./image/시그모이드_함수_그래프.png' alt='시그모이드 함수 그래프' width='400px' />
 
 - 시그모이드 함수는 하나의 선형 방정식의 출력값을 0~1 사이로 압축함
 - z가 무한히 큰 음수인 경우, 시그모이드 함수는 0에 가까워짐
@@ -154,7 +154,7 @@ print(train_target.iloc[indexes[0]])  # [['Roach' 'Perch' 'Perch']]
 
 ### 소프트맥스 함수
 
-<img src='./소프트맥스함수.png' alt='소프트맥스 함수' width='400px' />
+<img src='./image/소프트맥스함수.png' alt='소프트맥스 함수' width='400px' />
 
 - 소프트맥스 함수는 여러 개의 선형 방정식의 출력값을 0~1 사이의 확률로 압축하고 전체 합이 1이 되도록 만듦
 - 지수 함수를 사용하기 때문에 정규화된 지수 함수라고도 불림

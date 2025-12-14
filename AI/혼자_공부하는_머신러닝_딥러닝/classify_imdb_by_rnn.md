@@ -98,7 +98,7 @@ plt.ylabel('frequency')
 plt.show()
 ```
 
-<img src='./9-2_review_length_histogram.png' alt='리뷰 길이 히스토그램' width='350px' />
+<img src='./image/9-2_review_length_histogram.png' alt='리뷰 길이 히스토그램' width='350px' />
 
 - 평균이 중간값보다 높은 이유는 오른쪽 끝에 아주 큰 데이터가 있기 때문이었음
 - 대부분의 리뷰 길이는 300 미만임
@@ -220,7 +220,7 @@ val_oh = keras.utils.to_categorical(val_seq)
 model.summary()
 ```
 
-<img src='./9-2_rnn_summary.png' alt='rnn 구조' width='650px' />
+<img src='./image/9-2_rnn_summary.png' alt='rnn 구조' width='650px' />
 
 - 순환층에 사용된 모델 파라미터 개수(1,672) = 200 x 8 + 8 x 8 + 8
 
@@ -237,7 +237,7 @@ early_stopping_cb = keras.callbacks.EarlyStopping(patience=3, restore_best_weigh
 history = model.fit(train_oh, train_target, epochs=100, batch_size=64, validation_data=(val_oh, val_target), callbacks=[checkpoint_cb, early_stopping_cb])
 ```
 
-<img src='./9-2_rnn_fit_result.png' alt='rnn 훈련 결과' width='800px' />
+<img src='./image/9-2_rnn_fit_result.png' alt='rnn 훈련 결과' width='800px' />
 
 - 9번째 에포크에서 조기 종료되었고 검증 세트에 대한 정확도는 약 73% 정도임
 
@@ -252,7 +252,7 @@ plt.legend()
 plt.show()
 ```
 
-<img src='./9-2_rnn_loss_graph.png' alt='훈련 손실과 검증 손실 그래프' width='400px' />
+<img src='./image/9-2_rnn_loss_graph.png' alt='훈련 손실과 검증 손실 그래프' width='400px' />
 
 ## 4️⃣ 단어 임베딩을 사용하기
 
@@ -307,7 +307,7 @@ model_emb.add(keras.layers.Dense(1, activation='sigmoid'))
 model_emb.summary()
 ```
 
-<img src='./9-2_rnn_with_embedding_summary.png' alt='구조' width='600px' />
+<img src='./image/9-2_rnn_with_embedding_summary.png' alt='구조' width='600px' />
 
 - 임베딩 층의 모델 파라미터 개수(8,000) = 500 x 16
 - 순환층의 모델 파라미터 개수(200) = 16 x 8 + 8 x 8 + 8
@@ -323,7 +323,7 @@ early_stopping_cb = keras.callbacks.EarlyStopping(patience=3, restore_best_weigh
 history = model_emb.fit(train_seq, train_target, epochs=100, batch_size=64, validation_data=(val_seq, val_target), callbacks=[checkpoint_cb, early_stopping_cb])
 ```
 
-<img src='./9-2_rnn_embedding_fit_result.png' alt='rnn 훈련 결과' width='800px' />
+<img src='./image/9-2_rnn_embedding_fit_result.png' alt='rnn 훈련 결과' width='800px' />
 
 - 4번째 에포크에서 조기 종료되었고 검증 세트에 대한 정확도는 약 70% 정도임
 - 원-핫 인코딩보다 순환층에 주입되는 입력의 크기가 크게 줄었지만 임베딩 벡터는 단어를 잘 표현하는 능력이 있음
@@ -339,7 +339,7 @@ plt.legend()
 plt.show()
 ```
 
-<img src='./9-2_rnn_embedding_loss_graph.png' alt='훈련 손실과 검증 손실 그래프' width='400px' />
+<img src='./image/9-2_rnn_embedding_loss_graph.png' alt='훈련 손실과 검증 손실 그래프' width='400px' />
 
 ## cf) 핵심 패키지와 함수
 

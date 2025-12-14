@@ -90,7 +90,7 @@ def draw_fruits(arr, ratio=1):
 draw_fruits(fruits[km.labels_==0])
 ```
 
-<img src='./labels_0_fruit.png' alt='레이블이 0인 과일 사진' width='300px' />
+<img src='./image/labels_0_fruit.png' alt='레이블이 0인 과일 사진' width='300px' />
 
 - 넘파이 배열에 불리언 인덱싱을 적용해 레이블이 0인 과일 사진을 모두 그림
 - 레이블이 0인 클러스터는 대부분 파인애플이고 사과와 바나나가 약간 섞여 있음
@@ -99,7 +99,7 @@ draw_fruits(fruits[km.labels_==0])
 draw_fruits(fruits[km.labels_==1])
 ```
 
-<img src='./labels_1_fruit.png' alt='레이블이 1인 과일 사진' width='300px' />
+<img src='./image/labels_1_fruit.png' alt='레이블이 1인 과일 사진' width='300px' />
 
 - 레이블이 1인 클러스터는 모두 바나나로만 이루어져 있음
 
@@ -107,7 +107,7 @@ draw_fruits(fruits[km.labels_==1])
 draw_fruits(fruits[km.labels_==2])
 ```
 
-<img src='./labels_2_fruit.png' alt='레이블이 2인 과일 사진' width='300px' />
+<img src='./image/labels_2_fruit.png' alt='레이블이 2인 과일 사진' width='300px' />
 
 - 레이블이 2인 클러스터는 모두 사과로만 이루어져 있음
 - k-평균 알고리즘이 샘플들을 명확하게 구별해내지는 못했지만, 훈련 데이터에 타깃 레이블을 전혀 제공하지 않았음에도 스스로 비슷한 샘플들을 아주 잘 모은 것 같음
@@ -120,7 +120,7 @@ draw_fruits(fruits[km.labels_==2])
 draw_fruits(km.cluster_centers_.reshape(-1, 100, 100), ratio=3)
 ```
 
-<img src='./k_means_cluster_center.png' alt='클러스터 중심' width='400px' />
+<img src='./image/k_means_cluster_center.png' alt='클러스터 중심' width='400px' />
 
 - `cluster_centers` 속성: 최종적으로 찾은 클러스터 중심이 저장됨
 
@@ -148,7 +148,7 @@ print(km.predict(fruits_2d[100:101]))
 draw_fruits(fruits[100:101])
 ```
 
-<img src='./100_sample_fruit.png' alt='100번째 샘플의 과일 사진' width='100px' />
+<img src='./image/100_sample_fruit.png' alt='100번째 샘플의 과일 사진' width='100px' />
 
 - 파인애플로 잘 예측한 것을 확인할 수 있음
 
@@ -195,7 +195,7 @@ plt.ylabel('inertia')
 plt.show()
 ```
 
-<img src='./k-inertia-graph.png' alt='100번째 샘플의 과일 사진' width='400px' />
+<img src='./image/k-inertia-graph.png' alt='100번째 샘플의 과일 사진' width='400px' />
 
 - `inertia_` 속성: 이너셔 값을 저장
 - k=3에서 이너셔가 줄어드는 속도가 살짝 꺾인 것으로 보아, 최적의 클러스터 개수는 3개인 것 같음

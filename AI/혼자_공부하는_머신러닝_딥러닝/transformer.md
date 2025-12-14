@@ -2,7 +2,7 @@
 
 ## 1️⃣ 순환 신경망을 사용한 인코더-디코더 네트워크
 
-<img src='./10-1_rnn_encoder_decoder.jpg' alt='순환 신경망을 사용한 인코더-디코더 구조' width='300px' />
+<img src='./image/10-1_rnn_encoder_decoder.jpg' alt='순환 신경망을 사용한 인코더-디코더 구조' width='300px' />
 
 - 순환 신경망의 대표적인 한계: 시퀀스가 길어질수록 이전에 처리한 데이터를 기억하기 어려움
 - 시퀀스-투-시퀀스(sequence-to-sequence) 작업: 텍스트를 입력받아 텍스트를 출력하는 작업
@@ -17,7 +17,7 @@
 
 ## 2️⃣ 어텐션 메커니즘
 
-<img src='./10-1_attention_mechanism.png' alt='어텐션 메커니즘' width='300px' />
+<img src='./image/10-1_attention_mechanism.png' alt='어텐션 메커니즘' width='300px' />
 
 - Attention Mechanism
 - 디코더가 입력 토큰마다 중요도를 다르게 부여하는 방식
@@ -46,7 +46,7 @@
 
 ## 3️⃣ 트랜스포머
 
-<img src='./10-1_transformer.png' alt='트랜스포머' width='300px' />
+<img src='./image/10-1_transformer.png' alt='트랜스포머' width='300px' />
 
 - Transformer
 - 2017년 구글 연구팀이 어텐션 메커니즘을 적극적으로 활용한 새로운 신경망 구조를 발표함
@@ -62,7 +62,7 @@
 
 ## 4️⃣ 셀프 어텐션 메커니즘
 
-<img src='./10-1_self_attention.jpg' alt='셀프 어텐션' width='400px' />
+<img src='./image/10-1_self_attention.jpg' alt='셀프 어텐션' width='400px' />
 
 - 기존 어텐션 메커니즘은 인코더의 은닉 상태와 디코더의 은닉 상태를 비교해 디코더가 특정 타임스텝에서 어떤 입력 토큰에 집중해야 하는지를 학습함
 - 트랜스포머는 인코더에 입력되는 토큰만으로 어텐션 가중치를 학습함 (셀프 어텐션)
@@ -90,7 +90,7 @@
 
 ### 멀티 헤드 어텐션
 
-<img src='./10-1_multi-head-attention.jpg' alt='셀프 어텐션' width='400px' />
+<img src='./image/10-1_multi-head-attention.jpg' alt='셀프 어텐션' width='400px' />
 
 - 어텐션 헤드(Attention Head): 셀프 어텐션 연산을 수행하는 하나의 단위
 - 멀티 헤드 어텐션(Multi-head Attention): 여러 개의 어텐션 헤드
@@ -105,7 +105,7 @@
 
 ### 배치 정규화
 
-<img src='./10-1_batch_normalization.jpg' alt='배치 정규화' width='300px' />
+<img src='./image/10-1_batch_normalization.jpg' alt='배치 정규화' width='300px' />
 
 - Batch Normalization
 - 주로 합성곱 신경망에 널리 활용되며 층과 층 사이에 놓임
@@ -116,7 +116,7 @@
 
 ### 층 정규화
 
-<img src='./10-1_layer_normalization.jpg' alt='층 정규화' width='300px' />
+<img src='./image/10-1_layer_normalization.jpg' alt='층 정규화' width='300px' />
 
 - Layer Normalization
 - 각 샘플의 토큰마다 개별적으로 정규화를 수행함
@@ -124,7 +124,7 @@
 
 ### 잔차 연결
 
-<img src='./10-1_residual_connection.jpg' alt='잔차 연결' width='600px' />
+<img src='./image/10-1_residual_connection.jpg' alt='잔차 연결' width='600px' />
 
 - Residual Connection
 - 스킵 연결(Skip Connection)라고도 부름
@@ -142,7 +142,7 @@
 
 ### 피드포워드 네트워크
 
-<img src='./10-1_feedfoward_network.jpg' alt='피드포워드 네트워크' width='400px' />
+<img src='./image/10-1_feedfoward_network.jpg' alt='피드포워드 네트워크' width='400px' />
 
 - Feedforward Network
 - 트랜스포머의 인코더에서 멀티 헤드 어텐션과 층 정규화 다음에 나오는 밀집층을 의미함
@@ -154,7 +154,7 @@
 
 ### 인코더 블록
 
-<img src='./10-1_encoder_block.jpg' alt='인코더 블록' width='700px' />
+<img src='./image/10-1_encoder_block.jpg' alt='인코더 블록' width='700px' />
 
 - 멀티 헤드 어텐션 + 피드포워드 네트워크 + 층 정규화 + 2 개의 잔차 연결로 구성됨
 - 인코더 블록이 출력하는 값은 각 토큰의 은닉 벡터임
@@ -164,7 +164,7 @@
 
 ## 7️⃣ 토큰 임베딩과 위치 인코딩
 
-<img src='./10-1_entire_encoder_block.jpg' alt='인코더 블록' width='800px' />
+<img src='./image/10-1_entire_encoder_block.jpg' alt='인코더 블록' width='800px' />
 
 ### 토큰 임베딩
 
@@ -174,7 +174,7 @@
 
 ### 위치 인코딩
 
-<img src='./10-1_position_encoding.jpg' alt='위치 인코딩' width='500px' />
+<img src='./image/10-1_position_encoding.jpg' alt='위치 인코딩' width='500px' />
 
 - Positional Encoding
 - 사인 함수와 코사인 함수를 사용해 토큰의 위치에 따라 변하는 벡터를 생성하고, 이를 단어 임베딩에 더하는 방식
@@ -188,7 +188,7 @@
 
 ## 8️⃣ 디코더 블록
 
-<img src='./10-1_decoder_block.jpg' alt='디코더 블록' width='900px' />
+<img src='./image/10-1_decoder_block.jpg' alt='디코더 블록' width='900px' />
 
 ### 마스크드 멀티 헤드 어텐션
 
@@ -219,7 +219,7 @@
 
 ## cf) 트랜스포머 인코더-디코더 전체 모델
 
-<img src='./10-1_transformer_encoder_decorder.jpg' alt='디코더 블록' width='900px' />
+<img src='./image/10-1_transformer_encoder_decorder.jpg' alt='디코더 블록' width='900px' />
 
 - 트랜스포머 모델은 대규모 텍스트 데이터셋을 학습하며, 매우 많은 모델 파라미터를 가지고 있음
 - 대규모 언어 모델(Large Language Model, LLM)이라고 부름

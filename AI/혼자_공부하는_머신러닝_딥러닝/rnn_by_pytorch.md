@@ -164,7 +164,7 @@ for epoch in range(epochs):
             break
 ```
 
-<img src='./9-2_pt_rnn_loss.png' alt='파이토치로 훈련한 모델의 각 에포크마다 손실 값' width='350px' />
+<img src='./image/9-2_pt_rnn_loss.png' alt='파이토치로 훈련한 모델의 각 에포크마다 손실 값' width='350px' />
 
 - 이 모델은 (64, 100) 크기의 배치 입력을 받아 마지막 시그모이드 함수를 통과한 (64, 1) 크기의 값을 출력하는데, 이 값은 각 샘플이 양성 클래스에 속할 확률을 나타냄
 - 하지만, 위에서 준비한 타깃의 크기는 (64,)로 1차원 배열임
@@ -184,7 +184,7 @@ plt.legend()
 plt.show()
 ```
 
-<img src='./9-2_pt_rnn_loss_graph.png' alt='훈련 손실과 검증 손실 그래프' width='400px' />
+<img src='./image/9-2_pt_rnn_loss_graph.png' alt='훈련 손실과 검증 손실 그래프' width='400px' />
 
 #### 8. 'best_rnn_model.pt' 파일을 로드하여 검증 세트에 대한 정확도를 확인해보자
 

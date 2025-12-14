@@ -38,7 +38,7 @@ print(train_target[:10])
 # [9, 0, 0, 3, 0, 2, 7, 2, 5, 5]
 ```
 
-<img src='./fashion_mnist.png' alt='패션 MNIST 10개 샘플' width='500px' />
+<img src='./image/fashion_mnist.png' alt='패션 MNIST 10개 샘플' width='500px' />
 
 ```py
 import numpy as np
@@ -103,7 +103,7 @@ print(np.mean(scores['test_score']))  # 0.819
 
 ### 인공 신경망에 의한 패션 아이템 분류
 
-<img src='./ann.png' alt='인공 신경망' width='450px' />
+<img src='./image/ann.png' alt='인공 신경망' width='450px' />
 
 - 입력층(input layer): 입력(특성) 그 자체로 별다른 연산을 수행하지 않음
   - 여기서는 784개의 픽셀값
@@ -195,7 +195,7 @@ model = keras.Sequential([inputs, dense])
 
 ### Binary crossentropy
 
-<img src='./binary_crossentropy.jpg' alt='binary crossentropy' width='400px' />
+<img src='./image/binary_crossentropy.jpg' alt='binary crossentropy' width='400px' />
 
 - 이진 분류의 출력 뉴런은 오직 양성 클래스에 대한 확률(a, 시그모이드 함수의 출력값)만 출력하기 때문에 음성 클래스에 대한 확률은 1-a로 구할 수 있음
 - 이진 분류의 타깃값은 양성 샘플인 경우에는 1, 음성 샘플인 경우에는 0임
@@ -203,7 +203,7 @@ model = keras.Sequential([inputs, dense])
 
 ### Categorical crossentropy
 
-<img src='./categorical_crossentropy.jpg' alt='categorical crossentropy' width='400px' />
+<img src='./image/categorical_crossentropy.jpg' alt='categorical crossentropy' width='400px' />
 
 - 다중 분류는 각 클래스에 대한 확률이 모두 출력되기 때문에 타깃에 해당하는 확률만 남겨 놓기 위해서 나머지 확률에는 모두 0을 곱함
 - 즉, 티셔츠 샘플에서 손실을 낮추려면 첫 번째 뉴런의 활성화 출력 a1의 값을 가능한 1에 가깝게 만들어야 함
@@ -230,7 +230,7 @@ model.compile(loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 model.fit(train_scaled, train_target, epochs=5)
 ```
 
-<img src='./ann_fit_result.png' alt='인공 신경망 훈련 결과' width='600px' />
+<img src='./image/ann_fit_result.png' alt='인공 신경망 훈련 결과' width='600px' />
 
 - `fit()` 메서드: 모델을 훈련하는 메서드
 - epochs 매개변수: 반복할 에포크 횟수를 지정
@@ -242,7 +242,7 @@ model.fit(train_scaled, train_target, epochs=5)
 model.evaluate(val_scaled, val_target)
 ```
 
-<img src='./ann_evaluate_result.png' alt='인공 신경망 검증 결과' width='600px' />
+<img src='./image/ann_evaluate_result.png' alt='인공 신경망 검증 결과' width='600px' />
 
 - `evaluate()` 메서드: 모델을 평가하는 메서드
 - 훈련 세트보다 조금 낮은 84% 정도의 정확도를 나타냄

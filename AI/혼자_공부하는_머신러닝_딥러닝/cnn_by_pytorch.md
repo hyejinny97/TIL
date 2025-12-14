@@ -152,7 +152,7 @@ for epoch in range(epochs):
             break
 ```
 
-<img src='./8-2_pytorch_loss_by_epoch.png' alt='파이토치로 훈련한 모델의 각 에포크마다 손실 값' width='350px' />
+<img src='./image/8-2_pytorch_loss_by_epoch.png' alt='파이토치로 훈련한 모델의 각 에포크마다 손실 값' width='350px' />
 
 #### 5. 훈련 손실과 검증 손실을 그래프로 그려보자
 
@@ -167,7 +167,7 @@ plt.legend()
 plt.show()
 ```
 
-<img src='./8-2_pytorch_loss_graph.png' alt='훈련 손실과 검증 손실 그래프' width='400px' />
+<img src='./image/8-2_pytorch_loss_graph.png' alt='훈련 손실과 검증 손실 그래프' width='400px' />
 
 #### 6. 'best_cnn_model.pt' 파일을 로드하여 검증 세트에 대한 정확도를 확인해보자
 

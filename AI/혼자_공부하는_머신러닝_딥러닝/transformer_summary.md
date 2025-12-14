@@ -4,7 +4,7 @@
 
 ## 1️⃣ 트랜스포머 가계도
 
-<img src='./10-2_evolutionary_tree_of_llms.jpg' alt='트랜스포머 가계도' width='800px' />
+<img src='./image/10-2_evolutionary_tree_of_llms.jpg' alt='트랜스포머 가계도' width='800px' />
 
 - 트랜스포머 모델은 인코더-디코더 구조를 기반으로 하지만, 인코더와 디코더를 각각 떼어내어 독립적으로 사용할 수도 있음
 - 가장 왼쪽에 회색 부분은 유용한 단어 임베딩 벡터를 만드는 데 초점을 맞춘 모델들임
@@ -80,7 +80,7 @@
 
 ### BART base 모델
 
-<img src='./10-2_bart_base.jpg' alt='BART base 모델 구조' width='800px' />
+<img src='./image/10-2_bart_base.jpg' alt='BART base 모델 구조' width='800px' />
 
 - 구성
   - 인코더/디코더 블록 개수: 각각 6개
@@ -102,7 +102,7 @@
 
 ### 회전시킨 임베딩 층
 
-<img src='./10-2_reversible_embedding.jpg' alt='회전시킨 임베딩 층' width='500px' />
+<img src='./image/10-2_reversible_embedding.jpg' alt='회전시킨 임베딩 층' width='500px' />
 
 - 디코더의 마지막 출력은 토큰에 대한 은닉 벡터(임베딩 벡터)임
 - BART base 모델의 은닉 벡터 크기는 768이고, 어휘 사전 크기는 50,265개임
@@ -117,7 +117,7 @@
 
 ## 4️⃣ BART의 인코더와 디코더
 
-<img src='./10-2_bart_encorder_decorder.jpg' alt='BART 인코더와 디코더' width='900px' />
+<img src='./image/10-2_bart_encorder_decorder.jpg' alt='BART 인코더와 디코더' width='900px' />
 
 - BART의 인코더 블록과 디코더 블록은 원본 트랜스포머의 구조와 매우 유사함
 - 원본 트랜스포머 구조와 다른 점
@@ -143,13 +143,13 @@
 
 ### 젤루(GeLU) 함수
 
-<img src='./10-2_gelu.jpg' alt='젤루 함수' width='400px' />
+<img src='./image/10-2_gelu.jpg' alt='젤루 함수' width='400px' />
 
 - 입력에 표준 정규 분포의 누적 분포 함수를 곱함
 - 누적 분포 함수를 계산하려면 적분이 필요함
 - 따라서, 대부분의 딥러닝 프레임워크들은 복잡한 적분 대신 근사값을 구할 수 있는 간단한 공식을 사용함
 
-<img src='./10-2_gelu_graph.jpg' alt='젤루 그래프' width='250px' />
+<img src='./image/10-2_gelu_graph.jpg' alt='젤루 그래프' width='250px' />
 
 - 젤루 함수의 그래프는 렐루 함수와 비슷하지만 원점에서 부드럽게 변하기 때문에 미분이 가능함
 
@@ -172,7 +172,7 @@ from transformers import pipeline
 pipe = pipeline(task='summarization', device=0)
 ```
 
-<img src='./10-2_pipeline.png' alt='pipeline 함수 호출' width='900px' />
+<img src='./image/10-2_pipeline.png' alt='pipeline 함수 호출' width='900px' />
 
 - 출력 결과를 보면 모델을 지정하지 않았기 때문에 요약 작업을 위한 기본 모델인 'sshleifer/distilbert-cnn-12-6'을 사용한다고 적혀 있음
 - 이어서 필요한 파일을 허깅페이스에서 다운로드하는 것을 확인할 수 있음
@@ -255,7 +255,7 @@ kobart(ko_text)
 
 ## 6️⃣ 텍스트 토큰화
 
-<img src='./10-2_tokenizer.jpg' alt='토크나이저' width='400px' />
+<img src='./image/10-2_tokenizer.jpg' alt='토크나이저' width='400px' />
 
 - 토큰화(Tokenization): 텍스트를 토큰 단위로 분할하는 과정
 - LLM 모델 자체가 토큰화를 수행하지 않음

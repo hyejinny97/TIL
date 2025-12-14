@@ -33,14 +33,14 @@
 
 ### 주성분(주성분 벡터)
 
-<img src='./pca.png' alt='주성분' width='300px' />
+<img src='./image/pca.png' alt='주성분' width='300px' />
 
 - 원본 데이터에 있는 가장 분산이 큰 방향으로, 주성분에 투영하여 바꾼 데이터는 원본이 가지고 있는 특성을 가장 잘 나타냄
 - 주성분 백터의 원소 개수는 원본 데이터셋에 있는 특성 개수와 같음
 - 주성분을 사용해 원본 데이터의 차원을 줄일 수 있음
 - 즉, 주성분은 원본 차원과 같고 주성분으로 바꾼 데이터는 차원이 줄어듦
 
-<img src='./2_principle_component.png' alt='2개의 주성분' width='300px' />
+<img src='./image/2_principle_component.png' alt='2개의 주성분' width='300px' />
 
 - 첫 번째 주성분 벡터에 수직이고 그 다음으로 분산이 큰 방향이 두 번째 주성분이 됨
 - 일반적으로 주성분은 원본 특성의 개수보다 작음
@@ -81,7 +81,7 @@ print(pca.components_.shape)  # (50, 10000)
 draw_fruits(pca.components_.reshape(-1, 100, 100))
 ```
 
-<img src='./pca_draw_fruit.png' alt='50개의 주성분 이미지' width='500px' />
+<img src='./image/pca_draw_fruit.png' alt='50개의 주성분 이미지' width='500px' />
 
 - 원본 데이터에서 가장 분산이 큰 방향을 순서대로 나타냄
 - 데이터셋에 있는 어떤 특징을 잡아낸 것처럼 생각할 수도 있음
@@ -121,7 +121,7 @@ for start in [0, 100, 200]:
     print("\n")
 ```
 
-<img src='./pca_inverse_transform.png' alt='복원된 과일 데이터' width='800px' />
+<img src='./image/pca_inverse_transform.png' alt='복원된 과일 데이터' width='800px' />
 
 - 일부 흐리고 번진 부분이 있지만, 거의 모든 과일이 잘 복원되었음
 
@@ -147,7 +147,7 @@ print(np.sum(pca.explained_variance_ratio_))  # 0.922
 plt.plot(pca.explained_variance_ratio_)
 ```
 
-<img src='./explained-variance.png' alt='설명된 분산의 비율 그래프' width='350px' />
+<img src='./image/explained-variance.png' alt='설명된 분산의 비율 그래프' width='350px' />
 
 - 그래프를 보면 처음 10개의 주성분이 대부분의 분산을 표현하고 있음을 알 수 있음
 - 이를 통해 적절한 주성분의 개수를 찾는데 도움을 줄 수 있음
@@ -235,7 +235,7 @@ for label in range(0, 3):
     print("\n")
 ```
 
-<img src='./pca_k_means_clusters.png' alt='클러스터별 과일 이미지' width='800px' />
+<img src='./image/pca_k_means_clusters.png' alt='클러스터별 과일 이미지' width='800px' />
 
 - 6-2절에서 찾은 클러스터와 비슷하게 파인애플과 사과가 조금 혼동되는 면이 있음
 
@@ -249,7 +249,7 @@ plt.legend(['pineapple', 'banana', 'apple'])
 plt.show()
 ```
 
-<img src='./pca_scatter.png' alt='클러스터별 과일 이미지' width='400px' />
+<img src='./image/pca_scatter.png' alt='클러스터별 과일 이미지' width='400px' />
 
 - 훈련 데이터의 차원을 줄였을 때의 또 다른 장점은 시각화임
   - 3개 이하로 차원을 줄이면 화면에 비교적 출력하기 쉬움

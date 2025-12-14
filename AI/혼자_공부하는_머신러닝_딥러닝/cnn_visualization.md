@@ -69,7 +69,7 @@ plt.ylabel('count')
 plt.show()
 ```
 
-<img src='./8-3_weights_histogram.png' alt='가중치 히스토그램' width='350px' />
+<img src='./image/8-3_weights_histogram.png' alt='가중치 히스토그램' width='350px' />
 
 - 히스토그램을 보면 0을 중심으로 종 모양 분포를 띠고 있는 것을 알 수 있음
 
@@ -84,7 +84,7 @@ for i in range(2):
 plt.show()
 ```
 
-<img src='./8-3_weights_subplot.png' alt='필터 이미지' width='700px' />
+<img src='./image/8-3_weights_subplot.png' alt='필터 이미지' width='700px' />
 
 - 결과 그래프를 보면 가중치 값이 무작위로 나열된 것이 아닌 어떤 패턴을 볼 수 있음
 - 가중치 값이 낮을수록 검은색에 가깝고, 높을수록 노란색에 가까움
@@ -129,7 +129,7 @@ plt.ylabel('count')
 plt.show()
 ```
 
-<img src='./8-3_weights_histogram_no_trained.png' alt='가중치 히스토그램' width='350px' />
+<img src='./image/8-3_weights_histogram_no_trained.png' alt='가중치 히스토그램' width='350px' />
 
 - 대부분의 가중치가 -0.15 ~ 0.15 사이에 있고 비교적 고른 분포를 보임
 - 이런 이유는 케라스가 신경망의 가중치를 처음 초기화할 때 균등 분포에서 랜덤하게 값을 선택하기 때문
@@ -145,7 +145,7 @@ for i in range(2):
 plt.show()
 ```
 
-<img src='./8-3_weights_subplot_no_trained.png' alt='가중치 히스토그램' width='700px' />
+<img src='./image/8-3_weights_subplot_no_trained.png' alt='가중치 히스토그램' width='700px' />
 
 - 전체적으로 가중치가 밋밋하게 초기화된 것을 볼 수 있음
 - 훈련한 모델의 가중치를 시각화한 이미지와 비교해봤을 때, 합성곱 신경망이 패션 MNIST 데이터셋의 분류 정확도를 높이기 위해 유용한 패턴을 학습했다는 사실을 알 수 있음
@@ -205,7 +205,7 @@ plt.imshow(train_input[0], cmap='gray_r')
 plt.show()
 ```
 
-<img src='./8-3_sample_img.png' alt='첫 번째 샘플' width='250px' />
+<img src='./image/8-3_sample_img.png' alt='첫 번째 샘플' width='250px' />
 
 - 앵클 부츠인 것을 확인할 수 있음
 
@@ -232,7 +232,7 @@ for i in range(4):
 plt.show()
 ```
 
-<img src='./8-3_feature_maps.png' alt='특성 맵' width='500px' />
+<img src='./image/8-3_feature_maps.png' alt='특성 맵' width='500px' />
 
 - 위 특성 맵은 32개의 필터로 인해 입력 이미지에서 강하게 활성화된 부분을 보여 줌
 - 일곱 번째 필터는 전체적으로 밝은 색이므로, 전면이 모두 칠해진 영역을 감지함
@@ -268,7 +268,7 @@ for i in range(8):
 plt.show()
 ```
 
-<img src='./8-3_feature_maps_second.png' alt='특성 맵' width='500px' />
+<img src='./image/8-3_feature_maps_second.png' alt='특성 맵' width='500px' />
 
 - 위 특성 맵은 직관적으로 이해하기 어려운데, 이런 현상은 합성곱 층을 많이 쌓을수록 심해짐
 - 합성곱 신경망의 앞부분에 있는 합성곱 층은 이미지의 시각적인 정보를 감지하고 뒤쪽에 있는 합성곱 층은 앞쪽에서 감지한 시각적인 정보를 바탕으로 추상적인 정보를 학습함
