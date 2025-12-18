@@ -10,3 +10,6 @@
   - 최초의 CNN 모델 - LeNet
   - 합성곱층 - Conv2D
   - 풀링층과 밀집층 - AveragePooling2D, Dense
+- [패션 상품 이미지 분류하기](./classify_fashion_product.md)
+  - LeNet 모델 만들기
+  - LeNet 모델 훈련하기
