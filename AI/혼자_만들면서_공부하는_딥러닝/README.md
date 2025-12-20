@@ -19,3 +19,6 @@
 - [이미지 분류 CNN 모델 만들기](./cnn_iamge_classification.md)
   - 이미지넷 대회에서 우승한 최초의 CNN 모델 - AlexNet
   - 사전 훈련된 CNN 모델 - VGGNet
+- [강아지와 고양이 사진 분류하기](./classify_cat_dog.md)
+  - VGGNet 모델 로드하기
+  - 강아지와 고양이 사진 분류하기
