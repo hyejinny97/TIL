@@ -22,3 +22,8 @@
 - [강아지와 고양이 사진 분류하기](./classify_cat_dog.md)
   - VGGNet 모델 로드하기
   - 강아지와 고양이 사진 분류하기
+- [강아지와 고양이 사진 분류 모델의 성능 개선하기](./improve_performance.md)
+  - 훈련 성능을 높이는 CNN 모델 - ResNet
+  - ResNet 모델 만들기
+  - 강아지와 고양이 사진 분류하기
+  - cf) GoogLeNet
