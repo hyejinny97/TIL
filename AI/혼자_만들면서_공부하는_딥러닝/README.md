@@ -27,3 +27,9 @@
   - ResNet 모델 만들기
   - 강아지와 고양이 사진 분류하기
   - cf) GoogLeNet
+
+### 3. 고급 CNN 모델과 전이 학습으로 이미지 분류하기
+
+- [이미지 분류 모델의 효율성 최적화하기](./cnn_optimization.md)
+  - ResNet의 확장 모델 - DenseNet
+  - 모바일 환경(경량) 모델 - MobileNet
