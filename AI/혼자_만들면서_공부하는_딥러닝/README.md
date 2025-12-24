@@ -33,3 +33,7 @@
 - [이미지 분류 모델의 효율성 최적화하기](./cnn_optimization.md)
   - ResNet의 확장 모델 - DenseNet
   - 모바일 환경(경량) 모델 - MobileNet
+- [이미지 분류 모델의 성능 최적화하기](./cnn_performance_optimization.md)
+  - 가장 높은 성능을 내는 모델 - EfficientNet
+  - EfficientNet 모델 만들기
+  - EfficientNet 모델로 강아지 사진 분류하기
