@@ -54,3 +54,7 @@
   - KerasNLP로 영화 리뷰 텍스트의 감성 분류하기
   - 허깅페이스로 영화 리뷰 텍스트의 감성 분류하기
   - cf) 미세 튜닝된 모델로 감성 분석하기
+- [BERT 후속 모델로 영화 리뷰 텍스트의 감성 분류하기](./roberta_distilbert.md)
+  - BERT의 성능 개선 모델 - RoBERTa
+  - BERT의 경량화 모델 - DistilBERT
+  - cf) KerasNLP로 DistilBERT 모델 만들기

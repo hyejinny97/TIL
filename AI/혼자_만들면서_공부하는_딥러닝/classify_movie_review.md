@@ -151,6 +151,8 @@ model.summary()
 
 ## 2️⃣ KerasNLP로 영화 리뷰 텍스트의 감성 분류하기
 
+- KerasNLP: 케라스 기반의 자연어 처리 라이브러리
+  - 사전 훈련된 모델은 물론, 밑바닥부터 모델을 구성하기 위해 필요한 구성 요소를 제공함
 - IMDB(Internet Movie Database) 데이터셋은 영화 리뷰를 긍정과 부정의 감정 레이블로 분류해 놓은 표준 데이터셋으로, 감성 분석(Sentiment Analysis) 작업에 널리 사용되고 있음
 - 사전 훈련된 대규모 언어 모델을 사용하면 약간의 훈련만으로도 높은 성능을 달성할 수 있음
 
@@ -174,9 +176,9 @@ train_ds, val_ds = keras.utils.text_dataset_from_directory('aclImdb/train', subs
 test_ds = keras.utils.text_dataset_from_directory('aclImdb/test')
 """
 Found 25000 files belonging to 2 classes.
-Using 20000 files for training.
-Using 5000 files for validation.
-Found 25000 files belonging to 2 classes.
+Using 20000 files for training.             👈 훈련 세트
+Using 5000 files for validation.            👈 검증 세트
+Found 25000 files belonging to 2 classes.   👈 테스트 세트
 """
 ```
 
@@ -295,6 +297,7 @@ plt.show()
 - 토크나이저(tokenizer): 토큰화를 수행하는 방법 혹은 객체
 - 모델은 어휘사전을 바탕으로 새로운 텍스트를 토큰으로 분할하기 때문에 토크나이저와 어휘사전이 모델의 성능에 큰 영향을 미침
 - BERT 모델은 워드피스 토큰화 방법을 사용함
+- 사전 훈련된 모델을 사용할 때는 그 모델이 훈련에 사용한 토큰화와 동일한 방식으로 입력 텍스트를 분할해야 함
 
 #### 워드피스 토큰화
 
