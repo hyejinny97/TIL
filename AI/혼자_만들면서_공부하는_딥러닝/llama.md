@@ -8,6 +8,8 @@
 
 > ['LlaMA 모델로 텍스트 생성하기-bllossom' 구글 코랩](https://colab.research.google.com/github/rickiepark/hm-dl/blob/main/05-2-bllossom.ipynb)
 
+> ['LlaMA 모델로 텍스트 생성하기-exercise' 구글 코랩](https://colab.research.google.com/github/rickiepark/hm-dl/blob/main/05-3-exercise.ipynb)
+
 ## 1️⃣ LlaMA 모델 이해하기
 
 - Large Language Model Meta AI
@@ -548,6 +550,48 @@ llama3_bllossom('봄이 오면', max_length=20, truncation=True)
 ```
 
 - 블로썸(Bllossom): 약 100GB의 한글 데이터를 사용해 라마-3를 미세 튜닝한 모델
+
+## cf) KerasNLP로 Llama-3 모델 만들기
+
+#### 1. 80억 파라미터 버전의 Llama-3 모델을 위한 모델 파라미터를 정의하자
+
+```py
+# llama3
+vocab_size = 128256
+num_layers = 32
+num_query_heads = 32
+num_key_value_heads = 8
+interm_dim = 14336
+hidden_dim = 4096
+```
+
+#### 2. Llama-3 모델을 만들어보자
+
+```py
+token_ids = keras.Input(shape=(None,))
+padding_mask = keras.Input(shape=(None,))
+
+token_embedding_layer = ReversibleEmbedding(vocab_size, hidden_dim,
+                                            tie_weights=False)
+x = token_embedding_layer(token_ids)
+
+for _ in range(num_layers):
+    x = llama_decoder(x, padding_mask, num_query_heads, num_key_value_heads,
+                      interm_dim, hidden_dim)
+
+x = LlamaLayerNorm()(x)
+outputs = token_embedding_layer(x, reverse=True)
+model = keras.Model(inputs=(token_ids, padding_mask),
+                    outputs=(outputs))
+```
+
+#### 3. 모델의 구조를 확인해보자
+
+```py
+model.summary(line_length=100)
+```
+
+<img src='./image/5-3_llama3.png' alt='llama3 구조' width='600px' />
 
 ## cf) Llama-3.1과 Llama-3.2
 

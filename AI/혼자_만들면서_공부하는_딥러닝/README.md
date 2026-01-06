@@ -72,4 +72,10 @@
   - KerasNLP로 LlaMA-2 모델 만들기
   - LlaMA-2 모델로 텍스트 생성하기
   - LlaMA-3 모델로 텍스트 생성하기
+  - cf) KerasNLP로 LlaMA-3 모델 만들기
   - cf) LlaMA-3.1과 LlaMA-3.2
+- [Gemma 모델로 텍스트 생성하기](./gemma.md)
+  - Gemma 모델 이해하기
+  - KerasNLP로 Gemma 모델 만들기
+  - Gemma 모델로 텍스트 생성하기
+  - Gemma-2 모델로 텍스트 생성하기
